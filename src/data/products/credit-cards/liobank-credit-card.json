@@ -12,15 +12,13 @@
       "id": "liobank-credit-card-direct-referral",
       "name": "Link giới thiệu Liobank",
       "channel": "direct-referral",
-      "enabled": true,
+      "enabled": false,
       "url": "https://liobank.vn/rr/laqv",
       "ctaLabel": "Tiếp tục trên kênh Liobank",
       "validThrough": "2026-09-30",
       "lastVerifiedAt": "2026-08-16"
     }
   ],
-
-  "primaryOfferId": "liobank-credit-card-direct-referral",
 
   "ctaLabel": "Xem thẻ tín dụng Liobank",
 
@@ -36,7 +34,7 @@
     },
     {
       "label": "Điểm đến sau CTA",
-      "value": "App Liobank, kho ứng dụng hoặc website Liobank, tùy thiết bị"
+      "value": "Trang chính thức, App Liobank hoặc kho ứng dụng tùy thiết bị"
     },
     {
       "label": "Thời hạn chương trình",
@@ -52,7 +50,7 @@
     },
     {
       "label": "Vai trò website",
-      "value": "Hướng dẫn độc lập và bên giới thiệu"
+      "value": "Hướng dẫn độc lập; không phải kênh chính thức của Liobank"
     },
     {
       "label": "Quyết định cấp thẻ",
@@ -75,7 +73,7 @@
   "highlights": [
     "Từ 21 tuổi và chưa từng là khách hàng Liobank theo điều kiện chương trình hiện hành.",
     "OCB xác minh hồ sơ, quyết định cấp thẻ và hạn mức tín dụng thực tế.",
-    "Liobank sử dụng liên kết giới thiệu; bạn không cần sao chép hoặc nhập mã."
+    "Liên kết giới thiệu đang tạm ngừng hiển thị cho đến khi được xác minh lại."
   ],
 
   "considerations": [

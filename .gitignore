@@ -20,11 +20,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# local research and source material
-private/
-Giao diện tham chiếu/
-Chương trình MB App/
-
 # jetbrains setting folder
 .idea/
 *.backup

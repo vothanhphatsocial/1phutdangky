@@ -180,7 +180,6 @@ const categorySchema = z.enum([
   'mo-tai-khoan',
   'the-tin-dung',
   'vay-tien-mat',
-  'vi-dien-tu',
 ]);
 
 const articleTypeSchema = z.enum([

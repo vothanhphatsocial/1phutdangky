@@ -12,12 +12,8 @@
       "id": "cake-2in1-direct-referral",
       "name": "Link giới thiệu Cake 2in1",
       "channel": "direct-referral",
-      "referralMechanism": "link-only",
-      "destinationBehavior": "registration-page",
       "enabled": true,
       "url": "https://dop.cake.vn/affiliate?ref=SKCA8V98",
-      "customerBenefit": "Được xét hoàn 50%, tối đa 200.000 đồng, cho giao dịch trực tuyến đầu tiên hợp lệ từ 500.000 đồng.",
-      "customerBenefitNote": "Áp dụng khi được phê duyệt và mở thẻ qua link giới thiệu; giao dịch phải được ghi nhận trong 7 ngày kể từ ngày mở thẻ.",
       "ctaLabel": "Mở thẻ Cake 2in1",
       "validThrough": "2026-12-31",
       "lastVerifiedAt": "2026-08-16"

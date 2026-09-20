@@ -18,6 +18,7 @@ import '../styles/global.css';
 
 import {
   SITE,
+  GTM_ID,
 } from '../config/site';
 
 
@@ -100,9 +101,8 @@ const canonicalUrl =
 
 /*
  * Local development luôn noindex.
- *
- * Production chỉ noindex khi page
- * chủ động truyền noindex=true.
+ * Production có thể dùng noindex hoặc robots
+ * tùy theo props của từng page.
  */
 const effectiveNoindex =
   import.meta.env.DEV ||
@@ -237,6 +237,32 @@ const allStructuredData = [
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f8f6f0" />
 
+    <script is:inline>
+      if (
+        window.location.pathname === '/tim-kiem/' &&
+        window.location.search
+      ) {
+        const searchParams =
+          new URLSearchParams(
+            window.location.search
+          );
+
+        const initialSearchQuery =
+          searchParams.get('q');
+
+        if (initialSearchQuery) {
+          window.__1pdInitialSearchQuery =
+            initialSearchQuery;
+        }
+
+        window.history.replaceState(
+          {},
+          '',
+          `${window.location.pathname}${window.location.hash}`
+        );
+      }
+    </script>
+
     <!-- Theme preference: chạy trước CSS để tránh flash sai theme. -->
     <script is:inline>
       let savedTheme = null;
@@ -283,8 +309,8 @@ const allStructuredData = [
       );
     </script>
 
-    <!-- Consent Mode v2 -->
-    <script is:inline>
+    <!-- Consent Mode v2 + consent-gated GTM -->
+    <script define:vars={{ gtmId: GTM_ID }}>
       window.dataLayer = window.dataLayer || [];
 
       window.gtag =
@@ -294,6 +320,40 @@ const allStructuredData = [
         };
 
       let savedConsent = null;
+
+      function loadGtm() {
+        if (
+          document.documentElement.dataset
+            .consentChoice !== 'granted' ||
+          document.querySelector(
+            'script[data-pd-gtm]'
+          )
+        ) {
+          return;
+        }
+
+        window.dataLayer.push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
+        });
+
+        const firstScript =
+          document.getElementsByTagName('script')[0];
+        const tag = document.createElement('script');
+
+        tag.async = true;
+        tag.dataset.pdGtm = 'true';
+        tag.src =
+          'https://www.googletagmanager.com/gtm.js?id=' +
+          gtmId;
+
+        firstScript.parentNode.insertBefore(
+          tag,
+          firstScript
+        );
+      }
+
+      window.__1pdLoadGtm = loadGtm;
 
       try {
         savedConsent =
@@ -326,40 +386,10 @@ const allStructuredData = [
           wait_for_update: 500,
         }
       );
-    </script>
 
-    <!-- Google Tag Manager -->
-    <script is:inline>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-          'gtm.start': new Date().getTime(),
-          event: 'gtm.js',
-        });
-
-        const firstScript =
-          d.getElementsByTagName(s)[0];
-        const tag = d.createElement(s);
-        const dataLayerQuery =
-          l !== 'dataLayer' ? '&l=' + l : '';
-
-        tag.async = true;
-        tag.src =
-          'https://www.googletagmanager.com/gtm.js?id=' +
-          i +
-          dataLayerQuery;
-
-        firstScript.parentNode.insertBefore(
-          tag,
-          firstScript
-        );
-      })(
-        window,
-        document,
-        'script',
-        'dataLayer',
-        'GTM-NXX3GHJ7'
-      );
+      if (savedConsent === 'granted') {
+        loadGtm();
+      }
     </script>
 
     <link
@@ -541,16 +571,6 @@ const allStructuredData = [
 
 
   <body>
-
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NXX3GHJ7"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-        title="Google Tag Manager"
-      ></iframe>
-    </noscript>
 
     <ConsentBanner />
 

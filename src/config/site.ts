@@ -2,7 +2,7 @@ export const SITE = {
   name: '1 Phút Đăng Ký',
   url: 'https://1phutdangky.com',
   description:
-    'Hướng dẫn tài chính dễ hiểu về tài khoản ngân hàng, thẻ tín dụng, khoản vay và ví điện tử.',
+    'Hướng dẫn tài chính dễ hiểu về tài khoản ngân hàng, thẻ tín dụng và khoản vay.',
   logo: '/brand/logo-512.png',
   socialImage: '/brand/og-default.png',
   editor: {
@@ -10,6 +10,8 @@ export const SITE = {
     url: '/tac-gia/vo-thanh-phat/',
   },
 };
+
+export const GTM_ID = 'GTM-NXX3GHJ7';
 
 export const CATEGORIES = {
   'mo-tai-khoan': {
@@ -39,14 +41,6 @@ export const CATEGORIES = {
     icon: 'cash',
   },
 
-  'vi-dien-tu': {
-    slug: 'vi-dien-tu',
-    name: 'Ví điện tử',
-    shortName: 'Ví điện tử',
-    description:
-      'Cách sử dụng, phí, tính năng và so sánh các ví điện tử.',
-    icon: 'wallet',
-  },
 } as const;
 
 export type CategorySlug = keyof typeof CATEGORIES;

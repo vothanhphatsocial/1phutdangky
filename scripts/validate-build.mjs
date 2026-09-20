@@ -72,6 +72,57 @@ for (const relativePath of requiredOutput) {
   }
 }
 
+const expectedSitemapIndex = `${productionOrigin}/sitemap-index.xml`;
+const robotsSource = await readFile(
+  path.join(distRoot, 'robots.txt'),
+  'utf8',
+);
+
+const robotsSitemap = robotsSource.match(
+  /^Sitemap:\s*(\S+)\s*$/mi,
+)?.[1];
+
+if (robotsSitemap !== expectedSitemapIndex) {
+  errors.push(
+    `robots.txt phải trỏ tới ${expectedSitemapIndex}.`,
+  );
+}
+
+const sitemapIndexSource = await readFile(
+  path.join(distRoot, 'sitemap-index.xml'),
+  'utf8',
+);
+const sitemapIndexUrls = [
+  ...sitemapIndexSource.matchAll(/<loc>(.*?)<\/loc>/g),
+].map(([, url]) => url);
+
+if (sitemapIndexUrls.length === 0) {
+  errors.push('sitemap-index.xml không có sitemap con.');
+}
+
+for (const sitemapIndexUrl of sitemapIndexUrls) {
+  try {
+    const parsedUrl = new URL(sitemapIndexUrl);
+    const relativeSitemapPath = parsedUrl.pathname.replace(/^\//, '');
+
+    if (parsedUrl.origin !== productionOrigin) {
+      errors.push(
+        `sitemap-index.xml chứa origin không hợp lệ: ${sitemapIndexUrl}`,
+      );
+    }
+
+    if (!(await exists(path.join(distRoot, relativeSitemapPath)))) {
+      errors.push(
+        `sitemap-index.xml trỏ tới file không tồn tại: ${sitemapIndexUrl}`,
+      );
+    }
+  } catch {
+    errors.push(
+      `sitemap-index.xml chứa URL không hợp lệ: ${sitemapIndexUrl}`,
+    );
+  }
+}
+
 const builtFiles = await walk(distRoot);
 const htmlFiles = builtFiles.filter((filePath) => filePath.endsWith('.html'));
 const indexableCanonicals = new Set();

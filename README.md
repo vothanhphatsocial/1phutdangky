@@ -1,7 +1,7 @@
 # 1 Phút Đăng Ký
 
-Website hướng dẫn tài chính dễ hiểu về tài khoản ngân hàng, thẻ tín dụng,
-khoản vay và ví điện tử.
+Website hướng dẫn tài chính dễ hiểu về tài khoản ngân hàng, thẻ tín dụng
+và khoản vay.
 
 Production: `https://1phutdangky.com`
 

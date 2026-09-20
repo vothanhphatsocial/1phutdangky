@@ -160,10 +160,19 @@ const hasMoreInformation =
     }
 
     {
-      isLiobankProduct && (
+      isLiobankProduct && isAffiliate && (
         <p class="context-note action-context">
           Liên kết có thể mở App Liobank, kho ứng dụng hoặc website
           Liobank tùy thiết bị. Bạn sẽ rời 1 Phút Đăng Ký.
+        </p>
+      )
+    }
+
+    {
+      isLiobankProduct && !isAffiliate && (
+        <p class="context-note action-context">
+          Liên kết giới thiệu đang tạm ngừng hiển thị. Hãy bắt đầu
+          từ trang chính thức của Liobank và kiểm tra thông tin hiện hành.
         </p>
       )
     }
@@ -751,6 +760,15 @@ const hasMoreInformation =
         input.remove();
 
         if (!copied) throw new Error('Copy failed');
+      }
+
+      if (
+        document.documentElement.dataset
+          .consentChoice !== 'granted'
+      ) {
+        label.textContent = 'Đã sao chép';
+        status.textContent = `Đã sao chép mã ${code}.`;
+        return;
       }
 
       trackingWindow.dataLayer = trackingWindow.dataLayer || [];

@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
-    "check": "npm run build && npm run validate",
+    "build": "astro build && pagefind --site dist && node scripts/validate-build.mjs",
+    "check": "npm run build",
     "preview": "astro preview",
     "validate": "node scripts/validate-build.mjs",
     "astro": "astro",
@@ -17,9 +17,7 @@
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.2"
-  },
-  "devDependencies": {
+    "astro": "^7.2.2",
     "pagefind": "^1.5.2"
   }
 }

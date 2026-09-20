@@ -347,10 +347,6 @@
     background: linear-gradient(135deg, #b7a4ff, #f0b6e8);
   }
 
-  .category-panel--vi-dien-tu {
-    background: linear-gradient(135deg, #7de5be, #9de3f5);
-  }
-
   .category-index {
     position: absolute;
     top: 1.3rem;

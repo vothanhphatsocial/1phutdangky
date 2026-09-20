@@ -6,7 +6,6 @@ import mdx from '@astrojs/mdx';
 
 const nonIndexableRoutes = [
   '/tim-kiem/',
-  '/vi-dien-tu/',
 ];
 
 export default defineConfig({
