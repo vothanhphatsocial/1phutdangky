@@ -1,0 +1,129 @@
+---
+import type {
+  CollectionEntry,
+} from 'astro:content';
+
+import {
+  CATEGORIES,
+  articleUrl,
+} from '../../config/site';
+
+interface Props {
+  posts: CollectionEntry<'articles'>[];
+}
+
+const {
+  posts,
+} = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+
+    <section class="related">
+
+      <h2>
+        Bạn có thể quan tâm
+      </h2>
+
+      <div class="related-list">
+
+        {
+          posts.map((post) => {
+
+            const category =
+              CATEGORIES[post.data.category];
+
+            return (
+
+              <a
+                class="related-item"
+                href={articleUrl(post.id)}
+              >
+
+                <div>
+
+                  <span>
+                    {category.name}
+                  </span>
+
+                  <strong>
+                    {post.data.title}
+                  </strong>
+
+                </div>
+
+                <span
+                  class="arrow"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+
+              </a>
+
+            );
+          })
+        }
+
+      </div>
+
+    </section>
+
+  )
+}
+
+<style>
+  .related {
+    margin-top: 3rem;
+  }
+
+  .related h2 {
+    margin-bottom: 1rem;
+  }
+
+  .related-list {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+
+    padding-block: 1rem;
+
+    color: inherit;
+
+    border-bottom: 1px solid var(--color-border);
+
+    text-decoration: none;
+  }
+
+  .related-item div {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .related-item div > span {
+    color: var(--color-accent-cobalt-strong);
+
+    font-size: 0.7rem;
+    font-weight: 750;
+  }
+
+  .related-item strong {
+    color: var(--color-heading);
+
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .arrow {
+    color: var(--color-subtle);
+  }
+
+  .related-item:hover strong {
+    color: var(--color-accent-cobalt-strong);
+  }
+</style>

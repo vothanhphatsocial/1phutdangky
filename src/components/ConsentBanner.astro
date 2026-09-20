@@ -1,0 +1,289 @@
+<section
+  id="consent-banner"
+  class="consent-banner"
+  role="dialog"
+  aria-label="Lựa chọn quyền riêng tư"
+  aria-describedby="consent-description"
+>
+  <div class="consent-inner">
+    <div class="consent-copy">
+      <strong>Quyền riêng tư và cookie</strong>
+
+      <p id="consent-description">
+        Website lưu lựa chọn quyền riêng tư trên thiết bị để
+        ghi nhớ tùy chọn của bạn. Bạn có thể chấp nhận hoặc
+        từ chối.
+      </p>
+
+      <a href="/chinh-sach-bao-mat/">
+        Xem chính sách bảo mật
+      </a>
+    </div>
+
+    <div class="consent-actions">
+      <button
+        type="button"
+        class="consent-reject"
+        data-consent-reject
+      >
+        Từ chối
+      </button>
+
+      <button
+        type="button"
+        class="consent-accept"
+        data-consent-accept
+      >
+        Chấp nhận tất cả
+      </button>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const STORAGE_KEY = '1pd-consent-v1';
+
+    const banner =
+      document.getElementById('consent-banner');
+
+    if (!banner) {
+      return;
+    }
+
+    const acceptButton =
+      banner.querySelector('[data-consent-accept]');
+
+    const rejectButton =
+      banner.querySelector('[data-consent-reject]');
+
+    function readChoice() {
+      try {
+        return localStorage.getItem(STORAGE_KEY);
+      } catch {
+        return null;
+      }
+    }
+
+    function saveChoice(value) {
+      try {
+        localStorage.setItem(STORAGE_KEY, value);
+      } catch {
+        // Nếu localStorage bị chặn,
+        // consent vẫn được áp dụng cho phiên hiện tại.
+      }
+    }
+
+    function closeBanner() {
+      banner.hidden = true;
+    }
+
+    function openBanner() {
+      delete document.documentElement.dataset
+        .consentChoice;
+      banner.hidden = false;
+    }
+
+    acceptButton?.addEventListener(
+      'click',
+      () => {
+        saveChoice('granted');
+        closeBanner();
+      }
+    );
+
+    rejectButton?.addEventListener(
+      'click',
+      () => {
+        saveChoice('denied');
+        closeBanner();
+      }
+    );
+
+    document.addEventListener(
+      'click',
+      (event) => {
+        const target = event.target;
+
+        if (!(target instanceof Element)) {
+          return;
+        }
+
+        const settingsTrigger =
+          target.closest('[data-consent-settings]');
+
+        if (!settingsTrigger) {
+          return;
+        }
+
+        event.preventDefault();
+        openBanner();
+      }
+    );
+
+    const savedChoice = readChoice();
+
+    if (savedChoice === 'granted') {
+      closeBanner();
+      return;
+    }
+
+    if (savedChoice === 'denied') {
+      closeBanner();
+      return;
+    }
+
+    openBanner();
+
+
+  })();
+</script>
+
+<style>
+  :global(html[data-consent-choice])
+  .consent-banner,
+  .consent-banner[hidden] {
+    display: none;
+  }
+
+  .consent-banner {
+    position: fixed;
+    right:
+      max(
+        0.75rem,
+        env(safe-area-inset-right, 0px)
+      );
+    bottom:
+      max(
+        0.75rem,
+        env(safe-area-inset-bottom, 0px)
+      );
+    left:
+      max(
+        0.75rem,
+        env(safe-area-inset-left, 0px)
+      );
+    z-index: 10000;
+  }
+
+  .consent-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+
+    width: min(620px, 100%);
+    margin: 0 auto;
+    padding: clamp(0.85rem, 2vw, 1.1rem);
+
+    background:
+      linear-gradient(
+        var(--color-surface-elevated),
+        var(--color-surface-elevated)
+      ) padding-box,
+      linear-gradient(
+        120deg,
+        var(--color-accent-cobalt),
+        var(--color-accent-mint),
+        var(--color-accent-coral)
+      ) border-box;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-float);
+  }
+
+  .consent-copy strong {
+    display: block;
+    margin-bottom: 0.35rem;
+
+    color: var(--color-heading);
+
+    font-size: clamp(0.94rem, 2vw, 1.05rem);
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+
+  .consent-copy p {
+    margin: 0;
+
+    color: var(--color-muted);
+
+    font-size: 0.76rem;
+    line-height: 1.42;
+  }
+
+  .consent-copy a {
+    display: inline-block;
+    margin-top: 0.45rem;
+
+    color: var(--color-accent-cobalt-strong);
+
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .consent-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+  }
+
+  .consent-actions button {
+    min-height: 42px;
+    padding: 0.6rem 0.9rem;
+
+    border-radius: 999px;
+
+    font: inherit;
+    font-size: 0.76rem;
+    font-weight: 700;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .consent-reject {
+    background: var(--color-surface-soft);
+    color: var(--color-heading);
+    border: 1px solid var(--color-border);
+  }
+
+  .consent-accept {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border: 1px solid var(--color-ink);
+  }
+
+  .consent-actions button:hover {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 520px) {
+    .consent-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    }
+
+    .consent-actions button {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .consent-actions button {
+      transition: none;
+    }
+
+    .consent-actions button:hover {
+      transform: none;
+    }
+  }
+</style>

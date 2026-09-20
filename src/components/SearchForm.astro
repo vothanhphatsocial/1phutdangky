@@ -1,0 +1,169 @@
+---
+interface Props {
+  id: string;
+  action?: string;
+  method?: 'get' | 'post';
+  placeholder?: string;
+  buttonLabel?: string;
+  live?: boolean;
+}
+
+const {
+  id,
+  action,
+  method = 'get',
+  placeholder = 'Bạn muốn tìm hiểu gì?',
+  buttonLabel = 'Tìm hướng dẫn',
+  live = false,
+} = Astro.props;
+---
+
+<form
+  class="site-search-form"
+  action={action}
+  method={method}
+  data-search-form={live ? '' : undefined}
+>
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <circle
+      cx="11"
+      cy="11"
+      r="7"
+    />
+    <path d="m20 20-4-4" />
+  </svg>
+
+  <label
+    class="visually-hidden"
+    for={id}
+  >
+    Tìm bài hướng dẫn
+  </label>
+
+  <input
+    id={id}
+    name="q"
+    type="search"
+    autocomplete="off"
+    placeholder={placeholder}
+  />
+
+  <button type="submit">
+    {buttonLabel}
+  </button>
+</form>
+
+<style>
+  .site-search-form {
+    position: relative;
+    z-index: 2;
+
+    grid-column: 1;
+
+    display: grid;
+    grid-template-columns:
+      auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.7rem;
+
+    width: 100%;
+    max-width:
+      var(
+        --search-form-max-width,
+        620px
+      );
+    padding:
+      0.42rem
+      0.42rem
+      0.42rem
+      1rem;
+
+    color: #0a0b0e;
+    background:
+      rgba(255, 255, 255, 0.9);
+    border:
+      1px solid
+      rgba(10, 11, 14, 0.12);
+    border-radius: 999px;
+    box-shadow:
+      0 18px 50px
+      rgba(29, 64, 72, 0.14);
+
+    backdrop-filter: blur(16px);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+    stroke: #54585f;
+    stroke-width: 2;
+  }
+
+  input {
+    width: 100%;
+    min-width: 0;
+    padding-block: 0.8rem;
+
+    color: #0a0b0e;
+    background: transparent;
+    border: 0;
+    outline: 0;
+  }
+
+  input::placeholder {
+    color: #686c72;
+  }
+
+  button {
+    min-height: 46px;
+    padding-inline: 1.25rem;
+
+    color: #ffffff;
+    background: #0a0b0e;
+    border: 0;
+    border-radius: 999px;
+
+    font-size: 0.86rem;
+    font-weight: 780;
+
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #2449d8;
+  }
+
+  input:focus-visible,
+  button:focus-visible {
+    outline:
+      3px solid
+      rgba(49, 92, 245, 0.35);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 520px) {
+    .site-search-form {
+      grid-template-columns:
+        auto minmax(0, 1fr);
+      padding: 0.4rem;
+      padding-left: 0.9rem;
+      border-radius: 1.3rem;
+    }
+
+    button {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    button {
+      transition: none;
+    }
+  }
+</style>

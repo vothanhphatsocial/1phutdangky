@@ -1,0 +1,150 @@
+---
+import { CATEGORIES, SITE } from '../config/site';
+import Brand from './Brand.astro';
+---
+
+<footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <section>
+      <Brand inverse />
+
+      <p>
+        Hướng dẫn tài chính dễ hiểu,
+        tập trung vào thông tin rõ ràng
+        và dễ thực hiện.
+      </p>
+    </section>
+
+    <section>
+      <h2>Chuyên mục</h2>
+
+      <ul>
+        {
+          Object.values(CATEGORIES).map((category) => (
+            <li>
+              <a href={`/${category.slug}/`}>
+                {category.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section>
+      <h2>Về chúng tôi</h2>
+
+      <ul>
+        <li><a href="/gioi-thieu/">Giới thiệu</a></li>
+        <li><a href="/quy-trinh-bien-tap/">Quy trình biên tập</a></li>
+        <li><a href="/nguon-thong-tin/">Nguồn thông tin</a></li>
+        <li><a href="/cach-chung-toi-kiem-tien/">Cách chúng tôi kiếm tiền</a></li>
+        <li><a href="/lien-he/">Liên hệ</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Pháp lý</h2>
+
+      <ul>
+        <li><a href="/chinh-sach-bao-mat/">Chính sách bảo mật</a></li>
+        <li>
+          <a
+            href="/chinh-sach-bao-mat/"
+            data-consent-settings
+          >
+            Cài đặt quyền riêng tư
+          </a>
+        </li>
+        <li><a href="/dieu-khoan/">Điều khoản</a></li>
+        <li><a href="/mien-tru-trach-nhiem/">Miễn trừ trách nhiệm</a></li>
+      </ul>
+    </section>
+
+  </div>
+
+  <div class="container footer-bottom">
+
+    <p>
+      © {new Date().getFullYear()} {SITE.name}.
+    </p>
+
+    <p>
+      Thông tin sản phẩm có thể thay đổi.
+      Hãy kiểm tra thông tin chính thức
+      trước khi đăng ký.
+    </p>
+
+  </div>
+
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: 3rem;
+    background: #101828;
+    color: #d0d5dd;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .site-footer p {
+    margin-top: 1rem;
+    max-width: 440px;
+    color: #98a2b3;
+    font-size: 0.9rem;
+  }
+
+  .site-footer h2 {
+    margin-bottom: 0.8rem;
+    color: white;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .site-footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer li {
+    margin-bottom: 0.55rem;
+  }
+
+  .site-footer a {
+    color: #d0d5dd;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: calc(
+      1.5rem + env(safe-area-inset-bottom, 0px)
+    );
+    border-top: 1px solid #344054;
+  }
+
+  .footer-bottom p {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  @media (min-width: 760px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+</style>

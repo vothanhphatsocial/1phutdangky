@@ -1,0 +1,31 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# local research and source material
+private/
+Giao diện tham chiếu/
+Chương trình MB App/
+
+# jetbrains setting folder
+.idea/
+*.backup
+*.before-*

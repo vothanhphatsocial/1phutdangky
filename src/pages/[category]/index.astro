@@ -1,0 +1,332 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+import {
+  CATEGORIES,
+  isCategorySlug,
+  type CategorySlug,
+} from '../../config/site';
+
+export function getStaticPaths() {
+  return Object.keys(CATEGORIES).map((category) => ({
+    params: { category },
+  }));
+}
+
+const { category } = Astro.params;
+
+if (!category || !isCategorySlug(category)) {
+  throw new Error('Category không hợp lệ');
+}
+
+const categorySlug: CategorySlug = category;
+const config = CATEGORIES[categorySlug];
+const categoryIndex =
+  Object.keys(CATEGORIES).indexOf(categorySlug) + 1;
+
+const posts = (
+  await getCollection('articles', ({ data }) => {
+    if (data.category !== categorySlug) {
+      return false;
+    }
+
+    if (import.meta.env.PROD) {
+      return data.draft !== true;
+    }
+
+    return true;
+  })
+).sort(
+  (a, b) =>
+    b.data.updatedAt.valueOf() -
+    a.data.updatedAt.valueOf()
+);
+---
+
+<BaseLayout
+  title={config.name}
+  description={config.description}
+  noindex={posts.length === 0}
+>
+
+  <header class:list={[
+    'category-hero',
+    `category-hero--${categorySlug}`,
+  ]}>
+    <div class="container">
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Trang chủ</a>
+        <span aria-hidden="true">›</span>
+        <span>{config.name}</span>
+      </nav>
+
+      <div class="category-panel">
+        <div class="category-copy">
+          <p class="eyebrow">Chuyên mục</p>
+
+          <h1>{config.name}</h1>
+
+          <p class="category-description">
+            {config.description}
+          </p>
+        </div>
+
+        <div class="category-visual" aria-hidden="true">
+          <span class="category-number">
+            {String(categoryIndex).padStart(2, '0')}
+          </span>
+          <img
+            class="category-mark"
+            src="/brand/logo-512.png"
+            alt=""
+            width="512"
+            height="512"
+          />
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-heading">
+        <h2>Hướng dẫn mới cập nhật</h2>
+        <p>
+          Nội dung thuộc chuyên mục
+          {` ${config.name.toLowerCase()}`}.
+        </p>
+      </div>
+
+      {
+        posts.length > 0 ? (
+          <div class="post-grid">
+            {
+              posts.map((post) => (
+                <PostCard post={post} />
+              ))
+            }
+          </div>
+        ) : (
+          <div class="empty-state">
+            <h2>Nội dung đang được xây dựng</h2>
+            <p>
+              Các bài hướng dẫn trong chuyên mục này
+              sẽ được bổ sung sau.
+            </p>
+          </div>
+        )
+      }
+
+    </div>
+  </section>
+
+  <section class="category-note">
+    <div class="container">
+
+      <div class="note-box">
+        <h2>Cách sử dụng chuyên mục này</h2>
+
+        <p>
+          Ưu tiên đọc bài kiến thức cơ bản trước,
+          sau đó mới tham khảo hướng dẫn sản phẩm
+          hoặc bài so sánh liên quan.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .category-hero {
+    padding: 1.25rem 0 0;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+  }
+
+  .breadcrumbs a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.55rem;
+    color: currentColor;
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .category-hero h1 {
+    max-width: 680px;
+    margin-bottom: 0.9rem;
+    color: currentColor;
+    font-size: clamp(2.7rem, 8vw, 5.7rem);
+    letter-spacing: -0.065em;
+  }
+
+  .category-description {
+    max-width: 650px;
+    margin: 0;
+    color: currentColor;
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    opacity: 0.76;
+  }
+
+  .category-panel {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    min-height: clamp(390px, 52vw, 570px);
+    overflow: hidden;
+    padding: clamp(2rem, 6vw, 5rem);
+    color: #0b0c10;
+    background:
+      radial-gradient(circle at 86% 15%, rgba(255, 255, 255, 0.72), transparent 24%),
+      linear-gradient(135deg, #99c3ff 0%, #92f1d1 100%);
+    border-radius: var(--radius-2xl);
+  }
+
+  .category-hero--the-tin-dung .category-panel {
+    background:
+      radial-gradient(circle at 86% 15%, rgba(255, 255, 255, 0.7), transparent 24%),
+      linear-gradient(135deg, #ffc29e 0%, #f7e88c 100%);
+  }
+
+  .category-hero--vay-tien-mat .category-panel {
+    background:
+      radial-gradient(circle at 86% 15%, rgba(255, 255, 255, 0.68), transparent 24%),
+      linear-gradient(135deg, #b4a3ff 0%, #f1b8f8 100%);
+  }
+
+  .category-hero--vi-dien-tu .category-panel {
+    background:
+      radial-gradient(circle at 86% 15%, rgba(255, 255, 255, 0.7), transparent 24%),
+      linear-gradient(135deg, #8ee7d1 0%, #8fc8ff 100%);
+  }
+
+  .category-copy {
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    max-width: 680px;
+  }
+
+  .category-visual {
+    position: absolute;
+    right: clamp(1.5rem, 6vw, 5rem);
+    bottom: clamp(1.5rem, 5vw, 4rem);
+    z-index: 1;
+    display: grid;
+    justify-items: end;
+    line-height: 0.8;
+    transform: rotate(-5deg);
+  }
+
+  .category-number {
+    color: rgba(11, 12, 16, 0.17);
+    font-size: clamp(8rem, 23vw, 18rem);
+    font-weight: 900;
+    letter-spacing: -0.1em;
+  }
+
+  .category-mark {
+    width: 48px;
+    height: 48px;
+    margin-top: -1rem;
+    border: 1px solid rgba(11, 12, 16, 0.12);
+    border-radius: 0.9rem;
+    box-shadow: 0 12px 28px rgba(11, 12, 16, 0.16);
+    object-fit: cover;
+  }
+
+  .post-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .empty-state {
+    padding: 2rem 0;
+    border-block: 1px solid var(--color-border);
+  }
+
+  .empty-state h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .empty-state p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .category-note {
+    padding: 0 0 var(--space-16);
+  }
+
+  .note-box {
+    max-width: 920px;
+    padding: clamp(1.5rem, 4vw, 2.4rem);
+    background:
+      radial-gradient(circle at 100% 0, rgba(111, 224, 180, 0.2), transparent 40%),
+      #090a0f;
+    color: #d6d3cc;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+  }
+
+  .note-box h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    color: #f8f5ef;
+  }
+
+  .note-box p {
+    margin: 0;
+    color: #aaa8a2;
+    font-size: 0.88rem;
+  }
+
+  @media (min-width: 680px) {
+    .post-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 679px) {
+    .category-panel {
+      min-height: 440px;
+      border-radius: var(--radius-xl);
+    }
+
+    .category-copy {
+      align-self: start;
+    }
+
+    .category-visual {
+      right: 1.5rem;
+      bottom: 2rem;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .post-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

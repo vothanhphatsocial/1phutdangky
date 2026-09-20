@@ -1,0 +1,637 @@
+---
+import type {
+  CollectionEntry,
+} from 'astro:content';
+
+import {
+  getEntries,
+} from 'astro:content';
+
+import {
+  getImage,
+} from 'astro:assets';
+
+
+import BaseLayout
+  from './BaseLayout.astro';
+
+
+import ArticleHeader
+  from '../components/article/ArticleHeader.astro';
+
+import QuickAnswer
+  from '../components/article/QuickAnswer.astro';
+
+import AffiliateDisclosure
+  from '../components/article/AffiliateDisclosure.astro';
+
+import TableOfContents
+  from '../components/article/TableOfContents.astro';
+
+import Sources
+  from '../components/article/Sources.astro';
+
+import RelatedPosts
+  from '../components/article/RelatedPosts.astro';
+
+
+import ProductCard
+  from '../components/commercial/ProductCard.astro';
+
+import ProductComparison
+  from '../components/commercial/ProductComparison.astro';
+
+import StickyCTA
+  from '../components/commercial/StickyCTA.astro';
+
+
+import {
+  CATEGORIES,
+  SITE,
+} from '../config/site';
+
+import {
+  getPrimaryProductOffer,
+  hasEnabledProductOffer,
+} from '../utils/productOffers';
+
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+
+interface Props {
+  post:
+    CollectionEntry<'articles'>;
+
+  headings:
+    Heading[];
+
+  relatedPosts?:
+    CollectionEntry<'articles'>[];
+}
+
+
+const {
+  post,
+  headings,
+  relatedPosts = [],
+} = Astro.props;
+
+const productBeforeToc =
+  post.data.productBeforeToc;
+
+
+const category =
+  CATEGORIES[
+    post.data.category
+  ];
+
+
+const linkedProducts =
+  post.data.products.length > 0
+    ? await getEntries(
+        post.data.products
+      )
+    : [];
+
+
+const primaryProduct =
+  linkedProducts[0];
+
+
+const hasAffiliate =
+  post.data.affiliate.enabled ||
+  linkedProducts.some(
+    hasEnabledProductOffer
+  );
+
+
+const isComparison =
+  post.data.type ===
+    'comparison' &&
+  linkedProducts.length >= 2;
+
+
+const stickyProduct =
+  !isComparison &&
+  post.data.affiliate.enabled &&
+  primaryProduct &&
+  getPrimaryProductOffer(primaryProduct)
+    ? primaryProduct
+    : undefined;
+
+
+/* ========================================
+   SEO
+   ======================================== */
+
+const articleUrl =
+  new URL(
+    `/${post.id}/`,
+    SITE.url
+  ).toString();
+
+
+const categoryUrl =
+  new URL(
+    `/${category.slug}/`,
+    SITE.url
+  ).toString();
+
+
+const organizationId =
+  `${SITE.url}/#organization`;
+
+const websiteId =
+  `${SITE.url}/#website`;
+
+const authorUrl =
+  new URL(
+    SITE.editor.url,
+    SITE.url
+  ).toString();
+
+const authorId =
+  `${authorUrl}#person`;
+
+
+const organizationLogoUrl =
+  new URL(
+    SITE.logo,
+    SITE.url
+  ).toString();
+
+
+const socialCover =
+  post.data.cover
+    ? await getImage({
+        src: post.data.cover,
+        width: 1200,
+        height: 630,
+        fit: 'cover',
+        format: 'webp',
+        quality: 82,
+      })
+    : undefined;
+
+
+const socialCoverUrl =
+  socialCover
+    ? new URL(
+        socialCover.src,
+        SITE.url
+      ).toString()
+    : undefined;
+
+
+const articleSchema = {
+  '@context':
+    'https://schema.org',
+
+  '@type':
+    'Article',
+
+  '@id':
+    `${articleUrl}#article`,
+
+  headline:
+    post.data.title,
+
+  description:
+    post.data.description,
+
+  ...(socialCoverUrl
+    ? {
+        image: [socialCoverUrl],
+      }
+    : {}),
+
+  datePublished:
+    post.data.publishedAt
+      .toISOString(),
+
+  dateModified:
+    post.data.updatedAt
+      .toISOString(),
+
+  inLanguage:
+    'vi-VN',
+
+  articleSection:
+    category.name,
+
+  mainEntityOfPage: {
+    '@type':
+      'WebPage',
+
+    '@id':
+      articleUrl,
+  },
+
+  author: {
+    '@type':
+      'Person',
+
+    '@id':
+      authorId,
+
+    name:
+      SITE.editor.name,
+
+    url:
+      authorUrl,
+  },
+
+  publisher: {
+    '@type':
+      'Organization',
+
+    '@id':
+      organizationId,
+
+    name:
+      SITE.name,
+
+    url:
+      `${SITE.url}/`,
+
+    logo: {
+      '@type': 'ImageObject',
+
+      url: organizationLogoUrl,
+
+      width: 512,
+
+      height: 512,
+    },
+  },
+
+  isPartOf: {
+    '@type':
+      'WebSite',
+
+    '@id':
+      websiteId,
+
+    name:
+      SITE.name,
+
+    url:
+      `${SITE.url}/`,
+  },
+};
+
+
+const breadcrumbSchema = {
+  '@context':
+    'https://schema.org',
+
+  '@type':
+    'BreadcrumbList',
+
+  itemListElement: [
+    {
+      '@type':
+        'ListItem',
+
+      position:
+        1,
+
+      name:
+        'Trang chủ',
+
+      item:
+        `${SITE.url}/`,
+    },
+
+    {
+      '@type':
+        'ListItem',
+
+      position:
+        2,
+
+      name:
+        category.name,
+
+      item:
+        categoryUrl,
+    },
+
+    {
+      '@type':
+        'ListItem',
+
+      position:
+        3,
+
+      name:
+        post.data.title,
+
+      item:
+        articleUrl,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+
+  appendSiteNameToTitle={false}
+
+  description={
+    post.data.description
+  }
+
+  canonical={articleUrl}
+
+  noindex={
+    post.data.draft
+  }
+
+  ogType="article"
+
+  publishedTime={
+    post.data.publishedAt
+  }
+
+  modifiedTime={
+    post.data.updatedAt
+  }
+
+  socialImage={
+    socialCover?.src
+  }
+
+  socialImageAlt={
+    post.data.coverAlt
+  }
+
+  structuredData={[
+    articleSchema,
+    breadcrumbSchema,
+  ]}
+>
+
+  <article class:list={[
+    'article-shell',
+    `article-shell--${category.slug}`,
+  ]}>
+
+    <div class="article-stage">
+
+      <ArticleHeader
+        articleId={post.id}
+        title={post.data.title}
+        categoryName={category.name}
+        categorySlug={category.slug}
+        categoryUrl={`/${category.slug}/`}
+        authorName={SITE.editor.name}
+        authorUrl={SITE.editor.url}
+        publishedAt={post.data.publishedAt}
+        updatedAt={post.data.updatedAt}
+        readingMinutes={post.data.readingMinutes}
+      />
+
+    </div>
+
+    <div class="article-container">
+
+      <div class="article-opening">
+
+        <div class="article-opening-main">
+          {
+            post.data.quickAnswer && (
+
+              <QuickAnswer
+                text={
+                  post.data.quickAnswer
+                }
+              />
+
+            )
+          }
+        </div>
+
+
+        <div class="article-opening-rail">
+          {
+            hasAffiliate && (
+              <AffiliateDisclosure />
+            )
+          }
+
+
+          {
+            !productBeforeToc && (
+              <TableOfContents
+                headings={headings}
+              />
+            )
+          }
+        </div>
+
+      </div>
+
+
+      {
+        isComparison ? (
+
+          <ProductComparison
+            products={
+              linkedProducts
+            }
+          />
+
+        ) : primaryProduct ? (
+
+          <ProductCard
+            product={
+              primaryProduct
+            }
+          />
+
+        ) : null
+      }
+
+
+      {
+        productBeforeToc && (
+          <div class="priority-toc">
+            <TableOfContents
+              headings={headings}
+            />
+          </div>
+        )
+      }
+
+
+      <div class="article-prose">
+        <slot />
+      </div>
+
+
+      <Sources
+        sources={
+          post.data.sources
+        }
+
+        lastVerifiedAt={
+          post.data.lastVerifiedAt
+        }
+      />
+
+
+      <RelatedPosts
+        posts={relatedPosts}
+      />
+
+
+      <aside class="editorial-note">
+
+        <strong>
+          Lưu ý:
+        </strong>
+
+        <p>
+          Nội dung trên
+          1 Phút Đăng Ký nhằm
+          mục đích cung cấp thông tin.
+          Điều kiện và thông tin sản phẩm
+          có thể thay đổi theo nhà cung cấp.
+        </p>
+
+      </aside>
+
+    </div>
+
+  </article>
+
+
+  {
+    stickyProduct && (
+
+      <StickyCTA
+        product={
+          stickyProduct
+        }
+      />
+
+    )
+  }
+
+</BaseLayout>
+
+
+<style>
+  .article-shell {
+    padding:
+      1.25rem 0 4rem;
+  }
+
+
+  .article-stage {
+    width:
+      min(
+        calc(100% - 2rem),
+        1120px
+      );
+
+    margin:
+      0 auto 2rem;
+  }
+
+
+  .article-container {
+    width:
+      min(
+        calc(100% - 2rem),
+        920px
+      );
+
+    margin-inline: auto;
+  }
+
+
+  .article-opening {
+    display: grid;
+    gap: 1rem;
+
+    margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+
+  .article-opening-main,
+  .article-opening-rail {
+    min-width: 0;
+  }
+
+
+  .article-opening-rail {
+    align-self: stretch;
+    padding-inline: 0.2rem;
+  }
+
+
+  :global(.article-prose),
+  :global(.sources),
+  :global(.related),
+  .priority-toc,
+  .editorial-note {
+    width: min(100%, 760px);
+    margin-inline: auto;
+  }
+
+
+  .editorial-note {
+    margin-top: 3rem;
+
+    padding: 1.25rem 0 0;
+
+    border-top:
+      1px solid
+      var(--color-border);
+
+    color:
+      var(--color-muted);
+
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+
+  .editorial-note strong {
+    color:
+      var(--color-heading);
+  }
+
+
+  .editorial-note p {
+    margin:
+      0.3rem 0 0;
+  }
+
+
+  @media (
+    min-width: 768px
+  ) {
+
+    .article-shell {
+      padding-top: 1.5rem;
+    }
+
+
+    .article-opening {
+      grid-template-columns:
+        minmax(0, 1.6fr)
+        minmax(240px, 0.8fr);
+      align-items: stretch;
+    }
+
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+import TrustLayout
+  from '../../layouts/TrustLayout.astro';
+
+import {
+  SITE,
+} from '../../config/site';
+
+
+const authorUrl =
+  new URL(
+    SITE.editor.url,
+    SITE.url
+  ).toString();
+
+
+const profileSchema = {
+  '@context': 'https://schema.org',
+
+  '@type': 'ProfilePage',
+
+  '@id': `${authorUrl}#profile`,
+
+  url: authorUrl,
+
+  name: `${SITE.editor.name} | ${SITE.name}`,
+
+  description:
+    'Võ Thành Phát là người vận hành, biên tập và chịu trách nhiệm nội dung của 1 Phút Đăng Ký.',
+
+  inLanguage: 'vi-VN',
+
+  mainEntity: {
+    '@type': 'Person',
+
+    '@id': `${authorUrl}#person`,
+
+    name: SITE.editor.name,
+
+    url: authorUrl,
+
+    description:
+      'Người vận hành, biên tập và chịu trách nhiệm nội dung của 1 Phút Đăng Ký.',
+  },
+};
+---
+
+<TrustLayout
+  title="Võ Thành Phát"
+  description="Người vận hành, biên tập và chịu trách nhiệm nội dung của 1 Phút Đăng Ký."
+  eyebrow="Người biên tập"
+  lastUpdated="15/08/2026"
+  structuredData={profileSchema}
+>
+
+  <h2>
+    Vai trò tại 1 Phút Đăng Ký
+  </h2>
+
+  <p>
+    Võ Thành Phát là người vận hành,
+    biên tập và chịu trách nhiệm nội dung
+    của 1 Phút Đăng Ký.
+    Website được vận hành với tư cách
+    cá nhân hoạt động tiếp thị liên kết
+    tại Việt Nam.
+  </p>
+
+
+  <h2>
+    Công việc biên tập
+  </h2>
+
+  <p>
+    Công việc gồm nghiên cứu,
+    tổ chức và đối chiếu thông tin sản phẩm
+    với nguồn chính thức; biên tập bài viết;
+    kiểm tra nội dung trước khi xuất bản
+    và cập nhật khi thông tin thay đổi.
+  </p>
+
+
+  <h2>
+    Nguyên tắc nội dung
+  </h2>
+
+  <p>
+    Mức hoa hồng tiếp thị liên kết
+    không quyết định kết luận của bài viết.
+    Thông tin sản phẩm phải trình bày
+    các điều kiện, chi phí, quyền lợi
+    và những giới hạn quan trọng
+    đã được xác minh.
+  </p>
+
+
+  <h2>
+    Mô hình doanh thu
+  </h2>
+
+  <p>
+    1 Phút Đăng Ký chỉ tạo doanh thu
+    từ hoa hồng tiếp thị liên kết.
+    Website không nhận tiền tài trợ để đăng bài
+    hoặc bán vị trí ưu tiên cho sản phẩm
+    hay thương hiệu.
+  </p>
+
+
+  <h2>
+    Liên hệ
+  </h2>
+
+  <p>
+    Email:
+    {' '}
+    <a href="mailto:lienhe@1phutdangky.com">
+      lienhe@1phutdangky.com
+    </a>
+  </p>
+
+</TrustLayout>

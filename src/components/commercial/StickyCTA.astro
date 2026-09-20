@@ -1,0 +1,329 @@
+---
+import type {
+  CollectionEntry,
+} from 'astro:content';
+
+import {
+  getPrimaryProductOffer,
+} from '../../utils/productOffers';
+
+interface Props {
+  product: CollectionEntry<'products'>;
+
+  offerId?: string;
+}
+
+const {
+  product,
+  offerId,
+} = Astro.props;
+
+const offer =
+  getPrimaryProductOffer(
+    product,
+    offerId
+  );
+
+const isAffiliate = Boolean(offer);
+
+const referralCode =
+  offer?.referralCode;
+
+const href =
+  offer?.url ??
+  product.data.officialUrl;
+
+const rel =
+  isAffiliate
+    ? 'sponsored nofollow noopener noreferrer'
+    : 'noopener noreferrer';
+---
+
+<div
+  class="sticky-cta"
+  data-sticky-cta
+>
+
+  <div class="sticky-inner">
+
+    <div class="sticky-product">
+
+      <strong>
+        {
+          referralCode
+            ? 'Mã người giới thiệu'
+            : product.data.name
+        }
+      </strong>
+
+      <span>
+        {
+          referralCode ??
+          'Xem thông tin và điều kiện'
+        }
+      </span>
+
+    </div>
+
+    <a
+      href={href}
+      target="_blank"
+      rel={rel}
+
+      data-event={
+        isAffiliate
+          ? 'affiliate_click'
+          : 'official_link_click'
+      }
+
+      data-product-id={product.id}
+
+      data-offer-id={offer?.id ?? ''}
+
+      data-offer-channel={offer?.channel ?? ''}
+
+      data-affiliate-network={offer?.network ?? ''}
+
+      data-cta-position="sticky-mobile"
+
+      data-affiliate={
+        isAffiliate
+          ? 'true'
+          : 'false'
+      }
+    >
+      {
+        offer?.ctaLabel ??
+        product.data.ctaLabel
+      }
+    </a>
+
+  </div>
+
+</div>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+
+    z-index: 200;
+
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: none;
+
+    transform: translateY(110%);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+
+    padding: 0 0.75rem
+      calc(0.75rem + env(safe-area-inset-bottom));
+  }
+
+  .sticky-cta.is-visible {
+    transform: translateY(0);
+
+    opacity: 1;
+
+    pointer-events: auto;
+  }
+
+  .sticky-inner {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+    align-items: center;
+
+    gap: 0.85rem;
+
+    max-width: 600px;
+
+    margin-inline: auto;
+    padding: 0.65rem 0.7rem 0.65rem 1rem;
+
+    background: color-mix(
+      in srgb,
+      var(--color-surface-elevated) 92%,
+      transparent
+    );
+
+    border: 1px solid var(--color-border-strong);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-float);
+  }
+
+  .sticky-product {
+    display: grid;
+
+    min-width: 0;
+
+    line-height: 1.25;
+  }
+
+  .sticky-product strong {
+    overflow: hidden;
+
+    color:
+      var(--color-heading);
+
+    font-size: 0.82rem;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+  .sticky-product span {
+    margin-top: 0.2rem;
+
+    overflow: hidden;
+
+    color:
+      var(--color-muted);
+
+    font-size: 0.67rem;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+  .sticky-inner > a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding:
+      0.65rem 0.9rem;
+
+    background: var(--color-heading);
+
+    color: var(--color-bg);
+
+    border-radius: 999px;
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    text-decoration: none;
+  }
+
+  .sticky-inner > a:hover {
+    background: var(--color-accent-cobalt);
+
+    color: white;
+  }
+
+  @media (max-width: 767px) {
+    .sticky-cta {
+      display: block;
+    }
+
+    :global(
+      body.has-sticky-cta
+    ) {
+      padding-bottom: 78px;
+    }
+  }
+</style>
+
+<script>
+  function initializeStickyCTA() {
+    const bar =
+      document.querySelector<HTMLElement>(
+        '[data-sticky-cta]'
+      );
+
+    if (!bar) {
+      return;
+    }
+
+    if (bar.dataset.initialized === 'true') {
+      return;
+    }
+
+    bar.dataset.initialized = 'true';
+
+    document.body.classList.add(
+      'has-sticky-cta'
+    );
+
+    const footer =
+      document.querySelector(
+        '.site-footer'
+      );
+
+    function updateVisibility() {
+      const maximumScroll =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const progress =
+        maximumScroll > 0
+          ? window.scrollY /
+            maximumScroll
+          : 0;
+
+      const nearFooter =
+        footer
+          ? footer
+              .getBoundingClientRect()
+              .top <
+            window.innerHeight + 40
+          : false;
+
+      const shouldShow =
+        progress >= 0.22 &&
+        !nearFooter;
+
+      bar?.classList.toggle(
+        'is-visible',
+        shouldShow
+      );
+    }
+
+    window.addEventListener(
+      'scroll',
+      updateVisibility,
+      {
+        passive: true,
+      }
+    );
+
+    window.addEventListener(
+      'resize',
+      updateVisibility
+    );
+
+    updateVisibility();
+  }
+
+  if (
+    document.readyState ===
+    'loading'
+  ) {
+    document.addEventListener(
+      'DOMContentLoaded',
+      initializeStickyCTA,
+      {
+        once: true,
+      }
+    );
+  } else {
+    initializeStickyCTA();
+  }
+</script>

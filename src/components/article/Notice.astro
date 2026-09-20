@@ -1,0 +1,142 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'tip';
+  title?: string;
+}
+
+const {
+  type = 'info',
+  title,
+} = Astro.props;
+
+const defaultTitles = {
+  info: 'Lưu ý',
+  warning: 'Quan trọng',
+  tip: 'Mẹo',
+};
+
+const displayTitle =
+  title ?? defaultTitles[type];
+---
+
+<aside
+  class:list={[
+    'notice',
+    `notice--${type}`,
+  ]}
+>
+  <div class="notice-icon" aria-hidden="true">
+    {
+      type === 'warning'
+        ? '!'
+        : type === 'tip'
+          ? '✓'
+          : 'i'
+    }
+  </div>
+
+  <div class="notice-content">
+    <strong class="notice-title">
+      {displayTitle}
+    </strong>
+
+    <div class="notice-body">
+      <slot />
+    </div>
+  </div>
+</aside>
+
+<style>
+  .notice {
+    position: relative;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+
+    margin: 2rem 0;
+    padding: 1.25rem 1.25rem 1.25rem 1.4rem;
+
+    background: var(--color-info-soft);
+
+    border-radius: var(--radius-lg);
+  }
+
+
+  .notice::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 4px;
+
+    background: var(--color-accent-cobalt);
+  }
+
+  .notice--warning {
+    background: var(--color-warning-soft);
+  }
+
+  .notice--warning::before {
+    background: var(--color-accent-coral);
+  }
+
+  .notice--tip {
+    background: var(--color-success-soft);
+  }
+
+  .notice--tip::before {
+    background: var(--color-accent-mint);
+  }
+
+  .notice-icon {
+    display: grid;
+    place-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    background: var(--color-heading);
+    color: var(--color-bg);
+
+    border-radius: 0.7rem;
+
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .notice--warning .notice-icon {
+    background: var(--color-accent-coral);
+    color: #0b0c10;
+  }
+
+  .notice--tip .notice-icon {
+    background: var(--color-accent-mint);
+    color: #0b0c10;
+  }
+
+  .notice-title {
+    display: block;
+
+    margin-bottom: 0.25rem;
+
+    color: var(--color-heading);
+
+    font-size: 0.92rem;
+  }
+
+  .notice-body {
+    color: var(--color-muted);
+
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .notice-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

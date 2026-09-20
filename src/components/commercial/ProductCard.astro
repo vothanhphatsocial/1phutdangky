@@ -1,0 +1,782 @@
+---
+import type {
+  CollectionEntry,
+} from 'astro:content';
+
+import AffiliateCTA
+  from './AffiliateCTA.astro';
+
+import {
+  getPrimaryProductOffer,
+} from '../../utils/productOffers';
+
+interface Props {
+  product: CollectionEntry<'products'>;
+  offerId?: string;
+}
+
+const {
+  product,
+  offerId,
+} = Astro.props;
+
+const offer =
+  getPrimaryProductOffer(
+    product,
+    offerId
+  );
+
+const isAffiliate = Boolean(offer);
+const isBankAccountProduct =
+  product.id.startsWith('bank-accounts/');
+const isLiobankProduct =
+  product.id ===
+  'credit-cards/liobank-credit-card';
+const isMbBankProduct =
+  product.id ===
+  'bank-accounts/mb-bank-account';
+const referralCode = offer?.referralCode;
+const primaryFacts = product.data.facts.slice(0, 4);
+const secondaryFacts = product.data.facts.slice(4);
+const hasMoreInformation =
+  secondaryFacts.length > 0 ||
+  product.data.considerations.length > 0;
+---
+
+<section
+  class:list={[
+    'product-card',
+    isBankAccountProduct &&
+      'product-card--bank-account',
+    isLiobankProduct &&
+      'product-card--liobank',
+  ]}
+  aria-label={`Thông tin ${product.data.name}`}
+>
+  <div class="product-intro">
+    <div class="product-kicker">
+      {
+        product.data.draft && (
+          <span class="draft-badge">
+            Dữ liệu bản nháp
+          </span>
+        )
+      }
+
+      <span>Sản phẩm từ {product.data.provider}</span>
+    </div>
+
+    <h2>{product.data.name}</h2>
+
+    <p class="product-summary">
+      {product.data.summary}
+    </p>
+
+    {
+      product.data.highlights.length > 0 && (
+        <div class="highlights">
+          {
+            product.data.highlights.map((item, index) => (
+              <p>
+                <span aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                {item}
+              </p>
+            ))
+          }
+        </div>
+      )
+    }
+
+    {
+      referralCode && (
+        <>
+          <div class="referral-code" data-referral-code>
+            <div>
+              <span class="referral-label">
+                Mã người giới thiệu
+              </span>
+              <strong>{referralCode}</strong>
+            </div>
+
+            <button
+              type="button"
+              data-copy-referral={referralCode}
+              data-product-id={product.id}
+              data-offer-id={offer?.id ?? ''}
+              data-offer-channel={offer?.channel ?? ''}
+              data-affiliate-network={offer?.network ?? ''}
+              data-cta-position="product-card"
+              data-affiliate={isAffiliate ? 'true' : 'false'}
+              aria-label={`Sao chép mã người giới thiệu ${referralCode}`}
+            >
+              <span data-copy-label>Sao chép mã</span>
+            </button>
+
+            <span
+              class="copy-status"
+              data-copy-status
+              aria-live="polite"
+            ></span>
+          </div>
+
+          {
+            isMbBankProduct && (
+              <p class="context-note">
+                Đây là mã dùng để nhập trong App MBBank, không phải
+                số hotline của MB.
+              </p>
+            )
+          }
+        </>
+      )
+    }
+
+    <div class="product-action">
+      <AffiliateCTA
+        product={product}
+        position="product-card"
+        offerId={offerId}
+      />
+
+      <a
+        class="official-link"
+        href={product.data.officialUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Trang chính thức
+      </a>
+    </div>
+
+    {
+      isMbBankProduct && (
+        <p class="context-note action-context">
+          Tùy thiết bị, liên kết sẽ mở App MBBank hoặc chuyển bạn đến
+          kho ứng dụng. Đây là OneLink do MB Bank cung cấp.
+        </p>
+      )
+    }
+
+    {
+      isLiobankProduct && (
+        <p class="context-note action-context">
+          Liên kết có thể mở App Liobank, kho ứng dụng hoặc website
+          Liobank tùy thiết bị. Bạn sẽ rời 1 Phút Đăng Ký.
+        </p>
+      )
+    }
+  </div>
+
+  <div class="product-sheet">
+    <p class="sheet-label">Trước khi tiếp tục</p>
+
+    {
+      primaryFacts.length > 0 && (
+        <dl class="facts">
+          {
+            primaryFacts.map((fact) => (
+              <div class="fact">
+                <dt>{fact.label}</dt>
+                <dd>
+                  {fact.value}
+                  {
+                    fact.note && (
+                      <span>{fact.note}</span>
+                    )
+                  }
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      )
+    }
+
+    {
+      isAffiliate && (
+        <p class="relationship-note">
+          1 Phút Đăng Ký là website độc lập, không phải{' '}
+          {product.data.provider}. Chúng tôi có thể nhận hoa hồng
+          khi lượt đăng ký đủ điều kiện; nhà cung cấp xác minh và
+          quyết định kết quả đăng ký.
+        </p>
+      )
+    }
+
+    {
+      isMbBankProduct && (
+        <p class="source-note">
+          Điều kiện khuyến mại được đối chiếu từ thể lệ đang hiển thị
+          trong App MBBank ngày 15/08/2026. Nếu nội dung chương trình
+          thay đổi, hãy ưu tiên thông tin trong ứng dụng tại thời điểm
+          đăng ký.
+        </p>
+      )
+    }
+
+    {
+      hasMoreInformation && (
+        <details class="more-information">
+          <summary>Xem đầy đủ thông tin và lưu ý</summary>
+
+          {
+            secondaryFacts.length > 0 && (
+              <dl class="secondary-facts">
+                {
+                  secondaryFacts.map((fact) => (
+                    <div>
+                      <dt>{fact.label}</dt>
+                      <dd>
+                        {fact.value}
+                        {
+                          fact.note && (
+                            <span>{fact.note}</span>
+                          )
+                        }
+                      </dd>
+                    </div>
+                  ))
+                }
+              </dl>
+            )
+          }
+
+          {
+            product.data.considerations.length > 0 && (
+              <div class="considerations">
+                <strong>Cần lưu ý</strong>
+                <ul>
+                  {
+                    product.data.considerations.map((item) => (
+                      <li>{item}</li>
+                    ))
+                  }
+                </ul>
+              </div>
+            )
+          }
+        </details>
+      )
+    }
+
+    {
+      isAffiliate && (
+        <p class="destination-note">
+          {
+            isMbBankProduct || isLiobankProduct
+              ? '1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.'
+              : `Nút giới thiệu mở kênh của ${product.data.provider} trong tab mới. 1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.`
+          }
+        </p>
+      )
+    }
+
+    <p class="verified-date">
+      Kiểm tra dữ liệu lần cuối:{' '}
+      <time datetime={product.data.lastVerifiedAt.toISOString()}>
+        {product.data.lastVerifiedAt.toLocaleDateString('vi-VN')}
+      </time>
+    </p>
+  </div>
+</section>
+
+<style>
+  .product-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: grid;
+    gap: clamp(2.25rem, 5vw, 4.5rem);
+
+    margin: 0 0 clamp(5rem, 10vw, 8rem);
+    padding: clamp(1.5rem, 5vw, 4.5rem);
+
+    background:
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(255, 255, 255, 0.72),
+        transparent 30%
+      ),
+      linear-gradient(
+        135deg,
+        #9fc9ff 0%,
+        #a8e7e8 52%,
+        #a9f1c8 100%
+      );
+    color: #090a0f;
+
+    border: 1px solid rgba(9, 10, 15, 0.08);
+    border-radius: var(--radius-2xl);
+  }
+
+  .product-card::after {
+    position: absolute;
+    right: -9rem;
+    bottom: -11rem;
+    z-index: -1;
+
+    width: 26rem;
+    height: 26rem;
+
+    border: 4rem solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+
+    content: '';
+  }
+
+
+  .product-card--liobank {
+    background:
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(255, 255, 255, 0.72),
+        transparent 30%
+      ),
+      linear-gradient(
+        135deg,
+        #a5c7ff 0%,
+        #b8a5ff 50%,
+        #88ebca 100%
+      );
+  }
+
+
+  .product-card--bank-account {
+    background:
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(255, 255, 255, 0.72),
+        transparent 30%
+      ),
+      linear-gradient(
+        135deg,
+        #8fb0ff 0%,
+        #c4abff 56%,
+        #a9e8d4 100%
+      );
+  }
+
+  .product-intro,
+  .product-sheet {
+    min-width: 0;
+  }
+
+  .product-kicker {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+
+    margin-bottom: 1rem;
+
+    color: #174388;
+
+    font-size: 0.68rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .draft-badge {
+    display: inline-flex;
+    padding: 0.32rem 0.55rem;
+
+    background: #090a0f;
+    color: #f8f5ef;
+
+    border-radius: 999px;
+  }
+
+  .product-intro h2 {
+    max-width: 35rem;
+    margin: 0;
+
+    color: #090a0f;
+
+    font-size: clamp(2rem, 6vw, 4.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+
+  .product-summary {
+    max-width: 34rem;
+    margin: 1.35rem 0 0;
+
+    color: rgba(9, 10, 15, 0.72);
+
+    font-size: clamp(0.96rem, 2vw, 1.08rem);
+    line-height: 1.7;
+  }
+
+  .highlights {
+    display: grid;
+    gap: 0.7rem;
+
+    max-width: 35rem;
+    margin-top: 1.7rem;
+  }
+
+  .highlights p {
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+
+    margin: 0;
+
+    color: rgba(9, 10, 15, 0.76);
+
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+
+  .highlights p > span {
+    padding-top: 0.12em;
+    color: #315cf5;
+    font-size: 0.66rem;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+  }
+
+  .referral-code {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+
+    max-width: 35rem;
+    margin-top: 1.75rem;
+    padding: 0.9rem 0;
+
+    border-top: 1px solid rgba(9, 10, 15, 0.16);
+    border-bottom: 1px solid rgba(9, 10, 15, 0.16);
+  }
+
+  .referral-code > div {
+    display: grid;
+    gap: 0.1rem;
+    margin-right: auto;
+  }
+
+  .referral-label {
+    color: rgba(9, 10, 15, 0.58);
+    font-size: 0.7rem;
+  }
+
+  .referral-code strong {
+    color: #090a0f;
+    font-size: 1.12rem;
+    letter-spacing: 0.035em;
+  }
+
+  .referral-code button {
+    min-height: 42px;
+    padding: 0.65rem 0.95rem;
+
+    background: rgba(255, 255, 255, 0.72);
+    color: #090a0f;
+
+    border: 1px solid rgba(9, 10, 15, 0.12);
+    border-radius: 999px;
+
+    font: inherit;
+    font-size: 0.76rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .referral-code button:hover {
+    background: #ffffff;
+  }
+
+  .referral-code button:focus-visible {
+    outline: 3px solid #315cf5;
+    outline-offset: 3px;
+  }
+
+  .copy-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .product-action {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.9rem 1.2rem;
+    margin-top: 1.7rem;
+  }
+
+  .context-note,
+  .source-note {
+    color: rgba(9, 10, 15, 0.62);
+    font-size: 0.74rem;
+    line-height: 1.65;
+  }
+
+  .context-note {
+    max-width: 35rem;
+    margin: 0.65rem 0 0;
+  }
+
+  .action-context {
+    margin-top: 0.8rem;
+  }
+
+  .product-action :global(.affiliate-cta) {
+    background: #090a0f;
+    color: #f8f5ef;
+  }
+
+  .product-action :global(.affiliate-cta:hover) {
+    background: #315cf5;
+    color: #ffffff;
+  }
+
+  .official-link {
+    color: #090a0f;
+    font-size: 0.8rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .official-link::after {
+    content: ' ↗';
+    color: #315cf5;
+  }
+
+  .product-sheet {
+    align-self: start;
+    padding: clamp(1.2rem, 3vw, 2rem);
+
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.76);
+    border-radius: var(--radius-xl);
+  }
+
+  .sheet-label {
+    margin: 0 0 0.5rem;
+
+    color: #174388;
+
+    font-size: 0.7rem;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .facts,
+  .secondary-facts {
+    margin: 0;
+  }
+
+  .fact,
+  .secondary-facts > div {
+    padding: 0.9rem 0;
+    border-top: 1px solid rgba(9, 10, 15, 0.12);
+  }
+
+  .fact dt,
+  .secondary-facts dt {
+    color: rgba(9, 10, 15, 0.56);
+    font-size: 0.68rem;
+  }
+
+  .fact dd,
+  .secondary-facts dd {
+    margin: 0.18rem 0 0;
+    color: #090a0f;
+    font-size: 0.82rem;
+    font-weight: 750;
+    line-height: 1.45;
+  }
+
+  .fact dd span,
+  .secondary-facts dd span {
+    display: block;
+    margin-top: 0.2rem;
+    color: rgba(9, 10, 15, 0.58);
+    font-size: 0.72rem;
+    font-weight: 400;
+  }
+
+  .relationship-note,
+  .destination-note {
+    color: rgba(9, 10, 15, 0.62);
+    font-size: 0.74rem;
+    line-height: 1.65;
+  }
+
+  .relationship-note {
+    margin: 0.9rem 0 0;
+  }
+
+  .source-note {
+    margin: 0.8rem 0 0;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(9, 10, 15, 0.12);
+  }
+
+  .more-information {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(9, 10, 15, 0.12);
+  }
+
+  .more-information summary {
+    padding: 0.95rem 0;
+    color: #090a0f;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .secondary-facts {
+    padding-bottom: 0.5rem;
+  }
+
+  .considerations {
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(9, 10, 15, 0.12);
+  }
+
+  .considerations > strong {
+    display: block;
+    color: #090a0f;
+    font-size: 0.76rem;
+  }
+
+  .considerations ul {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    counter-reset: consideration;
+    list-style: none;
+  }
+
+  .considerations li {
+    position: relative;
+    padding-left: 1.8rem;
+    color: rgba(9, 10, 15, 0.64);
+    font-size: 0.76rem;
+    line-height: 1.55;
+    counter-increment: consideration;
+  }
+
+  .considerations li::before {
+    position: absolute;
+    top: 0.08em;
+    left: 0;
+    color: #315cf5;
+    font-size: 0.64rem;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+    content: counter(consideration, decimal-leading-zero);
+  }
+
+  .destination-note {
+    margin: 1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(9, 10, 15, 0.12);
+  }
+
+  .verified-date {
+    margin: 0.8rem 0 0;
+    color: rgba(9, 10, 15, 0.48);
+    font-size: 0.68rem;
+  }
+
+  @media (min-width: 780px) {
+    .product-card {
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.72fr);
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .product-card {
+      border-radius: var(--radius-xl);
+    }
+
+    .product-action {
+      display: grid;
+    }
+
+    .official-link {
+      text-align: center;
+    }
+
+    .referral-code button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  type TrackingEvent = Record<string, unknown>;
+
+  const trackingWindow = window as typeof window & {
+    dataLayer?: TrackingEvent[];
+  };
+
+  const copyReferralCode = async (button: HTMLButtonElement) => {
+    const code = button.dataset.copyReferral;
+    const container = button.closest('[data-referral-code]');
+    const label = button.querySelector<HTMLElement>('[data-copy-label]');
+    const status = container?.querySelector<HTMLElement>('[data-copy-status]');
+
+    if (!code || !label || !status) return;
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = code;
+        input.setAttribute('readonly', '');
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.append(input);
+        input.select();
+
+        const copied = document.execCommand('copy');
+        input.remove();
+
+        if (!copied) throw new Error('Copy failed');
+      }
+
+      trackingWindow.dataLayer = trackingWindow.dataLayer || [];
+      trackingWindow.dataLayer.push({
+        event: 'referral_code_copy',
+        product_id: button.dataset.productId || '',
+        offer_id: button.dataset.offerId || '',
+        offer_channel: button.dataset.offerChannel || '',
+        affiliate_network: button.dataset.affiliateNetwork || '',
+        cta_position: button.dataset.ctaPosition || '',
+        affiliate: button.dataset.affiliate === 'true',
+      });
+
+      label.textContent = 'Đã sao chép';
+      status.textContent = `Đã sao chép mã ${code}.`;
+
+      window.setTimeout(() => {
+        label.textContent = 'Sao chép mã';
+      }, 2200);
+    } catch {
+      status.textContent = `Không thể sao chép tự động. Mã là ${code}.`;
+    }
+  };
+
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-referral]')
+    .forEach((button) => {
+      button.addEventListener('click', () => copyReferralCode(button));
+    });
+</script>

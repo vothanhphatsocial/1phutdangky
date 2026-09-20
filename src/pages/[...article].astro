@@ -1,0 +1,109 @@
+---
+import {
+  getCollection,
+  render,
+} from 'astro:content';
+
+import ArticleLayout
+  from '../layouts/ArticleLayout.astro';
+
+import Notice
+  from '../components/article/Notice.astro';
+
+import Steps
+  from '../components/article/Steps.astro';
+
+import Step
+  from '../components/article/Step.astro';
+
+import ProsCons
+  from '../components/article/ProsCons.astro';
+
+import FAQ
+  from '../components/article/FAQ.astro';
+
+import FAQItem
+  from '../components/article/FAQItem.astro';
+
+import Checklist
+  from '../components/article/Checklist.astro';
+
+import KeyFacts
+  from '../components/article/KeyFacts.astro';
+
+export async function getStaticPaths() {
+
+  const posts = await getCollection(
+    'articles',
+    ({ data }) => {
+
+      if (import.meta.env.PROD) {
+        return data.draft !== true;
+      }
+
+      return true;
+    }
+  );
+
+  return posts.map((post) => {
+
+    const relatedPosts = posts
+      .filter(
+        (candidate) =>
+          candidate.id !== post.id &&
+          candidate.data.category ===
+            post.data.category
+      )
+      .sort(
+        (a, b) =>
+          b.data.updatedAt.valueOf() -
+          a.data.updatedAt.valueOf()
+      )
+      .slice(0, 3);
+
+    return {
+      params: {
+        article: post.id,
+      },
+
+      props: {
+        post,
+        relatedPosts,
+      },
+    };
+  });
+}
+
+const {
+  post,
+  relatedPosts,
+} = Astro.props;
+
+const {
+  Content,
+  headings,
+} = await render(post);
+
+const articleComponents = {
+  Notice,
+  Steps,
+  Step,
+  ProsCons,
+  FAQ,
+  FAQItem,
+  Checklist,
+  KeyFacts,
+};
+---
+
+<ArticleLayout
+  post={post}
+  headings={headings}
+  relatedPosts={relatedPosts}
+>
+
+  <Content
+    components={articleComponents}
+  />
+
+</ArticleLayout>

@@ -1,0 +1,411 @@
+---
+import BaseLayout
+  from '../layouts/BaseLayout.astro';
+
+import SearchForm
+  from '../components/SearchForm.astro';
+
+import '../styles/search.css';
+---
+
+<BaseLayout
+  title="Tìm kiếm"
+  description="Tìm bài hướng dẫn trên 1 Phút Đăng Ký."
+  noindex={true}
+>
+
+  <section
+    class="search-page"
+    data-pagefind-ignore="all"
+  >
+
+    <div class="search-container">
+
+      <nav
+        class="breadcrumb"
+        aria-label="Breadcrumb"
+      >
+        <a href="/">Trang chủ</a>
+        <span aria-hidden="true">›</span>
+        <span>Tìm kiếm</span>
+      </nav>
+
+
+      <div class="search-panel">
+
+        <header class="search-header">
+
+          <p class="eyebrow">
+            Tìm kiếm
+          </p>
+
+          <h1>
+            Bạn muốn tìm hiểu gì?
+          </h1>
+
+          <p>
+            Tìm trong các hướng dẫn,
+            chuyên mục và nội dung
+            trên 1 Phút Đăng Ký.
+          </p>
+
+        </header>
+
+
+        <SearchForm
+          id="search-query"
+          live={true}
+        />
+
+        <div class="search-glyph" aria-hidden="true">
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="search-status"
+        data-search-status
+        aria-live="polite"
+      >
+        Nhập từ khóa để bắt đầu.
+      </div>
+
+
+      <div
+        class="search-results"
+        data-search-results
+      ></div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>
+
+
+
+
+<script is:inline type="module">
+  const form =
+    document.querySelector(
+      '[data-search-form]'
+    );
+
+  const input =
+    document.querySelector(
+      '#search-query'
+    );
+
+  const status =
+    document.querySelector(
+      '[data-search-status]'
+    );
+
+  const results =
+    document.querySelector(
+      '[data-search-results]'
+    );
+
+
+  let pagefind = null;
+
+
+  async function getPagefind() {
+
+    if (!pagefind) {
+
+      pagefind =
+        await import(
+          '/pagefind/pagefind.js'
+        );
+
+    }
+
+    return pagefind;
+  }
+
+
+  function clearResults() {
+
+    if (results) {
+      results.replaceChildren();
+    }
+
+  }
+
+
+  function createResultCard(data) {
+
+    const link =
+      document.createElement('a');
+
+    link.className =
+      'search-result';
+
+    link.href =
+      data.url || '/';
+
+
+    const title =
+      document.createElement(
+        'strong'
+      );
+
+    title.className =
+      'result-title';
+
+    title.textContent =
+      data.meta?.title ||
+      data.url ||
+      'Kết quả tìm kiếm';
+
+
+    const excerpt =
+      document.createElement('p');
+
+    excerpt.className =
+      'result-excerpt';
+
+    excerpt.textContent =
+      data.excerpt
+        ? data.excerpt.replace(
+            /<[^>]+>/g,
+            ''
+          )
+        : (
+            data.plain_excerpt ||
+            ''
+          );
+
+
+    const url =
+      document.createElement(
+        'span'
+      );
+
+    url.className =
+      'result-url';
+
+    url.textContent =
+      data.url || '';
+
+
+    link.append(
+      title,
+      excerpt,
+      url
+    );
+
+
+    return link;
+  }
+
+
+  function trackSearch(
+    query,
+    count
+  ) {
+
+    window.dataLayer =
+      window.dataLayer || [];
+
+
+    window.dataLayer.push({
+      event:
+        'site_search',
+
+      search_term:
+        query,
+
+      result_count:
+        count,
+
+      page_path:
+        window.location.pathname,
+    });
+
+  }
+
+
+  async function runSearch(
+    rawQuery
+  ) {
+
+    const query =
+      rawQuery.trim();
+
+
+    if (!query) {
+
+      clearResults();
+
+      if (status) {
+        status.textContent =
+          'Nhập từ khóa để bắt đầu.';
+      }
+
+      return;
+    }
+
+
+    if (status) {
+      status.textContent =
+        'Đang tìm kiếm...';
+    }
+
+
+    clearResults();
+
+
+    try {
+
+      const pf =
+        await getPagefind();
+
+
+      const search =
+        await pf.search(query);
+
+
+      const total =
+        search.results.length;
+
+
+      if (status) {
+
+        status.textContent =
+          total > 0
+            ? `${total} kết quả cho “${query}”`
+            : `Không tìm thấy kết quả cho “${query}”`;
+
+      }
+
+
+      const selected =
+        search.results.slice(
+          0,
+          20
+        );
+
+
+      const loaded =
+        await Promise.all(
+          selected.map(
+            (result) =>
+              result.data()
+          )
+        );
+
+
+      for (const data of loaded) {
+
+        if (results) {
+
+          results.append(
+            createResultCard(
+              data
+            )
+          );
+
+        }
+
+      }
+
+
+      trackSearch(
+        query,
+        total
+      );
+
+    } catch (error) {
+
+      console.error(
+        'Pagefind search error:',
+        error
+      );
+
+
+      if (status) {
+
+        status.textContent =
+          'Không thể tải bộ máy tìm kiếm.';
+
+      }
+
+    }
+
+  }
+
+
+  if (form) {
+
+    form.addEventListener(
+      'submit',
+      (event) => {
+
+        event.preventDefault();
+
+
+        const query =
+          input?.value || '';
+
+
+        const url =
+          new URL(
+            window.location.href
+          );
+
+
+        if (query.trim()) {
+
+          url.searchParams.set(
+            'q',
+            query.trim()
+          );
+
+        } else {
+
+          url.searchParams.delete(
+            'q'
+          );
+
+        }
+
+
+        window.history.replaceState(
+          {},
+          '',
+          url
+        );
+
+
+        runSearch(query);
+
+      }
+    );
+
+  }
+
+
+  const initialQuery =
+    new URLSearchParams(
+      window.location.search
+    ).get('q');
+
+
+  if (
+    initialQuery &&
+    input
+  ) {
+
+    input.value =
+      initialQuery;
+
+    runSearch(
+      initialQuery
+    );
+
+  }
+</script>

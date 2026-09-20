@@ -1,0 +1,135 @@
+---
+interface Source {
+  title: string;
+  url: string;
+  publisher?: string;
+}
+
+interface Props {
+  sources: Source[];
+  lastVerifiedAt?: Date;
+}
+
+const {
+  sources,
+  lastVerifiedAt,
+} = Astro.props;
+---
+
+{
+  (sources.length > 0 || lastVerifiedAt) && (
+
+    <section class="sources">
+
+      <h2>Nguồn và kiểm chứng</h2>
+
+      {
+        sources.length > 0 && (
+          <>
+            <p>
+              Thông tin trong bài được
+              đối chiếu với:
+            </p>
+
+            <ol>
+
+              {
+                sources.map((source) => (
+
+                  <li>
+
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {source.title}
+                    </a>
+
+                    {
+                      source.publisher && (
+                        <span>
+                          {' '}— {source.publisher}
+                        </span>
+                      )
+                    }
+
+                  </li>
+
+                ))
+              }
+
+            </ol>
+          </>
+        )
+      }
+
+      {
+        lastVerifiedAt && (
+
+          <p class="verified">
+
+            Kiểm tra lần cuối:{' '}
+
+            <time
+              datetime={
+                lastVerifiedAt.toISOString()
+              }
+            >
+              {
+                lastVerifiedAt
+                  .toLocaleDateString(
+                    'vi-VN'
+                  )
+              }
+            </time>
+
+          </p>
+
+        )
+      }
+
+    </section>
+
+  )
+}
+
+<style>
+  .sources {
+    margin-top: 4rem;
+
+    padding-top: 1.5rem;
+
+    border-top: 1px solid var(--color-border-strong);
+  }
+
+  .sources h2 {
+    margin-bottom: 0.7rem;
+
+    font-size: 1.35rem;
+  }
+
+  .sources p,
+  .sources li {
+    color: var(--color-muted);
+
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .sources ol {
+    display: grid;
+    gap: 0.65rem;
+
+    margin: 1rem 0 0;
+    padding-left: 1.15rem;
+  }
+
+  .sources .verified {
+    margin: 1.25rem 0 0;
+
+    padding-top: 0.8rem;
+
+    border-top: 1px solid var(--color-border);
+  }
+</style>

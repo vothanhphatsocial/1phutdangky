@@ -1,0 +1,62 @@
+{
+  "name": "Vay tiền mặt Home Credit",
+  "provider": "Công ty Tài chính TNHH MTV Home Credit Việt Nam",
+  "category": "loan",
+  "summary": "Khoản vay tiền mặt trả góp do Home Credit cung cấp; số tiền, lãi suất, phí và kết quả xét duyệt phụ thuộc hồ sơ.",
+  "officialUrl": "https://www.homecredit.vn/vay-tien-online-nhanh",
+  "offers": [
+    {
+      "id": "home-credit-accesstrade-cash-loan",
+      "name": "Link giới thiệu Home Credit qua AccessTrade",
+      "channel": "affiliate-network",
+      "network": "AccessTrade",
+      "referralMechanism": "link-only",
+      "destinationBehavior": "web-page",
+      "destinationLabel": "trang vay tiền online trên website Home Credit",
+      "enabled": true,
+      "url": "https://www.homecredit.vn/vay-tien-online-nhanh?pub_id=1374535&utm_campaign=CLX_WEB_MKT_AFF_CVS_ALL_NS_BAU&utm_content=1374535&utm_source=accesstrade&utm_term=2iZ3oUsLqannuha4E8gqhae2A0CzrLtUnCepW21786912798&utm_medium=affiliate&aff_sid=2iZ3oUsLqannuha4E8gqhae2A0CzrLtUnCepW21786912798",
+      "ctaLabel": "Kiểm tra hạn mức vay",
+      "lastVerifiedAt": "2026-08-17"
+    }
+  ],
+  "primaryOfferId": "home-credit-accesstrade-cash-loan",
+  "ctaLabel": "Kiểm tra hạn mức vay",
+  "decisionFacts": [
+    {
+      "label": "Số tiền và thời hạn",
+      "value": "Home Credit giới thiệu khoảng 5–250 triệu đồng và kỳ hạn 3–57 tháng; mức cụ thể phụ thuộc hồ sơ và quyết định xét duyệt."
+    },
+    {
+      "label": "Lãi, phí và tổng chi phí",
+      "value": "Lãi suất, phí và tổng số tiền phải trả cần được kiểm tra trong phương án hoặc hợp đồng áp dụng cho từng hồ sơ."
+    },
+    {
+      "label": "Giải ngân và trả nợ",
+      "value": "Khoản vay được trả góp theo lịch trong hồ sơ hoặc hợp đồng; thời gian xử lý và điều kiện nhận tiền phụ thuộc hồ sơ."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vay tiền online nhanh",
+      "url": "https://www.homecredit.vn/vay-tien-online-nhanh",
+      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
+    },
+    {
+      "title": "Câu hỏi thường gặp về vay tiền mặt",
+      "url": "https://www.homecredit.vn/faq/vay-tien-mat",
+      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
+    },
+    {
+      "title": "Liên hệ Home Credit",
+      "url": "https://www.homecredit.vn/lien-he",
+      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
+    },
+    {
+      "title": "Vay nhanh tiền mặt online",
+      "url": "https://www.homecredit.vn/vay-nhanh-tien-mat-online",
+      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
+    }
+  ],
+  "lastVerifiedAt": "2026-08-17",
+  "draft": false
+}

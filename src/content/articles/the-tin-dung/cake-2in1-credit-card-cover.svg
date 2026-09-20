@@ -1,0 +1,76 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1200"
+  height="630"
+  viewBox="0 0 1200 630"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Mở thẻ tín dụng Cake 2in1</title>
+  <desc id="description">Ảnh đại diện bài hướng dẫn của 1 Phút Đăng Ký.</desc>
+
+  <defs>
+    <linearGradient id="paper" x1="28" y1="28" x2="1172" y2="602" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd59a" />
+      <stop offset="0.5" stop-color="#f6a8c6" />
+      <stop offset="1" stop-color="#9fc9ff" />
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="translate(1030 82) rotate(140) scale(430)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.72" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="-35%" y="-35%" width="170%" height="190%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#53253c" flood-opacity="0.28" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#090a0f" />
+  <rect x="28" y="28" width="1144" height="574" rx="58" fill="url(#paper)" />
+  <rect x="28" y="28" width="1144" height="574" rx="58" fill="url(#light)" />
+
+  <g font-family="Arial, Helvetica, sans-serif" fill="#0b0c10">
+    <text x="82" y="126" fill="#7c3158" font-size="21" font-weight="800" letter-spacing="4">
+      HƯỚNG DẪN · THẺ TÍN DỤNG
+    </text>
+    <text x="78" y="236" font-size="60" font-weight="900" letter-spacing="-2">
+      Mở thẻ tín dụng
+    </text>
+    <text x="78" y="318" font-size="60" font-weight="900" letter-spacing="-2">
+      Cake 2in1
+    </text>
+    <text x="78" y="400" font-size="54" font-weight="900" letter-spacing="-1.5">
+      Link giới thiệu, phí và lãi
+    </text>
+  </g>
+
+  <g transform="translate(880 132) rotate(7 120 164)" filter="url(#shadow)">
+    <rect width="240" height="328" rx="42" fill="#0b0c10" stroke="#42434d" stroke-width="2" />
+
+    <g font-family="Arial, Helvetica, sans-serif">
+      <text x="28" y="52" fill="#f8f5ef" font-size="24" font-weight="800">1 Phút</text>
+      <text x="28" y="75" fill="#aaa9b2" font-size="10" font-weight="700" letter-spacing="2.2">ĐĂNG KÝ</text>
+    </g>
+
+    <g fill="none" stroke-linecap="round" stroke-width="6" transform="rotate(-7 201 56)">
+      <path d="M192 41h23" stroke="#ffb55e" />
+      <path d="M182 54h33" stroke="#ef78a8" />
+      <path d="M170 67h45" stroke="#77afff" />
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif">
+      <text x="28" y="178" fill="#ffbd70" font-size="14" font-weight="800" letter-spacing="1">01</text>
+      <text x="66" y="178" fill="#f6f2ec" font-size="16" font-weight="700">Điều kiện</text>
+      <text x="28" y="229" fill="#f58ab5" font-size="14" font-weight="800" letter-spacing="1">02</text>
+      <text x="66" y="229" fill="#f6f2ec" font-size="16" font-weight="700">Phí &amp; lãi</text>
+      <text x="28" y="280" fill="#89b9ff" font-size="14" font-weight="800" letter-spacing="1">03</text>
+      <text x="66" y="280" fill="#f6f2ec" font-size="16" font-weight="700">Link đăng ký</text>
+    </g>
+
+    <g stroke="#34363c">
+      <path d="M26 145h188" />
+      <path d="M26 196h188" />
+      <path d="M26 247h188" />
+      <path d="M26 298h188" />
+    </g>
+  </g>
+</svg>

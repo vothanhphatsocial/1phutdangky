@@ -1,0 +1,93 @@
+---
+interface Props {
+  href?: string;
+  inverse?: boolean;
+}
+
+const {
+  href = '/',
+  inverse = false,
+} = Astro.props;
+---
+
+<a
+  class="brand-lockup"
+  href={href}
+  data-inverse={inverse ? 'true' : undefined}
+  aria-label="1 Phút Đăng Ký — Trang chủ"
+>
+  <span class="brand-symbol" aria-hidden="true">
+    <img
+      src="/brand/logo-512.png"
+      alt=""
+      width="512"
+      height="512"
+    />
+  </span>
+
+  <span class="brand-wordmark">
+    <strong>1 Phút</strong>
+    <span>Đăng Ký</span>
+  </span>
+</a>
+
+<style>
+  .brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-width: 0;
+    color: var(--color-heading);
+    text-decoration: none;
+  }
+
+  .brand-lockup[data-inverse="true"] {
+    color: #f8f5ef;
+  }
+
+  .brand-symbol {
+    display: block;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border-radius: 0.72rem;
+    overflow: hidden;
+  }
+
+  .brand-symbol img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .brand-wordmark {
+    display: grid;
+    line-height: 1.02;
+  }
+
+  .brand-wordmark strong {
+    font-size: 0.96rem;
+    font-weight: 850;
+    letter-spacing: -0.025em;
+  }
+
+  .brand-wordmark > span {
+    margin-top: 0.18rem;
+    color: var(--color-muted);
+    font-size: 0.63rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  [data-inverse="true"] .brand-wordmark > span {
+    color: #aaa9b2;
+  }
+
+  @media (max-width: 420px) {
+    .brand-symbol {
+      width: 38px;
+      height: 38px;
+    }
+  }
+</style>

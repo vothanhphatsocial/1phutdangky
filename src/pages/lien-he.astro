@@ -1,0 +1,550 @@
+---
+import BaseLayout
+  from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Liên hệ"
+  description="Thông tin liên hệ và cách gửi phản hồi tới 1 Phút Đăng Ký."
+>
+  <main class="contact-page">
+    <div class="container">
+      <nav
+        class="breadcrumb"
+        aria-label="Breadcrumb"
+      >
+        <a href="/">Trang chủ</a>
+        <span aria-hidden="true">›</span>
+        <span>Liên hệ</span>
+      </nav>
+
+      <section class="contact-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            Liên hệ
+          </p>
+
+          <h1>
+            Phản hồi về
+            <span>nội dung.</span>
+          </h1>
+
+          <p class="hero-description">
+            Nếu bạn phát hiện thông tin có thể đã thay đổi,
+            lỗi liên kết, lỗi hiển thị hoặc nội dung cần được
+            kiểm tra lại, chúng tôi muốn nhận được phản hồi.
+          </p>
+
+          <p class="last-updated">
+            Cập nhật: 15/08/2026
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card__top">
+            <div class="contact-mark" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+
+            <span>Thông tin liên hệ</span>
+          </div>
+
+          <div class="contact-card__identity">
+            <span>Tên công khai</span>
+            <strong>1 Phút Đăng Ký</strong>
+          </div>
+
+          <a
+            class="contact-email"
+            href="mailto:lienhe@1phutdangky.com"
+          >
+            <span>Email</span>
+            <strong>lienhe@1phutdangky.com</strong>
+            <i aria-hidden="true">↗</i>
+          </a>
+        </div>
+      </section>
+
+      <section class="feedback-section">
+        <header class="section-intro">
+          <p class="section-label">
+            Phản hồi nên bao gồm
+          </p>
+
+          <h2>
+            Khi gửi yêu cầu chỉnh sửa
+          </h2>
+        </header>
+
+        <ol class="feedback-list">
+          <li>
+            <span>01</span>
+            <span class="item-text">URL bài viết</span>
+          </li>
+
+          <li>
+            <span>02</span>
+            <span class="item-text">
+              Thông tin được cho là chưa chính xác
+            </span>
+          </li>
+
+          <li>
+            <span>03</span>
+            <span class="item-text">
+              Nguồn chính thức mới nếu có
+            </span>
+          </li>
+
+          <li>
+            <span>04</span>
+            <span class="item-text">
+              Thời điểm phát hiện vấn đề
+            </span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="partnership-section">
+        <div>
+          <h2>
+            Hợp tác thương mại
+          </h2>
+        </div>
+
+        <div class="partnership-copy">
+          <p>
+            Các đề nghị hợp tác hoặc affiliate partnership
+            có thể gửi qua email liên hệ trên trang này.
+          </p>
+
+          <p>
+            Mọi hợp tác thương mại không đồng nghĩa với việc
+            nhà cung cấp có quyền kiểm soát nội dung biên tập
+            của toàn bộ website.
+          </p>
+
+          <a href="mailto:lienhe@1phutdangky.com">
+            Gửi email
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    padding: 1.25rem 0 clamp(5rem, 9vw, 8rem);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0 0 1.25rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-heading);
+  }
+
+  .contact-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6.5rem);
+    min-height: 610px;
+    padding: clamp(2.25rem, 6vw, 5rem);
+    background:
+      radial-gradient(
+        circle at 88% 10%,
+        rgba(255, 255, 255, 0.75),
+        transparent 30%
+      ),
+      linear-gradient(
+        135deg,
+        #a9d8ff 0%,
+        #9bf0df 54%,
+        #cdf4bd 100%
+      );
+    border-radius: var(--radius-2xl);
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 690px;
+  }
+
+  .eyebrow,
+  .section-label {
+    margin-bottom: 0.85rem;
+    color: #17498f;
+    font-size: 0.74rem;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .contact-hero h1 {
+    margin-bottom: 1.5rem;
+    color: #090a0e;
+    font-size: clamp(3.25rem, 7vw, 6.2rem);
+    line-height: 0.93;
+    letter-spacing: -0.07em;
+  }
+
+  .contact-hero h1 span {
+    display: block;
+  }
+
+  .hero-description {
+    max-width: 610px;
+    margin-bottom: 1.3rem;
+    color: #30343a;
+    font-size: clamp(1rem, 1.8vw, 1.16rem);
+    line-height: 1.7;
+  }
+
+  .last-updated {
+    margin: 0;
+    color: rgba(11, 12, 16, 0.58);
+    font-size: 0.82rem;
+    font-weight: 650;
+  }
+
+  .contact-card {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 430px);
+    justify-self: end;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background:
+      radial-gradient(
+        circle at 100% 0,
+        rgba(111, 224, 180, 0.23),
+        transparent 38%
+      ),
+      #0b0c10;
+    color: #f8f5ef;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 2.2rem;
+    box-shadow: 0 35px 80px rgba(11, 12, 16, 0.24);
+    transform: rotate(2.5deg);
+  }
+
+  .contact-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: clamp(3.5rem, 7vw, 6rem);
+    color: #aaa9b2;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+  }
+
+  .contact-mark {
+    display: grid;
+    gap: 0.28rem;
+    width: 2.2rem;
+  }
+
+  .contact-mark i {
+    display: block;
+    height: 0.24rem;
+    border-radius: 999px;
+    transform: rotate(-7deg);
+  }
+
+  .contact-mark i:nth-child(1) {
+    width: 62%;
+    margin-left: auto;
+    background: #5d7cff;
+  }
+
+  .contact-mark i:nth-child(2) {
+    width: 82%;
+    margin-left: auto;
+    background: #a88cff;
+  }
+
+  .contact-mark i:nth-child(3) {
+    width: 100%;
+    background: #6fe0b4;
+  }
+
+  .contact-card__identity {
+    display: grid;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-card__identity span,
+  .contact-email > span {
+    color: #aaa9b2;
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .contact-card__identity strong {
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+  }
+
+  .contact-email {
+    position: relative;
+    display: grid;
+    gap: 0.2rem;
+    min-width: 0;
+    padding: 1rem 3.2rem 1rem 1.05rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8f5ef;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.15rem;
+    text-decoration: none;
+    transform: rotate(-2.5deg);
+  }
+
+  .contact-email:hover {
+    background: rgba(255, 255, 255, 0.13);
+    color: #ffffff;
+  }
+
+  .contact-email strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: clamp(0.88rem, 1.5vw, 1rem);
+    line-height: 1.35;
+  }
+
+  .contact-email i {
+    position: absolute;
+    top: 50%;
+    right: 1.05rem;
+    font-size: 1.2rem;
+    font-style: normal;
+    transform: translateY(-50%);
+  }
+
+  .feedback-section {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2.5rem, 8vw, 8rem);
+    padding: clamp(5rem, 10vw, 8rem) clamp(0rem, 3vw, 2.5rem);
+  }
+
+  .section-intro {
+    align-self: start;
+  }
+
+  .section-intro h2 {
+    max-width: 520px;
+    margin-bottom: 1.2rem;
+    font-size: clamp(2.15rem, 4.7vw, 4.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+
+  .feedback-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-border-strong);
+  }
+
+  .feedback-list li {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+
+  .feedback-list li > span:first-child {
+    padding-top: 0.12rem;
+    color: var(--color-accent-cobalt-strong);
+    font-size: 0.74rem;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+  }
+
+  .feedback-list .item-text {
+    color: var(--color-heading);
+    font-size: clamp(1rem, 1.8vw, 1.22rem);
+    font-weight: 720;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+  }
+
+  .partnership-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2.5rem, 8vw, 8rem);
+    padding: clamp(2.25rem, 6vw, 5rem);
+    background:
+      radial-gradient(
+        circle at 100% 0,
+        rgba(111, 224, 180, 0.22),
+        transparent 38%
+      ),
+      #0b0c10;
+    color: #d6d3cc;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-2xl);
+  }
+
+  .partnership-section h2 {
+    max-width: 460px;
+    margin: 0;
+    color: #f8f5ef;
+    font-size: clamp(2.2rem, 4.8vw, 4.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+
+  .partnership-copy {
+    align-self: end;
+  }
+
+  .partnership-copy p {
+    max-width: 650px;
+    color: #b9b6af;
+  }
+
+  .partnership-copy a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    min-width: 190px;
+    margin-top: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    background: #f8f5ef;
+    color: #0b0c10;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .partnership-copy a:hover {
+    background: #ffffff;
+    color: #0b0c10;
+  }
+
+  @media (max-width: 900px) {
+    .contact-hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .contact-card {
+      width: min(100%, 520px);
+      justify-self: start;
+      transform: rotate(1deg);
+    }
+
+    .contact-card__top {
+      margin-bottom: 3rem;
+    }
+
+    .feedback-section,
+    .partnership-section {
+      grid-template-columns: 1fr;
+    }
+
+    .feedback-section {
+      gap: 2.5rem;
+    }
+
+    .partnership-section {
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .contact-page {
+      padding-top: 0.75rem;
+    }
+
+    .breadcrumb {
+      margin-bottom: 0.75rem;
+      font-size: 0.82rem;
+    }
+
+    .contact-hero {
+      gap: 2.25rem;
+      padding: 2rem 1.25rem 1.5rem;
+      border-radius: 2rem;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(3.15rem, 16vw, 4.7rem);
+    }
+
+    .hero-description {
+      line-height: 1.62;
+    }
+
+    .contact-card {
+      padding: 1.25rem;
+      border-radius: 1.65rem;
+      transform: none;
+    }
+
+    .contact-card__top {
+      margin-bottom: 2.75rem;
+    }
+
+    .contact-email {
+      transform: none;
+    }
+
+    .feedback-section {
+      padding: 4.5rem 0;
+    }
+
+    .feedback-list li {
+      grid-template-columns: 2.35rem minmax(0, 1fr);
+      gap: 0.7rem;
+      padding: 1.25rem 0;
+    }
+
+    .partnership-section {
+      padding: 2rem 1.25rem;
+      border-radius: 2rem;
+    }
+
+    .partnership-copy a {
+      width: 100%;
+    }
+  }
+
+  :global(html[data-theme='dark']) .breadcrumb {
+    color: var(--color-muted);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(html:not([data-theme])) .breadcrumb {
+      color: var(--color-muted);
+    }
+  }
+</style>

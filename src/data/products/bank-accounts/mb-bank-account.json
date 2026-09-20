@@ -1,0 +1,114 @@
+{
+  "name": "Tài khoản MB Bank",
+  "provider": "Ngân hàng TMCP Quân đội (MB)",
+  "category": "bank-account",
+
+  "summary": "Tài khoản thanh toán cá nhân sử dụng cùng App MBBank để quản lý tiền và thực hiện các giao dịch thanh toán theo điều kiện của MB.",
+
+  "officialUrl": "https://www.mbbank.com.vn/26/273/274/Chi-tiet/app-mbbank-2019-11-3-10-19-42",
+
+  "offers": [
+    {
+      "id": "mb-bank-account-direct-referral",
+      "name": "MB Link giới thiệu",
+      "channel": "direct-referral",
+      "enabled": true,
+      "url": "https://mbbank.onelink.me/QPF5?pid=SF%20Email%20Warmup&c=SF_Email_WarmUP_AppInstall&af_force_deeplink=true&af_dp=mbbank%3A%2F%2F&referral_code=55HNHOAB4F6MN1PWQO641",
+      "referralCode": "0379648725",
+      "ctaLabel": "Mở App MBBank",
+      "validThrough": "2026-12-31",
+      "lastVerifiedAt": "2026-08-15"
+    }
+  ],
+
+  "primaryOfferId": "mb-bank-account-direct-referral",
+
+  "ctaLabel": "Xem tài khoản MB Bank",
+
+  "facts": [
+    {
+      "label": "Đơn vị cung cấp",
+      "value": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "label": "Sản phẩm",
+      "value": "Tài khoản thanh toán cá nhân trên App MBBank"
+    },
+    {
+      "label": "Chi phí cần kiểm tra",
+      "value": "Theo dịch vụ được chọn; xem biểu phí MB và mức phí trên ứng dụng trước khi xác nhận"
+    },
+    {
+      "label": "Điểm đến sau CTA",
+      "value": "App MBBank hoặc kho ứng dụng phù hợp"
+    },
+    {
+      "label": "Vai trò website",
+      "value": "Hướng dẫn độc lập và bên giới thiệu"
+    },
+    {
+      "label": "Quyết định mở tài khoản",
+      "value": "MB thực hiện xác minh và quyết định kết quả"
+    },
+    {
+      "label": "Khuyến mại cho khách hàng mới",
+      "value": "Có thể được xét 30.000 đồng khi đáp ứng đầy đủ điều kiện chương trình"
+    },
+    {
+      "label": "Mã người giới thiệu",
+      "value": "0379648725"
+    },
+    {
+      "label": "Thời hạn chương trình",
+      "value": "Đến 31/12/2026; có thể kết thúc sớm khi hết ngân sách"
+    }
+  ],
+
+  "highlights": [
+    "Chương trình áp dụng theo điều kiện dành cho người chưa từng đăng ký App MBBank.",
+    "Nhập đúng mã người giới thiệu 0379648725 trong ứng dụng trước khi xác nhận.",
+    "Khoản 30.000 đồng là khuyến mại có điều kiện; sau khi mở tài khoản thành công, cần đăng nhập lần đầu và hoàn tất sinh trắc học trong 7 ngày để được xét."
+  ],
+
+  "considerations": [
+    "Chương trình có thể kết thúc trước 31/12/2026 khi hết ngân sách.",
+    "Điều kiện, tính năng và biểu phí có thể được MB cập nhật; cần kiểm tra nguồn chính thức trước khi xác nhận."
+  ],
+
+  "sources": [
+    {
+      "title": "App MBBank",
+      "url": "https://www.mbbank.com.vn/26/273/274/Chi-tiet/app-mbbank-2019-11-3-10-19-42",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Điều kiện, điều khoản giao dịch tài khoản thanh toán",
+      "url": "https://www.mbbank.com.vn/26/99/1197/Chi-tiet/dieu-kien-dieu-khoan-giao-dich-tai-khoan-thanh-toan-2017-10-18-10-39-34",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Điều kiện, điều khoản sử dụng dịch vụ MB điện tử",
+      "url": "https://online.mbbank.com.vn/assets/doc/eMB_Terms_and_Conditions.pdf",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Biểu phí dịch vụ MB",
+      "url": "https://www.mbbank.com.vn/Fee?lang=VN",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Trung tâm Dịch vụ khách hàng MB247",
+      "url": "https://www.mbbank.com.vn/Contact",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Thông tin hội sở chính MB",
+      "url": "https://news.mbbank.com.vn/contact",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    }
+  ],
+
+  "lastVerifiedAt": "2026-08-15",
+
+  "draft": false
+}

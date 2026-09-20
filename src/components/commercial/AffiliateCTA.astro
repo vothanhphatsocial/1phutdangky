@@ -1,0 +1,144 @@
+---
+import type {
+  CollectionEntry,
+} from 'astro:content';
+
+import {
+  getPrimaryProductOffer,
+} from '../../utils/productOffers';
+
+interface Props {
+  product: CollectionEntry<'products'>;
+
+  position?: string;
+
+  label?: string;
+
+  offerId?: string;
+}
+
+const {
+  product,
+  position = 'article',
+  label,
+  offerId,
+} = Astro.props;
+
+const offer =
+  getPrimaryProductOffer(
+    product,
+    offerId
+  );
+
+const isAffiliate = Boolean(offer);
+
+const href =
+  offer?.url ??
+  product.data.officialUrl;
+
+const buttonLabel =
+  label ??
+  offer?.ctaLabel ??
+  product.data.ctaLabel ??
+  (
+    isAffiliate
+      ? 'Tiếp tục'
+      : 'Xem thông tin chính thức'
+  );
+
+const rel =
+  isAffiliate
+    ? 'sponsored nofollow noopener noreferrer'
+    : 'noopener noreferrer';
+---
+
+<a
+  class="affiliate-cta"
+  href={href}
+  target="_blank"
+  rel={rel}
+
+  data-event={
+    isAffiliate
+      ? 'affiliate_click'
+      : 'official_link_click'
+  }
+
+  data-product-id={product.id}
+
+  data-offer-id={offer?.id ?? ''}
+
+  data-offer-channel={offer?.channel ?? ''}
+
+  data-affiliate-network={offer?.network ?? ''}
+
+  data-cta-position={position}
+
+  data-affiliate={
+    isAffiliate
+      ? 'true'
+      : 'false'
+  }
+>
+  <span>{buttonLabel}</span>
+
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path d="M5 12h14"></path>
+    <path d="m14 7 5 5-5 5"></path>
+  </svg>
+</a>
+
+<style>
+  .affiliate-cta {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.55rem;
+
+    min-height: 52px;
+
+    padding:
+      0.8rem 1.1rem;
+
+    background: var(--color-heading);
+
+    color: var(--color-bg);
+
+    border-radius: 999px;
+
+    font-size: 0.9rem;
+    font-weight: 750;
+
+    text-decoration: none;
+  }
+
+  .affiliate-cta:hover {
+    background: var(--color-accent-cobalt);
+
+    color: white;
+  }
+
+  .affiliate-cta svg {
+    width: 18px;
+    height: 18px;
+
+    fill: none;
+
+    stroke: currentColor;
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (max-width: 520px) {
+    .affiliate-cta {
+      width: 100%;
+    }
+  }
+</style>

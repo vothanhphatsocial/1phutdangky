@@ -1,0 +1,110 @@
+---
+interface Item {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  items: Item[];
+  title?: string;
+}
+
+const {
+  items,
+  title = 'Thông tin cần nhớ',
+} = Astro.props;
+---
+
+<section class="key-facts">
+
+  <p class="key-facts-label">
+    {title}
+  </p>
+
+  <div class="key-facts-grid">
+
+    {
+      items.map((item) => (
+
+        <div class="key-fact">
+
+          <strong>{item.value}</strong>
+
+          <span>{item.label}</span>
+
+        </div>
+
+      ))
+    }
+
+  </div>
+
+</section>
+
+<style>
+  .key-facts {
+    margin: clamp(3rem, 7vw, 5rem) 0;
+    padding: 1.5rem 0;
+
+    border-top: 1px solid var(--color-border-strong);
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+
+
+  .key-facts-label {
+    margin: 0 0 1.5rem;
+
+    color: var(--color-accent-cobalt-strong);
+
+    font-size: 0.72rem;
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+
+  .key-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1.25rem;
+  }
+
+
+  .key-fact {
+    display: grid;
+    align-content: start;
+    gap: 0.35rem;
+  }
+
+
+  .key-fact strong {
+    color: var(--color-heading);
+
+    font-size: clamp(1.15rem, 4vw, 1.65rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+
+  .key-fact span {
+    max-width: 13rem;
+
+    color: var(--color-muted);
+
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+
+  @media (min-width: 760px) {
+    .key-facts-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .key-fact + .key-fact {
+      padding-left: 1.25rem;
+
+      border-left: 1px solid var(--color-border);
+    }
+  }
+</style>

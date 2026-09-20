@@ -1,0 +1,260 @@
+<details class="theme-control" data-theme-control>
+  <summary aria-label="Chọn giao diện sáng hoặc tối">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="7"></circle>
+      <path d="M12 5a7 7 0 0 0 0 14V5Z"></path>
+    </svg>
+  </summary>
+
+  <div class="theme-panel" role="group" aria-label="Chế độ giao diện">
+    <button type="button" data-theme-value="system">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+        <path d="M8 21h8M12 17v4"></path>
+      </svg>
+      <span>
+        <strong>Hệ thống</strong>
+        <small>Tự theo thiết bị</small>
+      </span>
+    </button>
+
+    <button type="button" data-theme-value="light">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+      </svg>
+      <span>
+        <strong>Sáng</strong>
+        <small>Nền giấy ấm</small>
+      </span>
+    </button>
+
+    <button type="button" data-theme-value="dark">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 15.2A8 8 0 0 1 8.8 4a8.2 8.2 0 1 0 11.2 11.2Z"></path>
+      </svg>
+      <span>
+        <strong>Tối</strong>
+        <small>Nền ink dịu mắt</small>
+      </span>
+    </button>
+  </div>
+</details>
+
+<script is:inline>
+  (() => {
+    const storageKey = '1pd-theme-v1';
+    const controls = document.querySelectorAll('[data-theme-control]');
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const readChoice = () => {
+      try {
+        const value = localStorage.getItem(storageKey);
+
+        return value === 'light' || value === 'dark'
+          ? value
+          : 'system';
+      } catch {
+        return 'system';
+      }
+    };
+
+    const resolvedTheme = (choice) => (
+      choice === 'system'
+        ? (media.matches ? 'dark' : 'light')
+        : choice
+    );
+
+    const syncControls = (choice) => {
+      const browserSurface =
+        resolvedTheme(choice) === 'dark'
+          ? '#090a0f'
+          : '#f8f6f0';
+
+      controls.forEach((control) => {
+        control.querySelectorAll('[data-theme-value]')
+          .forEach((button) => {
+            const selected =
+              button.dataset.themeValue === choice;
+
+            button.setAttribute(
+              'aria-pressed',
+              String(selected)
+            );
+          });
+
+        const summary = control.querySelector('summary');
+
+        if (summary) {
+          summary.setAttribute(
+            'aria-label',
+            `Giao diện: ${choice === 'system' ? 'theo hệ thống' : choice === 'dark' ? 'tối' : 'sáng'}`
+          );
+        }
+      });
+
+      const themeMeta = document.querySelector(
+        'meta[name="theme-color"]'
+      );
+
+      if (themeMeta) {
+        themeMeta.setAttribute(
+          'content',
+          browserSurface
+        );
+      }
+
+      document.documentElement.style.backgroundColor =
+        browserSurface;
+    };
+
+    const applyChoice = (choice) => {
+      if (choice === 'light' || choice === 'dark') {
+        document.documentElement.dataset.theme = choice;
+      } else {
+        delete document.documentElement.dataset.theme;
+      }
+
+      try {
+        if (choice === 'system') {
+          localStorage.removeItem(storageKey);
+        } else {
+          localStorage.setItem(storageKey, choice);
+        }
+      } catch {
+        // Theme vẫn hoạt động cho page hiện tại.
+      }
+
+      syncControls(choice);
+    };
+
+    controls.forEach((control) => {
+      control.querySelectorAll('[data-theme-value]')
+        .forEach((button) => {
+          button.addEventListener('click', () => {
+            applyChoice(button.dataset.themeValue);
+            control.removeAttribute('open');
+          });
+        });
+    });
+
+    media.addEventListener('change', () => {
+      if (readChoice() === 'system') {
+        syncControls('system');
+      }
+    });
+
+    syncControls(readChoice());
+  })();
+</script>
+
+<style>
+  .theme-control {
+    position: relative;
+  }
+
+  .theme-control summary {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    color: var(--color-heading);
+    border-radius: 999px;
+    cursor: pointer;
+    list-style: none;
+    transition:
+      background-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .theme-control summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .theme-control summary:hover {
+    background: var(--color-surface-soft);
+  }
+
+  .theme-control[open] summary {
+    background: var(--color-surface-soft);
+    transform: rotate(18deg);
+  }
+
+  .theme-control summary svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .theme-control summary svg path:first-of-type {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  .theme-panel {
+    position: absolute;
+    z-index: 120;
+    top: calc(100% + 0.7rem);
+    right: 0;
+    display: grid;
+    gap: 0.25rem;
+    width: 220px;
+    padding: 0.45rem;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-float);
+  }
+
+  .theme-panel button {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    padding: 0.7rem;
+    background: transparent;
+    color: var(--color-heading);
+    border: 0;
+    border-radius: var(--radius-md);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .theme-panel button:hover,
+  .theme-panel button[aria-pressed="true"] {
+    background: var(--color-surface-soft);
+  }
+
+  .theme-panel button[aria-pressed="true"] {
+    box-shadow: inset 3px 0 var(--color-accent-cobalt);
+  }
+
+  .theme-panel button svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--color-accent-cobalt);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .theme-panel button span {
+    display: grid;
+    gap: 0.08rem;
+  }
+
+  .theme-panel strong {
+    font-size: 0.84rem;
+  }
+
+  .theme-panel small {
+    color: var(--color-muted);
+    font-size: 0.68rem;
+  }
+</style>

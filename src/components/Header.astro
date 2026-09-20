@@ -1,0 +1,246 @@
+---
+import { CATEGORIES } from '../config/site';
+import Brand from './Brand.astro';
+import ThemeControl from './ThemeControl.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <Brand />
+
+    <nav
+      class="desktop-nav"
+      aria-label="Điều hướng chính"
+    >
+      {
+        Object.values(CATEGORIES).map((category) => (
+          <a
+            href={`/${category.slug}/`}
+            aria-current={
+              currentPath.startsWith(`/${category.slug}/`)
+                ? 'page'
+                : undefined
+            }
+          >
+            {category.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="header-actions">
+
+      <ThemeControl />
+
+      <a
+        class="search-button"
+        href="/tim-kiem/"
+        aria-label="Tìm kiếm"
+      >
+        <svg
+          width="21"
+          height="21"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle
+            cx="11"
+            cy="11"
+            r="7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <path
+            d="m20 20-4-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </a>
+
+      <details class="mobile-menu">
+
+        <summary aria-label="Mở menu">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 7h16M4 12h16M4 17h16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </summary>
+
+        <div class="menu-panel">
+
+          <a href="/">Trang chủ</a>
+
+          {
+            Object.values(CATEGORIES).map((category) => (
+              <a href={`/${category.slug}/`}>
+                {category.name}
+              </a>
+            ))
+          }
+
+          <div class="menu-divider"></div>
+
+          <a href="/gioi-thieu/">Giới thiệu</a>
+          <a href="/quy-trinh-bien-tap/">Quy trình biên tập</a>
+          <a href="/lien-he/">Liên hệ</a>
+
+        </div>
+
+      </details>
+
+    </div>
+
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .search-button,
+  .mobile-menu summary {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-heading);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .search-button {
+    text-decoration: none;
+  }
+
+  .search-button:hover,
+  .mobile-menu summary:hover {
+    background: var(--color-surface-soft);
+  }
+
+  .mobile-menu {
+    position: relative;
+  }
+
+  .mobile-menu summary {
+    list-style: none;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu-panel {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    width: min(300px, calc(100vw - 2rem));
+    padding: 0.6rem;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-float);
+  }
+
+  .menu-panel a {
+    display: block;
+    padding: 0.8rem 0.9rem;
+    color: var(--color-heading);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .menu-panel a:hover {
+    background: var(--color-bg);
+  }
+
+  .menu-divider {
+    height: 1px;
+    margin: 0.5rem;
+    background: var(--color-border);
+  }
+
+  @media (min-width: 960px) {
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .desktop-nav a {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--color-heading);
+    }
+
+    .desktop-nav a[aria-current="page"] {
+      color: var(--color-heading);
+      text-decoration: underline;
+      text-decoration-color: var(--color-accent-cobalt);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.45rem;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .header-actions {
+      gap: 0;
+    }
+
+    .search-button,
+    .mobile-menu summary {
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,76 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1200"
+  height="630"
+  viewBox="0 0 1200 630"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Mở tài khoản VPBank online</title>
+  <desc id="description">Ảnh đại diện bài hướng dẫn của 1 Phút Đăng Ký.</desc>
+
+  <defs>
+    <linearGradient id="article-paper" x1="28" y1="28" x2="1172" y2="602" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8fb0ff" />
+      <stop offset="0.56" stop-color="#c4abff" />
+      <stop offset="1" stop-color="#a9e8d4" />
+    </linearGradient>
+    <radialGradient id="article-light" cx="0" cy="0" r="1" gradientTransform="translate(1040 70) rotate(135) scale(390)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.78" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="26" stdDeviation="22" flood-color="#173b3e" flood-opacity="0.24" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#090a0f" />
+  <rect x="28" y="28" width="1144" height="574" rx="58" fill="url(#article-paper)" />
+  <rect x="28" y="28" width="1144" height="574" rx="58" fill="url(#article-light)" />
+
+  <g font-family="Arial, Helvetica, sans-serif" fill="#0b0c10">
+    <text x="86" y="128" fill="#214ba8" font-size="21" font-weight="800" letter-spacing="4">
+      HƯỚNG DẪN · MỞ TÀI KHOẢN
+    </text>
+    <text x="82" y="252" font-size="61" font-weight="900" letter-spacing="-2.5">
+      Mở tài khoản VPBank
+    </text>
+    <text x="82" y="332" font-size="61" font-weight="900" letter-spacing="-2.5">
+      online: Link giới thiệu
+    </text>
+    <text x="82" y="412" font-size="61" font-weight="900" letter-spacing="-2.5">
+      và phí
+    </text>
+  </g>
+
+  <g transform="translate(874 132) rotate(6 112 160) scale(1.03)" filter="url(#card-shadow)">
+    <rect width="224" height="320" rx="40" fill="#0b0c10" stroke="#43464e" stroke-width="2" />
+
+    <g font-family="Arial, Helvetica, sans-serif">
+      <text x="25" y="47" fill="#f8f5ef" font-size="22" font-weight="800" letter-spacing="-0.3">1 Phút</text>
+      <text x="25" y="68" fill="#aaa9b2" font-size="10" font-weight="700" letter-spacing="2.1">ĐĂNG KÝ</text>
+    </g>
+
+    <g fill="none" stroke-linecap="round" stroke-width="6" transform="rotate(-7 188 52)">
+      <path d="M179 37h23" stroke="#315cf5" />
+      <path d="M169 50h33" stroke="#a48cff" />
+      <path d="M157 63h45" stroke="#6fe0b4" />
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif">
+      <text x="26" y="132" fill="#91a8ff" font-size="13" font-weight="800">01</text>
+      <text x="66" y="132" fill="#f6f2ec" font-size="15" font-weight="700">Điều kiện</text>
+      <text x="26" y="196" fill="#bba1ff" font-size="13" font-weight="800">02</text>
+      <text x="66" y="196" fill="#f6f2ec" font-size="15" font-weight="700">eKYC</text>
+      <text x="26" y="260" fill="#75dfba" font-size="13" font-weight="800">03</text>
+      <text x="66" y="260" fill="#f6f2ec" font-size="15" font-weight="700">Ưu đãi</text>
+    </g>
+
+    <g stroke="#34363c">
+      <path d="M23 93h178" />
+      <path d="M23 157h178" />
+      <path d="M23 221h178" />
+      <path d="M23 285h178" />
+    </g>
+  </g>
+</svg>

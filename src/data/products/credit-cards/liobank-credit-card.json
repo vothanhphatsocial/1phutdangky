@@ -1,0 +1,126 @@
+{
+  "name": "Thẻ tín dụng Liobank",
+  "provider": "Ngân hàng TMCP Phương Đông (OCB) — thương hiệu Liobank",
+  "category": "credit-card",
+
+  "summary": "Thẻ đa năng quốc tế Liobank Visa có thể được OCB cấp hạn mức tín dụng sau khi khách hàng hoàn tất đăng ký và được xét duyệt trên ứng dụng Liobank.",
+
+  "officialUrl": "https://liobank.vn/vn/credit-card",
+
+  "offers": [
+    {
+      "id": "liobank-credit-card-direct-referral",
+      "name": "Link giới thiệu Liobank",
+      "channel": "direct-referral",
+      "enabled": true,
+      "url": "https://liobank.vn/rr/laqv",
+      "ctaLabel": "Tiếp tục trên kênh Liobank",
+      "validThrough": "2026-09-30",
+      "lastVerifiedAt": "2026-08-16"
+    }
+  ],
+
+  "primaryOfferId": "liobank-credit-card-direct-referral",
+
+  "ctaLabel": "Xem thẻ tín dụng Liobank",
+
+  "facts": [
+    {
+      "label": "Đối tượng chương trình",
+      "value": "Từ 21 tuổi và chưa từng là khách hàng Liobank"
+    },
+    {
+      "label": "Chi phí cần biết",
+      "value": "Một số khoản được miễn phí; giao dịch, lãi và phí khác vẫn có thể phát sinh",
+      "note": "Xem bảng tóm tắt và biểu phí hiện hành trước khi xác nhận."
+    },
+    {
+      "label": "Điểm đến sau CTA",
+      "value": "App Liobank, kho ứng dụng hoặc website Liobank, tùy thiết bị"
+    },
+    {
+      "label": "Thời hạn chương trình",
+      "value": "Đến hết 30/09/2026 hoặc khi hết ngân sách, tùy điều kiện nào đến trước"
+    },
+    {
+      "label": "Đơn vị cung cấp",
+      "value": "Ngân hàng TMCP Phương Đông (OCB)"
+    },
+    {
+      "label": "Sản phẩm",
+      "value": "Thẻ đa năng quốc tế Liobank Visa"
+    },
+    {
+      "label": "Vai trò website",
+      "value": "Hướng dẫn độc lập và bên giới thiệu"
+    },
+    {
+      "label": "Quyết định cấp thẻ",
+      "value": "OCB xác minh hồ sơ, quyết định cấp thẻ và hạn mức tín dụng"
+    },
+    {
+      "label": "Phạm vi chương trình",
+      "value": "Toàn quốc"
+    },
+    {
+      "label": "Hạn mức tín dụng",
+      "value": "Tối đa 200.000.000 đồng; OCB xét duyệt và quyết định hạn mức"
+    },
+    {
+      "label": "Thời gian miễn lãi",
+      "value": "Tối đa 62 ngày khi đáp ứng điều kiện thanh toán"
+    }
+  ],
+
+  "highlights": [
+    "Từ 21 tuổi và chưa từng là khách hàng Liobank theo điều kiện chương trình hiện hành.",
+    "OCB xác minh hồ sơ, quyết định cấp thẻ và hạn mức tín dụng thực tế.",
+    "Liobank sử dụng liên kết giới thiệu; bạn không cần sao chép hoặc nhập mã."
+  ],
+
+  "considerations": [
+    "Thẻ tín dụng có nghĩa vụ thanh toán, lãi và phí; cần đọc biểu phí cùng điều khoản hiện hành trước khi xác nhận."
+  ],
+
+  "sources": [
+    {
+      "title": "Thẻ tín dụng Liobank",
+      "url": "https://liobank.vn/vn/credit-card",
+      "publisher": "Liobank by OCB"
+    },
+    {
+      "title": "Mời bạn mở thẻ Liobank",
+      "url": "https://liobank.vn/vn/invite",
+      "publisher": "Liobank by OCB"
+    },
+    {
+      "title": "Thể lệ chương trình Mời bạn mở thẻ Liobank Q3/2026",
+      "url": "https://liobank.vn/doc/Internal_TnC_CardReferral_Q3.2026.pdf",
+      "publisher": "Ngân hàng TMCP Phương Đông (OCB)"
+    },
+    {
+      "title": "Danh mục biểu phí Liobank — hiệu lực từ 05/08/2026",
+      "url": "https://liobank.vn/vn/tariffs",
+      "publisher": "Liobank by OCB"
+    },
+    {
+      "title": "Biểu phí Liobank dành cho khách hàng cá nhân — bản chi tiết",
+      "url": "https://liobank.vn/doc/050826_Bi%E1%BB%83u%20ph%C3%AD%20Liobank%20d%C3%A0nh%20cho%20KHCN.pdf",
+      "publisher": "Ngân hàng TMCP Phương Đông (OCB)"
+    },
+    {
+      "title": "Điều khoản và điều kiện Liobank",
+      "url": "https://liobank.vn/doc/TnC.pdf",
+      "publisher": "Ngân hàng TMCP Phương Đông (OCB)"
+    },
+    {
+      "title": "Hướng dẫn cài đặt ứng dụng và đăng ký Liobank",
+      "url": "https://liobank.vn/doc/Instructions_for_Liobank_App_Installation_and_Registration.pdf",
+      "publisher": "Liobank by OCB"
+    }
+  ],
+
+  "lastVerifiedAt": "2026-08-16",
+
+  "draft": false
+}

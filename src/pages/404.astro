@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Không tìm thấy trang"
+  description="Trang bạn đang tìm không tồn tại hoặc đã được di chuyển."
+  canonical={false}
+  robots="noindex, follow"
+>
+  <main class="not-found">
+    <div class="not-found-panel">
+      <div class="not-found-copy">
+        <p class="eyebrow">Lỗi 404</p>
+
+        <h1>Không tìm thấy trang</h1>
+
+        <p>
+          Trang bạn đang tìm không tồn tại hoặc đã được di chuyển.
+        </p>
+
+        <a class="button button--primary" href="/">
+          Về trang chủ
+        </a>
+      </div>
+
+      <div class="not-found-number" aria-hidden="true">
+        404
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    width: min(calc(100% - 2rem), 1040px);
+    min-height: 68vh;
+    margin-inline: auto;
+    padding: 1.25rem 0 5rem;
+  }
+
+  .not-found-panel {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: center;
+    min-height: clamp(440px, 55vw, 620px);
+    overflow: hidden;
+    padding: clamp(2rem, 6vw, 5rem);
+    color: #0b0c10;
+    background:
+      radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.72), transparent 25%),
+      linear-gradient(135deg, #ffb799, #f3a9ed 55%, #a9b9ff);
+    border-radius: var(--radius-2xl);
+  }
+
+  .not-found-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 610px;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    color: currentColor;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+    color: currentColor;
+    font-size: clamp(2.8rem, 8vw, 5.7rem);
+    letter-spacing: -0.065em;
+  }
+
+  p:not(.eyebrow) {
+    max-width: 520px;
+    opacity: 0.76;
+  }
+
+  .button {
+    margin-top: 1rem;
+    color: #ffffff;
+    background: #0b0c10;
+  }
+
+  .not-found-number {
+    position: absolute;
+    right: clamp(1.5rem, 5vw, 4rem);
+    bottom: clamp(1.5rem, 4vw, 3.5rem);
+    color: rgba(11, 12, 16, 0.15);
+    font-size: clamp(7rem, 22vw, 16rem);
+    font-weight: 900;
+    line-height: 0.75;
+    letter-spacing: -0.1em;
+    transform: rotate(-6deg);
+  }
+
+  @media (max-width: 679px) {
+    .not-found-panel {
+      min-height: 540px;
+      align-items: start;
+      border-radius: var(--radius-xl);
+    }
+  }
+</style>

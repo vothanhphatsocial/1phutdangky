@@ -1,0 +1,83 @@
+{
+  "name": "Tài khoản VPBank",
+  "provider": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)",
+  "category": "bank-account",
+
+  "summary": "Tài khoản thanh toán cá nhân được đăng ký trực tuyến và sử dụng cùng dịch vụ ngân hàng số VPBank NEO theo điều kiện của VPBank.",
+
+  "officialUrl": "https://www.vpbank.com.vn/vpbank-neo",
+
+  "offers": [
+    {
+      "id": "vpbank-account-direct-referral",
+      "name": "VPBank NEO Link giới thiệu",
+      "channel": "direct-referral",
+      "referralMechanism": "link-only",
+      "destinationBehavior": "app-deeplink",
+      "enabled": true,
+      "url": "https://go.vpbank.com.vn/7juJk19",
+      "customerBenefit": "Được xét tổng 30.000 đồng khi đáp ứng đầy đủ điều kiện dành cho khách hàng mới.",
+      "customerBenefitNote": "10.000 đồng sau giao dịch hợp lệ đầu tiên từ 10.000 đồng; thêm 20.000 đồng khi hoàn tất 3 giao dịch tài chính trong 7 ngày đầu, vào ít nhất 2 ngày khác nhau.",
+      "verificationNote": "Quyền lợi dành cho khách hàng mới được đối chiếu từ trang chương trình và thể lệ VPBank ngày 16/08/2026. Chương trình được công bố đến 30/09/2026 và có thể kết thúc sớm khi hết ngân sách.",
+      "ctaLabel": "Mở tài khoản VPBank",
+      "validThrough": "2026-09-30",
+      "lastVerifiedAt": "2026-08-16"
+    }
+  ],
+
+  "primaryOfferId": "vpbank-account-direct-referral",
+
+  "ctaLabel": "Xem tài khoản VPBank",
+
+  "decisionFacts": [
+    {
+      "label": "Điều kiện đăng ký",
+      "value": "Dùng số điện thoại và giấy tờ tùy thân của chính bạn, tự nhập OTP và hoàn tất xác thực do VPBank yêu cầu. VPBank quyết định kết quả mở tài khoản."
+    },
+    {
+      "label": "Phí tài khoản",
+      "value": "Phí mở tài khoản: không thu phí. Phí chuyển khoản và dịch vụ đi kèm phụ thuộc loại tài khoản, gói dịch vụ và giao dịch; hãy kiểm tra mức áp dụng trong VPBank NEO trước khi xác nhận."
+    },
+    {
+      "label": "Dịch vụ cần kiểm tra",
+      "value": "Kiểm tra phí và điều kiện của số tài khoản lựa chọn, gói tài khoản, thẻ cùng các dịch vụ đi kèm trước khi xác nhận."
+    }
+  ],
+
+  "sources": [
+    {
+      "title": "Mời thêm bạn - Chia quà vô hạn",
+      "url": "https://www.vpbank.com.vn/uu-dai/retail/digital-banking-promotion-category/mgm",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+    },
+    {
+      "title": "Thể lệ chương trình Mời thêm bạn - Chia quà vô hạn",
+      "url": "https://www.vpbank.com.vn/-/media/vpbank-latest/1retail/promotion/digital-banking/2026/mgm-phase-1-2026/the-le-chuong-trinh-mgm-phase-1-2026-12-05-2026.pdf",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+    },
+    {
+      "title": "VPBank NEO",
+      "url": "https://www.vpbank.com.vn/vpbank-neo",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+    },
+    {
+      "title": "Biểu phí dịch vụ khách hàng cá nhân",
+      "url": "https://www.vpbank.com.vn/-/media/vpbank-latest/tai-lieu-bieu-mau/bieu-phi/khcn/pl01_bieu_phi_dich_vu_danh_cho_khcn_thong_thuong.pdf",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+    },
+    {
+      "title": "Khuyến cáo giao dịch trực tuyến an toàn cùng VPBank NEO",
+      "url": "https://www.vpbank.com.vn/bi-kip-va-chia-se/retail-story-and-tips/goc-canh-giac/khuyen-cao-giao-dich-truc-tuyen-an-toan-cung-vpbank-neo-15-06-2026",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+    },
+    {
+      "title": "Cổng Chăm sóc khách hàng VPBank",
+      "url": "https://cskh.vpbank.com.vn/support-information",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+    }
+  ],
+
+  "lastVerifiedAt": "2026-08-16",
+
+  "draft": false
+}

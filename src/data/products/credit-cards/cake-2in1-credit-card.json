@@ -1,0 +1,87 @@
+{
+  "name": "Thẻ tín dụng Cake 2in1",
+  "provider": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank) — thương hiệu Cake",
+  "category": "credit-card",
+
+  "summary": "Thẻ tín dụng Cake 2in1 gồm gói Standard và Premium, được VPBank xét duyệt và quản lý qua nền tảng Cake.",
+
+  "officialUrl": "https://cake.vn/the/the-cake-2in1/goi-standard",
+
+  "offers": [
+    {
+      "id": "cake-2in1-direct-referral",
+      "name": "Link giới thiệu Cake 2in1",
+      "channel": "direct-referral",
+      "referralMechanism": "link-only",
+      "destinationBehavior": "registration-page",
+      "enabled": true,
+      "url": "https://dop.cake.vn/affiliate?ref=SKCA8V98",
+      "customerBenefit": "Được xét hoàn 50%, tối đa 200.000 đồng, cho giao dịch trực tuyến đầu tiên hợp lệ từ 500.000 đồng.",
+      "customerBenefitNote": "Áp dụng khi được phê duyệt và mở thẻ qua link giới thiệu; giao dịch phải được ghi nhận trong 7 ngày kể từ ngày mở thẻ.",
+      "ctaLabel": "Mở thẻ Cake 2in1",
+      "validThrough": "2026-12-31",
+      "lastVerifiedAt": "2026-08-16"
+    }
+  ],
+
+  "primaryOfferId": "cake-2in1-direct-referral",
+
+  "ctaLabel": "Xem thẻ Cake 2in1",
+
+  "decisionFacts": [
+    {
+      "label": "Xét duyệt và hạn mức",
+      "value": "VPBank thẩm định hồ sơ và hạn mức. Gói Premium chỉ khả dụng khi hạn mức được phê duyệt từ 30.000.000 đồng."
+    },
+    {
+      "label": "Phí và lãi",
+      "value": "Phát hành thẻ vật lý 150.000 đồng với Standard, 350.000 đồng với Premium; lãi mua sắm tương ứng 48%/năm và 33%/năm."
+    },
+    {
+      "label": "Thanh toán và miễn lãi",
+      "value": "Miễn lãi tối đa 45 ngày với Standard hoặc 55 ngày với Premium. Kiểm tra ngày sao kê, ngày đến hạn và số tiền cần thanh toán."
+    }
+  ],
+
+  "sources": [
+    {
+      "title": "Chương trình giới thiệu mở thẻ Cake 2in1",
+      "url": "https://cake.vn/uu-dai/cake-uu-dai/moi-ban-moi-san-thuong-khung-den-4-trieu-q3",
+      "publisher": "Cake by VPBank"
+    },
+    {
+      "title": "Thể lệ chương trình giới thiệu mở thẻ tín dụng Cake 2in1",
+      "url": "https://storage.googleapis.com/cake-prd-website/homepage/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445.pdf",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+    },
+    {
+      "title": "Thẻ Cake 2in1 - Gói Standard",
+      "url": "https://cake.vn/the/the-cake-2in1/goi-standard",
+      "publisher": "Cake by VPBank"
+    },
+    {
+      "title": "Thẻ Cake 2in1 - Gói Premium",
+      "url": "https://cake.vn/the/the-cake-2in1/goi-premium",
+      "publisher": "Cake by VPBank"
+    },
+    {
+      "title": "Biểu phí thẻ Cake 2in1",
+      "url": "https://cake.vn/tin-tuc/hoat-dong/bieu-phi-the-cake2in1",
+      "publisher": "Cake by VPBank"
+    },
+    {
+      "title": "Điều kiện giao dịch chung thẻ tín dụng",
+      "url": "https://cake.vn/dieu-kien-dieu-khoan/dieu-kien-giao-dich-chung-the-tin-dung",
+      "publisher": "Cake by VPBank"
+    },
+    {
+      "title": "Liên hệ Cake",
+      "url": "https://cake.vn/lien-he",
+      "publisher": "Cake by VPBank"
+    }
+  ],
+
+  "lastVerifiedAt": "2026-08-16",
+
+  "draft": false
+}

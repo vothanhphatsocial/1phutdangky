@@ -1,0 +1,74 @@
+<script>
+  type TrackingEvent = Record<string, unknown>;
+
+  const trackingWindow = window as typeof window & {
+    dataLayer?: TrackingEvent[];
+  };
+
+  trackingWindow.dataLayer =
+    trackingWindow.dataLayer || [];
+
+  function handleTrackedClick(event: MouseEvent) {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const link =
+      target.closest<HTMLAnchorElement>(
+        'a[data-event]'
+      );
+
+    if (!link) {
+      return;
+    }
+
+    let destinationHostname = '';
+
+    try {
+      destinationHostname =
+        new URL(link.href).hostname;
+    } catch {
+      destinationHostname = '';
+    }
+
+    trackingWindow.dataLayer?.push({
+      event:
+        link.dataset.event ||
+        'link_click',
+
+      product_id:
+        link.dataset.productId || '',
+
+      offer_id:
+        link.dataset.offerId || '',
+
+      offer_channel:
+        link.dataset.offerChannel || '',
+
+      affiliate_network:
+        link.dataset.affiliateNetwork || '',
+
+      cta_position:
+        link.dataset.ctaPosition || '',
+
+      affiliate:
+        link.dataset.affiliate === 'true',
+
+      destination_hostname:
+        destinationHostname,
+
+      link_url:
+        link.href,
+
+      page_path:
+        window.location.pathname,
+    });
+  }
+
+  document.addEventListener(
+    'click',
+    handleTrackedClick
+  );
+</script>

@@ -1,0 +1,74 @@
+---
+interface Props {
+  title?: string;
+}
+
+const {
+  title = 'Các bước thực hiện',
+} = Astro.props;
+---
+
+<section class="steps">
+
+  <h3>{title}</h3>
+
+  <div class="steps-list">
+    <slot />
+  </div>
+
+</section>
+
+<style>
+  .steps {
+    width:
+      min(
+        calc(100vw - 2rem),
+        920px
+      );
+    margin: clamp(3rem, 7vw, 5rem) 0;
+    margin-left: 50%;
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+    transform: translateX(-50%);
+    overflow: hidden;
+    background:
+      radial-gradient(
+        circle at 10% 25%,
+        rgba(49, 92, 245, 0.24),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 95% 80%,
+        rgba(168, 140, 255, 0.18),
+        transparent 30%
+      ),
+      #08090d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-2xl);
+
+    --step-heading: #f8f5ef;
+    --step-text: #aaa8a2;
+    --step-line: rgba(255, 255, 255, 0.16);
+    --step-marker-bg: #f8f5ef;
+    --step-marker-text: #0b0c10;
+  }
+
+  .steps > h3 {
+    max-width: 34rem;
+    margin-bottom: 2rem;
+
+    color: #f8f5ef;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    letter-spacing: -0.045em;
+  }
+
+  .steps-list {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  @media (max-width: 479px) {
+    .steps {
+      border-radius: var(--radius-xl);
+    }
+  }
+</style>

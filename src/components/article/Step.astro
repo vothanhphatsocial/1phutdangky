@@ -1,0 +1,106 @@
+---
+interface Props {
+  number: string | number;
+  title: string;
+}
+
+const {
+  number,
+  title,
+} = Astro.props;
+---
+
+<div class="step">
+
+  <div class="step-marker">
+    {number}
+  </div>
+
+  <div class="step-content">
+
+    <strong>
+      {title}
+    </strong>
+
+    <div class="step-body">
+      <slot />
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+  .step {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 1rem;
+
+    padding: 0.75rem 0 1.25rem;
+  }
+
+  .step:not(:last-child)::before {
+    content: '';
+
+    position: absolute;
+
+    top: 46px;
+    bottom: 0;
+    left: 23px;
+
+    width: 1px;
+
+    background: var(--step-line, var(--color-border-strong));
+  }
+
+  .step-marker {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    place-items: center;
+
+    width: 48px;
+    height: 34px;
+
+    background: var(--step-marker-bg, var(--color-heading));
+    color: var(--step-marker-text, var(--color-bg));
+
+    border-radius: 0.75rem;
+
+    font-size: 0.74rem;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+  }
+
+  .step-content {
+    padding-top: 0.2rem;
+  }
+
+  .step-content > strong {
+    display: block;
+
+    margin-bottom: 0.35rem;
+
+    color: var(--step-heading, var(--color-heading));
+
+    font-size: 1rem;
+  }
+
+  .step-body {
+    color: var(--step-text, var(--color-muted));
+
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .step-body :global(strong) {
+    color: inherit;
+  }
+
+  .step-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

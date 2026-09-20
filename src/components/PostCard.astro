@@ -1,0 +1,245 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { CATEGORIES, articleUrl } from '../config/site';
+
+interface Props {
+  post: CollectionEntry<'articles'>;
+  tone?: 'default' | 'dark';
+}
+
+const {
+  post,
+  tone = 'default',
+} = Astro.props;
+
+const category = CATEGORIES[post.data.category];
+const date = post.data.updatedAt ?? post.data.publishedAt;
+---
+
+<article class="post-card" data-tone={tone}>
+  <a class="post-link" href={articleUrl(post.id)}>
+
+    <div class:list={[
+      'post-visual',
+      post.data.cover && 'post-visual--has-cover',
+      `post-visual--${post.data.category}`,
+    ]}>
+      {
+        post.data.cover && (
+          <Image
+            class="post-cover"
+            src={post.data.cover}
+            alt={post.data.coverAlt ?? ''}
+            widths={[480, 720, 960]}
+            sizes="(max-width: 759px) 100vw, 50vw"
+            loading="lazy"
+          />
+        )
+      }
+
+      {
+        !post.data.cover && (
+          <>
+            <span>{category.shortName}</span>
+
+            <div class="post-graphic" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+          </>
+        )
+      }
+    </div>
+
+    <div class="post-body">
+
+      <p class="post-category">
+        {category.name}
+      </p>
+
+      <h3>{post.data.title}</h3>
+
+      <p class="post-description">
+        {post.data.description}
+      </p>
+
+      <div class="post-meta">
+        <time datetime={date.toISOString()}>
+          {
+            date.toLocaleDateString('vi-VN', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            })
+          }
+        </time>
+
+        {
+          post.data.readingMinutes && (
+            <span>{post.data.readingMinutes} phút đọc</span>
+          )
+        }
+      </div>
+
+    </div>
+
+  </a>
+</article>
+
+<style>
+  .post-card {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .post-card[data-tone="dark"] {
+    background: transparent;
+  }
+
+  .post-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .post-visual {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    aspect-ratio: 40 / 21;
+    min-height: 0;
+    padding: 1.15rem;
+    background: linear-gradient(135deg, #edf4ff, #dceaff);
+    border-radius: var(--radius-xl);
+  }
+
+  .post-visual--has-cover {
+    padding: 0;
+  }
+
+  .post-cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.105);
+  }
+
+  .post-visual--the-tin-dung {
+    background: linear-gradient(135deg, #f5efff, #e8ddff);
+  }
+
+  .post-visual--vay-tien-mat {
+    background: linear-gradient(135deg, #fff6e9, #ffe8c7);
+  }
+
+  .post-visual--vi-dien-tu {
+    background: linear-gradient(135deg, #ecfbf4, #d9f5e8);
+  }
+
+  .post-visual span {
+    position: relative;
+    z-index: 2;
+    padding: 0.35rem 0.6rem;
+    background: rgba(255,255,255,0.92);
+    color: var(--color-heading);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 750;
+  }
+
+  .post-graphic {
+    position: absolute;
+    right: -1.5rem;
+    bottom: -1.5rem;
+    display: grid;
+    gap: 0.4rem;
+    width: 150px;
+    padding: 2.4rem 1.5rem;
+    background: rgba(255, 255, 255, 0.44);
+    border: 1px solid rgba(255, 255, 255, 0.56);
+    border-radius: 2.2rem;
+    transform: rotate(-8deg);
+  }
+
+  .post-graphic i {
+    display: block;
+    height: 9px;
+    background: rgba(11, 12, 16, 0.12);
+    border-radius: 999px;
+  }
+
+  .post-graphic i:nth-child(2) {
+    width: 72%;
+  }
+
+  .post-graphic i:nth-child(3) {
+    width: 48%;
+  }
+
+  .post-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem 0.25rem 0;
+  }
+
+  .post-category {
+    margin-bottom: 0.35rem;
+    color: var(--color-accent-cobalt-strong);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .post-body h3 {
+    margin-bottom: 0.55rem;
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  [data-tone="dark"] .post-body h3 {
+    color: #f8f5ef;
+  }
+
+  .post-description {
+    margin-bottom: 1rem;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  [data-tone="dark"] .post-description {
+    color: #aaa8a2;
+  }
+
+  [data-tone="dark"] .post-category {
+    color: #91a8ff;
+  }
+
+  [data-tone="dark"] .post-meta {
+    color: #7f7e85;
+  }
+
+  [data-tone="dark"] .post-link:hover h3 {
+    color: #b9c6ff;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto;
+    color: var(--color-subtle);
+    font-size: 0.72rem;
+  }
+
+  .post-link:hover h3 {
+    color: var(--color-accent-cobalt-strong);
+  }
+</style>

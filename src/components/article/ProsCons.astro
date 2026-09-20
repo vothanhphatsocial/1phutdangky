@@ -1,0 +1,184 @@
+---
+interface Props {
+  pros?: string[];
+  cons?: string[];
+  title?: string;
+}
+
+const {
+  pros = [],
+  cons = [],
+  title = 'Điểm đáng chú ý',
+} = Astro.props;
+---
+
+<section class="pros-cons">
+
+  <h3>{title}</h3>
+
+  <div class="pros-cons-grid">
+
+    {
+      pros.length > 0 && (
+
+        <div class="pc-box pc-box--pros">
+
+          <div class="pc-heading">
+            <span aria-hidden="true">✓</span>
+            Điểm tích cực
+          </div>
+
+          <ul>
+            {
+              pros.map((item) => (
+                <li>{item}</li>
+              ))
+            }
+          </ul>
+
+        </div>
+
+      )
+    }
+
+    {
+      cons.length > 0 && (
+
+        <div class="pc-box pc-box--cons">
+
+          <div class="pc-heading">
+            <span aria-hidden="true">!</span>
+            Cần cân nhắc
+          </div>
+
+          <ul>
+            {
+              cons.map((item) => (
+                <li>{item}</li>
+              ))
+            }
+          </ul>
+
+        </div>
+
+      )
+    }
+
+  </div>
+
+</section>
+
+<style>
+  .pros-cons {
+    margin: 2.5rem 0;
+  }
+
+  .pros-cons > h3 {
+    margin-bottom: 1.25rem;
+
+    font-size: 1.25rem;
+  }
+
+  .pros-cons-grid {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--color-border-strong);
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+
+  .pc-box {
+    position: relative;
+    overflow: hidden;
+
+    padding: 1.5rem 0;
+  }
+
+  .pc-box--pros {
+    color: var(--color-accent-cobalt-strong);
+  }
+
+  .pc-box--cons {
+    color: var(--color-accent-coral);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .pc-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+
+    margin-bottom: 1rem;
+
+    color: var(--color-heading);
+
+    font-size: 0.92rem;
+    font-weight: 800;
+  }
+
+  .pc-heading span {
+    display: grid;
+    place-items: center;
+
+    width: 28px;
+    height: 28px;
+
+    background: var(--color-heading);
+    color: var(--color-bg);
+
+    border-radius: 0.6rem;
+
+    font-size: 0.68rem;
+  }
+
+  .pc-box ul {
+    display: grid;
+    gap: 0.7rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .pc-box li {
+    position: relative;
+
+    margin: 0;
+    padding-left: 1.15rem;
+
+    color: var(--color-heading);
+
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .pc-box li::before {
+    position: absolute;
+    top: 0.68em;
+    left: 0;
+
+    width: 0.5rem;
+    height: 2px;
+
+    background: currentColor;
+
+    content: '';
+  }
+
+  @media (min-width: 680px) {
+    .pros-cons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pc-box {
+      padding: 1.6rem 1.8rem 1.6rem 0;
+    }
+
+    .pc-box--cons {
+      padding-right: 0;
+      padding-left: 1.8rem;
+      border-top: 0;
+      border-left: 1px solid var(--color-border);
+    }
+  }
+</style>

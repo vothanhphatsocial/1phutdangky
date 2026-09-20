@@ -1,0 +1,429 @@
+---
+import BaseLayout
+  from './BaseLayout.astro';
+
+
+interface Props {
+  title: string;
+
+  description: string;
+
+  eyebrow?: string;
+
+  lastUpdated?: string;
+
+  structuredData?:
+    | Record<string, unknown>
+    | Record<string, unknown>[];
+}
+
+
+const {
+  title,
+  description,
+  eyebrow = '1 Phút Đăng Ký',
+  lastUpdated = '14/08/2026',
+  structuredData,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  structuredData={structuredData}
+>
+
+  <header class="trust-hero">
+
+    <div class="trust-stage">
+
+      <nav
+        class="breadcrumb"
+        aria-label="Breadcrumb"
+      >
+
+        <a href="/">
+          Trang chủ
+        </a>
+
+        <span aria-hidden="true">
+          ›
+        </span>
+
+        <span>
+          {title}
+        </span>
+
+      </nav>
+
+
+      <div class="trust-panel">
+
+        <div class="trust-copy">
+
+          <p class="eyebrow">
+            {eyebrow}
+          </p>
+
+
+          <h1>
+            {title}
+          </h1>
+
+
+          <p class="lead">
+            {description}
+          </p>
+
+
+          <p class="updated">
+            Cập nhật:
+            {' '}
+            {lastUpdated}
+          </p>
+
+        </div>
+
+        <div class="trust-signal" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <article class="trust-content">
+
+    <div class="trust-container prose">
+      <slot />
+    </div>
+
+  </article>
+
+</BaseLayout>
+
+
+<style>
+  .trust-container {
+    width:
+      min(
+        calc(100% - 2rem),
+        920px
+      );
+
+    margin-inline: auto;
+  }
+
+
+  .trust-stage {
+    width:
+      min(
+        calc(100% - 2rem),
+        1040px
+      );
+
+    margin-inline: auto;
+  }
+
+
+  .trust-hero {
+    padding:
+      1.25rem 0 2rem;
+  }
+
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+
+    gap: 0.45rem;
+
+    margin-bottom: 1rem;
+
+    color:
+      var(--color-muted);
+
+    font-size: 0.78rem;
+  }
+
+
+  .breadcrumb a {
+    color: inherit;
+
+    text-decoration: none;
+  }
+
+
+  .eyebrow {
+    margin-bottom: 0.55rem;
+
+    color:
+      var(--color-accent-cobalt-strong);
+
+    font-size: 0.74rem;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+
+  .trust-panel {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(390px, 42vw, 510px);
+    overflow: hidden;
+    padding: clamp(2rem, 6vw, 4.5rem);
+    background:
+      radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.7), transparent 26%),
+      linear-gradient(135deg, #a9c9ff, #95eadf 58%, #b8f2cc);
+    border-radius: var(--radius-2xl);
+  }
+
+
+  .trust-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 690px;
+  }
+
+
+  .trust-hero h1 {
+    margin-bottom: 0.85rem;
+    color: #0b0c10;
+    font-size: clamp(2.5rem, 7vw, 5.4rem);
+    letter-spacing: -0.06em;
+  }
+
+
+  .lead {
+    max-width: 680px;
+
+    margin-bottom: 0.75rem;
+
+    color:
+      #343a40;
+
+    font-size:
+      clamp(
+        1rem,
+        3vw,
+        1.1rem
+      );
+  }
+
+
+  .trust-signal {
+    position: absolute;
+    right: clamp(1.5rem, 5vw, 4rem);
+    bottom: clamp(1.5rem, 5vw, 4rem);
+    display: grid;
+    gap: 0.55rem;
+    width: clamp(7rem, 16vw, 11rem);
+    transform: rotate(-7deg);
+  }
+
+
+  .trust-signal span {
+    display: block;
+    width: 100%;
+    height: clamp(0.55rem, 1vw, 0.8rem);
+    background: var(--color-heading);
+    border-radius: 999px;
+    opacity: 0.88;
+  }
+
+
+  .trust-signal span:nth-child(1) {
+    width: 58%;
+    margin-left: auto;
+    background: #315cf5;
+  }
+
+
+  .trust-signal span:nth-child(2) {
+    width: 78%;
+    margin-left: auto;
+    background: #a88cff;
+  }
+
+
+  .trust-signal span:nth-child(3) {
+    background: #0b0c10;
+  }
+
+
+  .updated {
+    margin: 0;
+
+    color:
+      #555a60;
+
+    font-size: 0.74rem;
+  }
+
+
+  .trust-content {
+    padding:
+      2rem 0 5rem;
+  }
+
+
+  .prose {
+    counter-reset: trust-section;
+  }
+
+
+  .prose :global(h2) {
+    counter-increment: trust-section;
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+    margin: 4rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-strong);
+    font-size: clamp(1.55rem, 4vw, 2.35rem);
+    letter-spacing: -0.045em;
+  }
+
+
+  .prose :global(h2)::before {
+    content: counter(trust-section, decimal-leading-zero);
+    padding-top: 0.25rem;
+    color: var(--color-accent-cobalt-strong);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+  }
+
+
+  .prose :global(h2:first-child) {
+    margin-top: 1rem;
+  }
+
+
+  .prose :global(h3) {
+    margin-top: 1.8rem;
+
+    margin-bottom: 0.5rem;
+
+    font-size: 1.1rem;
+  }
+
+
+  .prose > :global(p),
+  .prose > :global(ul),
+  .prose > :global(ol),
+  .prose > :global(.trust-note) {
+    max-width: 760px;
+    margin-left: auto;
+  }
+
+
+  .prose :global(p),
+  .prose :global(li) {
+    color:
+      var(--color-text);
+
+    line-height: 1.75;
+  }
+
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.3rem;
+  }
+
+
+  .prose > :global(ul) {
+    display: grid;
+    gap: 0.7rem;
+    padding-left: 0;
+    list-style: none;
+  }
+
+
+  .prose > :global(ul) > :global(li) {
+    position: relative;
+    padding-left: 1.4rem;
+  }
+
+
+  .prose > :global(ul) > :global(li)::before {
+    content: '';
+    position: absolute;
+    top: 0.82em;
+    left: 0;
+    width: 0.72rem;
+    height: 2px;
+    background: var(--color-accent-cobalt);
+  }
+
+
+  .prose :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+
+  .prose :global(.trust-note) {
+    margin:
+      2rem 0;
+
+    padding: clamp(1.25rem, 4vw, 2rem);
+
+    background:
+      radial-gradient(circle at 100% 0, rgba(111, 224, 180, 0.2), transparent 38%),
+      #090a0f;
+
+    color: #d6d3cc;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius:
+      var(--radius-lg);
+  }
+
+
+  .prose :global(.trust-note p:last-child) {
+    margin-bottom: 0;
+  }
+
+
+  .prose :global(.trust-note p),
+  .prose :global(.trust-note strong) {
+    color: inherit;
+  }
+
+
+  @media (max-width: 679px) {
+    .trust-panel {
+      min-height: 500px;
+      padding-bottom: 8rem;
+      border-radius: var(--radius-xl);
+    }
+
+    .trust-signal {
+      right: 1.5rem;
+      bottom: 1.5rem;
+    }
+
+    .prose :global(h2) {
+      grid-template-columns: 2.4rem minmax(0, 1fr);
+      gap: 0.6rem;
+      margin-top: 3rem;
+    }
+
+    .prose > :global(p),
+    .prose > :global(ul),
+    .prose > :global(ol),
+    .prose > :global(.trust-note) {
+      margin-left: 0;
+    }
+  }
+</style>
