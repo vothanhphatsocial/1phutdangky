@@ -84,10 +84,32 @@
       banner.hidden = false;
     }
 
+    function updateConsent(value) {
+      const consentState =
+        value === 'granted'
+          ? 'granted'
+          : 'denied';
+
+      window.gtag?.(
+        'consent',
+        'update',
+        {
+          ad_storage: consentState,
+          ad_user_data: consentState,
+          ad_personalization: consentState,
+          analytics_storage: consentState,
+        }
+      );
+
+      document.documentElement.dataset
+        .consentChoice = consentState;
+    }
+
     acceptButton?.addEventListener(
       'click',
       () => {
         saveChoice('granted');
+        updateConsent('granted');
         closeBanner();
       }
     );
@@ -96,6 +118,7 @@
       'click',
       () => {
         saveChoice('denied');
+        updateConsent('denied');
         closeBanner();
       }
     );

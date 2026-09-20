@@ -283,6 +283,85 @@ const allStructuredData = [
       );
     </script>
 
+    <!-- Consent Mode v2 -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+
+      window.gtag =
+        window.gtag ||
+        function gtag() {
+          window.dataLayer.push(arguments);
+        };
+
+      let savedConsent = null;
+
+      try {
+        savedConsent =
+          localStorage.getItem('1pd-consent-v1');
+      } catch {
+        savedConsent = null;
+      }
+
+      const defaultConsent =
+        savedConsent === 'granted'
+          ? 'granted'
+          : 'denied';
+
+      if (
+        savedConsent === 'granted' ||
+        savedConsent === 'denied'
+      ) {
+        document.documentElement.dataset
+          .consentChoice = savedConsent;
+      }
+
+      window.gtag(
+        'consent',
+        'default',
+        {
+          ad_storage: defaultConsent,
+          ad_user_data: defaultConsent,
+          ad_personalization: defaultConsent,
+          analytics_storage: defaultConsent,
+          wait_for_update: 500,
+        }
+      );
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
+        });
+
+        const firstScript =
+          d.getElementsByTagName(s)[0];
+        const tag = d.createElement(s);
+        const dataLayerQuery =
+          l !== 'dataLayer' ? '&l=' + l : '';
+
+        tag.async = true;
+        tag.src =
+          'https://www.googletagmanager.com/gtm.js?id=' +
+          i +
+          dataLayerQuery;
+
+        firstScript.parentNode.insertBefore(
+          tag,
+          firstScript
+        );
+      })(
+        window,
+        document,
+        'script',
+        'dataLayer',
+        'GTM-NXX3GHJ7'
+      );
+    </script>
+
     <link
       rel="icon"
       href="/favicon.svg?v=20260815"
@@ -462,6 +541,16 @@ const allStructuredData = [
 
 
   <body>
+
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NXX3GHJ7"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
 
     <ConsentBanner />
 
