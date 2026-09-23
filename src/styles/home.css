@@ -109,11 +109,11 @@
     width: 315px;
     min-height: 380px;
     padding: 1.5rem;
-    background: #0b0c10;
+    background: #142237;
     color: #f8f5ef;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 2.25rem;
-    box-shadow: 0 35px 80px rgba(11, 12, 16, 0.28);
+    box-shadow: 0 35px 80px rgba(20, 34, 55, 0.28);
     transform: rotate(5deg);
   }
 
