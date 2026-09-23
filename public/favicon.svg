@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="1 Phút Đăng Ký">
   <rect width="128" height="128" fill="#142237" />
-  <g fill="none" stroke-linecap="round" stroke-width="10" transform="rotate(-7 64 64)">
-    <path d="M57 42h43" stroke="#315cf5" />
-    <path d="M39 63h62" stroke="#a48cff" />
-    <path d="M21 84h80" stroke="#6fe0b4" />
+  <g transform="rotate(-12 64 64)">
+    <rect x="27" y="31" width="74" height="13" rx="6.5" fill="#315cf5" />
+    <rect x="21" y="55" width="80" height="13" rx="6.5" fill="#a48cff" />
+    <rect x="21" y="79" width="80" height="13" rx="6.5" fill="#6fe0b4" />
   </g>
 </svg>
