@@ -3,8 +3,8 @@ export const SITE = {
   url: 'https://1phutdangky.com',
   description:
     'Hướng dẫn tài chính dễ hiểu về tài khoản ngân hàng, thẻ tín dụng và khoản vay.',
-  logo: '/brand/logo-512.png',
-  socialImage: '/brand/og-default.png',
+  logo: '/brand/logo-512.png?v=20260923',
+  socialImage: '/brand/og-default.png?v=20260923',
   editor: {
     name: 'Võ Thành Phát',
     url: '/tac-gia/vo-thanh-phat/',
