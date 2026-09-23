@@ -139,15 +139,6 @@ const hasMoreInformation =
         position="product-card"
         offerId={offerId}
       />
-
-      <a
-        class="official-link"
-        href={product.data.officialUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Trang chính thức
-      </a>
     </div>
 
     {
@@ -548,18 +539,6 @@ const hasMoreInformation =
     color: #ffffff;
   }
 
-  .official-link {
-    color: #090a0f;
-    font-size: 0.8rem;
-    font-weight: 750;
-    text-decoration: none;
-  }
-
-  .official-link::after {
-    content: ' ↗';
-    color: #315cf5;
-  }
-
   .product-sheet {
     align-self: start;
     padding: clamp(1.2rem, 3vw, 2rem);
@@ -717,10 +696,6 @@ const hasMoreInformation =
 
     .product-action {
       display: grid;
-    }
-
-    .official-link {
-      text-align: center;
     }
 
     .referral-code button {
