@@ -7,18 +7,7 @@
 
   "officialUrl": "https://liobank.vn/vn/credit-card",
 
-  "offers": [
-    {
-      "id": "liobank-credit-card-direct-referral",
-      "name": "Link giới thiệu Liobank",
-      "channel": "direct-referral",
-      "enabled": false,
-      "url": "https://liobank.vn/rr/laqv",
-      "ctaLabel": "Tiếp tục trên kênh Liobank",
-      "validThrough": "2026-09-30",
-      "lastVerifiedAt": "2026-08-16"
-    }
-  ],
+  "offers": [],
 
   "ctaLabel": "Xem thẻ tín dụng Liobank",
 
