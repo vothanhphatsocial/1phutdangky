@@ -2,73 +2,22 @@
   "name": "Thẻ tín dụng Liobank",
   "provider": "Ngân hàng TMCP Phương Đông (OCB) — thương hiệu Liobank",
   "category": "credit-card",
-
   "summary": "Thẻ đa năng quốc tế Liobank Visa có thể được OCB cấp hạn mức tín dụng sau khi khách hàng hoàn tất đăng ký và được xét duyệt trên ứng dụng Liobank.",
-
   "officialUrl": "https://liobank.vn/vn/credit-card",
-
-  "offers": [],
-
-  "ctaLabel": "Xem thẻ tín dụng Liobank",
-
-  "facts": [
+  "offers": [
     {
-      "label": "Đối tượng chương trình",
-      "value": "Từ 21 tuổi và chưa từng là khách hàng Liobank"
-    },
-    {
-      "label": "Chi phí cần biết",
-      "value": "Một số khoản được miễn phí; giao dịch, lãi và phí khác vẫn có thể phát sinh",
-      "note": "Xem bảng tóm tắt và biểu phí hiện hành trước khi xác nhận."
-    },
-    {
-      "label": "Điểm đến sau CTA",
-      "value": "Trang chính thức, App Liobank hoặc kho ứng dụng tùy thiết bị"
-    },
-    {
-      "label": "Thời hạn chương trình",
-      "value": "Đến hết 30/09/2026 hoặc khi hết ngân sách, tùy điều kiện nào đến trước"
-    },
-    {
-      "label": "Đơn vị cung cấp",
-      "value": "Ngân hàng TMCP Phương Đông (OCB)"
-    },
-    {
-      "label": "Sản phẩm",
-      "value": "Thẻ đa năng quốc tế Liobank Visa"
-    },
-    {
-      "label": "Vai trò website",
-      "value": "Hướng dẫn độc lập; không phải kênh chính thức của Liobank"
-    },
-    {
-      "label": "Quyết định cấp thẻ",
-      "value": "OCB xác minh hồ sơ, quyết định cấp thẻ và hạn mức tín dụng"
-    },
-    {
-      "label": "Phạm vi chương trình",
-      "value": "Toàn quốc"
-    },
-    {
-      "label": "Hạn mức tín dụng",
-      "value": "Tối đa 200.000.000 đồng; OCB xét duyệt và quyết định hạn mức"
-    },
-    {
-      "label": "Thời gian miễn lãi",
-      "value": "Tối đa 62 ngày khi đáp ứng điều kiện thanh toán"
+      "id": "liobank-credit-card-direct-referral",
+      "name": "Link giới thiệu Liobank",
+      "channel": "direct-referral",
+      "enabled": true,
+      "url": "https://liobank.vn/rr/laqv",
+      "ctaLabel": "Mở ứng dụng Liobank",
+      "lastVerifiedAt": "2026-08-16",
+      "validThrough": "2026-09-30"
     }
   ],
-
-  "highlights": [
-    "Từ 21 tuổi và chưa từng là khách hàng Liobank theo điều kiện chương trình hiện hành.",
-    "OCB xác minh hồ sơ, quyết định cấp thẻ và hạn mức tín dụng thực tế.",
-    "Liên kết giới thiệu đang tạm ngừng hiển thị cho đến khi được xác minh lại."
-  ],
-
-  "considerations": [
-    "Thẻ tín dụng có nghĩa vụ thanh toán, lãi và phí; cần đọc biểu phí cùng điều khoản hiện hành trước khi xác nhận."
-  ],
-
+  "primaryOfferId": "liobank-credit-card-direct-referral",
+  "ctaLabel": "Xem thẻ tín dụng Liobank",
   "sources": [
     {
       "title": "Thẻ tín dụng Liobank",
@@ -76,14 +25,14 @@
       "publisher": "Liobank by OCB"
     },
     {
-      "title": "Mời bạn mở thẻ Liobank",
-      "url": "https://liobank.vn/vn/invite",
+      "title": "Liobank cùng Apple Pay",
+      "url": "https://liobank.vn/vn/apple-pay",
       "publisher": "Liobank by OCB"
     },
     {
-      "title": "Thể lệ chương trình Mời bạn mở thẻ Liobank Q3/2026",
-      "url": "https://liobank.vn/doc/Internal_TnC_CardReferral_Q3.2026.pdf",
-      "publisher": "Ngân hàng TMCP Phương Đông (OCB)"
+      "title": "Mời bạn mở thẻ Liobank",
+      "url": "https://liobank.vn/vn/invite",
+      "publisher": "Liobank by OCB"
     },
     {
       "title": "Danh mục biểu phí Liobank — hiệu lực từ 05/08/2026",
@@ -106,8 +55,22 @@
       "publisher": "Liobank by OCB"
     }
   ],
-
   "lastVerifiedAt": "2026-08-16",
-
-  "draft": false
+  "draft": false,
+  "facts": [
+    {
+      "label": "Xét duyệt và hạn mức",
+      "value": "Liobank công bố hạn mức tối đa 200.000.000 đồng; OCB thẩm định hồ sơ, quyết định cấp thẻ và hạn mức thực tế."
+    },
+    {
+      "label": "Phí và lãi",
+      "value": "Phát hành, thường niên và giao thẻ vật lý: miễn phí. Lãi và một số phí giao dịch vẫn có thể phát sinh."
+    },
+    {
+      "label": "Thanh toán và miễn lãi",
+      "value": "Miễn lãi tối đa 62 ngày khi đáp ứng điều kiện thanh toán. Kiểm tra ngày đến hạn và số tiền cần trả trên thông báo thanh toán của bạn."
+    }
+  ],
+  "highlights": [],
+  "considerations": []
 }
