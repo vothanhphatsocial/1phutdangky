@@ -26,7 +26,6 @@ const productCategorySchema = z.enum([
   'bank-account',
   'credit-card',
   'loan',
-  'e-wallet',
   'insurance',
 ]);
 
