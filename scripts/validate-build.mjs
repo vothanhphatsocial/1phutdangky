@@ -131,6 +131,26 @@ for (const htmlFile of htmlFiles) {
   const relativePath = path.relative(distRoot, htmlFile);
   const html = await readFile(htmlFile, 'utf8');
   const route = routeForHtml(relativePath);
+
+  if (
+    relativePath !== '404.html' &&
+    /class="product-card(?:\s|\")/.test(html)
+  ) {
+    const factCount = (html.match(/class="fact"/g) ?? []).length;
+
+    if (factCount < 3) {
+      errors.push(
+        `${relativePath} có product card nhưng thiếu decision facts (cần ít nhất 3 facts).`,
+      );
+    }
+
+    if (html.includes('class="official-link"')) {
+      errors.push(
+        `${relativePath} vẫn còn link Trang chính thức ngoài CTA affiliate.`,
+      );
+    }
+  }
+
   const robots = html.match(/<meta name="robots" content="([^"]+)">/i)?.[1];
   const isInPagefind = html.includes('data-pagefind-body');
   const canonicalMatches = [

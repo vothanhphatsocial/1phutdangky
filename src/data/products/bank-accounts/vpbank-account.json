@@ -25,7 +25,7 @@
 
   "ctaLabel": "Xem tài khoản VPBank",
 
-  "decisionFacts": [
+  "facts": [
     {
       "label": "Điều kiện đăng ký",
       "value": "Dùng số điện thoại và giấy tờ tùy thân của chính bạn, tự nhập OTP và hoàn tất xác thực do VPBank yêu cầu. VPBank quyết định kết quả mở tài khoản."

@@ -29,6 +29,10 @@ const offer =
 const isAffiliate = Boolean(offer);
 const isBankAccountProduct =
   product.id.startsWith('bank-accounts/');
+const isCreditCardProduct =
+  product.data.category === 'credit-card';
+const isLoanProduct =
+  product.data.category === 'loan';
 const isLiobankProduct =
   product.id ===
   'credit-cards/liobank-credit-card';
@@ -48,8 +52,10 @@ const hasMoreInformation =
     'product-card',
     isBankAccountProduct &&
       'product-card--bank-account',
-    isLiobankProduct &&
-      'product-card--liobank',
+    isCreditCardProduct &&
+      'product-card--credit-card',
+    isLoanProduct &&
+      'product-card--loan',
   ]}
   aria-label={`Thông tin ${product.data.name}`}
 >
@@ -170,7 +176,17 @@ const hasMoreInformation =
   </div>
 
   <div class="product-sheet">
-    <p class="sheet-label">Trước khi tiếp tục</p>
+    <p class="sheet-label">
+      {
+        isBankAccountProduct
+          ? 'Thông tin tài khoản cần biết'
+          : isCreditCardProduct
+            ? 'Thông tin thẻ tín dụng cần biết'
+            : isLoanProduct
+              ? 'Thông tin khoản vay cần biết'
+              : 'Thông tin sản phẩm cần biết'
+      }
+    </p>
 
     {
       primaryFacts.length > 0 && (
@@ -328,7 +344,7 @@ const hasMoreInformation =
   }
 
 
-  .product-card--liobank {
+  .product-card--credit-card {
     background:
       radial-gradient(
         circle at 90% 10%,
@@ -337,9 +353,25 @@ const hasMoreInformation =
       ),
       linear-gradient(
         135deg,
-        #a5c7ff 0%,
-        #b8a5ff 50%,
-        #88ebca 100%
+        #ffd59a 0%,
+        #f6a8c6 52%,
+        #9fc9ff 100%
+      );
+  }
+
+
+  .product-card--loan {
+    background:
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(255, 255, 255, 0.72),
+        transparent 30%
+      ),
+      linear-gradient(
+        135deg,
+        #b9a7ff 0%,
+        #d7b6dc 52%,
+        #ffc4a7 100%
       );
   }
 

@@ -19,7 +19,7 @@
   ],
   "primaryOfferId": "home-credit-accesstrade-cash-loan",
   "ctaLabel": "Kiểm tra hạn mức vay",
-  "decisionFacts": [
+  "facts": [
     {
       "label": "Số tiền và thời hạn",
       "value": "Home Credit giới thiệu khoảng 5–250 triệu đồng và kỳ hạn 3–57 tháng; mức cụ thể phụ thuộc hồ sơ và quyết định xét duyệt."
