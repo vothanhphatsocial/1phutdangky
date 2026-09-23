@@ -100,11 +100,13 @@ const formatDate = (
           <span>Đăng Ký</span>
         </div>
 
-        <div class="article-visual-flow" aria-hidden="true">
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
+        <img
+          class="article-visual-flow"
+          src="/brand/mark.png?v=20260923"
+          alt=""
+          width="265"
+          height="292"
+        />
       </div>
 
       <div class="article-visual-line">
@@ -349,36 +351,9 @@ const formatDate = (
 
 
   .article-visual-flow {
-    display: grid;
-    justify-items: end;
-    gap: 0.2rem;
     width: 3.5rem;
-    transform: rotate(-7deg);
-  }
-
-
-  .article-visual-flow i {
-    display: block;
-    height: 0.3rem;
-    border-radius: 999px;
-  }
-
-
-  .article-visual-flow i:nth-child(1) {
-    width: 58%;
-    background: #315cf5;
-  }
-
-
-  .article-visual-flow i:nth-child(2) {
-    width: 78%;
-    background: #a48cff;
-  }
-
-
-  .article-visual-flow i:nth-child(3) {
-    width: 100%;
-    background: #6fe0b4;
+    height: 3.85rem;
+    object-fit: contain;
   }
 
 

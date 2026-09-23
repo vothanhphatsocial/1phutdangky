@@ -148,36 +148,9 @@
 
 
   .visual-card-flow {
-    display: grid;
-    justify-items: end;
-    gap: 0.22rem;
     width: 3.5rem;
-    transform: rotate(-7deg);
-  }
-
-
-  .visual-card-flow i {
-    display: block;
-    height: 0.32rem;
-    border-radius: 999px;
-  }
-
-
-  .visual-card-flow i:nth-child(1) {
-    width: 58%;
-    background: #315cf5;
-  }
-
-
-  .visual-card-flow i:nth-child(2) {
-    width: 78%;
-    background: #a48cff;
-  }
-
-
-  .visual-card-flow i:nth-child(3) {
-    width: 100%;
-    background: #6fe0b4;
+    height: 3.85rem;
+    object-fit: contain;
   }
 
   .visual-card--main > p {
