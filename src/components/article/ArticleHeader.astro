@@ -80,49 +80,20 @@ const formatDate = (
 
   <div class="article-title-block">
 
-    <div class="article-title-copy">
+    <img
+      class="article-title-mark"
+      src="/brand/mark.png?v=20260923-r2"
+      alt=""
+      width="265"
+      height="292"
+      aria-hidden="true"
+    />
 
-      <p class="article-kicker">
-        Hướng dẫn · {categoryName}
-      </p>
+    <div class="article-title-copy">
 
       <h1>
         {title}
       </h1>
-
-    </div>
-
-    <div class="article-visual" aria-hidden="true">
-
-      <div class="article-visual-head">
-        <div class="article-visual-brand">
-          <strong>1 Phút</strong>
-          <span>Đăng Ký</span>
-        </div>
-
-        <img
-          class="article-visual-flow"
-          src="/brand/mark.png?v=20260923-r2"
-          alt=""
-          width="265"
-          height="292"
-        />
-      </div>
-
-      <div class="article-visual-line">
-        <i>01</i>
-        <span></span>
-      </div>
-
-      <div class="article-visual-line">
-        <i>02</i>
-        <span></span>
-      </div>
-
-      <div class="article-visual-line">
-        <i>03</i>
-        <span></span>
-      </div>
 
     </div>
 
@@ -241,14 +212,9 @@ const formatDate = (
     isolation: isolate;
     overflow: hidden;
 
-    display: grid;
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(10rem, 13rem);
-    align-items: end;
-    gap: clamp(1.5rem, 4vw, 3rem);
+    display: block;
 
-    min-height: clamp(400px, 42vw, 490px);
+    min-height: clamp(300px, 32vw, 390px);
     padding: clamp(2rem, 6vw, 4.75rem);
     background:
       radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.72), transparent 25%),
@@ -260,8 +226,19 @@ const formatDate = (
   .article-title-copy {
     position: relative;
     z-index: 1;
-    align-self: center;
     min-width: 0;
+    max-width: 760px;
+  }
+
+
+  .article-title-mark {
+    position: absolute;
+    right: clamp(2rem, 6vw, 4.5rem);
+    bottom: clamp(1.5rem, 5vw, 3.5rem);
+    z-index: 0;
+    width: clamp(5rem, 11vw, 7rem);
+    height: auto;
+    object-fit: contain;
   }
 
 
@@ -290,105 +267,6 @@ const formatDate = (
     background:
       radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.68), transparent 25%),
       linear-gradient(135deg, #b4a3ff, #f1b8f8);
-  }
-
-
-  .article-kicker {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 1rem;
-    color: currentColor;
-    font-size: 0.76rem;
-    font-weight: 850;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-
-  .article-visual {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    padding: 1.35rem;
-    color: #f8f5ef;
-    background: #142237;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 1.65rem;
-    box-shadow: 0 28px 65px rgba(20, 34, 55, 0.22);
-    transform: rotate(5deg);
-  }
-
-
-  .article-visual-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-  }
-
-
-  .article-visual-brand {
-    display: grid;
-    line-height: 1;
-  }
-
-
-  .article-visual-brand strong {
-    font-size: 1.05rem;
-    font-weight: 850;
-    letter-spacing: -0.03em;
-  }
-
-
-  .article-visual-brand span {
-    margin-top: 0.3rem;
-    color: #aaa9b2;
-    font-size: 0.58rem;
-    font-weight: 750;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-
-  .article-visual-flow {
-    width: 3.5rem;
-    height: 3.85rem;
-    object-fit: contain;
-  }
-
-
-  .article-visual-line {
-    display: grid;
-    grid-template-columns: 1.5rem minmax(0, 1fr);
-    align-items: center;
-    gap: 0.7rem;
-    padding: 0.85rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.13);
-  }
-
-
-  .article-visual-line i {
-    color: #91a8ff;
-    font-size: 0.65rem;
-    font-style: normal;
-    font-weight: 800;
-  }
-
-
-  .article-visual-line span {
-    height: 0.5rem;
-    background: rgba(255, 255, 255, 0.14);
-    border-radius: 999px;
-  }
-
-
-  .article-visual-line:nth-child(3) span {
-    width: 78%;
-  }
-
-
-  .article-visual-line:nth-child(4) span {
-    width: 58%;
   }
 
 
@@ -424,16 +302,19 @@ const formatDate = (
 
   @media (max-width: 859px) {
     .article-title-block {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-
       min-height: auto;
       border-radius: var(--radius-xl);
     }
 
-    .article-visual {
-      justify-self: end;
-      width: clamp(10rem, 40vw, 13rem);
+    .article-title-copy {
+      padding-right: 3.5rem;
+    }
+
+    .article-title-mark {
+      top: 1.5rem;
+      right: 1.5rem;
+      bottom: auto;
+      width: 2.8rem;
     }
   }
 
@@ -441,6 +322,16 @@ const formatDate = (
   @media (max-width: 479px) {
     .article-title-block {
       padding: 2rem;
+    }
+
+    .article-title-copy {
+      padding-right: 2.75rem;
+    }
+
+    .article-title-mark {
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 2.55rem;
     }
 
     .article-header h1 {
