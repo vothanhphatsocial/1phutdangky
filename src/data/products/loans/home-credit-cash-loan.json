@@ -2,41 +2,52 @@
   "name": "Vay tiền mặt Home Credit",
   "provider": "Công ty Tài chính TNHH MTV Home Credit Việt Nam",
   "category": "loan",
-  "summary": "Khoản vay tiền mặt trả góp do Home Credit cung cấp; số tiền, lãi suất, phí và kết quả xét duyệt phụ thuộc hồ sơ.",
+  "summary": "Khoản vay tiền mặt trả góp của Home Credit, đăng ký trên ứng dụng; số tiền, lãi suất, phí và kết quả xét duyệt phụ thuộc hồ sơ.",
   "officialUrl": "https://www.homecredit.vn/vay-tien-online-nhanh",
   "offers": [
     {
-      "id": "home-credit-accesstrade-cash-loan",
-      "name": "Link giới thiệu Home Credit qua AccessTrade",
-      "channel": "affiliate-network",
-      "network": "AccessTrade",
-      "destinationLabel": "trang vay tiền online trên website Home Credit",
+      "id": "home-credit-app-support-code",
+      "name": "Liên kết ứng dụng Home Credit kèm mã nhân viên hỗ trợ",
+      "channel": "direct-referral",
+      "destinationLabel": "ứng dụng hoặc kho ứng dụng Home Credit",
       "enabled": true,
-      "url": "https://www.homecredit.vn/vay-tien-online-nhanh?pub_id=1374535&utm_campaign=CLX_WEB_MKT_AFF_CVS_ALL_NS_BAU&utm_content=1374535&utm_source=accesstrade&utm_term=2iZ3oUsLqannuha4E8gqhae2A0CzrLtUnCepW21786912798&utm_medium=affiliate&aff_sid=2iZ3oUsLqannuha4E8gqhae2A0CzrLtUnCepW21786912798",
-      "ctaLabel": "Kiểm tra hạn mức vay",
-      "lastVerifiedAt": "2026-08-17"
+      "url": "https://app.gma.homecredit.vn/home?saCode=00064470",
+      "ctaLabel": "Tải ứng dụng Home Credit",
+      "lastVerifiedAt": "2026-10-10",
+      "referralCode": "00064470",
+      "referralCodeLabel": "Mã nhân viên hỗ trợ"
     }
   ],
-  "primaryOfferId": "home-credit-accesstrade-cash-loan",
-  "ctaLabel": "Kiểm tra hạn mức vay",
+  "primaryOfferId": "home-credit-app-support-code",
+  "ctaLabel": "Tải ứng dụng Home Credit",
   "facts": [
     {
       "label": "Số tiền và thời hạn",
-      "value": "Home Credit giới thiệu khoảng 5–250 triệu đồng và kỳ hạn 3–57 tháng; mức cụ thể phụ thuộc hồ sơ và quyết định xét duyệt."
+      "value": "Home Credit công bố khoản vay từ 3–250 triệu đồng, kỳ hạn 3–57 tháng; số tiền và kỳ hạn được duyệt tùy hồ sơ."
     },
     {
       "label": "Lãi, phí và tổng chi phí",
-      "value": "Lãi suất, phí và tổng số tiền phải trả cần được kiểm tra trong phương án hoặc hợp đồng áp dụng cho từng hồ sơ."
+      "value": "Lãi suất công bố từ 0,75%/tháng theo dư nợ giảm dần; mức áp dụng và tổng nghĩa vụ cần kiểm tra trong phương án hoặc hợp đồng."
     },
     {
       "label": "Giải ngân và trả nợ",
-      "value": "Khoản vay được trả góp theo lịch trong hồ sơ hoặc hợp đồng; thời gian xử lý và điều kiện nhận tiền phụ thuộc hồ sơ."
+      "value": "Khoản vay được trả góp theo lịch trong hồ sơ hoặc hợp đồng; kiểm tra kỳ trả, phí và cách thanh toán trước khi xác nhận."
     }
   ],
   "sources": [
     {
       "title": "Vay tiền online nhanh",
       "url": "https://www.homecredit.vn/vay-tien-online-nhanh",
+      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
+    },
+    {
+      "title": "Cách đăng ký vay qua ứng dụng Home Credit",
+      "url": "https://www.homecredit.vn/blog/huong-dan-dang-ky-vay-qua-ung-dung-clx-ug",
+      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
+    },
+    {
+      "title": "Ứng dụng Home Credit",
+      "url": "https://www.homecredit.vn/ung-dung-home-credit",
       "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
     },
     {
@@ -48,13 +59,8 @@
       "title": "Liên hệ Home Credit",
       "url": "https://www.homecredit.vn/lien-he",
       "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
-    },
-    {
-      "title": "Vay nhanh tiền mặt online",
-      "url": "https://www.homecredit.vn/vay-nhanh-tien-mat-online",
-      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
     }
   ],
-  "lastVerifiedAt": "2026-08-17",
+  "lastVerifiedAt": "2026-10-10",
   "draft": false
 }

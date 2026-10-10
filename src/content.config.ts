@@ -45,6 +45,7 @@ const productOfferSchema = z.object({
   network: z.string().optional(),
   destinationLabel: z.string().optional(),
   referralCode: z.string().optional(),
+  referralCodeLabel: z.string().optional(),
   verificationNote: z.string().optional(),
   ctaLabel: z.string().optional(),
   validThrough: z.coerce.date().optional(),
