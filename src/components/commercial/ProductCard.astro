@@ -39,6 +39,9 @@ const isLiobankProduct =
 const isMbBankProduct =
   product.id ===
   'bank-accounts/mb-bank-account';
+const isHomeCreditProduct =
+  product.id ===
+  'loans/home-credit-cash-loan';
 const referralCode = offer?.referralCode;
 const referralCodeLabel =
   offer?.referralCodeLabel ?? 'Mã người giới thiệu';
@@ -137,6 +140,14 @@ const hasMoreInformation =
               </p>
             )
           }
+
+          {
+            isHomeCreditProduct && (
+              <p class="context-note">
+                Nếu ứng dụng hiển thị ô “Mã nhân viên hỗ trợ”, nhập mã này.
+              </p>
+            )
+          }
         </>
       )
     }
@@ -154,6 +165,14 @@ const hasMoreInformation =
         <p class="context-note action-context">
           Tùy thiết bị, liên kết sẽ mở App MBBank hoặc chuyển bạn đến
           kho ứng dụng. Đây là OneLink do MB Bank cung cấp.
+        </p>
+      )
+    }
+
+    {
+      isHomeCreditProduct && (
+        <p class="context-note action-context">
+          Trên điện thoại, nút này mở kho ứng dụng để tải ứng dụng Home Credit; không mở trang đăng ký trên web.
         </p>
       )
     }
