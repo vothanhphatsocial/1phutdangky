@@ -7,13 +7,13 @@
   "offers": [
     {
       "id": "home-credit-app-support-code",
-      "name": "Liên kết ứng dụng Home Credit kèm mã nhân viên hỗ trợ",
+      "name": "Ứng dụng Home Credit và mã nhân viên hỗ trợ",
       "channel": "direct-referral",
       "destinationLabel": "ứng dụng hoặc kho ứng dụng Home Credit",
       "enabled": true,
-      "url": "https://app.gma.homecredit.vn/home?saCode=00064470",
+      "url": "https://hcv.onelink.me/ausQ/n7wk7jg0",
       "ctaLabel": "Tải ứng dụng Home Credit",
-      "lastVerifiedAt": "2026-10-10",
+      "lastVerifiedAt": "2026-10-28",
       "referralCode": "00064470",
       "referralCodeLabel": "Mã nhân viên hỗ trợ"
     }
@@ -27,7 +27,7 @@
     },
     {
       "label": "Lãi, phí và tổng chi phí",
-      "value": "Lãi suất công bố từ 0,75%/tháng theo dư nợ giảm dần; mức áp dụng và tổng nghĩa vụ cần kiểm tra trong phương án hoặc hợp đồng."
+      "value": "Trang sản phẩm nêu từ 0,75%/tháng theo dư nợ giảm dần; FAQ công bố lãi suất phẳng tối đa 33,94%/năm. Đọc cách tính, phí và tổng tiền trả của hồ sơ trước khi ký."
     },
     {
       "label": "Giải ngân và trả nợ",
@@ -56,11 +56,16 @@
       "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
     },
     {
+      "title": "Thông tin lãi suất sản phẩm cho vay tiền mặt, áp dụng từ 21/07/2026",
+      "url": "https://www.homecredit.vn/upload/THONG_TIN_LAI_SUAT_CUA_SAN_PHAM_CHO_VAY_TIEN_MAT_e1f9608a61.pdf",
+      "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
+    },
+    {
       "title": "Liên hệ Home Credit",
       "url": "https://www.homecredit.vn/lien-he",
       "publisher": "Công ty Tài chính TNHH MTV Home Credit Việt Nam"
     }
   ],
-  "lastVerifiedAt": "2026-10-10",
+  "lastVerifiedAt": "2026-10-28",
   "draft": false
 }
