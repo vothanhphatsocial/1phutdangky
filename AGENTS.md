@@ -41,3 +41,39 @@ Additional requirements from the engine setup:
 - Current quality gate is `npm run check` (build, Pagefind, build validator). No separate lint/typecheck/test scripts exist; use available checks and report unavailable ones accurately.
 - Commit only relevant engine/content files, never secrets or unrelated changes; never force-push. Log the content commit hash, then persist post-deployment status/log updates in a subsequent state commit when possible; do not attempt to record a commit's own hash inside itself.
 - Documentation/instruction/workbook-only setup needs no manual production deployment. Do not change domain, DNS, environment variables, Cloudflare project, deployment branch, or configuration to force/prevent automatic deployment.
+
+## Home Credit evergreen content engine
+
+When the user says exactly or substantially:
+
+> Bắt đầu tạo bài mới Home Credit
+
+run the Home Credit evergreen content workflow without asking the user to choose a topic.
+
+Source of truth:
+- `docs/content/1phutdangky_Home_Credit_Evergreen_Content_Engine.xlsx`
+- `docs/content/HOME_CREDIT_CONTENT_ENGINE.md`
+
+Required behavior:
+1. Read `Next Action` in the workbook.
+2. Select the first `Ready` item from `Evergreen Queue`.
+3. Mark it `In progress` before implementation.
+4. Validate canonical ownership, current official Home Credit sources, and URL-vs-section gate.
+5. Reuse the existing 1phutdangky.com UI/components; do not redesign.
+6. Implement exactly one content run unless the user asks for more.
+7. Run the repository's existing lint/typecheck/test/build checks.
+8. Commit, push, and deploy through the repository's existing GitHub/Cloudflare workflow when credentials and permissions are already available.
+9. Verify production.
+10. Mark the queue item `Done` or `Blocked` and append a row to `Run Log` with URL, sources, checks, commit, push, deploy, and verification result.
+11. If no `Ready` item exists, run Discovery Mode from the workbook, append 3-5 evidence-based candidates, set exactly one qualified item to `Ready`, then execute it.
+
+Do not create a new URL merely to maintain publishing cadence. Conditional items remain sections/updates unless their intent/source/cannibalization gate passes.
+
+Additional requirements from the Home Credit engine setup:
+
+- A setup request or a quoted trigger example does not start a content cycle. Wait for the user's actual trigger invocation.
+- Read `AGENTS.md`, then `docs/content/HOME_CREDIT_CONTENT_ENGINE.md`, then the workbook; inspect `Next Action` before the other workbook sheets. Validate the selector against actual `Evergreen Queue` statuses before selecting the first eligible `Ready` item.
+- Use only the two repository-local source-of-truth paths above. Preserve the workbook's sheets, formulas, validations, formatting, and run history; refresh `Next Action` after state changes.
+- Read `README.md`, `DEPLOYMENT.md`, and current source before implementation. The current quality gate is `npm run check` (build, Pagefind, build validator); no separate lint/typecheck/test scripts exist. Reuse the existing author/source/disclosure behavior and consent-aware analytics.
+- Mark an item `Done` only after successful quality checks and production verification; otherwise record `Blocked` with the exact blocker. Record the content commit hash, then persist post-deployment state/log changes in a subsequent state commit when possible; never attempt to record a commit's own hash inside itself.
+- Documentation/instruction/workbook-only setup needs no manual production deployment. Do not change domain, DNS, environment variables, Cloudflare project, deployment branch, or configuration to force/prevent automatic deployment.
