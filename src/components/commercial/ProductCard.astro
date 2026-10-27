@@ -243,17 +243,6 @@ const hasMoreInformation =
     }
 
     {
-      isMbBankProduct && (
-        <p class="source-note">
-          Điều kiện khuyến mại được đối chiếu từ thể lệ đang hiển thị
-          trong App MBBank ngày 15/08/2026. Nếu nội dung chương trình
-          thay đổi, hãy ưu tiên thông tin trong ứng dụng tại thời điểm
-          đăng ký.
-        </p>
-      )
-    }
-
-    {
       hasMoreInformation && (
         <details class="more-information">
           <summary>Xem đầy đủ thông tin và lưu ý</summary>
@@ -566,8 +555,7 @@ const hasMoreInformation =
     margin-top: 1.7rem;
   }
 
-  .context-note,
-  .source-note {
+  .context-note {
     color: rgba(9, 10, 15, 0.62);
     font-size: 0.74rem;
     line-height: 1.65;
@@ -658,12 +646,6 @@ const hasMoreInformation =
 
   .relationship-note {
     margin: 0.9rem 0 0;
-  }
-
-  .source-note {
-    margin: 0.8rem 0 0;
-    padding-top: 0.8rem;
-    border-top: 1px solid rgba(9, 10, 15, 0.12);
   }
 
   .more-information {
