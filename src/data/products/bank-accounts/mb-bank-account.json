@@ -12,7 +12,7 @@
       "enabled": true,
       "url": "https://mbbank.onelink.me/QPF5?pid=SF%20Email%20Warmup&c=SF_Email_WarmUP_AppInstall&af_force_deeplink=true&af_dp=mbbank%3A%2F%2F&referral_code=PARTNER4V2X7M6M2G1J4_1374535",
       "ctaLabel": "Mở App MBBank",
-      "lastVerifiedAt": "2026-08-25",
+      "lastVerifiedAt": "2026-10-28",
       "referralCode": "MBAT113"
     }
   ],
@@ -22,6 +22,11 @@
     {
       "title": "App MBBank",
       "url": "https://www.mbbank.com.vn/26/273/274/Chi-tiet/app-mbbank-2019-11-3-10-19-42",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Điều kiện và cách mở tài khoản thanh toán tại MB",
+      "url": "https://www.mbbank.com.vn/chi-tiet/tin-mb/tai-khoan-thanh-toan-la-gi/7895",
       "publisher": "Ngân hàng TMCP Quân đội (MB)"
     },
     {
@@ -50,7 +55,7 @@
       "publisher": "Ngân hàng TMCP Quân đội (MB)"
     }
   ],
-  "lastVerifiedAt": "2026-08-16",
+  "lastVerifiedAt": "2026-10-28",
   "draft": false,
   "facts": [
     {

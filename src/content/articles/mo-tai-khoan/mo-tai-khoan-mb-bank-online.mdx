@@ -1,12 +1,12 @@
 ---
 title: "Hướng dẫn mở tài khoản MB Bank online"
-description: "Hướng dẫn mở tài khoản MB Bank online trên App MBBank: cách dùng link và mã giới thiệu MBAT113, chuẩn bị xác thực, phí cùng các dịch vụ cần kiểm tra."
+description: "Hướng dẫn mở tài khoản MB Bank trên App MBBank: điều kiện, căn cước, xác minh danh tính, cách dùng mã MBAT113, phí và các dịch vụ đi kèm."
 category: "mo-tai-khoan"
 type: "guide"
 
 publishedAt: 2026-08-15
-updatedAt: 2026-08-25
-lastVerifiedAt: 2026-08-16
+updatedAt: 2026-10-28
+lastVerifiedAt: 2026-10-28
 
 readingMinutes: 9
 
@@ -16,7 +16,7 @@ draft: false
 cover: "./mb-bank-online-cover.png"
 coverAlt: "Ảnh đại diện bài mở tài khoản MB Bank online của 1 Phút Đăng Ký."
 
-quickAnswer: "Bạn tự mở tài khoản trên App MBBank, tự nhận OTP và hoàn tất các bước xác thực. MB tiếp nhận thông tin và quyết định kết quả mở tài khoản."
+quickAnswer: "Bạn có thể bắt đầu mở tài khoản thanh toán trên App MBBank bằng thông tin chính chủ, xác nhận số điện thoại và hoàn tất xác minh danh tính theo hướng dẫn. Chuẩn bị căn cước còn hiệu lực và điện thoại đáp ứng bước xác thực; MB kiểm tra hồ sơ trước khi chấp thuận mở tài khoản."
 
 productBeforeToc: true
 
@@ -32,6 +32,9 @@ sources:
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "Tài khoản thanh toán"
     url: "https://www.mbbank.com.vn/26/99/112/Chi-tiet/tai-khoan-thanh-toan"
+    publisher: "Ngân hàng TMCP Quân đội (MB)"
+  - title: "Điều kiện và cách mở tài khoản thanh toán tại MB"
+    url: "https://www.mbbank.com.vn/chi-tiet/tin-mb/tai-khoan-thanh-toan-la-gi/7895"
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "Điều kiện, điều khoản giao dịch tài khoản thanh toán"
     url: "https://www.mbbank.com.vn/26/99/1197/Chi-tiet/dieu-kien-dieu-khoan-giao-dich-tai-khoan-thanh-toan-2017-10-18-10-39-34"
@@ -50,29 +53,40 @@ sources:
     publisher: "Ngân hàng TMCP Quân đội (MB)"
 ---
 
-Bài này tập trung vào điều kiện dành cho người đăng ký lần đầu, mã người giới thiệu và các khoản cần kiểm tra trước khi xác nhận mở tài khoản.
+import { getEntry } from 'astro:content';
+import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+
+export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-account');
+
+Tài khoản thanh toán MB dùng để nhận tiền, chuyển khoản và thanh toán qua các kênh MB cung cấp. Hướng dẫn dưới đây dành cho người muốn tự đăng ký trên App MBBank, từ chuẩn bị giấy tờ đến kiểm tra thông tin và dịch vụ trước khi xác nhận.
 
 ## Tài khoản này phù hợp khi nào?
 
-Luồng này phù hợp nhất khi đây là lần đầu bạn đăng ký App MBBank, muốn tự mở tài khoản thanh toán trên điện thoại và có thiết bị đáp ứng bước xác thực mà ứng dụng yêu cầu. MB tiếp nhận thông tin, xác minh danh tính và quyết định kết quả.
+Luồng này phù hợp nhất khi đây là lần đầu bạn đăng ký App MBBank và có thể tự xác thực thông tin trên điện thoại. MB cũng có kênh đăng ký tại chi nhánh, phòng giao dịch cho khách hàng cần hỗ trợ trực tiếp.
+
+Mở tài khoản thanh toán không đồng nghĩa đã phát hành thẻ vật lý hoặc mở tài khoản tiết kiệm. Nếu cần thẻ để rút tiền tại ATM, hãy kiểm tra riêng loại thẻ, phí phát hành và phí sử dụng; không chọn thêm chỉ vì thẻ xuất hiện trong quá trình đăng ký.
 
 Nếu từng đăng ký App MBBank, từng có tài khoản MB hoặc không chắc số điện thoại và giấy tờ của mình đã được sử dụng hay chưa, hãy hỏi MB247 trước khi tạo hồ sơ mới.
 
-## Cần chuẩn bị gì trước khi đăng ký?
+## Điều kiện và giấy tờ cần chuẩn bị
+
+Điều kiện được mở tài khoản và điều kiện tự hoàn tất đăng ký trên App không hoàn toàn giống nhau. Với trường hợp cần người đại diện, giấy tờ khác căn cước hoặc hồ sơ không được luồng trực tuyến chấp nhận, hãy hỏi MB247 về kênh và hồ sơ phù hợp trước khi đăng ký.
 
 <Checklist
   title="Chuẩn bị trước khi bắt đầu"
   items={[
     "Điện thoại do chính bạn kiểm soát, có kết nối mạng ổn định.",
     "Số điện thoại đang sử dụng để tự nhận OTP.",
-    "Giấy tờ tùy thân bản gốc, còn hiệu lực, không bị che hoặc hư hỏng.",
+    "Căn cước bản gốc, còn hiệu lực, thông tin rõ ràng để chụp và xác minh.",
     "Nơi đủ sáng để chụp giấy tờ và khuôn mặt; thiết bị hỗ trợ NFC nếu ứng dụng yêu cầu đọc chip."
   ]}
 />
 
+Thông tin họ tên, giấy tờ và số điện thoại cần được nhập đúng theo yêu cầu trên App. Khi ứng dụng đối chiếu giấy tờ hoặc sinh trắc học không thành công, xử lý tại bước đang báo lỗi hoặc liên hệ MB; không dùng thông tin người khác để tiếp tục hồ sơ.
+
 ## Đăng ký bằng liên kết và mã giới thiệu
 
-Quy trình dưới đây mô tả luồng đăng ký tham khảo. Tên hoặc vị trí màn hình có thể thay đổi theo phiên bản App MBBank.
+Quy trình dưới đây tóm tắt các công việc cần hoàn tất. Thứ tự và tên màn hình có thể thay đổi theo phiên bản App MBBank; thực hiện theo các bước ứng dụng hiển thị cho hồ sơ của bạn.
 
 <Steps title="Quy trình đăng ký tham khảo">
   <Step number="1" title="Mở App MBBank từ liên kết">
@@ -83,18 +97,28 @@ Quy trình dưới đây mô tả luồng đăng ký tham khảo. Tên hoặc v�
     Dùng số điện thoại của chính bạn và tự nhập OTP nhận được trên thiết bị.
   </Step>
 
-  <Step number="3" title="Nhập mã người giới thiệu">
-    Tại ô Mã người giới thiệu, nhập chính xác MBAT113 trước khi xác nhận nếu ứng dụng hiển thị trường này.
+  <Step number="3" title="Xác minh danh tính">
+    Chụp căn cước và khuôn mặt theo hướng dẫn. Hoàn tất xác thực sinh trắc học, đọc chip khi ứng dụng yêu cầu và chỉ xác nhận khi thông tin được nhận diện đúng.
   </Step>
 
-  <Step number="4" title="Xác minh danh tính">
-    Chụp giấy tờ và khuôn mặt theo hướng dẫn. Nếu ứng dụng yêu cầu đọc chip, đặt căn cước vào vị trí NFC trên điện thoại và làm theo chỉ dẫn đang hiển thị.
+  <Step number="4" title="Thiết lập thông tin đăng nhập và chọn tài khoản">
+    Tạo thông tin đăng nhập, thiết lập xác thực giao dịch theo hướng dẫn của MB và chọn số tài khoản phù hợp. Đọc giá hoặc điều kiện của lựa chọn số đẹp trước khi tiếp tục.
   </Step>
 
   <Step number="5" title="Đọc lại và hoàn tất">
     Kiểm tra thông tin cá nhân, gói tài khoản, số tài khoản, dịch vụ được chọn và mức phí đang hiển thị trước khi xác nhận. Sau khi mở thành công, làm theo hướng dẫn trong ứng dụng.
   </Step>
 </Steps>
+
+### Mã giới thiệu MBAT113 nhập ở đâu khi đăng ký?
+
+Nhập **MBAT113** vào trường **Mã người giới thiệu** trong luồng đăng ký App MBBank, rồi kiểm tra lại trước khi xác nhận thông tin. Bạn có thể dùng nút Sao chép mã trong khối thông tin sản phẩm để tránh gõ sai.
+
+Quyền lợi và điều kiện của chương trình giới thiệu cần xem trong thể lệ MB đang áp dụng cho lượt đăng ký.
+
+1 Phút Đăng Ký là website độc lập, có thể nhận hoa hồng khi lượt đăng ký qua giới thiệu đáp ứng điều kiện chương trình.
+
+<AffiliateCTA product={mbBankProduct} position="article-process" />
 
 <Notice type="warning" title="Tự thực hiện toàn bộ bước xác thực">
 Không gửi OTP, mật khẩu, ảnh giấy tờ, dữ liệu khuôn mặt hoặc thông tin đăng nhập cho người giới thiệu. 1 Phút Đăng Ký không thu thập và không xử lý hồ sơ mở tài khoản.
@@ -111,7 +135,7 @@ Theo biểu phí khách hàng cá nhân thông thường của MB:
 | Đóng tài khoản thanh toán | Miễn phí |
 | Số tài khoản lựa chọn, chuyển tiền, thẻ, thông báo biến động số dư và dịch vụ tùy chọn | Có thể có biểu phí riêng theo dịch vụ và điều kiện áp dụng |
 
-Mức miễn phí của tài khoản thanh toán thông thường không áp dụng mặc định cho mọi lựa chọn đi kèm. Hãy đọc mức App MBBank đang hiển thị cho đúng gói và dịch vụ trước khi xác nhận.
+Mức miễn phí của tài khoản thanh toán thông thường không áp dụng mặc định cho mọi lựa chọn đi kèm. Hãy đọc mức App MBBank đang hiển thị cho đúng gói và dịch vụ trước khi xác nhận. Khi cần so sánh với sản phẩm khác, xem thêm các [hướng dẫn mở tài khoản](/mo-tai-khoan/); mỗi ngân hàng có điều kiện và biểu phí riêng.
 
 ## Khi đăng ký không tiếp tục được
 
@@ -140,7 +164,9 @@ Sản phẩm do Ngân hàng TMCP Quân đội (MB) cung cấp. Thông tin liên 
 - Số gọi từ nước ngoài: [(84-24) 3767 4050](tel:+842437674050).
 - Email hỗ trợ: mb247@mbbank.com.vn.
 
-Hãy liên hệ trực tiếp MB khi cần kiểm tra hồ sơ đã tồn tại, lỗi xác thực, khóa tài khoản hoặc khoản phí đang hiển thị. 1 Phút Đăng Ký không truy cập được hồ sơ và không thể thay MB xử lý tài khoản.
+Sau khi mở tài khoản, kiểm tra thông tin tài khoản, dịch vụ đã đăng ký và hướng dẫn xác thực giao dịch trên App. Nếu phát hiện thông tin sai, giao dịch lạ hoặc cần khóa dịch vụ khẩn cấp, liên hệ trực tiếp [MB247](https://www.mbbank.com.vn/Contact).
+
+1 Phút Đăng Ký không truy cập được hồ sơ và không thể thay MB xử lý tài khoản. Khi yêu cầu hỗ trợ, mô tả bước đang gặp lỗi; không gửi OTP, mật khẩu hoặc dữ liệu xác thực cho người giới thiệu.
 
 ## Kết luận
 
