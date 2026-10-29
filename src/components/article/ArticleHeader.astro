@@ -1,12 +1,11 @@
 ---
-interface Props {
-  articleId: string;
+import type { CollectionEntry } from 'astro:content';
+import ArticleTitleVisual from './ArticleTitleVisual.astro';
 
-  title: string;
+interface Props {
+  post: CollectionEntry<'articles'>;
 
   categoryName: string;
-
-  categorySlug: string;
 
   categoryUrl: string;
 
@@ -22,10 +21,8 @@ interface Props {
 }
 
 const {
-  articleId,
-  title,
+  post,
   categoryName,
-  categorySlug,
   categoryUrl,
   authorName,
   authorUrl,
@@ -33,10 +30,6 @@ const {
   updatedAt,
   readingMinutes,
 } = Astro.props;
-
-const isLiobankArticle =
-  articleId ===
-  'the-tin-dung/mo-the-tin-dung-liobank';
 
 const formatDate = (
   date: Date
@@ -51,12 +44,7 @@ const formatDate = (
   );
 ---
 
-<header class:list={[
-  'article-header',
-  `article-header--${categorySlug}`,
-  isLiobankArticle &&
-    'article-header--liobank',
-]}>
+<header class="article-header">
 
   <nav
     class="breadcrumbs"
@@ -78,17 +66,7 @@ const formatDate = (
   </nav>
 
 
-  <div class="article-title-block">
-
-    <div class="article-title-copy">
-
-      <h1>
-        {title}
-      </h1>
-
-    </div>
-
-  </div>
+  <ArticleTitleVisual post={post} variant="hero" />
 
 
   <div class="article-meta">
@@ -182,74 +160,6 @@ const formatDate = (
   }
 
 
-  .article-header h1 {
-    max-width: 760px;
-    margin-bottom: 0;
-    color: currentColor;
-
-    font-size:
-      clamp(
-        2.4rem,
-        5.7vw,
-        5rem
-      );
-    line-height: 0.98;
-    letter-spacing: -0.06em;
-  }
-
-
-  .article-title-block {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    display: block;
-
-    min-height: clamp(300px, 32vw, 390px);
-    padding: clamp(2rem, 6vw, 4.75rem);
-    background:
-      radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.72), transparent 25%),
-      linear-gradient(135deg, #99c3ff, #92f1d1);
-    border-radius: var(--radius-2xl);
-  }
-
-
-  .article-title-copy {
-    position: relative;
-    z-index: 1;
-    min-width: 0;
-    max-width: 760px;
-  }
-
-
-  .article-header--mo-tai-khoan .article-title-block {
-    background:
-      radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.72), transparent 25%),
-      linear-gradient(135deg, #8fb0ff 0%, #c4abff 56%, #a9e8d4 100%);
-  }
-
-
-  .article-header--the-tin-dung .article-title-block {
-    background:
-      radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.7), transparent 25%),
-      linear-gradient(135deg, #ffc29e, #f7e88c);
-  }
-
-
-  .article-header--liobank .article-title-block {
-    background:
-      radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.72), transparent 25%),
-      linear-gradient(135deg, #a5c7ff 0%, #b8a5ff 50%, #88ebca 100%);
-  }
-
-
-  .article-header--vay-tien-mat .article-title-block {
-    background:
-      radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.68), transparent 25%),
-      linear-gradient(135deg, #b4a3ff, #f1b8f8);
-  }
-
-
   .article-meta {
     display: flex;
     flex-wrap: wrap;
@@ -280,30 +190,4 @@ const formatDate = (
   }
 
 
-  @media (max-width: 859px) {
-    .article-title-block {
-      min-height: auto;
-      border-radius: var(--radius-xl);
-    }
-
-    .article-title-copy {
-      padding-right: 3.5rem;
-    }
-
-  }
-
-
-  @media (max-width: 479px) {
-    .article-title-block {
-      padding: 2rem;
-    }
-
-    .article-title-copy {
-      padding-right: 2.75rem;
-    }
-
-    .article-header h1 {
-      font-size: clamp(2.35rem, 10.5vw, 3.05rem);
-    }
-  }
 </style>

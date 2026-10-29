@@ -4,6 +4,11 @@
 - Store article files and their cover assets in `src/content/articles/<category>/`. Do not publish articles at the site root or override their slug to bypass the category directory.
 - When moving a published article, add a direct 301 redirect for its old URL and update internal links, canonical, breadcrumb data, sitemap and active engine references. Preserve historical run logs.
 
+## Article title visuals
+
+- Use frontmatter `title` as the only title for article H1, listing cards and social images. `ArticleTitleVisual.astro` and `src/utils/articleVisual.mjs` provide the shared title-only visual and palette; do not add separate card titles or restore brand panels, marks or category eyebrows inside article title visuals.
+- Article OG/Twitter/schema images are generated automatically at build time by `src/pages/article-images/[...image].png.ts`. Existing legacy `cover` assets are not used for these surfaces; do not create or edit a separate cover to update an article title.
+
 ## MB Bank Evergreen Content Engine
 
 When the user says exactly or substantially:

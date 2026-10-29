@@ -1,0 +1,88 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getArticleVisual } from '../../utils/articleVisual.mjs';
+import '../../styles/article-visual.css';
+
+interface Props {
+  post: CollectionEntry<'articles'>;
+  variant: 'hero' | 'card';
+}
+
+const { post, variant } = Astro.props;
+const visual = getArticleVisual(post);
+const Tag = variant === 'hero' ? 'h1' : 'span';
+---
+
+<div
+  class:list={['article-title-visual', `article-title-visual--${variant}`]}
+  style={{
+    background: visual.background,
+    color: visual.color,
+    '--title-weight': visual.weight,
+    '--title-leading': visual.lineHeight,
+    '--title-tracking': `${visual.letterSpacing}em`,
+  }}
+  aria-hidden={variant === 'card' ? 'true' : undefined}
+  data-article-visual={post.id}
+  data-visual-image={visual.image}
+>
+  <Tag class="visual-title">{visual.title}</Tag>
+</div>
+
+<style>
+  .article-title-visual {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-2xl);
+  }
+
+  .visual-title {
+    display: block;
+    margin: 0;
+    color: inherit;
+    font-family: 'ArticleTitle', var(--font-sans);
+    font-weight: var(--title-weight);
+    line-height: var(--title-leading);
+    letter-spacing: var(--title-tracking);
+    overflow-wrap: anywhere;
+  }
+
+  .article-title-visual--hero {
+    min-height: clamp(300px, 32vw, 390px);
+    padding: clamp(2rem, 6vw, 4.75rem);
+  }
+
+  .article-title-visual--hero .visual-title {
+    max-width: 760px;
+    font-size: clamp(2.4rem, 5.7vw, 5rem);
+  }
+
+  .article-title-visual--card {
+    display: flex;
+    align-items: flex-start;
+    aspect-ratio: 40 / 21;
+    padding: 8%;
+    border-radius: var(--radius-xl);
+  }
+
+  .article-title-visual--card .visual-title {
+    font-size: clamp(1rem, 7.1cqw, 2.7rem);
+  }
+
+  @media (max-width: 859px) {
+    .article-title-visual--hero {
+      min-height: auto;
+      border-radius: var(--radius-xl);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .article-title-visual--hero {
+      padding: 2rem;
+    }
+
+    .article-title-visual--hero .visual-title {
+      font-size: clamp(2.35rem, 10.5vw, 3.05rem);
+    }
+  }
+</style>

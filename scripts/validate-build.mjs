@@ -1,5 +1,6 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { getArticleVisual } from '../src/utils/articleVisual.mjs';
 
 const projectRoot = process.cwd();
 const distRoot = path.join(projectRoot, 'dist');
@@ -126,10 +127,21 @@ for (const sitemapIndexUrl of sitemapIndexUrls) {
 const builtFiles = await walk(distRoot);
 const htmlFiles = builtFiles.filter((filePath) => filePath.endsWith('.html'));
 const indexableCanonicals = new Set();
+const articleVisuals = new Map();
+const builtHtml = new Map();
+
+function plainText(html) {
+  return html.replace(/<[^>]*>/g, '').replace(/&#(x[0-9a-f]+|\d+);/gi, (_, code) =>
+    String.fromCodePoint(code[0].toLowerCase() === 'x' ? parseInt(code.slice(1), 16) : Number(code)),
+  ).replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ').trim();
+}
 
 for (const htmlFile of htmlFiles) {
   const relativePath = path.relative(distRoot, htmlFile);
   const html = await readFile(htmlFile, 'utf8');
+  builtHtml.set(relativePath, html);
   const route = routeForHtml(relativePath);
 
   if (
@@ -202,7 +214,31 @@ for (const htmlFile of htmlFiles) {
   ];
   for (const [, jsonLd] of jsonLdBlocks) {
     try {
-      JSON.parse(jsonLd);
+      const schema = JSON.parse(jsonLd);
+      if (schema['@type'] === 'Article' && route) {
+        const id = route.slice(1, -1);
+        const visual = getArticleVisual({ id, data: { title: schema.headline, category: id.split('/')[0] } });
+        articleVisuals.set(route, visual);
+        const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
+        if (plainText(h1 ?? '') !== visual.title || (html.match(/<h1\b/gi) ?? []).length !== 1) {
+          errors.push(`${relativePath} có H1 không đồng bộ với tiêu đề bài viết.`);
+        }
+        const expectedImage = `${productionOrigin}${visual.image}`;
+        const ogImage = html.match(/<meta property="og:image" content="([^"]+)"/i)?.[1];
+        const twitterImage = html.match(/<meta name="twitter:image" content="([^"]+)"/i)?.[1];
+        if (ogImage !== expectedImage || twitterImage !== expectedImage || schema.image?.[0] !== expectedImage || !html.includes(`data-visual-image="${visual.image}"`)) {
+          errors.push(`${relativePath} có ảnh tiêu đề/OG/Twitter/schema không đồng bộ.`);
+        }
+        const imageFile = path.join(distRoot, visual.image);
+        if (!(await exists(imageFile))) {
+          errors.push(`${relativePath} thiếu ảnh chia sẻ: ${visual.image}`);
+        } else {
+          const png = await readFile(imageFile);
+          if (png.length < 24 || png.toString('hex', 0, 8) !== '89504e470d0a1a0a' || png.readUInt32BE(16) !== visual.width || png.readUInt32BE(20) !== visual.height) {
+            errors.push(`${relativePath} cần ảnh PNG ${visual.width}×${visual.height}.`);
+          }
+        }
+      }
     } catch (error) {
       errors.push(`${relativePath} có JSON-LD không hợp lệ: ${error.message}`);
     }
@@ -225,6 +261,18 @@ for (const htmlFile of htmlFiles) {
     if (targetUrl.origin !== productionOrigin) continue;
     if (!(await targetExists(targetUrl.pathname))) {
       errors.push(`${relativePath} liên kết tới target không tồn tại: ${targetUrl.pathname}`);
+    }
+  }
+}
+
+for (const [relativePath, html] of builtHtml) {
+  for (const [, card] of html.matchAll(/<article\b[^>]*class="post-card"[^>]*>([\s\S]*?)<\/article>/gi)) {
+    const href = card.match(/<a\b[^>]*href="([^"]+)"/i)?.[1];
+    const visual = articleVisuals.get(href);
+    const cardTitle = plainText(card.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/i)?.[1] ?? '');
+    const visualTitle = plainText(card.match(/<span\b[^>]*class="visual-title"[^>]*>([\s\S]*?)<\/span>/i)?.[1] ?? '');
+    if (!visual || cardTitle !== visual.title || visualTitle !== visual.title || !card.includes(`data-visual-image="${visual.image}"`)) {
+      errors.push(`${relativePath} có thẻ bài không đồng bộ với bài gốc: ${href ?? 'missing URL'}.`);
     }
   }
 }

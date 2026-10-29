@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import ArticleTitleVisual from './article/ArticleTitleVisual.astro';
 import { CATEGORIES, articleUrl } from '../config/site';
 
 interface Props {
@@ -20,35 +20,8 @@ const date = post.data.updatedAt ?? post.data.publishedAt;
 <article class="post-card" data-tone={tone}>
   <a class="post-link" href={articleUrl(post.id)}>
 
-    <div class:list={[
-      'post-visual',
-      post.data.cover && 'post-visual--has-cover',
-      `post-visual--${post.data.category}`,
-    ]}>
-      {
-        post.data.cover && (
-          <Image
-            class="post-cover"
-            src={post.data.cover}
-            alt={post.data.coverAlt ?? ''}
-            widths={[480, 720, 960]}
-            sizes="(max-width: 759px) 100vw, 50vw"
-            loading="lazy"
-          />
-        )
-      }
-
-      {
-        !post.data.cover && (
-          <>
-            <span>{category.shortName}</span>
-
-            <div class="post-graphic" aria-hidden="true">
-              <i></i><i></i><i></i>
-            </div>
-          </>
-        )
-      }
+    <div class="post-visual">
+      <ArticleTitleVisual post={post} variant="card" />
     </div>
 
     <div class="post-body">
@@ -105,76 +78,7 @@ const date = post.data.updatedAt ?? post.data.publishedAt;
   }
 
   .post-visual {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    aspect-ratio: 40 / 21;
-    min-height: 0;
-    padding: 1.15rem;
-    background: linear-gradient(135deg, #edf4ff, #dceaff);
-    border-radius: var(--radius-xl);
-  }
-
-  .post-visual--has-cover {
-    padding: 0;
-  }
-
-  .post-cover {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.105);
-  }
-
-  .post-visual--the-tin-dung {
-    background: linear-gradient(135deg, #f5efff, #e8ddff);
-  }
-
-  .post-visual--vay-tien-mat {
-    background: linear-gradient(135deg, #fff6e9, #ffe8c7);
-  }
-
-  .post-visual span {
-    position: relative;
-    z-index: 2;
-    padding: 0.35rem 0.6rem;
-    background: rgba(255,255,255,0.92);
-    color: var(--color-heading);
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 750;
-  }
-
-  .post-graphic {
-    position: absolute;
-    right: -1.5rem;
-    bottom: -1.5rem;
-    display: grid;
-    gap: 0.4rem;
-    width: 150px;
-    padding: 2.4rem 1.5rem;
-    background: rgba(255, 255, 255, 0.44);
-    border: 1px solid rgba(255, 255, 255, 0.56);
-    border-radius: 2.2rem;
-    transform: rotate(-8deg);
-  }
-
-  .post-graphic i {
-    display: block;
-    height: 9px;
-    background: rgba(11, 12, 16, 0.12);
-    border-radius: 999px;
-  }
-
-  .post-graphic i:nth-child(2) {
-    width: 72%;
-  }
-
-  .post-graphic i:nth-child(3) {
-    width: 48%;
+    container-type: inline-size;
   }
 
   .post-body {

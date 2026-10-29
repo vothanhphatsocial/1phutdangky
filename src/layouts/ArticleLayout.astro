@@ -7,9 +7,7 @@ import {
   getEntries,
 } from 'astro:content';
 
-import {
-  getImage,
-} from 'astro:assets';
+import { getArticleVisual } from '../utils/articleVisual.mjs';
 
 
 import BaseLayout
@@ -166,26 +164,8 @@ const organizationLogoUrl =
   ).toString();
 
 
-const socialCover =
-  post.data.cover
-    ? await getImage({
-        src: post.data.cover,
-        width: 1200,
-        height: 630,
-        fit: 'cover',
-        format: 'webp',
-        quality: 82,
-      })
-    : undefined;
-
-
-const socialCoverUrl =
-  socialCover
-    ? new URL(
-        socialCover.src,
-        SITE.url
-      ).toString()
-    : undefined;
+const visual = getArticleVisual(post);
+const socialCoverUrl = new URL(visual.image, SITE.url).toString();
 
 
 const articleSchema = {
@@ -362,13 +342,11 @@ const breadcrumbSchema = {
     post.data.updatedAt
   }
 
-  socialImage={
-    socialCover?.src
-  }
+  socialImage={visual.image}
 
-  socialImageAlt={
-    post.data.coverAlt
-  }
+  socialImageAlt={visual.alt}
+  socialImageWidth={visual.width}
+  socialImageHeight={visual.height}
 
   structuredData={[
     articleSchema,
@@ -384,10 +362,8 @@ const breadcrumbSchema = {
     <div class="article-stage">
 
       <ArticleHeader
-        articleId={post.id}
-        title={post.data.title}
+        post={post}
         categoryName={category.name}
-        categorySlug={category.slug}
         categoryUrl={`/${category.slug}/`}
         authorName={SITE.editor.name}
         authorUrl={SITE.editor.url}
