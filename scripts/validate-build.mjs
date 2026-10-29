@@ -262,11 +262,25 @@ const articleFiles = (await walk(articleRoot)).filter((filePath) => /\.mdx?$/.te
 
 for (const articleFile of articleFiles) {
   const source = await readFile(articleFile, 'utf8');
-  if (!/^draft:\s*true\s*$/m.test(source)) continue;
 
   const relativeArticle = path
     .relative(articleRoot, articleFile)
+    .split(path.sep).join('/')
     .replace(/\.mdx?$/, '');
+
+  const category = source.match(
+    /^category:\s*["']?(mo-tai-khoan|the-tin-dung|vay-tien-mat)["']?\s*$/m,
+  )?.[1];
+  const segments = relativeArticle.split('/');
+
+  if (!category || segments.length !== 2 || segments[0] !== category) {
+    errors.push(
+      `Article phải nằm trong thư mục chuyên mục tương ứng: ${relativeArticle} (category: ${category ?? 'missing'}).`,
+    );
+  }
+
+  if (!/^draft:\s*true\s*$/m.test(source)) continue;
+
   const draftOutput = path.join(distRoot, relativeArticle, 'index.html');
   if (await exists(draftOutput)) {
     errors.push(`Draft article xuất hiện trong build: /${relativeArticle}/`);

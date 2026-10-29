@@ -47,6 +47,17 @@ export async function getStaticPaths() {
 
   return posts.map((post) => {
 
+    const segments = post.id.split('/');
+
+    if (
+      segments.length !== 2 ||
+      segments[0] !== post.data.category
+    ) {
+      throw new Error(
+        `Article ${post.id} must use /${post.data.category}/<slug>/ and be stored in the matching category directory.`
+      );
+    }
+
     const relatedPosts = posts
       .filter(
         (candidate) =>

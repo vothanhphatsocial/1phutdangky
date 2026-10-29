@@ -21,6 +21,13 @@
 
 ## DNS và redirect
 
+URL bài viết có dạng `/<chuyên-mục>/<slug>/`, khớp thư mục trong `src/content/articles/` và trường `category`. Build sẽ báo lỗi nếu bài nằm sai chuyên mục.
+
+Các URL cũ sau chuyển hướng 301 trực tiếp tới URL trong chuyên mục (cả dạng có và không có dấu `/` cuối):
+
+- `/ma-gioi-thieu-mb-bank/` → `/mo-tai-khoan/ma-gioi-thieu-mb-bank/`
+- `/khong-dang-ky-duoc-mb-bank/` → `/mo-tai-khoan/khong-dang-ky-duoc-mb-bank/`
+
 - Domain registrar/account: Namecheap
 - DNS authoritative và proxy: Cloudflare
 - Apex và `www` trỏ tới Pages project `1phutdangky`

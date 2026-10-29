@@ -1,3 +1,9 @@
+## Article URL structure
+
+- Every article must use `/<category>/<slug>/`, with exactly one category segment matching its `category` frontmatter: `mo-tai-khoan`, `the-tin-dung`, or `vay-tien-mat`.
+- Store article files and their cover assets in `src/content/articles/<category>/`. Do not publish articles at the site root or override their slug to bypass the category directory.
+- When moving a published article, add a direct 301 redirect for its old URL and update internal links, canonical, breadcrumb data, sitemap and active engine references. Preserve historical run logs.
+
 ## MB Bank Evergreen Content Engine
 
 When the user says exactly or substantially:
@@ -32,7 +38,7 @@ Additional requirements from the engine setup:
 
 - A setup request or a quoted trigger example does not start a content cycle. Wait for the user's actual trigger invocation.
 - Use only the two repository-local engine paths above. The workbook is the engine's state/database and source of truth; preserve its sheets, formulas, validations, formatting, and history.
-- Account owner: `https://1phutdangky.com/mo-tai-khoan/mo-tai-khoan-mb-bank-online/` (keep URL); Referral owner: `https://1phutdangky.com/ma-gioi-thieu-mb-bank/`; Card owner: `https://1phutdangky.com/mo-the-mb-bank-online/`.
+- Account owner: `https://1phutdangky.com/mo-tai-khoan/mo-tai-khoan-mb-bank-online/` (keep URL); Referral owner: `https://1phutdangky.com/mo-tai-khoan/ma-gioi-thieu-mb-bank/`; Card owner: `https://1phutdangky.com/the-tin-dung/mo-the-mb-bank-online/`.
 - For comparable opportunities, prefer Referral/MBAT113 conversion, Account task completion, Account acquisition, Card acquisition, then informational traffic. Never sacrifice intent or utility for affiliate value.
 - Check source gates and canonical/cannibalization before choosing a new article, an update, or a merge as a section. Follow all SEO/GEO checks and the intent-based `CTA Matrix` in the playbook/workbook.
 - In Discovery Mode, check accessible Search Console/query data, current SERP, current MB sources, and existing content. Cover new questions, troubleshooting, referral/conversion, account, card, and post-registration tasks; remove synonym duplicates and score demand, intent separation, user utility/content gap, affiliate value, source readiness, and cannibalization using `Discovery Rules`. Do not force content when no candidate qualifies.

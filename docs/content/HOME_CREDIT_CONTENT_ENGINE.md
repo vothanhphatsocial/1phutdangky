@@ -61,6 +61,8 @@ If those conditions are not met, implement the item as a section/update/FAQ/tabl
 
 Do not manufacture a URL merely because the operator asked for a "new article".
 
+Every article must use `/<category>/<slug>/`, matching the frontmatter and source directory. Home Credit loan articles use `/vay-tien-mat/`; credit-card articles use `/the-tin-dung/`. Do not publish articles at the site root. Add a direct 301 redirect when moving an existing URL, and update active links/canonical references while preserving historical run logs.
+
 ### 4. Verify current financial information
 
 Before publishing volatile claims, re-check official Home Credit sources.

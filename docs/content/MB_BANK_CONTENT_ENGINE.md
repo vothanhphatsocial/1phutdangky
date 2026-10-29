@@ -36,7 +36,7 @@ Keep the existing URL.
 
 ### Referral Pillar
 
-`https://1phutdangky.com/ma-gioi-thieu-mb-bank/`
+`https://1phutdangky.com/mo-tai-khoan/ma-gioi-thieu-mb-bank/`
 
 Owns referral/code/link intent.
 
@@ -46,13 +46,15 @@ This is the primary affiliate-conversion pillar.
 
 ### Card Pillar
 
-`https://1phutdangky.com/mo-the-mb-bank-online/`
+`https://1phutdangky.com/the-tin-dung/mo-the-mb-bank-online/`
 
 Owns generic MB card-opening intent.
 
 Do not conflate account and card intent.
 
 ## One-run workflow
+
+Every article URL must follow `/<category>/<slug>/`, matching the article's frontmatter and source directory. MB account, referral and account-troubleshooting articles use `/mo-tai-khoan/`; credit-card articles use `/the-tin-dung/`. Never create a root-level article URL. The troubleshooting owner is `https://1phutdangky.com/mo-tai-khoan/khong-dang-ky-duoc-mb-bank/`.
 
 When the trigger command is received:
 
