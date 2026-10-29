@@ -1,0 +1,66 @@
+{
+  "name": "Thẻ tín dụng Home Credit",
+  "provider": "Công ty Tài chính TNHH MTV Home Credit Việt Nam",
+  "category": "credit-card",
+  "summary": "Thẻ tín dụng đăng ký qua ứng dụng Home Credit, dùng để chi tiêu trong hạn mức được cấp và thanh toán theo kỳ sao kê.",
+  "officialUrl": "https://www.homecredit.vn/the-tin-dung-online",
+  "offers": [
+    {
+      "id": "home-credit-app-support-code",
+      "name": "Ứng dụng Home Credit và mã nhân viên hỗ trợ",
+      "channel": "direct-referral",
+      "destinationLabel": "ứng dụng hoặc kho ứng dụng Home Credit",
+      "enabled": true,
+      "url": "https://hcv.onelink.me/ausQ/n7wk7jg0",
+      "ctaLabel": "Tải ứng dụng Home Credit",
+      "lastVerifiedAt": "2026-10-29",
+      "referralCode": "00064470",
+      "referralCodeLabel": "Mã nhân viên hỗ trợ"
+    }
+  ],
+  "primaryOfferId": "home-credit-app-support-code",
+  "ctaLabel": "Tải ứng dụng Home Credit",
+  "facts": [
+    {
+      "label": "Xét duyệt và hạn mức",
+      "value": "Home Credit công bố phạm vi 1–100 triệu đồng; việc cấp thẻ và hạn mức thực tế phụ thuộc kết quả thẩm định."
+    },
+    {
+      "label": "Phí và lãi",
+      "value": "Thẻ tín dụng Home Credit có phí quản lý 39.000 đồng/tháng, kèm điều kiện miễn; lãi suất thẻ 49,5%/năm theo biểu phí hiệu lực 04/09/2026."
+    },
+    {
+      "label": "Thanh toán và miễn lãi",
+      "value": "Miễn lãi mua sắm phụ thuộc thanh toán đầy đủ dư nợ cuối kỳ đúng hạn. Trả tối thiểu không đồng nghĩa được miễn lãi; rút tiền tính lãi từ ngày hạch toán."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Thẻ tín dụng Home Credit online",
+      "url": "https://www.homecredit.vn/the-tin-dung-online",
+      "publisher": "Home Credit Việt Nam"
+    },
+    {
+      "title": "FAQ thẻ tín dụng",
+      "url": "https://www.homecredit.vn/faq/the-tin-dung",
+      "publisher": "Home Credit Việt Nam"
+    },
+    {
+      "title": "Biểu phí dịch vụ và lãi suất thẻ tín dụng, hiệu lực 04/09/2026",
+      "url": "https://www.homecredit.vn/upload/2609_Credit_Card_tariff_VN_ff1e281fb6.pdf",
+      "publisher": "Home Credit Việt Nam"
+    },
+    {
+      "title": "Điều khoản phát hành và sử dụng thẻ, phiên bản 07/2026",
+      "url": "https://www.homecredit.vn/upload/Card_Card_Tn_C_VN_ver07_2026_0950fb1dfe.pdf",
+      "publisher": "Home Credit Việt Nam"
+    },
+    {
+      "title": "Ứng dụng Home Credit",
+      "url": "https://www.homecredit.vn/ung-dung-home-credit",
+      "publisher": "Home Credit Việt Nam"
+    }
+  ],
+  "lastVerifiedAt": "2026-10-29",
+  "draft": false
+}
