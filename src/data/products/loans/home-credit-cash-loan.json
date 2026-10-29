@@ -15,7 +15,9 @@
       "ctaLabel": "Tải ứng dụng Home Credit",
       "lastVerifiedAt": "2026-10-28",
       "referralCode": "00064470",
-      "referralCodeLabel": "Mã nhân viên hỗ trợ"
+      "referralCodeLabel": "Mã nhân viên hỗ trợ",
+      "referralCodeNote": "Nhập mã này vào ô “Mã nhân viên hỗ trợ” trong ứng dụng.",
+      "ctaNote": "Trên điện thoại, liên kết mở ứng dụng Home Credit hoặc kho ứng dụng phù hợp."
     }
   ],
   "primaryOfferId": "home-credit-app-support-code",

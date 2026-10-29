@@ -39,9 +39,6 @@ const isLiobankProduct =
 const isMbBankProduct =
   product.id ===
   'bank-accounts/mb-bank-account';
-const isHomeCreditProduct =
-  product.id ===
-  'loans/home-credit-cash-loan';
 const referralCode = offer?.referralCode;
 const referralCodeLabel =
   offer?.referralCodeLabel ?? 'Mã người giới thiệu';
@@ -142,9 +139,9 @@ const hasMoreInformation =
           }
 
           {
-            isHomeCreditProduct && (
+            offer?.referralCodeNote && (
               <p class="context-note">
-                Nhập mã này vào ô “Mã nhân viên hỗ trợ” trong ứng dụng.
+                {offer.referralCodeNote}
               </p>
             )
           }
@@ -170,9 +167,9 @@ const hasMoreInformation =
     }
 
     {
-      isHomeCreditProduct && (
+      offer?.ctaNote && (
         <p class="context-note action-context">
-          Trên điện thoại, liên kết mở ứng dụng Home Credit hoặc kho ứng dụng phù hợp.
+          {offer.ctaNote}
         </p>
       )
     }
@@ -291,7 +288,7 @@ const hasMoreInformation =
       isAffiliate && (
         <p class="destination-note">
           {
-            isMbBankProduct || isLiobankProduct || isHomeCreditProduct
+            isMbBankProduct || isLiobankProduct || offer?.ctaNote
               ? '1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.'
               : `Nút giới thiệu mở ${offer?.destinationLabel ?? `kênh của ${product.data.provider}`}. 1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.`
           }
