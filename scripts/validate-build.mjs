@@ -1,6 +1,7 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { getArticleVisual } from '../src/utils/articleVisual.mjs';
+import { getSitemapLastmod } from '../src/utils/sitemapLastmod.mjs';
 
 const projectRoot = process.cwd();
 const distRoot = path.join(projectRoot, 'dist');
@@ -286,6 +287,22 @@ for (const sitemapFile of sitemapFiles) {
   const xml = await readFile(sitemapFile, 'utf8');
   for (const match of xml.matchAll(/<loc>(.*?)<\/loc>/g)) {
     sitemapUrls.add(match[1]);
+  }
+
+  for (const [, entry] of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+    const url = entry.match(/<loc>(.*?)<\/loc>/)?.[1];
+    if (!url || !indexableCanonicals.has(url)) continue;
+
+    const pathname = new URL(url).pathname;
+    const html = await readFile(path.join(distRoot, pathname, 'index.html'), 'utf8');
+    const expectedLastmod = getSitemapLastmod(html);
+    const actualLastmod = entry.match(/<lastmod>(.*?)<\/lastmod>/)?.[1];
+    if (actualLastmod !== expectedLastmod) {
+      errors.push(`Sitemap lastmod không khớp ngày nội dung: ${url}.`);
+    }
+    if (/\bMBAT68\b/.test(html)) {
+      errors.push(`Nội dung indexable vẫn có mã MB cũ: ${url}.`);
+    }
   }
 }
 
