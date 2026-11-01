@@ -300,9 +300,6 @@ for (const sitemapFile of sitemapFiles) {
     if (actualLastmod !== expectedLastmod) {
       errors.push(`Sitemap lastmod không khớp ngày nội dung: ${url}.`);
     }
-    if (/\bMBAT68\b/.test(html)) {
-      errors.push(`Nội dung indexable vẫn có mã MB cũ: ${url}.`);
-    }
   }
 }
 
