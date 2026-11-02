@@ -236,20 +236,6 @@ const articles = defineCollection({
     quickAnswer:
       z.string().optional(),
 
-    informationCard: z.object({
-      name: z.string(),
-      provider: z.string(),
-      category: productCategorySchema,
-      summary: z.string(),
-      sheetLabel: z.string(),
-      facts: z.array(productFactSchema).length(3),
-      action: z.object({
-        label: z.string(),
-        href: z.string().regex(/^#[^\s]+$/),
-        note: z.string().optional(),
-      }),
-    }).optional(),
-
     productBeforeToc:
       z.boolean().default(false),
 

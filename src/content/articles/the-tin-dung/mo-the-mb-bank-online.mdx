@@ -1,42 +1,29 @@
 ---
 title: "Hướng dẫn mở thẻ MB Bank online"
-description: "Hướng dẫn mở thẻ MB Bank online: chọn loại thẻ, phát hành trên App, tra phí mở mới và thường niên của thẻ ghi nợ, tín dụng, Hi Collection."
+description: "Hướng dẫn mở thẻ MB Bank online: đăng ký App MBBank với mã MBAT113, chọn loại thẻ, phát hành và tra phí thẻ ghi nợ, tín dụng, Hi Collection."
 category: "the-tin-dung"
-type: "knowledge"
+type: "guide"
 publishedAt: 2026-11-02T10:24:00+07:00
-updatedAt: 2026-11-02T20:43:00+07:00
-lastVerifiedAt: 2026-11-02T20:43:00+07:00
+updatedAt: 2026-11-02T21:00:00+07:00
+lastVerifiedAt: 2026-11-02T21:00:00+07:00
 readingMinutes: 8
 featured: true
 draft: false
-quickAnswer: "Để đăng ký thẻ MB trên App MBBank, đăng nhập, mở mục Thẻ hoặc Dịch vụ thẻ, tìm chức năng phát hành rồi chọn sản phẩm phù hợp. Thẻ ghi nợ dùng số dư tài khoản; thẻ tín dụng cần được MB xét duyệt hạn mức. Mở tài khoản và phát hành thẻ là hai việc riêng."
+quickAnswer: "Lần đầu mở tài khoản MB, bạn dùng liên kết mở App, hoàn tất đăng ký rồi vào mục Thẻ hoặc Dịch vụ thẻ để phát hành. Nếu đã đăng nhập được App, vào thẳng mục thẻ. Đã từng có tài khoản nhưng chưa truy cập được App, hãy liên hệ MB247 để kiểm tra trước khi tạo hồ sơ mới."
 productBeforeToc: true
-informationCard:
-  name: "Thẻ MB Bank"
-  provider: "Ngân hàng TMCP Quân đội (MB)"
-  category: "credit-card"
-  summary: "Chọn thẻ ghi nợ, tín dụng hoặc đa năng Hi Collection theo nguồn tiền muốn sử dụng; đăng ký phát hành trong App MBBank."
-  sheetLabel: "Thông tin thẻ cần biết"
-  facts:
-    - label: "Nguồn tiền và xét duyệt"
-      value: "Thẻ ghi nợ dùng số dư tài khoản. Thẻ tín dụng và phần tín dụng của Hi Collection cần MB xét duyệt hạn mức."
-    - label: "Phát hành và nhận thẻ"
-      value: "Chọn vật lý hoặc phi vật lý theo sản phẩm. Với thẻ vật lý, kiểm tra cách nhận, địa chỉ giao và phí trước khi xác nhận."
-    - label: "Phí và nghĩa vụ thanh toán"
-      value: "Phí phát hành, thường niên và giao thẻ tính riêng theo loại thẻ. Với phần tín dụng, đọc lãi suất, điều kiện miễn lãi và hạn thanh toán."
-  action:
-    label: "Xem cách phát hành thẻ"
-    href: "#đăng-ký-phát-hành-thẻ-trên-app-mbbank"
-    note: "Đăng nhập App MBBank, vào mục Thẻ hoặc Dịch vụ thẻ để đăng ký phát hành."
-products: []
+products:
+  - "bank-accounts/mb-bank-account"
 affiliate:
-  enabled: false
+  enabled: true
 sources:
   - title: "MB: hướng dẫn làm thẻ ngân hàng qua App MBBank"
     url: "https://www.mbbank.com.vn/tin-tuc/blog/cach-lam-the-ngan-hang"
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "MB: các loại thẻ ghi nợ, tín dụng và Hi Collection"
     url: "https://www.mbbank.com.vn/tin-tuc/blog/cac-loai-the-mb"
+    publisher: "Ngân hàng TMCP Quân đội (MB)"
+  - title: "MB: hướng dẫn dùng liên kết và mã giới thiệu khi đăng ký App MBBank"
+    url: "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/uu-dai/tien-gui/chuong-trinh-1-phut-gioi-thieu-tien-trieu-ve-tay"
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "MB: phát hành thẻ Visa, lựa chọn vật lý và phi vật lý"
     url: "https://www.mbbank.com.vn/tin-tuc/blog/cach-mo-the-visa"
@@ -58,7 +45,22 @@ sources:
     publisher: "Ngân hàng TMCP Quân đội (MB)"
 ---
 
-Nếu đã có tài khoản MB và muốn thêm thẻ, bạn bắt đầu từ chức năng thẻ trong App MBBank. Trước khi đăng ký, hãy chọn nguồn tiền muốn dùng và quyết định có cần thẻ cứng hay chỉ cần thẻ trên ứng dụng.
+import { getEntry } from 'astro:content';
+import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+
+export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-account');
+
+Để mở thẻ trên App MBBank, bạn cần có tài khoản đăng nhập. Phần dưới hướng dẫn cả người chưa đăng ký App lẫn người đã có tài khoản, từ bước bắt đầu đến chọn và phát hành thẻ.
+
+## Chưa có tài khoản MB thì bắt đầu ở đâu?
+
+**Lần đầu mở tài khoản MB:** sao chép mã ở khung sản phẩm phía trên rồi bấm **Mở App MBBank**. Tùy thiết bị, liên kết mở ứng dụng hoặc chuyển đến kho ứng dụng. Đăng ký bằng thông tin chính chủ; trong phần thông tin người giới thiệu, nhập **MBAT113** vào trường **Mã người giới thiệu** và kiểm tra trước khi xác nhận.
+
+Xem [hướng dẫn mở tài khoản MB Bank online](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/), [checklist cần chuẩn bị](/mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi/) và [cách dùng mã giới thiệu](/mo-tai-khoan/ma-gioi-thieu-mb-bank/) khi cần hướng dẫn chi tiết. Sau khi mở tài khoản và đăng nhập thành công, tiếp tục các bước phát hành thẻ bên dưới.
+
+**Đã có tài khoản và đăng nhập được App MBBank:** vào mục Thẻ hoặc Dịch vụ thẻ để đăng ký phát hành. Mã giới thiệu dùng ở bước mở tài khoản; việc phát hành thẻ và xét duyệt hạn mức tín dụng là các bước riêng.
+
+**Đã từng có tài khoản nhưng chưa đăng ký hoặc không đăng nhập được App:** liên hệ MB247 để kiểm tra cách đăng ký hoặc khôi phục quyền truy cập trước khi tạo hồ sơ mới. Thông tin hỗ trợ nằm ở cuối bài.
 
 ## Chọn thẻ ghi nợ, tín dụng hay thẻ đa năng?
 
@@ -99,6 +101,8 @@ Hướng dẫn MB công bố dùng các tên mục **Thẻ**, **Dịch vụ th�
 </Steps>
 
 Nếu App chưa cho đăng ký loại thẻ bạn muốn, hỏi MB về điều kiện còn thiếu hoặc kênh hỗ trợ phù hợp. Không chọn một thẻ tín dụng khác chỉ để đi tiếp khi chưa hiểu phí và nghĩa vụ trả nợ.
+
+<AffiliateCTA product={mbBankProduct} position="article-card-steps" />
 
 ## Chọn thẻ phi vật lý hay thẻ vật lý?
 
@@ -156,14 +160,6 @@ Ba biểu phí nêu **phí trả thẻ tại nhà 30.000 đồng/lần**. Khoả
 Để xét miễn thường niên theo doanh số, MB yêu cầu giao dịch chi tiêu hợp lệ được ghi nhận từ **nguồn hạn mức tín dụng**, không gồm rút tiền ATM. Kiểm tra cả ngưỡng chi tiêu và năm liền trước mà biểu phí của đúng thẻ yêu cầu.
 
 Phí phát hành không bao gồm mọi chi phí sử dụng. Đọc thêm phí rút tiền, giao dịch ngoại tệ; với phần tín dụng, kiểm tra lãi suất, điều kiện miễn lãi, ngày đến hạn và khoản phạt chậm thanh toán. Tiền trong hạn mức là khoản cần hoàn trả.
-
-## Chưa có tài khoản MB thì bắt đầu ở đâu?
-
-Nếu chưa đăng ký App MBBank, xem [hướng dẫn mở tài khoản MB Bank online](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/) và [checklist cần chuẩn bị](/mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi/). Sau khi hoàn tất tài khoản, quay lại chức năng phát hành thẻ; không mặc định tài khoản mới đã kèm thẻ vật lý.
-
-Nếu dùng giới thiệu khi mở tài khoản, xem [cách nhập mã MBAT113](/mo-tai-khoan/ma-gioi-thieu-mb-bank/). Đây là thông tin cho bước mở tài khoản, không phải điều kiện để MB duyệt thẻ tín dụng.
-
-<a class="button button--secondary" href="/mo-tai-khoan/mo-tai-khoan-mb-bank-online/">Xem hướng dẫn mở tài khoản MB Bank</a>
 
 ## Đơn vị phát hành và hỗ trợ về thẻ
 

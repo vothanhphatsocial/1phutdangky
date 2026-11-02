@@ -11,51 +11,42 @@ import {
 } from '../../utils/productOffers';
 
 interface Props {
-  product?: CollectionEntry<'products'>;
-  information?: NonNullable<CollectionEntry<'articles'>['data']['informationCard']> & {
-    lastVerifiedAt: Date;
-  };
+  product: CollectionEntry<'products'>;
   offerId?: string;
 }
 
 const {
   product,
-  information,
   offerId,
 } = Astro.props;
 
-const data = product?.data ?? information;
-if (!data) throw new Error('ProductCard requires product or information data.');
-
-const offer = product
-  ? getPrimaryProductOffer(
+const offer =
+  getPrimaryProductOffer(
     product,
     offerId
-  ) : undefined;
+  );
 
 const isAffiliate = Boolean(offer);
 const isBankAccountProduct =
-  data.category === 'bank-account';
+  product.id.startsWith('bank-accounts/');
 const isCreditCardProduct =
-  data.category === 'credit-card';
+  product.data.category === 'credit-card';
 const isLoanProduct =
-  data.category === 'loan';
+  product.data.category === 'loan';
 const isLiobankProduct =
-  product?.id ===
+  product.id ===
   'credit-cards/liobank-credit-card';
 const isMbBankProduct =
-  product?.id ===
+  product.id ===
   'bank-accounts/mb-bank-account';
 const referralCode = offer?.referralCode;
 const referralCodeLabel =
   offer?.referralCodeLabel ?? 'Mã người giới thiệu';
-const primaryFacts = data.facts.slice(0, 4);
-const secondaryFacts = data.facts.slice(4);
-const highlights = product?.data.highlights ?? [];
-const considerations = product?.data.considerations ?? [];
+const primaryFacts = product.data.facts.slice(0, 4);
+const secondaryFacts = product.data.facts.slice(4);
 const hasMoreInformation =
   secondaryFacts.length > 0 ||
-  considerations.length > 0;
+  product.data.considerations.length > 0;
 ---
 
 <section
@@ -68,32 +59,32 @@ const hasMoreInformation =
     isLoanProduct &&
       'product-card--loan',
   ]}
-  aria-label={`Thông tin ${data.name}`}
+  aria-label={`Thông tin ${product.data.name}`}
 >
   <div class="product-intro">
     <div class="product-kicker">
       {
-        product?.data.draft && (
+        product.data.draft && (
           <span class="draft-badge">
             Dữ liệu bản nháp
           </span>
         )
       }
 
-      <span>Sản phẩm từ {data.provider}</span>
+      <span>Sản phẩm từ {product.data.provider}</span>
     </div>
 
-    <h2>{data.name}</h2>
+    <h2>{product.data.name}</h2>
 
     <p class="product-summary">
-      {data.summary}
+      {product.data.summary}
     </p>
 
     {
-      highlights.length > 0 && (
+      product.data.highlights.length > 0 && (
         <div class="highlights">
           {
-            highlights.map((item, index) => (
+            product.data.highlights.map((item, index) => (
               <p>
                 <span aria-hidden="true">
                   {String(index + 1).padStart(2, '0')}
@@ -120,7 +111,7 @@ const hasMoreInformation =
             <button
               type="button"
               data-copy-referral={referralCode}
-              data-product-id={product?.id ?? ''}
+              data-product-id={product.id}
               data-offer-id={offer?.id ?? ''}
               data-offer-channel={offer?.channel ?? ''}
               data-affiliate-network={offer?.network ?? ''}
@@ -159,26 +150,12 @@ const hasMoreInformation =
     }
 
     <div class="product-action">
-      {
-        product ? (
-          <AffiliateCTA product={product} position="product-card" offerId={offerId} />
-        ) : information ? (
-          <a class="button button--primary information-cta" href={information.action.href}>
-            <span>{information.action.label}</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 12h14"></path>
-              <path d="m14 7 5 5-5 5"></path>
-            </svg>
-          </a>
-        ) : null
-      }
+      <AffiliateCTA
+        product={product}
+        position="product-card"
+        offerId={offerId}
+      />
     </div>
-
-    {
-      information?.action.note && (
-        <p class="context-note action-context">{information.action.note}</p>
-      )
-    }
 
     {
       isMbBankProduct && (
@@ -219,13 +196,13 @@ const hasMoreInformation =
   <div class="product-sheet">
     <p class="sheet-label">
       {
-        information?.sheetLabel ?? (isBankAccountProduct
+        isBankAccountProduct
           ? 'Thông tin tài khoản cần biết'
           : isCreditCardProduct
             ? 'Thông tin thẻ tín dụng cần biết'
             : isLoanProduct
               ? 'Thông tin khoản vay cần biết'
-              : 'Thông tin sản phẩm cần biết')
+              : 'Thông tin sản phẩm cần biết'
       }
     </p>
 
@@ -255,7 +232,7 @@ const hasMoreInformation =
       isAffiliate && (
         <p class="relationship-note">
           1 Phút Đăng Ký là website độc lập, không phải{' '}
-          {data.provider}. Chúng tôi có thể nhận hoa hồng
+          {product.data.provider}. Chúng tôi có thể nhận hoa hồng
           khi lượt đăng ký đủ điều kiện; nhà cung cấp xác minh và
           quyết định kết quả đăng ký.
         </p>
@@ -290,12 +267,12 @@ const hasMoreInformation =
           }
 
           {
-            considerations.length > 0 && (
+            product.data.considerations.length > 0 && (
               <div class="considerations">
                 <strong>Cần lưu ý</strong>
                 <ul>
                   {
-                    considerations.map((item) => (
+                    product.data.considerations.map((item) => (
                       <li>{item}</li>
                     ))
                   }
@@ -313,7 +290,7 @@ const hasMoreInformation =
           {
             isMbBankProduct || isLiobankProduct || offer?.ctaNote
               ? '1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.'
-              : `Nút giới thiệu mở ${offer?.destinationLabel ?? `kênh của ${data.provider}`}. 1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.`
+              : `Nút giới thiệu mở ${offer?.destinationLabel ?? `kênh của ${product.data.provider}`}. 1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.`
           }
         </p>
       )
@@ -321,8 +298,8 @@ const hasMoreInformation =
 
     <p class="verified-date">
       Kiểm tra dữ liệu lần cuối:{' '}
-      <time datetime={data.lastVerifiedAt.toISOString()}>
-        {data.lastVerifiedAt.toLocaleDateString('vi-VN')}
+      <time datetime={product.data.lastVerifiedAt.toISOString()}>
+        {product.data.lastVerifiedAt.toLocaleDateString('vi-VN')}
       </time>
     </p>
   </div>
@@ -590,34 +567,14 @@ const hasMoreInformation =
     margin-top: 0.8rem;
   }
 
-  .product-action :global(.affiliate-cta),
-  .product-action .information-cta {
+  .product-action :global(.affiliate-cta) {
     background: #090a0f;
     color: #f8f5ef;
   }
 
-  .product-action :global(.affiliate-cta:hover),
-  .product-action .information-cta:hover {
+  .product-action :global(.affiliate-cta:hover) {
     background: #315cf5;
     color: #ffffff;
-  }
-
-  .information-cta {
-    gap: 0.55rem;
-    min-height: 52px;
-    padding: 0.8rem 1.1rem;
-    font-size: 0.9rem;
-    font-weight: 750;
-  }
-
-  .information-cta svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
   }
 
   .product-sheet {
