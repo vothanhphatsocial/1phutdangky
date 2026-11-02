@@ -430,6 +430,13 @@ const breadcrumbSchema = {
             }
           />
 
+        ) : post.data.informationCard ? (
+          <ProductCard
+            information={{
+              ...post.data.informationCard,
+              lastVerifiedAt: post.data.lastVerifiedAt ?? post.data.updatedAt,
+            }}
+          />
         ) : null
       }
 
