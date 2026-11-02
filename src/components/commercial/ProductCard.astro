@@ -164,7 +164,11 @@ const hasMoreInformation =
           <AffiliateCTA product={product} position="product-card" offerId={offerId} />
         ) : information ? (
           <a class="button button--primary information-cta" href={information.action.href}>
-            {information.action.label}<span aria-hidden="true"> →</span>
+            <span>{information.action.label}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m14 7 5 5-5 5"></path>
+            </svg>
           </a>
         ) : null
       }
@@ -596,6 +600,24 @@ const hasMoreInformation =
   .product-action .information-cta:hover {
     background: #315cf5;
     color: #ffffff;
+  }
+
+  .information-cta {
+    gap: 0.55rem;
+    min-height: 52px;
+    padding: 0.8rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 750;
+  }
+
+  .information-cta svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .product-sheet {
