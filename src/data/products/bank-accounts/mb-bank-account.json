@@ -40,8 +40,23 @@
       "publisher": "Ngân hàng TMCP Quân đội (MB)"
     },
     {
-      "title": "Biểu phí dịch vụ MB",
-      "url": "https://www.mbbank.com.vn/resources/files/BIEU-PHI/Nam-2026/KHCN/bieu-phi-khcn-thong-thuong.pdf",
+      "title": "Biểu phí KHCN thông thường và Hộ kinh doanh, áp dụng từ 26/10/2026",
+      "url": "https://webcdn.mbbank.com.vn/public/media/7f00a4ac-4ebd-49f7-85cd-8c48ca1b03e9.pdf",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Thông báo phí SMS Banking, áp dụng từ 24/04/2025",
+      "url": "https://www.mbbank.com.vn/tin-tuc/tin-san-pham-dich-vu/mb-thay-doi-bieu-phi-dich-vu-sms-banking-doi-voi-khach-hang-ca-nhan-va-khach-hang-doanh-nghiep-2025-4-21-18-36-10",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "MB công bố phí ngân hàng điện tử và chuyển khoản trên App",
+      "url": "https://www.mbbank.com.vn/tin-tuc/blog/bieu-phi-dich-vu-cac-ngan-hang",
+      "publisher": "Ngân hàng TMCP Quân đội (MB)"
+    },
+    {
+      "title": "Thông báo số dư trên App và các khoản phí hằng tháng",
+      "url": "https://www.mbbank.com.vn/tin-tuc/blog/ngan-hang-nao-khong-mat-phi-hang-thang",
       "publisher": "Ngân hàng TMCP Quân đội (MB)"
     },
     {
@@ -55,7 +70,7 @@
       "publisher": "Ngân hàng TMCP Quân đội (MB)"
     }
   ],
-  "lastVerifiedAt": "2026-10-28",
+  "lastVerifiedAt": "2026-11-03",
   "draft": false,
   "facts": [
     {
@@ -68,7 +83,7 @@
     },
     {
       "label": "Dịch vụ cần kiểm tra",
-      "value": "Kiểm tra phí của số tài khoản lựa chọn, chuyển tiền, thẻ, thông báo biến động số dư và các dịch vụ tùy chọn trước khi xác nhận."
+      "value": "Phân biệt thông báo trên App với SMS Banking có thu phí. Đọc điều kiện phí quản lý tài khoản, số tài khoản lựa chọn và thẻ trước khi đăng ký thêm."
     }
   ],
   "highlights": [],
