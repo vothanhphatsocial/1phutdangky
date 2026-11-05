@@ -53,6 +53,41 @@ Additional requirements from the engine setup:
 - Commit only relevant engine/content files, never secrets or unrelated changes; never force-push. Log the content commit hash, then persist post-deployment status/log updates in a subsequent state commit when possible; do not attempt to record a commit's own hash inside itself.
 - Documentation/instruction/workbook-only setup needs no manual production deployment. Do not change domain, DNS, environment variables, Cloudflare project, deployment branch, or configuration to force/prevent automatic deployment.
 
+## TPBank Evergreen Content Engine
+
+When the user says exactly or substantially:
+
+`Bắt đầu tạo bài mới TPBank`
+
+run exactly one TPBank content cycle using these repository sources of truth:
+
+- `docs/content/TPBANK_CONTENT_ENGINE.md`
+- `docs/content/1phutdangky_TPBank_Evergreen_Content_Engine.xlsx`
+
+Operating rules:
+
+- A setup request or a quoted trigger example does not start a content cycle. Wait for the user's actual trigger invocation.
+- Read `AGENTS.md`, then the TPBank playbook, then the workbook. Inspect `Next Action` before the other sheets and validate its cached selection against all actual `Evergreen Queue` statuses.
+- Select the best eligible `Ready` item by priority, foundation dependencies, source readiness and intent fit. Respect the seeded order unless these checks justify a different selection; log the reason. Do not ask the user to choose a topic, keyword, title or URL when the available data is sufficient.
+- Mark the selected item `In progress` before implementation. Execute exactly one content run unless the user explicitly requests more.
+- No TPBank articles or products existed at setup. Recheck the actual repository on every run; create missing Account and Credit Card foundations before dependent support pages, rather than assuming they remain absent or creating duplicates.
+- Account owner: `https://1phutdangky.com/mo-tai-khoan/mo-tai-khoan-tpbank-online/`. Credit Card owner: `https://1phutdangky.com/the-tin-dung/mo-the-tin-dung-tpbank-online/`. Keep payment-account opening and credit-card application intent separate; route support content to its corresponding owner.
+- 1 Phút Đăng Ký does not use a TPBank referral code. Never create, request, configure, or wait for one; do not create a Referral Pillar or a default `/ma-gioi-thieu-tpbank/` URL.
+- An independently configured, valid TPBank affiliate link may be used without a referral code. Inspect existing project configuration first; never invent a link or reuse another bank's offer/code. Official product actions may use existing components without a referral code or monetized offer.
+- Owner-approved TPBank App affiliate URL: `https://nganhangso.tpb.vn/7s6k/1yg2b1ta`. Preserve this exact URL for App download/open actions and keep `Plan Settings` / `CTA Matrix` aligned. Do not replace it with an expanded store URL or describe an App-download click as a submitted account/card application.
+- Discuss official TPBank campaign codes only as TPBank campaign codes, with current official sources, dates and eligibility; never present them as a code owned by this website. Promotion content normally belongs to the relevant Account or Credit Card owner.
+- Check canonical ownership, cannibalization and standalone utility before deciding between a new URL, an update or a section. Follow the workbook's `Execution Briefs` and `CTA Matrix` within the repository's current content and visual contracts.
+- Keep current UI/UX and reuse existing components. Frontmatter `title` remains the single title for H1, listing cards and generated social images; seeded SEO-title/H1 suggestions are not separate visual titles. Keep article titles ending in `online` under the owner's current convention.
+- For troubleshooting pages, answer the problem before any CTA. Verify volatile fees, interest, product lineup, promotions and App-flow claims with current official TPBank sources before publication.
+- Reuse existing author, source, disclosure and consent-aware analytics behavior. Treat workbook event names as planning labels to map to existing tracking; do not add unapproved tags, bypass consent or change shared UI to implement them.
+- Read `README.md`, `DEPLOYMENT.md` and current source before implementation. Current quality gate: `npm run check` (Astro build, Pagefind and build validator); no separate lint/typecheck/test scripts exist. Report the checks actually available and performed.
+- Review git diff, commit only relevant files and push if authenticated and authorized. Never commit secrets, force-push or rewrite history. Use the existing GitHub/Cloudflare workflow; do not create a repository/project or change DNS, domain, environment variables or production branch.
+- Verify production URL, CTA, mobile layout, canonical, internal links and runtime after deployment. Mark `Done` only after the applicable quality and production checks pass; otherwise record `Blocked` or the appropriate unfinished status with the exact blocker.
+- Update `Evergreen Queue`, append `Run Log` and refresh `Next Action` after state changes. Use TPBank's actual sheet headers; its log columns differ from the other engines. Record asset, URL, files, sources, checks, content commit hash, push, deployment and production verification. Persist post-deployment state in a subsequent commit when possible; never record a commit's own hash inside itself.
+- Preserve workbook sheets, formulas, validations, formatting and history. Validate selector caches against all actual queue rows, extend dependent ranges when appending beyond the current row-164 selector capacity, and use empty pre-numbered log rows before appending. The template capacity is not an engine stop condition.
+- The initial 60-item queue is a starting backlog. When no eligible `Ready` item remains, run `Discovery Mode`: inspect accessible Search Console/query data, current SERP, official TPBank products/policies/fees/FAQs and existing content; append 3–5 evidence-based candidates scored for demand, intent separation, utility, conversion value, source readiness and cannibalization. Set one qualified item `Ready` and execute it; do not force thin content when no candidate qualifies.
+- Documentation/instruction/workbook-only setup does not run the first article or require manual production deployment. Preserve any automatic Cloudflare workflow triggered by an authorized push; do not force or suppress it.
+
 ## Home Credit evergreen content engine
 
 When the user says exactly or substantially:
