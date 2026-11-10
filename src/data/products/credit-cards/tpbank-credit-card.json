@@ -1,0 +1,69 @@
+{
+  "name": "Thẻ tín dụng TPBank",
+  "provider": "Ngân hàng TMCP Tiên Phong (TPBank)",
+  "category": "credit-card",
+  "summary": "Các dòng thẻ tín dụng TPBank phục vụ nhu cầu chi tiêu, tích điểm hoặc hoàn tiền theo từng sản phẩm. Hồ sơ và hạn mức do TPBank xét duyệt; thẻ được quản lý trên App TPBank.",
+  "officialUrl": "https://tpb.vn/khach-hang-ca-nhan/the-tin-dung",
+  "offers": [
+    {
+      "id": "tpbank-card-app-affiliate",
+      "name": "Liên kết tải App TPBank",
+      "channel": "direct-referral",
+      "enabled": true,
+      "url": "https://nganhangso.tpb.vn/7s6k/1yg2b1ta",
+      "ctaLabel": "Tải App TPBank",
+      "ctaNote": "Tải TPBank Mobile rồi đăng nhập để bắt đầu đăng ký thẻ tín dụng trên App.",
+      "lastVerifiedAt": "2026-11-10"
+    }
+  ],
+  "primaryOfferId": "tpbank-card-app-affiliate",
+  "ctaLabel": "Tải App TPBank",
+  "facts": [
+    {
+      "label": "Xét duyệt và hạn mức",
+      "value": "TPBank xét hồ sơ theo dòng thẻ và kênh đăng ký. Điều kiện thu nhập, giấy tờ và hạn mức cần được kiểm tra trong đề nghị áp dụng cho bạn."
+    },
+    {
+      "label": "Phí và lãi",
+      "value": "Visa Classic/Gold: lãi 3,292%/tháng; JCB CashBack: 3,167%/tháng. Có phí quản lý hạn mức và phí giao dịch theo dòng thẻ, xem bảng chi tiết trong bài."
+    },
+    {
+      "label": "Thanh toán và miễn lãi",
+      "value": "Miễn lãi mua sắm tối đa 45 hoặc 55 ngày tùy dòng thẻ và điều kiện trả đủ sao kê đúng hạn. Rút tiền mặt có phí và phát sinh lãi từ ngày rút."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Danh mục thẻ tín dụng TPBank",
+      "url": "https://tpb.vn/khach-hang-ca-nhan/the-tin-dung",
+      "publisher": "Ngân hàng TMCP Tiên Phong (TPBank)"
+    },
+    {
+      "title": "App TPBank và tính năng mở thẻ tín dụng",
+      "url": "https://tpb.vn/ngan-hang-dien-tu-ebank",
+      "publisher": "Ngân hàng TMCP Tiên Phong (TPBank)"
+    },
+    {
+      "title": "Biểu phí thẻ tín dụng quốc tế, hiệu lực 24/04/2026",
+      "url": "https://tpb.vn/wps/wcm/connect/01d9edaf-2b89-43cf-90c6-f04de788e40f/BIEU-PHI-THE-TIN-DUNG-QUOC-TE-TPBANK_20261022.pdf?MOD=AJPERES",
+      "publisher": "Ngân hàng TMCP Tiên Phong (TPBank)"
+    },
+    {
+      "title": "Hướng dẫn sử dụng và thanh toán thẻ tín dụng TPBank",
+      "url": "https://tpb.vn/wps/wcm/connect/3accf7d1-2e48-4002-a84c-5c4f2848209d/QA%2B_SPT%2Bupdate_l2_update_2025.pdf?CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=niwlnQn&CVID=py3FDb.&MOD=AJPERES",
+      "publisher": "Ngân hàng TMCP Tiên Phong (TPBank)"
+    },
+    {
+      "title": "Điều khoản phát hành và sử dụng thẻ tín dụng quốc tế, hiệu lực 20/07/2026",
+      "url": "https://tpb.vn/wps/wcm/connect/cf302884-f3fd-4887-bc25-e563a1f73c9b/BM02_Dieu_kien_dieu_khoan_phat_hanh_su_dung_the_TD.pdf?CVID=pPhpDTj&MOD=AJPERES",
+      "publisher": "Ngân hàng TMCP Tiên Phong (TPBank)"
+    },
+    {
+      "title": "Thông tin ngân hàng và hỗ trợ TPBank",
+      "url": "https://tpb.vn/lien-he-thong-tin",
+      "publisher": "Ngân hàng TMCP Tiên Phong (TPBank)"
+    }
+  ],
+  "lastVerifiedAt": "2026-11-10",
+  "draft": false
+}
