@@ -4,6 +4,13 @@
 - Store article files and their cover assets in `src/content/articles/<category>/`. Do not publish articles at the site root or override their slug to bypass the category directory.
 - When moving a published article, add a direct 301 redirect for its old URL and update internal links, canonical, breadcrumb data, sitemap and active engine references. Preserve historical run logs.
 
+## Article citation links
+
+- For all new and updated articles, render external citations in article prose, lists, tables and FAQs as plain text, preserving the visible wording when removing a citation hyperlink.
+- Keep citation URLs only in the final Sources/verification section, using the existing source block.
+- Keep internal links, existing action buttons/CTA components (download, open, register, directions) and telephone/email support links functional. Prose references to provider contact pages follow the citation rule above; keep their URLs in Sources.
+- Identify external actions by the existing CTA event/product attributes or an explicit `data-link-purpose="action"` attribute on an action button, not by button styling alone.
+
 ## Article title visuals
 
 - Use frontmatter `title` as the only title for article H1, listing cards and social images. `ArticleTitleVisual.astro` and `src/utils/articleVisual.mjs` provide the shared title-only visual and palette; do not add separate card titles or restore brand panels, marks or category eyebrows inside article title visuals.

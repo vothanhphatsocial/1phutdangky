@@ -117,6 +117,13 @@ For financial/product/referral claims, prefer:
 
 Third-party SERP results may be used to discover search intent, not as the sole source for fees, age, eligibility, referral reward, or current App flow.
 
+### Article citation links
+
+- For all new and updated articles, render external citations in article prose, lists, tables and FAQs as plain text, preserving the visible wording when removing a citation hyperlink.
+- Keep citation URLs only in the final Sources/verification section, using the existing source block.
+- Keep internal links, existing action buttons/CTA components (download, open, register, directions) and telephone/email support links functional. Prose references to provider contact pages follow the citation rule above; keep their URLs in Sources.
+- Identify external actions by the existing CTA event/product attributes or an explicit `data-link-purpose="action"` attribute on an action button, not by button styling alone.
+
 ## Safety and privacy
 
 Never ask readers to send or disclose:

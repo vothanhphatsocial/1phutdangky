@@ -139,6 +139,58 @@ function plainText(html) {
     .replace(/\s+/g, ' ').trim();
 }
 
+function articleProse(html) {
+  const opening = /<div\b[^>]*\bclass="article-prose"[^>]*>/i.exec(html);
+  if (!opening) return null;
+
+  const divTags = /<\/?div\b[^>]*>/gi;
+  divTags.lastIndex = opening.index + opening[0].length;
+  let depth = 1;
+
+  for (let tag; (tag = divTags.exec(html));) {
+    depth += /^<\//.test(tag[0]) ? -1 : 1;
+    if (depth === 0) {
+      return html.slice(opening.index + opening[0].length, tag.index);
+    }
+  }
+
+  return null;
+}
+
+function validateArticleCitations(html, relativePath) {
+  const prose = articleProse(html);
+  if (prose === null) {
+    errors.push(`${relativePath} thiếu khối nội dung bài viết hợp lệ.`);
+    return;
+  }
+
+  for (const [, attributes, label] of prose.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+    const href = attributes.match(/\bhref=(["'])(.*?)\1/i)?.[2];
+    if (!href) continue;
+
+    let target;
+    try {
+      target = new URL(plainText(href), productionOrigin);
+    } catch {
+      continue; // Invalid destinations are reported by the general link check.
+    }
+
+    if (!['http:', 'https:'].includes(target.protocol) || target.origin === productionOrigin) {
+      continue;
+    }
+
+    const event = attributes.match(/\bdata-event=(["'])(.*?)\1/i)?.[2];
+    const product = attributes.match(/\bdata-product-id=(["'])(.*?)\1/i)?.[2];
+    const purpose = attributes.match(/\bdata-link-purpose=(["'])(.*?)\1/i)?.[2];
+    const isProductAction = ['affiliate_click', 'official_link_click'].includes(event) && Boolean(product);
+    if (isProductAction || purpose === 'action') continue;
+
+    errors.push(
+      `${relativePath} có liên kết trích dẫn ngoài trong nội dung: ${plainText(label)} (${plainText(href)}). Giữ chữ thường và đặt URL tại Nguồn và kiểm chứng; giữ CTA trong component/nút hành động.`,
+    );
+  }
+}
+
 for (const htmlFile of htmlFiles) {
   const relativePath = path.relative(distRoot, htmlFile);
   const html = await readFile(htmlFile, 'utf8');
@@ -217,6 +269,7 @@ for (const htmlFile of htmlFiles) {
     try {
       const schema = JSON.parse(jsonLd);
       if (schema['@type'] === 'Article' && route) {
+        validateArticleCitations(html, relativePath);
         const id = route.slice(1, -1);
         const visual = getArticleVisual({ id, data: { title: schema.headline, category: id.split('/')[0] } });
         articleVisuals.set(route, visual);
