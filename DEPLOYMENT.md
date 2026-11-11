@@ -35,6 +35,12 @@ Các URL cũ sau chuyển hướng 301 trực tiếp tới URL trong chuyên m�
 - `www` được chuyển về apex để canonical hóa URL
 - Không tạo hostname viết sai như `ww.1phutdangky.com`
 
+Hai Redirect Rules chuẩn hóa tên miền (`Canonical domain redirect` và
+`HTTP canonical domain redirect`) đang bật. Rule riêng `Redirect legacy wallet
+route` đang tắt; không bật lại chuyển hướng `/vi-dien-tu/` về trang chủ.
+Chuyên mục ví điện tử và các bài đã xóa không có nội dung thay thế trả `404`;
+các chuyển hướng bài MB Bank sang URL trong chuyên mục vẫn giữ nguyên.
+
 ## Analytics
 
 - Google Tag Manager container: `GTM-NXX3GHJ7`
@@ -66,3 +72,5 @@ Kết quả cần đạt:
 - `robots.txt` trỏ tới sitemap index của `1phutdangky.com`.
 - Sitemap index và các sitemap con chỉ dùng canonical origin.
 - Build validator không báo lỗi.
+- `/vi-dien-tu/` trả `404`, không chuyển về trang chủ. Kiểm tra cả response
+  trên tên miền chính vì Redirect Rules của zone chạy trước quy tắc trong Pages.
