@@ -1,6 +1,6 @@
 ## Article URL structure
 
-- Every article must use `/<category>/<slug>/`, with exactly one category segment matching its `category` frontmatter: `mo-tai-khoan`, `the-tin-dung`, or `vay-tien-mat`.
+- Every article must use `/<category>/<slug>/`, with exactly one category segment matching its `category` frontmatter: `mo-tai-khoan`, `the-tin-dung`, `vay-tien-mat`, or the owner-approved `vi-dien-tu` category. Restore `vi-dien-tu` in application code only during the first triggered Home PayLater content run; documentation setup alone does not restore the route.
 - Store article files and their cover assets in `src/content/articles/<category>/`. Do not publish articles at the site root or override their slug to bypass the category directory.
 - When moving a published article, add a direct 301 redirect for its old URL and update internal links, canonical, breadcrumb data, sitemap and active engine references. Preserve historical run logs.
 
@@ -19,7 +19,7 @@
 
 ## Maintenance gate and evidence dates (all content engines)
 
-- Before selecting work for an MB Bank, Home Credit or TPBank content run, read `Next Action` first, then review that bank's published articles and shared product data for expired campaigns, replaced tariffs and unsupported freshness dates. This gate takes precedence over selecting the next `Ready` item or entering Discovery Mode.
+- Before selecting work for an MB Bank, Home Credit, TPBank or Home PayLater content run, read `Next Action` first, then review that bank's published articles and shared product data for expired campaigns, replaced tariffs and unsupported freshness dates. This gate takes precedence over selecting the next `Ready` item or entering Discovery Mode.
 - Run `npm run content:review` and inspect `docs/content/source-review.json` for recorded source versions, expiry and review dates. An overdue/expired result requires source review before selecting work; the ledger covers only recorded claims, so also check the relevant published content and official sources. Do not clear a warning by advancing a date without opening and checking the source. This advisory gate does not disable CTAs or change affiliate links.
 - Prioritize a verified substantive correction to an existing canonical URL over a new URL. That correction is the one content run; do not also publish a new article. Reuse a matching unfinished queue item or record a maintenance update using the workbook's existing queue columns/statuses and log format. Preserve completed rows, formulas, formatting and historical logs; record the reason for overriding `Next Action` and refresh it after the run. If evidence is unavailable, record the exact blocker rather than inventing replacement terms or declaring verification complete.
 - Record the URLs actually opened, applicable version/effective or campaign dates, claims checked and affected pages/product data. A source check supports only the claims actually reviewed, not every claim on a page or every article using that provider.
@@ -142,3 +142,35 @@ Additional requirements from the Home Credit engine setup:
 - Read `README.md`, `DEPLOYMENT.md`, and current source before implementation. The current quality gate is `npm run check` (build, Pagefind, build validator); focused regression commands are `npm run test:validator` and `npm run test:maintenance`; no separate lint/typecheck scripts exist. Reuse the existing author/source/disclosure behavior and consent-aware analytics.
 - Mark an item `Done` only after successful quality checks and production verification; otherwise record `Blocked` with the exact blocker. Record the content commit hash, then persist post-deployment state/log changes in a subsequent state commit when possible; never attempt to record a commit's own hash inside itself.
 - Documentation/instruction/workbook-only setup needs no manual production deployment. Do not change domain, DNS, environment variables, Cloudflare project, deployment branch, or configuration to force/prevent automatic deployment.
+
+## Home PayLater Evergreen Content Engine
+
+When the user says exactly or substantially **`Bắt đầu tạo bài mới Home PayLater`**, execute **one** Home PayLater content cycle following:
+
+- `docs/content/HOME_PAYLATER_CONTENT_ENGINE.md`
+- `docs/content/1phutdangky_Home_PayLater_Evergreen_Content_Engine.xlsx`
+
+Repository instructions for this product:
+
+- The site is `https://1phutdangky.com`; category is `/vi-dien-tu/`. User reports category was deleted and there is no existing Home PayLater article. Inspect actual routes and **restore category if missing** before publishing the first pillar.
+- Home PayLater is a **Home Credit BNPL / mua trước trả sau product**, not a generic e-wallet or a cash loan. Maintain separate canonical ownership from Home Credit loan/card content.
+- The Home PayLater pillar has the **owner-confirmed canonical URL** `https://1phutdangky.com/vi-dien-tu/mo-tai-khoan-tra-sau-home-paylater-online/`. Use this exact URL; inspect routing to implement it without substituting a different slug.
+- Read workbook `Next Action → Evergreen Queue → Execution Briefs → CTA Matrix → Publish Source Matrix → Content Portfolio → Discovery Rules → Run Log`. Process one selected eligible item per trigger and persist status; never repeat Done work.
+- CTA destination is **`https://zalo.me/0896451911`** with displayed recipient **`Võ Thành Phát`**, whom the site owner confirms is a **Home Credit employee**. Use the exact button label **`Nhắn Zalo – Võ Thành Phát`**. Use his role accurately for contact/consultation; do not describe the Zalo chat as Home Credit's app/identity-verification or payment system, promise approval, or offer cash withdrawal. Reuse existing site button UI.
+- **No collection of CCCD photos, OTP, PIN, credentials, account information or contract documents via Zalo.** Point users to official Home Credit flows for registration, identity verification, repayments and complaints. Home Credit has warned about fake Home PayLater cash-out offers on Zalo/social media; never facilitate cash-out.
+- Do not invent minimum age, current fees, 0%-interest eligibility, maximum credit approval, timelines, partners, promotions or payment penalties. Official source pages have contradictory age statements; verify applicable current terms before publishing any age claim.
+- If an item lacks source support or contains a disputed material product fact, mark Blocked/needs verification rather than guessing.
+- Follow existing UI components/SEO architecture, run project checks, commit/push only when authorized, deploy via existing Cloudflare workflow, verify real production, update workbook Queue/Run Log truthfully.
+- When queue ends, use Discovery Mode to create evidence-backed topic candidates; **not one keyword = one URL**.
+- Preserve other engines (MB Bank, Home Credit, TPBank) in `AGENTS.md`; avoid duplicate global rules.
+- Setup installation is documentation/workbook only; **do not produce the first Home PayLater article until the trigger**.
+
+Additional repository integration requirements:
+
+- Follow the shared maintenance gate, citation, title visual, category palette and evidence-date rules above. Read `README.md`, `DEPLOYMENT.md` and current source before a content run.
+- First-run category restoration includes the category config/schema, shared palette, routes, navigation, sitemap, validator/tests and deployment documentation. Keep the exact approved pillar path and inspect old redirects. Setup changes documents only; do not restore routes or modify application code in this setup.
+- Validate `Next Action` against all actual queue rows; prefer the earliest eligible `Ready`, otherwise an eligible `Planned` after dependency/source checks. Preserve an unfinished item and resolve its blocker rather than silently starting another. Mark `In progress` before implementation; never mark `Done` before checks and production verification.
+- Preserve workbook sheets, formulas, formatting, validation and history. Selector ranges currently cover rows 5–64; extend all affected ranges when appending beyond that seed, refresh selector caches and enter Discovery Mode when no eligible backlog remains.
+- Map CTA tracking to existing consent-aware events without adding vendors/tags or bypassing consent. Identify Zalo as an action using existing CTA attributes or `data-link-purpose="action"`; it is not an external prose citation.
+- Current quality gate is `npm run check`; focused regression commands are `npm run test:validator` and `npm run test:maintenance` when their rules change. No separate lint/typecheck scripts exist. Record only checks actually performed.
+- Log actual URL, sources/scope, files, content commit, push/deploy and production verification; persist post-deployment state in a subsequent commit, never record a commit's own hash inside itself. A setup or quoted trigger does not select work, change queue status or create a Run Log content entry.
