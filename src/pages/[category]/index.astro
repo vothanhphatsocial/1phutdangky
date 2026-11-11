@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
+import { getCategoryVisual } from '../../utils/categoryVisual.mjs';
 
 import {
   CATEGORIES,
@@ -64,7 +65,7 @@ const posts = (
         <span>{config.name}</span>
       </nav>
 
-      <div class="category-panel">
+      <div class="category-panel" style={{ background: getCategoryVisual(categorySlug).background }}>
         <div class="category-copy">
           <p class="eyebrow">Chuyên mục</p>
 
@@ -196,22 +197,7 @@ const posts = (
     overflow: hidden;
     padding: clamp(2rem, 6vw, 5rem);
     color: #0b0c10;
-    background:
-      radial-gradient(circle at 86% 15%, rgba(255, 255, 255, 0.72), transparent 24%),
-      linear-gradient(135deg, #99c3ff 0%, #92f1d1 100%);
     border-radius: var(--radius-2xl);
-  }
-
-  .category-hero--the-tin-dung .category-panel {
-    background:
-      radial-gradient(circle at 86% 15%, rgba(255, 255, 255, 0.7), transparent 24%),
-      linear-gradient(135deg, #ffc29e 0%, #f7e88c 100%);
-  }
-
-  .category-hero--vay-tien-mat .category-panel {
-    background:
-      radial-gradient(circle at 86% 15%, rgba(255, 255, 255, 0.68), transparent 24%),
-      linear-gradient(135deg, #b4a3ff 0%, #f1b8f8 100%);
   }
 
   .category-copy {

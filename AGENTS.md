@@ -15,6 +15,7 @@
 
 - Use frontmatter `title` as the only title for article H1, listing cards and social images. `ArticleTitleVisual.astro` and `src/utils/articleVisual.mjs` provide the shared title-only visual and palette; do not add separate card titles or restore brand panels, marks or category eyebrows inside article title visuals.
 - Article OG/Twitter/schema images are generated automatically at build time by `src/pages/article-images/[...image].png.ts`. Existing legacy `cover` assets are not used for these surfaces; do not create or edit a separate cover to update an article title.
+- Use `src/utils/categoryVisual.mjs` as the single category palette for category panels, article cards/heroes, product cards and generated social images. Product cards inside an article inherit that article's category palette, even when their product data belongs to a different product type. Do not add provider-specific or article-specific palette overrides.
 
 ## Maintenance gate and evidence dates (all content engines)
 

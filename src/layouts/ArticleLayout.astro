@@ -357,7 +357,11 @@ const breadcrumbSchema = {
   <article class:list={[
     'article-shell',
     `article-shell--${category.slug}`,
-  ]}>
+  ]} style={{
+    '--category-background': visual.background,
+    '--category-start-rgb': visual.startRgb,
+    '--category-end-rgb': visual.endRgb,
+  }}>
 
     <div class="article-stage">
 

@@ -1,10 +1,5 @@
 import { createHash } from 'node:crypto';
-
-const themes = {
-  'mo-tai-khoan': ['#8fb0ff 0%, #c4abff 56%, #a9e8d4 100%', 0.72],
-  'the-tin-dung': ['#ffc29e, #f7e88c', 0.7],
-  'vay-tien-mat': ['#b4a3ff, #f1b8f8', 0.68],
-};
+import { getCategoryVisual } from './categoryVisual.mjs';
 
 export const articleVisualTypography = {
   color: '#0b0c10',
@@ -16,10 +11,8 @@ export const articleVisualTypography = {
 /** One editorial title and palette for the article, listings and social image. */
 export function getArticleVisual(post) {
   const { title, category } = post.data;
-  const [stops, highlight] = post.id === 'the-tin-dung/mo-the-tin-dung-liobank'
-    ? ['#a5c7ff 0%, #b8a5ff 50%, #88ebca 100%', 0.72]
-    : themes[category];
-  const background = `radial-gradient(circle at 86% 18%, rgba(255, 255, 255, ${highlight}), transparent 25%), linear-gradient(135deg, ${stops})`;
+  const theme = getCategoryVisual(category);
+  const { background } = theme;
   const version = createHash('sha256')
     .update(JSON.stringify(['article-title-v1', title, background, articleVisualTypography]))
     .digest('hex').slice(0, 12);
@@ -27,9 +20,7 @@ export function getArticleVisual(post) {
   return {
     title,
     category,
-    background,
-    stops,
-    highlight,
+    ...theme,
     ...articleVisualTypography,
     image: `/article-images/${post.id}-${version}.png`,
     alt: title,
@@ -41,9 +32,9 @@ export function getArticleVisual(post) {
 /** CSS 135deg and farthest-corner circle, rendered without host-system fonts. */
 export function getArticleBackgroundSvg(visual) {
   const { width, height } = visual;
-  const cx = width * 0.86;
-  const cy = height * 0.18;
-  const radius = Math.hypot(cx, height - cy) * 0.25;
+  const cx = width * visual.lightX;
+  const cy = height * visual.lightY;
+  const radius = Math.hypot(cx, height - cy) * visual.lightRadius;
   const stops = visual.stops.split(', ').map((stop, index, all) => {
     const [color, offset = `${index / (all.length - 1) * 100}%`] = stop.split(' ');
     return `<stop offset="${offset}" stop-color="${color}"/>`;

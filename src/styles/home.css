@@ -308,18 +308,6 @@
     box-shadow: 0 24px 60px rgba(11, 12, 16, 0.12);
   }
 
-  .category-panel--mo-tai-khoan {
-    background: linear-gradient(135deg, #a9d8ff, #abf1dc);
-  }
-
-  .category-panel--the-tin-dung {
-    background: linear-gradient(135deg, #ffb59e, #f8e892);
-  }
-
-  .category-panel--vay-tien-mat {
-    background: linear-gradient(135deg, #b7a4ff, #f0b6e8);
-  }
-
   .category-index {
     position: absolute;
     top: 1.3rem;

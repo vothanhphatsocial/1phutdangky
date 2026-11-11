@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SearchForm from '../components/SearchForm.astro';
 import PostCard from '../components/PostCard.astro';
+import { getCategoryVisual } from '../utils/categoryVisual.mjs';
 import '../styles/home.css';
 
 import {
@@ -157,6 +158,7 @@ const latestPosts = sortedPosts.slice(0, 6);
                 `category-panel--${category.slug}`,
               ]}
               href={`/${category.slug}/`}
+              style={{ background: getCategoryVisual(category.slug).background }}
             >
               <span class="category-index">
                 {String(index + 1).padStart(2, '0')}
