@@ -27,6 +27,12 @@ Important sheets:
 
 The old 60-day schedule is only an initial backlog. It is not a stopping point and is not the primary selector.
 
+## Pre-run maintenance gate
+
+After reading `Next Action`, apply `AGENTS.md` → `Maintenance gate and evidence dates` before selecting a `Ready` item or entering Discovery Mode. Review published Home Credit claims and shared product data for expired campaigns, replaced tariffs and dates unsupported by source evidence. Run `npm run content:review` and inspect `docs/content/source-review.json`; its recorded claims do not replace the wider source review.
+
+A verified substantive correction to an existing URL takes priority and counts as the single run. Use the existing workbook queue/log columns and statuses, preserve history and record why maintenance overrides the selector. Do not add a new article in that run or disable CTAs merely because a review is due. `updatedAt` records substantive editorial changes; `lastVerifiedAt` requires actually opened sources covering the represented claims. Cosmetic or citation-link-only edits refresh neither date. Documentation-only maintenance setup does not change workbook state or start a run.
+
 ## One-run algorithm
 
 ### 1. Load state
@@ -35,9 +41,9 @@ Read repository instructions and the workbook.
 
 Open `Next Action`.
 
-If it contains an Asset ID, execute that item.
+Apply the pre-run maintenance gate before accepting its selection. If a substantive correction is selected, record that maintenance item in the existing queue format and continue with it.
 
-If it contains `DISCOVERY`, run Discovery Mode first.
+Otherwise validate its Asset ID against the actual queue and execute the first eligible `Ready` item. If no eligible `Ready` item remains and it contains `DISCOVERY`, run Discovery Mode.
 
 ### 2. Lock the item
 

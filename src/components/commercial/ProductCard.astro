@@ -299,7 +299,7 @@ const hasMoreInformation =
     <p class="verified-date">
       Kiểm tra dữ liệu lần cuối:{' '}
       <time datetime={product.data.lastVerifiedAt.toISOString()}>
-        {product.data.lastVerifiedAt.toLocaleDateString('vi-VN')}
+        {product.data.lastVerifiedAt.toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}
       </time>
     </p>
   </div>

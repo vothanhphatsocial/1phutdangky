@@ -52,6 +52,12 @@ Owns generic MB card-opening intent.
 
 Do not conflate account and card intent.
 
+## Pre-run maintenance gate
+
+After reading `Next Action`, apply `AGENTS.md` → `Maintenance gate and evidence dates` before selecting a `Ready` item or entering Discovery Mode. Review published MB Bank claims and shared product data for expired campaigns, replaced tariffs and dates unsupported by source evidence. Run `npm run content:review` and inspect `docs/content/source-review.json`; its recorded claims do not replace the wider source review.
+
+A verified substantive correction to an existing URL takes priority and counts as the single run. Use the existing workbook queue/log columns and statuses, preserve history and record why maintenance overrides the selector. Do not add a new article in that run or disable CTAs merely because a review is due. `updatedAt` records substantive editorial changes; `lastVerifiedAt` requires actually opened sources covering the represented claims. Cosmetic or citation-link-only edits refresh neither date. Documentation-only maintenance setup does not change workbook state or start a run.
+
 ## One-run workflow
 
 Every article URL must follow `/<category>/<slug>/`, matching the article's frontmatter and source directory. MB account, referral and account-troubleshooting articles use `/mo-tai-khoan/`; credit-card articles use `/the-tin-dung/`. Never create a root-level article URL. The troubleshooting owner is `https://1phutdangky.com/mo-tai-khoan/khong-dang-ky-duoc-mb-bank/`.
@@ -60,7 +66,7 @@ When the trigger command is received:
 
 1. Read repository instructions.
 2. Open workbook `Next Action`.
-3. If a `Ready` item exists, select it.
+3. Apply the pre-run maintenance gate; select a substantive correction first, otherwise the eligible `Ready` item (or Discovery Mode when needed).
 4. Mark the matching `Evergreen Queue` row `In progress`.
 5. Check current routes/canonical ownership and cannibalization risk.
 6. Verify required current sources.

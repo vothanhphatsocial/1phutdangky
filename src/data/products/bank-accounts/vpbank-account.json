@@ -14,9 +14,7 @@
       "channel": "direct-referral",
       "enabled": true,
       "url": "https://go.vpbank.com.vn/7juJk19",
-      "verificationNote": "Quyền lợi dành cho khách hàng mới được đối chiếu từ trang chương trình và thể lệ VPBank ngày 16/08/2026. Chương trình được công bố đến 30/09/2026 và có thể kết thúc sớm khi hết ngân sách.",
       "ctaLabel": "Mở tài khoản VPBank",
-      "validThrough": "2026-09-30",
       "lastVerifiedAt": "2026-08-16"
     }
   ],
@@ -42,16 +40,6 @@
 
   "sources": [
     {
-      "title": "Mời thêm bạn - Chia quà vô hạn",
-      "url": "https://www.vpbank.com.vn/uu-dai/retail/digital-banking-promotion-category/mgm",
-      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
-    },
-    {
-      "title": "Thể lệ chương trình Mời thêm bạn - Chia quà vô hạn",
-      "url": "https://www.vpbank.com.vn/-/media/vpbank-latest/1retail/promotion/digital-banking/2026/mgm-phase-1-2026/the-le-chuong-trinh-mgm-phase-1-2026-12-05-2026.pdf",
-      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
-    },
-    {
       "title": "VPBank NEO",
       "url": "https://www.vpbank.com.vn/vpbank-neo",
       "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
@@ -72,8 +60,6 @@
       "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
     }
   ],
-
-  "lastVerifiedAt": "2026-08-16",
-
+  "lastVerifiedAt": "2026-11-11T01:37:18+07:00",
   "draft": false
 }

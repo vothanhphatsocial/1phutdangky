@@ -1,5 +1,6 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { parse } from 'parse5';
 import { getArticleVisual } from '../src/utils/articleVisual.mjs';
 import { getSitemapLastmod } from '../src/utils/sitemapLastmod.mjs';
 
@@ -50,8 +51,13 @@ function routeForHtml(relativePath) {
   return `/${relativePath.replace(/\/index\.html$/, '/')}`;
 }
 
-async function targetExists(urlPath) {
-  const decodedPath = decodeURIComponent(urlPath);
+function targetFile(urlPath) {
+  let decodedPath;
+  try {
+    decodedPath = decodeURIComponent(urlPath);
+  } catch {
+    return null;
+  }
   const relativePath = decodedPath.replace(/^\//, '');
   const candidates = decodedPath.endsWith('/')
     ? [path.join(distRoot, relativePath, 'index.html')]
@@ -62,10 +68,64 @@ async function targetExists(urlPath) {
       ];
 
   for (const candidate of candidates) {
-    if (await exists(candidate)) return true;
+    if (candidate.startsWith(`${distRoot}${path.sep}`) && builtFileSet.has(candidate)) return candidate;
   }
 
-  return false;
+  return null;
+}
+
+function elements(node) {
+  return (node.childNodes ?? []).flatMap((child) => [
+    ...(child.tagName ? [child] : []), ...elements(child),
+  ]);
+}
+
+function attribute(node, name) {
+  return node?.attrs?.find((attr) => attr.name === name)?.value;
+}
+
+function textContent(node) {
+  if (node.nodeName === '#text') return node.value;
+  if (['script', 'style'].includes(node.tagName)) return '';
+  return (node.childNodes ?? []).map(textContent).join('');
+}
+
+function normalizedText(node) {
+  return textContent(node).replace(/\s+/g, ' ').trim();
+}
+
+function schemaNodes(value) {
+  if (Array.isArray(value)) return value.flatMap(schemaNodes);
+  if (!value || typeof value !== 'object') return [];
+  return [value, ...schemaNodes(value['@graph'])];
+}
+
+function hasSchemaType(node, type) {
+  return [node['@type']].flat().includes(type);
+}
+
+// Follow srcset token boundaries: commas inside URL tokens (including data URLs)
+// are not separators. Descriptors end at a comma outside parentheses.
+function srcsetUrls(value) {
+  const urls = [];
+  let rest = value;
+  while (rest.length) {
+    rest = rest.replace(/^[\t\n\f\r ,]+/, '');
+    if (!rest) break;
+    const token = rest.match(/^[^\t\n\f\r ]+/)[0];
+    rest = rest.slice(token.length);
+    urls.push(token.replace(/,+$/, ''));
+    if (token.endsWith(',')) continue;
+    let depth = 0;
+    let index = 0;
+    for (; index < rest.length; index++) {
+      if (rest[index] === '(') depth++;
+      else if (rest[index] === ')') depth = Math.max(0, depth - 1);
+      else if (rest[index] === ',' && depth === 0) break;
+    }
+    rest = rest.slice(index + 1);
+  }
+  return urls;
 }
 
 for (const relativePath of requiredOutput) {
@@ -126,10 +186,65 @@ for (const sitemapIndexUrl of sitemapIndexUrls) {
 }
 
 const builtFiles = await walk(distRoot);
+const builtFileSet = new Set(builtFiles);
 const htmlFiles = builtFiles.filter((filePath) => filePath.endsWith('.html'));
 const indexableCanonicals = new Set();
 const articleVisuals = new Map();
 const builtHtml = new Map();
+const documents = new Map();
+const titles = new Map();
+const descriptions = new Map();
+const publishedArticles = new Set();
+
+// Derive article expectations from source, never from the schema being tested.
+const articleRoot = path.join(projectRoot, 'src/content/articles');
+const articleFiles = (await walk(articleRoot)).filter((filePath) => /\.mdx?$/.test(filePath));
+for (const articleFile of articleFiles) {
+  const source = await readFile(articleFile, 'utf8');
+  const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)?.[1] ?? '';
+  const relativeArticle = path.relative(articleRoot, articleFile)
+    .split(path.sep).join('/').replace(/\.mdx?$/, '');
+  const category = frontmatter.match(
+    /^category:\s*["']?(mo-tai-khoan|the-tin-dung|vay-tien-mat)["']?\s*(?:#.*)?$/m,
+  )?.[1];
+  const segments = relativeArticle.split('/');
+  if (!category || segments.length !== 2 || segments[0] !== category) {
+    errors.push(`Article phải nằm trong thư mục chuyên mục tương ứng: ${relativeArticle} (category: ${category ?? 'missing'}).`);
+  }
+  const output = `${relativeArticle}/index.html`;
+  if (/^draft:\s*true\s*(?:#.*)?$/m.test(frontmatter)) {
+    if (builtFileSet.has(path.join(distRoot, output))) {
+      errors.push(`Draft article xuất hiện trong build: /${relativeArticle}/`);
+    }
+  } else {
+    publishedArticles.add(output);
+    if (!builtFileSet.has(path.join(distRoot, output))) {
+      errors.push(`Published article thiếu build output: ${output}`);
+    }
+  }
+}
+
+for (const htmlFile of htmlFiles) {
+  const relativePath = path.relative(distRoot, htmlFile);
+  const html = await readFile(htmlFile, 'utf8');
+  builtHtml.set(relativePath, html);
+  const nodes = elements(parse(html));
+  const fragmentIds = new Set(nodes.flatMap((node) => [
+    attribute(node, 'id'),
+    ...(node.tagName === 'a' ? [attribute(node, 'name')] : []),
+  ]).filter((id) => id !== undefined));
+  documents.set(htmlFile, { nodes, fragmentIds });
+}
+
+function validateUniqueMetadata(value, registry, name, relativePath) {
+  if (!value) {
+    errors.push(`${relativePath} thiếu ${name} không rỗng.`);
+  } else if (registry.has(value)) {
+    errors.push(`${relativePath} có ${name} trùng với ${registry.get(value)}.`);
+  } else {
+    registry.set(value, relativePath);
+  }
+}
 
 function plainText(html) {
   return html.replace(/<[^>]*>/g, '').replace(/&#(x[0-9a-f]+|\d+);/gi, (_, code) =>
@@ -139,38 +254,20 @@ function plainText(html) {
     .replace(/\s+/g, ' ').trim();
 }
 
-function articleProse(html) {
-  const opening = /<div\b[^>]*\bclass="article-prose"[^>]*>/i.exec(html);
-  if (!opening) return null;
-
-  const divTags = /<\/?div\b[^>]*>/gi;
-  divTags.lastIndex = opening.index + opening[0].length;
-  let depth = 1;
-
-  for (let tag; (tag = divTags.exec(html));) {
-    depth += /^<\//.test(tag[0]) ? -1 : 1;
-    if (depth === 0) {
-      return html.slice(opening.index + opening[0].length, tag.index);
-    }
-  }
-
-  return null;
-}
-
-function validateArticleCitations(html, relativePath) {
-  const prose = articleProse(html);
-  if (prose === null) {
+function validateArticleCitations(nodes, relativePath, baseUrl) {
+  const prose = nodes.find((node) => attribute(node, 'class')?.split(/\s+/).includes('article-prose'));
+  if (!prose) {
     errors.push(`${relativePath} thiếu khối nội dung bài viết hợp lệ.`);
     return;
   }
 
-  for (const [, attributes, label] of prose.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
-    const href = attributes.match(/\bhref=(["'])(.*?)\1/i)?.[2];
+  for (const node of elements(prose).filter((node) => node.tagName === 'a')) {
+    const href = attribute(node, 'href');
     if (!href) continue;
 
     let target;
     try {
-      target = new URL(plainText(href), productionOrigin);
+      target = new URL(href, baseUrl);
     } catch {
       continue; // Invalid destinations are reported by the general link check.
     }
@@ -179,23 +276,34 @@ function validateArticleCitations(html, relativePath) {
       continue;
     }
 
-    const event = attributes.match(/\bdata-event=(["'])(.*?)\1/i)?.[2];
-    const product = attributes.match(/\bdata-product-id=(["'])(.*?)\1/i)?.[2];
-    const purpose = attributes.match(/\bdata-link-purpose=(["'])(.*?)\1/i)?.[2];
+    const event = attribute(node, 'data-event');
+    const product = attribute(node, 'data-product-id');
+    const purpose = attribute(node, 'data-link-purpose');
     const isProductAction = ['affiliate_click', 'official_link_click'].includes(event) && Boolean(product);
     if (isProductAction || purpose === 'action') continue;
 
     errors.push(
-      `${relativePath} có liên kết trích dẫn ngoài trong nội dung: ${plainText(label)} (${plainText(href)}). Giữ chữ thường và đặt URL tại Nguồn và kiểm chứng; giữ CTA trong component/nút hành động.`,
+      `${relativePath} có liên kết trích dẫn ngoài trong nội dung: ${normalizedText(node)} (${href}). Giữ chữ thường và đặt URL tại Nguồn và kiểm chứng; giữ CTA trong component/nút hành động.`,
     );
   }
 }
 
 for (const htmlFile of htmlFiles) {
   const relativePath = path.relative(distRoot, htmlFile);
-  const html = await readFile(htmlFile, 'utf8');
-  builtHtml.set(relativePath, html);
+  const html = builtHtml.get(relativePath);
+  const { nodes } = documents.get(htmlFile);
   const route = routeForHtml(relativePath);
+  const baseUrl = new URL(attribute(nodes.find((node) => node.tagName === 'base'), 'href') ?? '', `${productionOrigin}${route ?? '/404.html'}`);
+  const headings = nodes.filter((node) => node.tagName === 'h1');
+  if (headings.length !== 1 || !normalizedText(headings[0])) {
+    errors.push(`${relativePath} phải có đúng một H1 không rỗng.`);
+  }
+  const titleNodes = nodes.filter((node) => node.tagName === 'title');
+  const descriptionNodes = nodes.filter((node) => node.tagName === 'meta' && attribute(node, 'name')?.toLowerCase() === 'description');
+  if (titleNodes.length !== 1) errors.push(`${relativePath} phải có đúng một title.`);
+  if (descriptionNodes.length !== 1) errors.push(`${relativePath} phải có đúng một meta description.`);
+  validateUniqueMetadata(titleNodes[0] ? normalizedText(titleNodes[0]) : '', titles, 'title', relativePath);
+  validateUniqueMetadata(attribute(descriptionNodes[0], 'content')?.replace(/\s+/g, ' ').trim() ?? '', descriptions, 'meta description', relativePath);
 
   if (
     relativePath !== '404.html' &&
@@ -262,19 +370,29 @@ for (const htmlFile of htmlFiles) {
     }
   }
 
-  const jsonLdBlocks = [
-    ...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi),
-  ];
-  for (const [, jsonLd] of jsonLdBlocks) {
+  const schemas = [];
+  for (const node of nodes.filter((node) => node.tagName === 'script' && attribute(node, 'type') === 'application/ld+json')) {
     try {
-      const schema = JSON.parse(jsonLd);
-      if (schema['@type'] === 'Article' && route) {
-        validateArticleCitations(html, relativePath);
+      schemas.push(...schemaNodes(JSON.parse(node.childNodes.map((child) => child.value ?? '').join(''))));
+    } catch (error) {
+      errors.push(`${relativePath} có JSON-LD không hợp lệ: ${error.message}`);
+    }
+  }
+
+  if (publishedArticles.has(relativePath)) {
+    validateArticleCitations(nodes, relativePath, baseUrl);
+    const articles = schemas.filter((schema) => hasSchemaType(schema, 'Article'));
+    const breadcrumbs = schemas.filter((schema) => hasSchemaType(schema, 'BreadcrumbList'));
+    if (articles.length !== 1) errors.push(`${relativePath} phải có đúng một schema Article (tìm thấy ${articles.length}).`);
+    if (breadcrumbs.length !== 1) errors.push(`${relativePath} phải có đúng một schema BreadcrumbList (tìm thấy ${breadcrumbs.length}).`);
+    const schema = articles[0];
+    if (schema && (typeof schema.headline !== 'string' || !schema.headline.trim())) {
+      errors.push(`${relativePath} thiếu Article headline không rỗng.`);
+    } else if (schema && route) {
         const id = route.slice(1, -1);
         const visual = getArticleVisual({ id, data: { title: schema.headline, category: id.split('/')[0] } });
         articleVisuals.set(route, visual);
-        const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
-        if (plainText(h1 ?? '') !== visual.title || (html.match(/<h1\b/gi) ?? []).length !== 1) {
+        if (headings.length !== 1 || normalizedText(headings[0]) !== visual.title) {
           errors.push(`${relativePath} có H1 không đồng bộ với tiêu đề bài viết.`);
         }
         const expectedImage = `${productionOrigin}${visual.image}`;
@@ -292,29 +410,71 @@ for (const htmlFile of htmlFiles) {
             errors.push(`${relativePath} cần ảnh PNG ${visual.width}×${visual.height}.`);
           }
         }
-      }
-    } catch (error) {
-      errors.push(`${relativePath} có JSON-LD không hợp lệ: ${error.message}`);
     }
   }
 
-  const hrefs = [...html.matchAll(/\shref=(["'])(.*?)\1/gi)].map((match) => match[2]);
+  const hrefs = nodes.filter((node) => node.tagName !== 'base')
+    .map((node) => attribute(node, 'href')).filter((href) => href !== undefined);
   for (const href of hrefs) {
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+    if (!href || href.startsWith('mailto:') || href.startsWith('tel:')) {
       continue;
     }
 
     let targetUrl;
     try {
-      targetUrl = new URL(href, `${productionOrigin}${route ?? '/'}`);
+      targetUrl = new URL(href, baseUrl);
     } catch {
       errors.push(`${relativePath} có href không hợp lệ: ${href}`);
       continue;
     }
 
     if (targetUrl.origin !== productionOrigin) continue;
-    if (!(await targetExists(targetUrl.pathname))) {
+    const target = targetFile(targetUrl.pathname);
+    if (!target) {
       errors.push(`${relativePath} liên kết tới target không tồn tại: ${targetUrl.pathname}`);
+      continue;
+    }
+    if (targetUrl.hash && documents.has(target)) {
+      // Text-fragment directives are not element IDs. Empty/#top target the page.
+      const fragment = targetUrl.hash.slice(1).split(':~:')[0];
+      if (!fragment) continue;
+      let decodedFragment;
+      try {
+        decodedFragment = decodeURIComponent(fragment);
+      } catch {
+        errors.push(`${relativePath} có fragment không hợp lệ: ${href}`);
+        continue;
+      }
+      const ids = documents.get(target).fragmentIds;
+      if (!ids.has(fragment) && !ids.has(decodedFragment) && decodedFragment.toLowerCase() !== 'top') {
+        errors.push(`${relativePath} liên kết tới fragment không tồn tại: ${href}`);
+      }
+    }
+  }
+
+  for (const node of nodes) {
+    const imageUrls = [];
+    if (node.tagName === 'img') {
+      const src = attribute(node, 'src');
+      if (src !== undefined) imageUrls.push(src);
+    }
+    if (node.tagName === 'img' || (node.tagName === 'source' && node.parentNode?.tagName === 'picture')) {
+      imageUrls.push(...srcsetUrls(attribute(node, 'srcset') ?? ''));
+    }
+    for (const src of imageUrls) {
+      let imageUrl;
+      try {
+        if (!src.trim()) throw new Error('empty image URL');
+        imageUrl = new URL(src, baseUrl);
+      } catch {
+        errors.push(`${relativePath} có URL ảnh không hợp lệ: ${src}`);
+        continue;
+      }
+      if (imageUrl.origin !== productionOrigin) continue;
+      const imageFile = targetFile(imageUrl.pathname);
+      if (!imageFile || !/\.(?:avif|gif|ico|jpe?g|png|svg|webp)$/i.test(imageFile)) {
+        errors.push(`${relativePath} có ảnh nội bộ không tồn tại: ${src}`);
+      }
     }
   }
 }
@@ -369,36 +529,6 @@ for (const canonical of indexableCanonicals) {
 for (const sitemapUrl of sitemapUrls) {
   if (!indexableCanonicals.has(sitemapUrl)) {
     errors.push(`Sitemap chứa URL không indexable: ${sitemapUrl}`);
-  }
-}
-
-const articleRoot = path.join(projectRoot, 'src/content/articles');
-const articleFiles = (await walk(articleRoot)).filter((filePath) => /\.mdx?$/.test(filePath));
-
-for (const articleFile of articleFiles) {
-  const source = await readFile(articleFile, 'utf8');
-
-  const relativeArticle = path
-    .relative(articleRoot, articleFile)
-    .split(path.sep).join('/')
-    .replace(/\.mdx?$/, '');
-
-  const category = source.match(
-    /^category:\s*["']?(mo-tai-khoan|the-tin-dung|vay-tien-mat)["']?\s*$/m,
-  )?.[1];
-  const segments = relativeArticle.split('/');
-
-  if (!category || segments.length !== 2 || segments[0] !== category) {
-    errors.push(
-      `Article phải nằm trong thư mục chuyên mục tương ứng: ${relativeArticle} (category: ${category ?? 'missing'}).`,
-    );
-  }
-
-  if (!/^draft:\s*true\s*$/m.test(source)) continue;
-
-  const draftOutput = path.join(distRoot, relativeArticle, 'index.html');
-  if (await exists(draftOutput)) {
-    errors.push(`Draft article xuất hiện trong build: /${relativeArticle}/`);
   }
 }
 

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "defaultReviewDays": 90,
+  "records": [
+    {
+      "article": "mo-tai-khoan/mo-tai-khoan-vpbank-online",
+      "checkedAt": "2026-11-11",
+      "nextReviewAt": "2026-12-11",
+      "scope": "Gỡ quyền lợi 10.000 + 20.000 đồng của chương trình đã kết thúc; đối chiếu thông tin VPBank NEO, phí mở tài khoản và kênh hỗ trợ. Không xác nhận lại toàn bộ luồng App hoặc thời hạn link giới thiệu.",
+      "sources": [
+        {
+          "url": "https://www.vpbank.com.vn/uu-dai/retail/digital-banking-promotion-category/mgm",
+          "status": "historical",
+          "effectiveFrom": "2026-05-13",
+          "validThrough": "2026-09-30"
+        },
+        {
+          "url": "https://www.vpbank.com.vn/vpbank-neo",
+          "status": "current"
+        },
+        {
+          "url": "https://www.vpbank.com.vn/-/media/vpbank-latest/tai-lieu-bieu-mau/bieu-phi/khcn/pl01_bieu_phi_dich_vu_danh_cho_khcn_thong_thuong.pdf",
+          "status": "current"
+        }
+      ]
+    },
+    {
+      "article": "the-tin-dung/mo-the-tin-dung-liobank",
+      "checkedAt": "2026-11-11",
+      "nextReviewAt": "2026-12-11",
+      "scope": "Đối chiếu toàn bộ ba nhóm thông tin trong khối sản phẩm: hạn mức tối đa 200 triệu đồng, phí cố định, lãi trong hạn 45–59%/năm và miễn lãi tối đa 62 ngày. Cập nhật biểu phí 15/10/2026 trong bài và dữ liệu sản phẩm; đối chiếu thanh toán tối thiểu. Chưa kiểm thử lại các màn hình App hoặc xác nhận lại link giới thiệu.",
+      "sources": [
+        {
+          "url": "https://liobank.vn/vn/tariffs",
+          "status": "current"
+        },
+        {
+          "url": "https://liobank.vn/doc/151026_Bi%E1%BB%83u%20ph%C3%AD%20Liobank%20d%C3%A0nh%20cho%20KHCN.pdf",
+          "status": "current",
+          "effectiveFrom": "2026-10-15"
+        },
+        {
+          "url": "https://liobank.vn/vn/credit-card",
+          "status": "current"
+        }
+      ]
+    },
+    {
+      "article": "the-tin-dung/mo-the-tin-dung-cake-2in1",
+      "checkedAt": "2026-11-11",
+      "nextReviewAt": "2026-12-11",
+      "scope": "Đối chiếu ba nhóm thông tin trong khối sản phẩm: điều kiện Premium từ 30 triệu đồng, phí/lãi và miễn lãi tối đa Standard 45/Premium 55 ngày. Cập nhật phí theo mẫu thẻ, ngoại lệ chi tiêu và thời hạn/ngân sách chương trình người được giới thiệu. Giữ CTA và luồng hồ sơ hiện có; không xác nhận lại toàn bộ các màn hình đăng ký.",
+      "sources": [
+        {
+          "url": "https://cake.vn/tin-tuc/hoat-dong/bieu-phi-the-cake2in1",
+          "status": "current",
+          "effectiveFrom": "2026-11-10"
+        },
+        {
+          "url": "https://cake.vn/uu-dai/cake-uu-dai/moi-ban-moi-san-thuong-khung-den-4-trieu-q3",
+          "status": "current",
+          "effectiveFrom": "2026-07-10",
+          "validThrough": "2026-12-31"
+        },
+        {
+          "url": "https://static.cake.vn/homepage/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445.pdf",
+          "status": "current",
+          "effectiveFrom": "2026-07-10",
+          "validThrough": "2026-12-31"
+        },
+        {
+          "url": "https://cake.vn/the/the-cake-2in1/goi-standard",
+          "status": "current"
+        },
+        {
+          "url": "https://cake.vn/the/the-cake-2in1/goi-premium",
+          "status": "current"
+        }
+      ]
+    }
+  ]
+}

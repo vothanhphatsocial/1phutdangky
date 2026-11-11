@@ -9,6 +9,9 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist && node scripts/validate-build.mjs",
     "check": "npm run build",
+    "content:review": "node scripts/check-content-maintenance.mjs",
+    "test:maintenance": "node --test scripts/test-content-maintenance.mjs",
+    "test:validator": "node scripts/test-validate-build.mjs",
     "preview": "astro preview",
     "validate": "node scripts/validate-build.mjs",
     "astro": "astro",
@@ -20,6 +23,7 @@
     "@fontsource/inter": "^5.3.0",
     "astro": "^7.2.2",
     "pagefind": "^1.5.2",
+    "parse5": "7.3.0",
     "satori": "^0.63.2",
     "sharp": "^0.35.5"
   }

@@ -70,13 +70,19 @@ Current TPBank promotions normally belong inside the relevant Account or Credit 
 
 Official TPBank campaign codes may be described only as TPBank campaign codes, with current dates, eligibility and source. They are never a referral code owned by 1 Phút Đăng Ký.
 
+## Pre-run maintenance gate
+
+After reading `Next Action`, apply `AGENTS.md` → `Maintenance gate and evidence dates` before selecting a `Ready` item or entering Discovery Mode. Review published TPBank claims and shared product data for expired campaigns, replaced tariffs and dates unsupported by source evidence. Run `npm run content:review` and inspect `docs/content/source-review.json`; its recorded claims do not replace the wider source review.
+
+A verified substantive correction to an existing URL takes priority and counts as the single run. Use the existing workbook queue/log columns and statuses, preserve history and record why maintenance overrides the selector. Do not add a new article in that run or disable CTAs merely because a review is due. `updatedAt` records substantive editorial changes; `lastVerifiedAt` requires actually opened sources covering the represented claims. Cosmetic or citation-link-only edits refresh neither date. Documentation-only maintenance setup does not change workbook state or start a run.
+
 ## One-run workflow
 
 When the trigger command is received:
 
 1. Read repository instructions.
 2. Open workbook `Next Action`.
-3. Validate `Next Action` against actual queue statuses and select the best eligible `Ready` item by priority, dependency, source readiness and intent. Respect the seeded order unless these checks justify a different choice; log the reason.
+3. Apply the pre-run maintenance gate. If no substantive correction takes priority, validate `Next Action` against actual queue statuses and select the best eligible `Ready` item by priority, dependency, source readiness and intent. Respect the seeded order unless these checks justify a different choice; log the reason.
 4. Mark the matching `Evergreen Queue` row `In progress`.
 5. Check foundation dependency. If a support page depends on a canonical pillar that does not yet exist, create/complete the parent foundation first instead of publishing an orphan support page.
 6. Check current routes/canonical ownership and cannibalization risk.

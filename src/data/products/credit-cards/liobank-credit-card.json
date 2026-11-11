@@ -12,8 +12,7 @@
       "enabled": true,
       "url": "https://liobank.vn/rr/laqv",
       "ctaLabel": "Mở ứng dụng Liobank",
-      "lastVerifiedAt": "2026-08-16",
-      "validThrough": "2026-09-30"
+      "lastVerifiedAt": "2026-08-16"
     }
   ],
   "primaryOfferId": "liobank-credit-card-direct-referral",
@@ -35,13 +34,13 @@
       "publisher": "Liobank by OCB"
     },
     {
-      "title": "Danh mục biểu phí Liobank — hiệu lực từ 05/08/2026",
+      "title": "Danh mục biểu phí Liobank — hiệu lực từ 15/10/2026",
       "url": "https://liobank.vn/vn/tariffs",
       "publisher": "Liobank by OCB"
     },
     {
       "title": "Biểu phí Liobank dành cho khách hàng cá nhân — bản chi tiết",
-      "url": "https://liobank.vn/doc/050826_Bi%E1%BB%83u%20ph%C3%AD%20Liobank%20d%C3%A0nh%20cho%20KHCN.pdf",
+      "url": "https://liobank.vn/doc/151026_Bi%E1%BB%83u%20ph%C3%AD%20Liobank%20d%C3%A0nh%20cho%20KHCN.pdf",
       "publisher": "Ngân hàng TMCP Phương Đông (OCB)"
     },
     {
@@ -55,7 +54,7 @@
       "publisher": "Liobank by OCB"
     }
   ],
-  "lastVerifiedAt": "2026-08-16",
+  "lastVerifiedAt": "2026-11-11T01:37:18+07:00",
   "draft": false,
   "facts": [
     {
@@ -64,7 +63,7 @@
     },
     {
       "label": "Phí và lãi",
-      "value": "Phát hành, thường niên và giao thẻ vật lý: miễn phí. Lãi và một số phí giao dịch vẫn có thể phát sinh."
+      "value": "Phát hành, thường niên và giao thẻ vật lý miễn phí; lãi suất dư nợ thẻ trong hạn từ 45% đến 59%/năm. Phí rút tiền, ngoại tệ, trả góp và chậm thanh toán áp dụng riêng."
     },
     {
       "label": "Thanh toán và miễn lãi",

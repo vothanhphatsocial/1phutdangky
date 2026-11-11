@@ -31,7 +31,7 @@
     },
     {
       "label": "Phí và lãi",
-      "value": "Phát hành thẻ vật lý 150.000 đồng với Standard, 350.000 đồng với Premium; lãi mua sắm tương ứng 48%/năm và 33%/năm."
+      "value": "Phát hành thẻ vật lý: Standard 150.000 đồng; Premium đen/xanh 350.000 đồng, hồng 250.000 đồng, chưa gồm VAT 10%. Lãi mua sắm tương ứng 48%/năm và 33%/năm."
     },
     {
       "label": "Thanh toán và miễn lãi",
@@ -47,7 +47,7 @@
     },
     {
       "title": "Thể lệ chương trình giới thiệu mở thẻ tín dụng Cake 2in1",
-      "url": "https://storage.googleapis.com/cake-prd-website/homepage/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445.pdf",
+      "url": "https://static.cake.vn/homepage/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445/CC_The_le_CTKM_Gioi_Thieu_Mo_The_Q3_Q4_2026_final_1007_080c54b445.pdf",
       "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
     },
     {
@@ -76,8 +76,6 @@
       "publisher": "Cake by VPBank"
     }
   ],
-
-  "lastVerifiedAt": "2026-08-16",
-
+  "lastVerifiedAt": "2026-11-11T01:37:18+07:00",
   "draft": false
 }

@@ -272,7 +272,16 @@ const articles = defineCollection({
         'Bài viết xuất bản phải có ít nhất một nguồn.',
       path: ['sources'],
     }
-  ),
+  ).superRefine((article, context) => {
+    if (article.updatedAt < article.publishedAt) {
+      context.addIssue({ code: 'custom', message: 'Ngày cập nhật không thể trước ngày xuất bản.', path: ['updatedAt'] });
+    }
+    for (const field of ['publishedAt', 'updatedAt', 'lastVerifiedAt'] as const) {
+      if (article[field] && article[field].valueOf() > Date.now()) {
+        context.addIssue({ code: 'custom', message: 'Ngày nội dung không thể ở tương lai; dùng múi giờ +07:00 cho thời điểm tại Việt Nam.', path: [field] });
+      }
+    }
+  }),
 });
 
 
