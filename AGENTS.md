@@ -152,7 +152,7 @@ When the user says exactly or substantially **`Bắt đầu tạo bài mới Hom
 
 Repository instructions for this product:
 
-- The site is `https://1phutdangky.com`; category is `/vi-dien-tu/`. User reports category was deleted and there is no existing Home PayLater article. Inspect actual routes and **restore category if missing** before publishing the first pillar.
+- The site is `https://1phutdangky.com`; category `/vi-dien-tu/` and the exact approved Home PayLater pillar were restored/published in the first content run on 2026-11-13. Inspect current routes, published content and workbook before each run; reuse the canonical owner rather than creating the pillar again.
 - Home PayLater is a **Home Credit BNPL / mua trước trả sau product**, not a generic e-wallet or a cash loan. Maintain separate canonical ownership from Home Credit loan/card content.
 - The Home PayLater pillar has the **owner-confirmed canonical URL** `https://1phutdangky.com/vi-dien-tu/mo-tai-khoan-tra-sau-home-paylater-online/`. Use this exact URL; inspect routing to implement it without substituting a different slug.
 - Read workbook `Next Action → Evergreen Queue → Execution Briefs → CTA Matrix → Publish Source Matrix → Content Portfolio → Discovery Rules → Run Log`. Process one selected eligible item per trigger and persist status; never repeat Done work.
