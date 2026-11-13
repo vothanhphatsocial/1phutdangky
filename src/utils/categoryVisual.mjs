@@ -1,6 +1,7 @@
 const palettes = {
   'mo-tai-khoan': { start: '#99c3ff', end: '#92f1d1', highlight: 0.72 },
   'the-tin-dung': { start: '#ffc29e', end: '#f7e88c', highlight: 0.7 },
+  'vi-dien-tu': { start: '#8ee7d1', end: '#8fc8ff', highlight: 0.7 },
   'vay-tien-mat': { start: '#b4a3ff', end: '#f1b8f8', highlight: 0.68 },
 };
 

@@ -77,6 +77,47 @@
           "status": "current"
         }
       ]
+    },
+    {
+      "article": "vi-dien-tu/mo-tai-khoan-tra-sau-home-paylater-online",
+      "checkedAt": "2026-11-13",
+      "nextReviewAt": "2026-12-13",
+      "scope": "Bài trụ Home PayLater: bản chất BNPL, hồ sơ, kênh đăng ký qua đối tác/nhân viên, hạn mức công bố 25 triệu, kỳ hạn 1/3/6/12 tháng, lãi 0–45%/năm theo dư nợ giảm dần, phí duy trì/chuyển đổi, QR, thanh toán, cảnh báo rút tiền, địa chỉ/hotline. Tuổi từ 18 được chủ site/nhân viên hỗ trợ xác nhận ngày 13/11/2026 cho kênh tư vấn này và có trong bài giới thiệu chính thức; FAQ trang chủ còn ghi trên 20, hướng dẫn cũ ghi từ 20, chưa xác nhận thống nhất cho mọi kênh. Không cam kết hạn mức hoặc thời gian duyệt, không công bố ưu đãi đang hoạt động. CTA Zalo là thông tin do chủ site cấu hình, không phải hệ thống xác thực/thanh toán. Không kiểm thử quy trình đăng ký hoặc giao dịch trong App.",
+      "sources": [
+        {
+          "url": "https://www.homepaylater.vn/",
+          "status": "current"
+        },
+        {
+          "url": "https://www.homecredit.vn/blog/huong-dan-dang-ky-home-paylater-online",
+          "status": "current"
+        },
+        {
+          "url": "https://www.homepaylater.vn/blog/gioi-thieu-ve-home-paylater/",
+          "status": "current"
+        },
+        {
+          "url": "https://www.homepaylater.vn/ho-tro/thong-tin-lai-suat.pdf",
+          "status": "current",
+          "effectiveFrom": "2023-03-01"
+        },
+        {
+          "url": "https://www.homecredit.vn/faq/hop-dong-vay",
+          "status": "current"
+        },
+        {
+          "url": "https://www.homepaylater.vn/huong-dan-thanh-toan/",
+          "status": "current"
+        },
+        {
+          "url": "https://www.homecredit.vn/blog/canh-bao-gian-lan-rut-tien-mat-qua-tai-khoan-tra-sau-home-pay-later",
+          "status": "current"
+        },
+        {
+          "url": "https://www.homecredit.vn/lien-he",
+          "status": "current"
+        }
+      ]
     }
   ]
 }

@@ -275,3 +275,33 @@ test('redirect configuration removes wallet fallbacks and preserves all four MB 
     }
   }
 });
+
+
+test('restored wallet category accepts a matching article and rejects a mismatched category', async (t) => {
+  const root = await fixture(t);
+  const id = 'vi-dien-tu/mo-tai-khoan-tpbank-online';
+  const title = 'Hướng dẫn mở tài khoản TPBank online';
+  const previous = getArticleVisual({ id: article.replace('/index.html', ''), data: { title, category: 'mo-tai-khoan' } });
+  const visual = getArticleVisual({ id, data: { title, category: 'vi-dien-tu' } });
+  const sourcePath = `src/content/articles/${id}.mdx`;
+  const htmlPath = `dist/${id}/index.html`;
+  await mkdir(path.dirname(path.join(root, sourcePath)), { recursive: true });
+  await mkdir(path.dirname(path.join(root, htmlPath)), { recursive: true });
+  const source = await readFile(path.join(root, `src/content/articles/${articleSource}`), 'utf8');
+  await writeFile(path.join(root, sourcePath), source.replace('category: mo-tai-khoan', 'category: vi-dien-tu'));
+  const html = await readFile(path.join(root, `dist/${article}`), 'utf8');
+  await writeFile(path.join(root, htmlPath), html.replaceAll(previous.image, visual.image).replaceAll('/mo-tai-khoan/', '/vi-dien-tu/'));
+  await mkdir(path.dirname(path.join(root, `dist${visual.image}`)), { recursive: true });
+  await cp(path.join(root, `dist${previous.image}`), path.join(root, `dist${visual.image}`));
+  await rm(path.join(root, `src/content/articles/${articleSource}`));
+  await rm(path.join(root, `dist/${article}`));
+  for (const file of ['dist/index.html', 'dist/sitemap-0.xml']) {
+    await edit(root, file, text => text.replaceAll('/mo-tai-khoan/', '/vi-dien-tu/'));
+  }
+  const valid = run(root);
+  assert.equal(valid.status, 0, valid.output);
+  await edit(root, sourcePath, text => text.replace('category: vi-dien-tu', 'category: vay-tien-mat'));
+  const invalid = run(root);
+  assert.equal(invalid.status, 1, invalid.output);
+  assert.match(invalid.output, /thư mục chuyên mục tương ứng/);
+});

@@ -41,6 +41,15 @@ export const CATEGORIES = {
     icon: 'cash',
   },
 
+  'vi-dien-tu': {
+    slug: 'vi-dien-tu',
+    name: 'Ví điện tử',
+    shortName: 'Ví điện tử',
+    description:
+      'Hướng dẫn ví điện tử và tài khoản mua trước trả sau: điều kiện, chi phí và cách sử dụng.',
+    icon: 'wallet',
+  },
+
 } as const;
 
 export type CategorySlug = keyof typeof CATEGORIES;

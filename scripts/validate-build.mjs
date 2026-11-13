@@ -205,7 +205,7 @@ for (const articleFile of articleFiles) {
   const relativeArticle = path.relative(articleRoot, articleFile)
     .split(path.sep).join('/').replace(/\.mdx?$/, '');
   const category = frontmatter.match(
-    /^category:\s*["']?(mo-tai-khoan|the-tin-dung|vay-tien-mat)["']?\s*(?:#.*)?$/m,
+    /^category:\s*["']?(mo-tai-khoan|the-tin-dung|vay-tien-mat|vi-dien-tu)["']?\s*(?:#.*)?$/m,
   )?.[1];
   const segments = relativeArticle.split('/');
   if (!category || segments.length !== 2 || segments[0] !== category) {

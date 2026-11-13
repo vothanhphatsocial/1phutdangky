@@ -71,7 +71,7 @@ async function main() {
   const issues = [];
   for (const record of ledger.records) {
     if (records.has(record.article)) throw new Error(`Trùng bài: ${record.article}`);
-    if (!/^(mo-tai-khoan|the-tin-dung|vay-tien-mat)\/[a-z0-9-]+$/.test(record.article)) {
+    if (!/^(mo-tai-khoan|the-tin-dung|vay-tien-mat|vi-dien-tu)\/[a-z0-9-]+$/.test(record.article)) {
       throw new Error(`Đường dẫn bài không hợp lệ: ${record.article}`);
     }
     records.set(record.article, record);
