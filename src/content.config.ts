@@ -27,6 +27,7 @@ const productCategorySchema = z.enum([
   'credit-card',
   'loan',
   'insurance',
+  'bnpl',
 ]);
 
 const offerChannelSchema = z.enum([
@@ -76,6 +77,12 @@ const products = defineCollection({
     summary: z.string(),
 
     officialUrl: z.url(),
+
+    contactAction: z.object({
+      url: z.url(),
+      label: z.string(),
+      note: z.string(),
+    }).optional(),
 
     offers: z
       .array(productOfferSchema)

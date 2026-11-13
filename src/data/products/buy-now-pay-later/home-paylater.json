@@ -1,0 +1,46 @@
+{
+  "name": "Tài khoản trả sau Home PayLater",
+  "provider": "Công ty Tài chính TNHH MTV Home Credit Việt Nam",
+  "category": "bnpl",
+  "summary": "Tài khoản mua trước trả sau để thanh toán hàng hóa, dịch vụ tại đối tác và qua QR trên ứng dụng Home Credit. Hạn mức dùng cho mua sắm, không hỗ trợ rút tiền mặt.",
+  "officialUrl": "https://www.homepaylater.vn/",
+  "offers": [],
+  "contactAction": {
+    "url": "https://zalo.me/0896451911",
+    "label": "Nhắn Zalo – Võ Thành Phát",
+    "note": "Võ Thành Phát – Nhân viên Home Credit. Tư vấn điều kiện và hướng dẫn đăng ký."
+  },
+  "facts": [
+    {
+      "label": "Điều kiện đăng ký",
+      "value": "Công dân Việt Nam từ 18 tuổi; căn cước còn hiệu lực, số điện thoại chính chủ và ảnh chân dung theo yêu cầu xác thực của Home Credit."
+    },
+    {
+      "label": "Hạn mức và kỳ hạn",
+      "value": "Hạn mức công bố đến 25 triệu đồng; kỳ hạn 1, 3, 6 hoặc 12 tháng. Hạn mức được cấp và kỳ hạn giao dịch tùy thẩm định, điều kiện áp dụng."
+    },
+    {
+      "label": "Lãi, phí và thanh toán",
+      "value": "Lãi suất công bố 0–45%/năm theo dư nợ giảm dần; không thu phí duy trì và chuyển đổi theo thông tin sản phẩm. Kiểm tra lãi thực tế, lịch trả và tổng chi phí trước khi xác nhận."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Thông tin và FAQ Home PayLater",
+      "url": "https://www.homepaylater.vn/",
+      "publisher": "Home PayLater"
+    },
+    {
+      "title": "Thông tin lãi suất Home PayLater, hiệu lực 01/03/2023",
+      "url": "https://www.homepaylater.vn/ho-tro/thong-tin-lai-suat.pdf",
+      "publisher": "Home Credit"
+    },
+    {
+      "title": "Giới thiệu Home PayLater: điều kiện từ 18 tuổi",
+      "url": "https://www.homepaylater.vn/blog/gioi-thieu-ve-home-paylater/",
+      "publisher": "Home PayLater"
+    }
+  ],
+  "lastVerifiedAt": "2026-11-13T21:27:03+07:00",
+  "draft": false
+}

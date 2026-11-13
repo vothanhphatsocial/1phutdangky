@@ -31,14 +31,17 @@ const offer =
   );
 
 const isAffiliate = Boolean(offer);
+const contactAction = !offer ? product.data.contactAction : undefined;
 
 const href =
   offer?.url ??
+  contactAction?.url ??
   product.data.officialUrl;
 
 const buttonLabel =
   label ??
   offer?.ctaLabel ??
+  contactAction?.label ??
   product.data.ctaLabel ??
   (
     isAffiliate
@@ -61,8 +64,10 @@ const rel =
   data-event={
     isAffiliate
       ? 'affiliate_click'
-      : 'official_link_click'
+      : contactAction ? 'contact_click' : 'official_link_click'
   }
+
+  data-link-purpose="action"
 
   data-product-id={product.id}
 
