@@ -117,6 +117,28 @@ test('unmodified build fixture passes', async (t) => {
   assert.match(result.output, /Build validation pass/);
 });
 
+function productCardNoteFixture(before = '', after = '') {
+  return `<section class="product-card"><div class="product-intro">${before}<div class="product-action"><a href="https://tpb.vn/" data-link-purpose="action">Tiếp tục</a></div>${after}</div><dl><div class="fact">Điều kiện</div><div class="fact">Phí</div><div class="fact">Dịch vụ</div></dl></section>`;
+}
+
+for (const [name, before, after] of [
+  ['missing', '', ''],
+  ['blank', '', '<p class="context-note action-context">   </p>'],
+  ['before the button', '<p class="context-note action-context">Ghi chú</p>', ''],
+  ['elsewhere in the card', '', '<div><p class="context-note action-context">Ghi chú</p></div>'],
+]) {
+  test(`product-card CTA note ${name} is rejected`, (t) =>
+    rejectsMutation(t, (html) => append(html, productCardNoteFixture(before, after)), /thiếu ghi chú dưới CTA/));
+}
+
+test('product-card note immediately below the CTA remains accepted', async (t) => {
+  const root = await fixture(t);
+  await edit(root, `dist/${article}`, (html) => append(html,
+    productCardNoteFixture('', '<p class="context-note action-context">Mở ứng dụng để tiếp tục.</p>')));
+  const result = run(root);
+  assert.equal(result.status, 0, result.output);
+});
+
 for (const type of ['Article', 'BreadcrumbList']) {
   test(`missing ${type} is rejected independently of schema presence`, (t) =>
     rejectsMutation(t, (html) => withoutSchema(html, type), new RegExp(`schema ${type}.*tìm thấy 0`)));

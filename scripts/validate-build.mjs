@@ -322,6 +322,19 @@ for (const htmlFile of htmlFiles) {
         `${relativePath} vẫn còn link Trang chính thức ngoài CTA affiliate.`,
       );
     }
+
+    for (const card of nodes.filter((node) => attribute(node, 'class')?.split(/\s+/).includes('product-card'))) {
+      const action = elements(card).find((node) => attribute(node, 'class')?.split(/\s+/).includes('product-action'));
+      const siblings = action?.parentNode?.childNodes ?? [];
+      const notes = siblings.slice(siblings.indexOf(action) + 1).filter((node) =>
+        node.tagName === 'p' &&
+        attribute(node, 'class')?.split(/\s+/).includes('action-context') &&
+        normalizedText(node),
+      );
+      if (!action || notes.length === 0) {
+        errors.push(`${relativePath} có khung sản phẩm thiếu ghi chú dưới CTA.`);
+      }
+    }
   }
 
   const robots = html.match(/<meta name="robots" content="([^"]+)">/i)?.[1];
