@@ -2,7 +2,7 @@
 
 **Website:** https://1phutdangky.com\
 **Confirmed category:** `/dang-ky-doi-tac/`\
-**Editorial pillar URL candidate:** `https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`\
+**Published canonical pillar URL:** `https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`\
 **User-provided primary recruitment source:** https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike\
 **Second official source:** https://www.greensm.com/vn-vi/driver-bike\
 **Trigger:** `Bắt đầu tạo bài mới Green SM Bike`\
@@ -22,9 +22,11 @@ Read `AGENTS.md` → playbook → Excel sheets **Next Action, Evergreen Queue, E
 
 The user has approved the **category** `/dang-ky-doi-tac/` and wants it created if missing. At setup, the repository supports four categories and has no partner-registration category or Green SM Bike article/product. Recheck actual app routes, content taxonomy, navigation, sitemap, old redirects and production before implementation. Only the first triggered content run may extend `src/config/site.ts`, `src/content.config.ts`, the shared category palette, navigation/icon mapping, build/maintenance validators and related tests for this category; sitemap and breadcrumbs follow the existing routing. Preserve existing UI and do not make these application changes during setup.
 
-There is no existing Green SM Bike source article supplied by the owner. Treat it as a greenfield content cluster, while auditing the repo to prevent duplicates.
+**Current foundation (2026-11-14):** B-PILLAR is published at `https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`, with the category, recruitment-product model, standard Product Card before TOC and exact AccessTrade offer. Content commit `d4ecc26005ae3b48c0e51d438a68944bfc82aa47` was pushed to main; automatic Cloudflare deployment and production QA succeeded. Future runs must reuse this canonical owner and read current queue state. Eligibility and document sections already exist; conditional support items require the standalone-utility gate before a new URL.
 
-The first article should be a **Green SM Bike motorcycle-driver recruitment pillar**, editorial candidate `https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`. This is a proposed slug that follows the site's patterns, NOT explicitly approved by the user. Check current routing before publishing; if a materially different existing canonical/slug conflict exists that cannot be resolved from repo, ask owner **one** targeted question before publishing. Do not generate multiple synonyms as separate URLs.
+No source article was supplied at setup. The first content run created the canonical owner above; audit the current cluster to prevent duplicate coverage.
+
+The first article established the **Green SM Bike motorcycle-driver recruitment pillar**, canonical owner `https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`. The routing audit found no conflict and the owner URL is now published. Recheck current content before future updates; do not generate multiple synonyms as separate URLs.
 
 The pillar owns variations: đăng ký/tuyển tài xế xe máy Green SM, Green SM Bike, chạy Xanh SM Bike (tên cũ), hướng dẫn đăng ký/ứng tuyển Green SM Bike. Supporting question content becomes stand-alone only with distinct intent + separate SERP + credible current sources + sufficient standalone utility + limited cannibalization. Otherwise use H2/H3/FAQ in owner.
 
@@ -109,3 +111,9 @@ Keep external citation URLs in the final existing Sources/verification block, wi
 
 **Setup trigger:** Install the engine only.\
 **Daily user command:** `Bắt đầu tạo bài mới Green SM Bike`.
+
+## Verified first-run evidence
+
+On 2026-11-14, the provided recruitment form was opened directly and in a browser. Its current fields are name, phone, location and current-vehicle status. The exact configured AccessTrade link reached that same provider path; no real application was submitted. The form presents both owned-vehicle and company-vehicle choices, so never transfer one group's marketing benefits to the other.
+
+For Bike documents, the official notice `https://www.greensm.com/vn-vi/news/hoan-thien-ho-so-de-dang-hon-voi-vneid-dinh-danh-muc-2` was published 2026-07-13 and applies from 2026-07-01 until superseded. It explicitly includes Bike, permits initial VNeID level 1 with level 2 supplementation within 30 days, and accepts valid LLTP as an alternative. Use the latest applicable notice instead of repeating older blanket LLTP02 requirements. These observations are dated evidence, not permission to skip source review in later runs. The active scope and next review are recorded in `docs/content/source-review.json`.

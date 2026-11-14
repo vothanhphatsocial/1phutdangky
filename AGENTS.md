@@ -186,7 +186,7 @@ When the user says **`Bắt đầu tạo bài mới Green SM Bike`** or **`Bắt
 ### Fixed owner configuration
 
 - Site: `https://1phutdangky.com`; owner-approved category: **`/dang-ky-doi-tac/`**, create it using existing UI/routing if absent.
-- Bike pillar editorial candidate: **`https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`**. Inspect repository/current canonical before publish; only ask if a material route conflict remains.
+- Bike canonical owner, published and production-verified on 2026-11-14: **`https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`**. Category `/dang-ky-doi-tac/` is live. Reuse this owner; inspect current content and workbook before each run rather than recreating the foundation.
 - **User-provided recruitment source:** `https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike`. Validate on content-publish day.
 - **One shared outbound CTA:** copy `Plan Settings!B11` **exactly as provided** (AccessTrade deep link), use existing CTA components, label `Đăng ký tài xế Green SM Bike`. Never truncate/re-encode UTM, sub4 or url_enc parameters.
 - Brand: **Green SM Bike**; treat **Xanh SM Bike** as an old-name synonym, not a separate pillar. Verify the rebrand announcement/date supplied as a research seed before publication.
