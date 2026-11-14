@@ -1,0 +1,60 @@
+{
+  "name": "Đăng ký tài xế Green SM Bike",
+  "provider": "Công ty Cổ phần Di chuyển Xanh và Thông minh GSM",
+  "category": "recruitment",
+  "summary": "Ứng tuyển tài xế xe máy điện Green SM Bike. Chuẩn bị hồ sơ, chọn địa điểm và tình trạng xe trên biểu mẫu tuyển dụng để được hướng dẫn chương trình phù hợp.",
+  "officialUrl": "https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike",
+  "offers": [
+    {
+      "id": "green-sm-bike-accesstrade",
+      "name": "Đăng ký tài xế Green SM Bike qua AccessTrade",
+      "channel": "affiliate-network",
+      "enabled": true,
+      "url": "https://fast.accesstrade.com.vn/deep_link/v5/6083423853747419148/6757021256279841672?utm_source=1phutdangky&utm_medium=website&utm_campaign=dang-ky-doi-tac&sub4=oneatweb&url_enc=aHR0cHM6Ly90dXllbnRhaXhlLmdyZWVuc20uY29tL2Rhbmcta3ktdGFpLXhlLWdyZWVuLXNtLWJpa2U%3D",
+      "network": "AccessTrade",
+      "destinationLabel": "trang tuyển dụng Green SM Bike",
+      "ctaLabel": "Đăng ký tài xế Green SM Bike",
+      "ctaNote": "Điền họ tên, số điện thoại, địa điểm ứng tuyển và tình trạng xe trên biểu mẫu của Green SM.",
+      "lastVerifiedAt": "2026-11-14T08:27:05+07:00"
+    }
+  ],
+  "primaryOfferId": "green-sm-bike-accesstrade",
+  "facts": [
+    {
+      "label": "Điều kiện ứng tuyển",
+      "value": "Công dân Việt Nam: nam 18–65 tuổi, nữ 18–60 tuổi; chuẩn bị căn cước, bằng lái và hồ sơ theo yêu cầu tuyển dụng Bike."
+    },
+    {
+      "label": "Xe và hình thức tham gia",
+      "value": "Có lựa chọn chạy xe công ty cho người chưa có xe máy điện VinFast. Chọn đúng tình trạng xe khi đăng ký để được tư vấn chương trình phù hợp."
+    },
+    {
+      "label": "Thu nhập và chi phí",
+      "value": "Bike không có lương cứng theo FAQ của Green SM. Thu nhập phụ thuộc doanh thu chuyến đi và thưởng đủ điều kiện; kiểm tra khoản khấu trừ, tiền cọc và đồng phục trước khi nhận xe."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Trang tuyển dụng Green SM Bike – biểu mẫu và lựa chọn xe",
+      "url": "https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike",
+      "publisher": "Green SM"
+    },
+    {
+      "title": "Đối tác tài xế Bike – điều kiện, hồ sơ và quy trình ứng tuyển",
+      "url": "https://www.greensm.com/vn-vi/driver-bike",
+      "publisher": "Green SM"
+    },
+    {
+      "title": "Bổ sung VNeID mức 2 – áp dụng từ 01/07/2026 cho Bike",
+      "url": "https://www.greensm.com/vn-vi/news/hoan-thien-ho-so-de-dang-hon-voi-vneid-dinh-danh-muc-2",
+      "publisher": "Green SM"
+    },
+    {
+      "title": "Thông báo đổi thương hiệu Xanh SM thành Green SM, 13/04/2026",
+      "url": "https://www.greensm.com/vn-vi/news/xanh-sm-doi-ten-thanh-green-sm-dong-bo-nhan-dien-thuong-hieu-tren-toan-cau",
+      "publisher": "Green SM"
+    }
+  ],
+  "lastVerifiedAt": "2026-11-14T08:27:05+07:00",
+  "draft": false
+}

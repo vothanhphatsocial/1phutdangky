@@ -1,7 +1,7 @@
 ## Article URL structure
 
-- Every article must use `/<category>/<slug>/`, with exactly one category segment matching its `category` frontmatter: `mo-tai-khoan`, `the-tin-dung`, `vay-tien-mat`, or the owner-approved `vi-dien-tu` category. Restore `vi-dien-tu` in application code only during the first triggered Home PayLater content run; documentation setup alone does not restore the route.
-- Green SM Bike partner content uses the owner-approved `/dang-ky-doi-tac/` category. Add this category to application routing/schema/validation only during its first triggered content run; this setup authorizes documents only.
+- Every article must use `/<category>/<slug>/`, with exactly one category segment matching its `category` frontmatter: `mo-tai-khoan`, `the-tin-dung`, `vay-tien-mat`, or the owner-approved `vi-dien-tu` and `dang-ky-doi-tac` categories. Restore `vi-dien-tu` in application code only during the first triggered Home PayLater content run; documentation setup alone does not restore the route.
+- Green SM Bike partner content uses the owner-approved `/dang-ky-doi-tac/` category. Use the shared category routing/schema/validation; setup-only requests must not change application code.
 - Store article files and their cover assets in `src/content/articles/<category>/`. Do not publish articles at the site root or override their slug to bypass the category directory.
 - When moving a published article, add a direct 301 redirect for its old URL and update internal links, canonical, breadcrumb data, sitemap and active engine references. Preserve historical run logs.
 

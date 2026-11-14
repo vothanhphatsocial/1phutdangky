@@ -28,6 +28,7 @@ const productCategorySchema = z.enum([
   'loan',
   'insurance',
   'bnpl',
+  'recruitment',
 ]);
 
 const offerChannelSchema = z.enum([
@@ -192,6 +193,7 @@ const categorySchema = z.enum([
   'the-tin-dung',
   'vay-tien-mat',
   'vi-dien-tu',
+  'dang-ky-doi-tac',
 ]);
 
 const articleTypeSchema = z.enum([

@@ -34,10 +34,11 @@ const isCreditCardProduct =
   product.data.category === 'credit-card';
 const isLoanProduct =
   product.data.category === 'loan';
+const isRecruitmentProduct = product.data.category === 'recruitment';
 const isBnplProduct = product.data.category === 'bnpl';
 const contactAction = !offer ? product.data.contactAction : undefined;
 const productTheme = getCategoryVisual(
-  isCreditCardProduct ? 'the-tin-dung' : isLoanProduct ? 'vay-tien-mat' : isBnplProduct ? 'vi-dien-tu' : 'mo-tai-khoan'
+  isCreditCardProduct ? 'the-tin-dung' : isLoanProduct ? 'vay-tien-mat' : isBnplProduct ? 'vi-dien-tu' : isRecruitmentProduct ? 'dang-ky-doi-tac' : 'mo-tai-khoan'
 );
 const isLiobankProduct =
   product.id ===
@@ -80,7 +81,7 @@ const hasMoreInformation =
         )
       }
 
-      <span>Sản phẩm từ {product.data.provider}</span>
+      <span>{isRecruitmentProduct ? 'Tuyển dụng từ' : 'Sản phẩm từ'} {product.data.provider}</span>
     </div>
 
     <h2>{product.data.name}</h2>
@@ -219,7 +220,9 @@ const hasMoreInformation =
               ? 'Thông tin khoản vay cần biết'
               : isBnplProduct
                 ? 'Thông tin tài khoản trả sau cần biết'
-                : 'Thông tin sản phẩm cần biết'
+                : isRecruitmentProduct
+                  ? 'Thông tin ứng tuyển cần biết'
+                  : 'Thông tin sản phẩm cần biết'
       }
     </p>
 
@@ -250,8 +253,9 @@ const hasMoreInformation =
         <p class="relationship-note">
           1 Phút Đăng Ký là website độc lập, không phải{' '}
           {product.data.provider}. Chúng tôi có thể nhận hoa hồng
-          khi lượt đăng ký đủ điều kiện; nhà cung cấp xác minh và
-          quyết định kết quả đăng ký.
+          {isRecruitmentProduct
+            ? ' khi lượt đăng ký đáp ứng điều kiện chương trình; đơn vị tuyển dụng tiếp nhận hồ sơ và quyết định kết quả tuyển dụng.'
+            : ' khi lượt đăng ký đủ điều kiện; nhà cung cấp xác minh và quyết định kết quả đăng ký.'}
         </p>
       )
     }
@@ -314,7 +318,9 @@ const hasMoreInformation =
       isAffiliate && (
         <p class="destination-note">
           {
-            isMbBankProduct || isLiobankProduct || offer?.ctaNote
+            isRecruitmentProduct
+              ? '1 Phút Đăng Ký không tiếp nhận hồ sơ ứng tuyển hoặc thu tiền tuyển dụng.'
+              : isMbBankProduct || isLiobankProduct || offer?.ctaNote
               ? '1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.'
               : `Nút giới thiệu mở ${offer?.destinationLabel ?? `kênh của ${product.data.provider}`}. 1 Phút Đăng Ký không yêu cầu OTP, mật khẩu hoặc thông tin đăng nhập ngân hàng.`
           }

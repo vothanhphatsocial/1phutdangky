@@ -50,6 +50,14 @@ export const CATEGORIES = {
     icon: 'wallet',
   },
 
+  'dang-ky-doi-tac': {
+    slug: 'dang-ky-doi-tac',
+    name: 'Đăng ký đối tác',
+    shortName: 'Đối tác',
+    description: 'Điều kiện, hồ sơ và quy trình đăng ký đối tác, tài xế.',
+    icon: 'partner',
+  },
+
 } as const;
 
 export type CategorySlug = keyof typeof CATEGORIES;

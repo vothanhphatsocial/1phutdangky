@@ -118,6 +118,31 @@
           "status": "current"
         }
       ]
+    },
+    {
+      "article": "dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike",
+      "checkedAt": "2026-11-14",
+      "nextReviewAt": "2026-12-14",
+      "scope": "First Bike pillar and partner-programs/green-sm-bike: current Bike age ranges, ID/licence/BIDV/SIM requirements, company-vehicle option, no fixed salary, recruitment process, corporate contact/address, rebrand. Latest applicable VNeID notice effective 01/07/2026 supersedes older blanket LLTP02 wording. Primary recruiting form inspected in browser: name/phone/location/current-vehicle fields; AccessTrade exact URL verified to reach the correct provider page without submitting an application. No income, deposit, uniform, commission or bonus amounts published; mixed-program marketing and historical 2025 campaign terms not treated as current universal Bike terms. No application, interview, employment or payout verified.",
+      "sources": [
+        {
+          "url": "https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike",
+          "status": "current"
+        },
+        {
+          "url": "https://www.greensm.com/vn-vi/driver-bike",
+          "status": "current"
+        },
+        {
+          "url": "https://www.greensm.com/vn-vi/news/hoan-thien-ho-so-de-dang-hon-voi-vneid-dinh-danh-muc-2",
+          "status": "current",
+          "effectiveFrom": "2026-07-01"
+        },
+        {
+          "url": "https://www.greensm.com/vn-vi/news/xanh-sm-doi-ten-thanh-green-sm-dong-bo-nhan-dien-thuong-hieu-tren-toan-cau",
+          "status": "current"
+        }
+      ]
     }
   ]
 }

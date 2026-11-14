@@ -74,3 +74,7 @@ Kết quả cần đạt:
 - Build validator không báo lỗi.
 - `/vi-dien-tu/` và `/vi-dien-tu/mo-tai-khoan-tra-sau-home-paylater-online/` trả `200`, không chuyển về trang chủ. Kiểm tra cả response
   trên tên miền chính vì Redirect Rules của zone chạy trước quy tắc trong Pages.
+
+## Green SM Bike category
+
+The first Green SM Bike run adds `/dang-ky-doi-tac/` through the existing category routing. Verify that this category and `/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/` return 200, appear in the sitemap, and use matching category palettes for article/card/product/social images. Preserve the exact AccessTrade URL from the engine workbook in CTA hrefs. No DNS, environment, project or deployment-branch changes are required.
