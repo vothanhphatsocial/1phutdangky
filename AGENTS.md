@@ -1,6 +1,7 @@
 ## Article URL structure
 
 - Every article must use `/<category>/<slug>/`, with exactly one category segment matching its `category` frontmatter: `mo-tai-khoan`, `the-tin-dung`, `vay-tien-mat`, or the owner-approved `vi-dien-tu` category. Restore `vi-dien-tu` in application code only during the first triggered Home PayLater content run; documentation setup alone does not restore the route.
+- Green SM Bike partner content uses the owner-approved `/dang-ky-doi-tac/` category. Add this category to application routing/schema/validation only during its first triggered content run; this setup authorizes documents only.
 - Store article files and their cover assets in `src/content/articles/<category>/`. Do not publish articles at the site root or override their slug to bypass the category directory.
 - When moving a published article, add a direct 301 redirect for its old URL and update internal links, canonical, breadcrumb data, sitemap and active engine references. Preserve historical run logs.
 
@@ -19,7 +20,7 @@
 
 ## Maintenance gate and evidence dates (all content engines)
 
-- Before selecting work for an MB Bank, Home Credit, TPBank or Home PayLater content run, read `Next Action` first, then review that bank's published articles and shared product data for expired campaigns, replaced tariffs and unsupported freshness dates. This gate takes precedence over selecting the next `Ready` item or entering Discovery Mode.
+- Before selecting work for an MB Bank, Home Credit, TPBank, Home PayLater or Green SM Bike content run, read `Next Action` first, then review that provider's published articles and shared product data for expired campaigns, replaced tariffs and unsupported freshness dates. This gate takes precedence over selecting the next `Ready` item or entering Discovery Mode.
 - Run `npm run content:review` and inspect `docs/content/source-review.json` for recorded source versions, expiry and review dates. An overdue/expired result requires source review before selecting work; the ledger covers only recorded claims, so also check the relevant published content and official sources. Do not clear a warning by advancing a date without opening and checking the source. This advisory gate does not disable CTAs or change affiliate links.
 - Prioritize a verified substantive correction to an existing canonical URL over a new URL. That correction is the one content run; do not also publish a new article. Reuse a matching unfinished queue item or record a maintenance update using the workbook's existing queue columns/statuses and log format. Preserve completed rows, formulas, formatting and historical logs; record the reason for overriding `Next Action` and refresh it after the run. If evidence is unavailable, record the exact blocker rather than inventing replacement terms or declaring verification complete.
 - Record the URLs actually opened, applicable version/effective or campaign dates, claims checked and affected pages/product data. A source check supports only the claims actually reviewed, not every claim on a page or every article using that provider.
@@ -174,3 +175,35 @@ Additional repository integration requirements:
 - Map CTA tracking to existing consent-aware events without adding vendors/tags or bypassing consent. Identify Zalo as an action using existing CTA attributes or `data-link-purpose="action"`; it is not an external prose citation.
 - Current quality gate is `npm run check`; focused regression commands are `npm run test:validator` and `npm run test:maintenance` when their rules change. No separate lint/typecheck scripts exist. Record only checks actually performed.
 - Log actual URL, sources/scope, files, content commit, push/deploy and production verification; persist post-deployment state in a subsequent commit, never record a commit's own hash inside itself. A setup or quoted trigger does not select work, change queue status or create a Run Log content entry.
+
+## Green SM Bike Evergreen Content Engine
+
+When the user says **`Bắt đầu tạo bài mới Green SM Bike`** or **`Bắt đầu tạo bài mới Green SM`** in a context about **tài xế xe máy/đăng ký đối tác**, execute exactly **one** Green SM Bike content run using:
+
+- `docs/content/GREEN_SM_BIKE_CONTENT_ENGINE.md`
+- `docs/content/1phutdangky_Green_SM_Bike_Evergreen_Content_Engine.xlsx`
+
+### Fixed owner configuration
+
+- Site: `https://1phutdangky.com`; owner-approved category: **`/dang-ky-doi-tac/`**, create it using existing UI/routing if absent.
+- Bike pillar editorial candidate: **`https://1phutdangky.com/dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike/`**. Inspect repository/current canonical before publish; only ask if a material route conflict remains.
+- **User-provided recruitment source:** `https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike`. Validate on content-publish day.
+- **One shared outbound CTA:** copy `Plan Settings!B11` **exactly as provided** (AccessTrade deep link), use existing CTA components, label `Đăng ký tài xế Green SM Bike`. Never truncate/re-encode UTM, sub4 or url_enc parameters.
+- Brand: **Green SM Bike**; treat **Xanh SM Bike** as an old-name synonym, not a separate pillar. Verify the rebrand announcement/date supplied as a research seed before publication.
+- Scope: **Green SM Bike motorcycle drivers only**, not Green SM Car/Taxi, Green SM Platform or consumer rides. Do not mix rules for age, deposit, salary, vehicle or contract.
+- Independent editorial/affiliate site: do not impersonate Green SM or imply 1 Phút Đăng Ký hires or accepts applications. Disclose potential commission near CTA.
+- Recruiter site facts (age, LLTP, incomes, commission, fee/deposit, areas, training, work hours, bonuses) are volatile. Verify current Bike official source; do not invent or promise guaranteed salary, acceptance, timelines or jobs.
+- No collection of private application data, identity documents, bank details, password/OTP through the publisher site. Official form handles applications.
+- One trigger = one item: `Next Action → Evergreen Queue → Execution Briefs → CTA Matrix → Publish Source Matrix → Content Portfolio → Discovery Rules → Run Log`; mark In progress / Done / Blocked truthfully; Discovery Mode after backlog without creating thin URLs.
+- Preserve existing UI, SEO and other evergreen engines (MB Bank, Home Credit, TPBank, Home PayLater). Use existing GitHub/Cloudflare workflow; no force push or false deploy claims.
+- Setup installs instructions, workbook and playbook **only**; no article until trigger.
+
+Additional repository integration requirements:
+
+- Apply the shared maintenance gate, citation placement, single-title/generated-image, category palette and evidence-date rules above. A setup request or quoted trigger does not select work, change queue status or start a Run Log content entry.
+- Before the first content run, inspect and integrate `/dang-ky-doi-tac/` in category config/schema, shared palette, navigation/icons, sitemap, validation/tests and deployment notes as needed. Check the candidate against actual routes; do not request URL confirmation unless an unresolved material conflict exists.
+- The pillar must reuse the standard Product Card before the table of contents and existing affiliate CTA/disclosure, with correctly modeled recruitment-program data. Do not replace that card with a Notice or generic facts box; keep financial-product rules separate from Bike recruitment conditions.
+- Validate selector caches against all actual queue rows and preserve unfinished work; selectors currently cover rows 5–1000. Extend dependent ranges when adding beyond capacity; preserve all sheets, formulas, formatting, validations and historical logs. Use this workbook's actual headers and preserve the Run Log template row.
+- Current quality gate is `npm run check`; focused regression commands are `npm run test:validator` and `npm run test:maintenance` when their rules change. No separate lint/typecheck scripts exist. Map workbook event names to existing consent-aware analytics rather than adding tags/vendors.
+- Preserve the exact Plan Settings CTA string through product data and rendered href; compare the DOM attribute string byte-for-byte after HTML decoding. Do not normalize parameters or decode/re-encode `url_enc` for storage. Link-target decoding during a read-only check does not authorize rewriting the CTA.
+- Record actual source scope/dates, files, checks, content commit, push, deployment and production verification. Persist post-deployment state in a subsequent commit without embedding its own hash; use actual `+07:00` timestamps with readable workbook date formatting.
