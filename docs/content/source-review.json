@@ -123,7 +123,7 @@
       "article": "dang-ky-doi-tac/dang-ky-tai-xe-green-sm-bike",
       "checkedAt": "2026-11-14",
       "nextReviewAt": "2026-12-14",
-      "scope": "First Bike pillar and partner-programs/green-sm-bike: current Bike age ranges, ID/licence/BIDV/SIM requirements, company-vehicle option, no fixed salary, recruitment process, corporate contact/address, rebrand. Latest applicable VNeID notice effective 01/07/2026 supersedes older blanket LLTP02 wording. Primary recruiting form inspected in browser: name/phone/location/current-vehicle fields; AccessTrade exact URL verified to reach the correct provider page without submitting an application. No income, deposit, uniform, commission or bonus amounts published; mixed-program marketing and historical 2025 campaign terms not treated as current universal Bike terms. No application, interview, employment or payout verified.",
+      "scope": "Bike pillar and partner-programs/green-sm-bike: initial 2026-11-14 review covers Bike age, ID/licence/BIDV/SIM, VNeID notice effective 01/07/2026, recruitment process, rebrand/contact. Additional 2026-11-14 primary-page review: current rendered desktop/mobile benefit groups for owned VinFast motorbike vs company vehicle. Owned vehicle: program guarantee500k/day, support up to35k/trip if insufficient trips dispatched, free charging/battery swap,100% transport revenue2years,500k driver referral,free510k uniform. Company vehicle: provision of vehicle,entry deposit exemption,income up to16m with no period added,first30day revenue quota waiver,weekly bonus up to1.8m,free510k uniform. Source states terms and conditions apply; no extra eligibility thresholds,regional/end dates,unconditional payout or hiring guarantees invented. Owner instructed no /month for16m; benefits are provider-program claims. Exact stored AccessTrade unchanged. Application/hiring/payout not tested. This partial source update does not advance whole-article/product lastVerifiedAt.",
       "sources": [
         {
           "url": "https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike",
@@ -142,7 +142,9 @@
           "url": "https://www.greensm.com/vn-vi/news/xanh-sm-doi-ten-thanh-green-sm-dong-bo-nhan-dien-thuong-hieu-tren-toan-cau",
           "status": "current"
         }
-      ]
+      ],
+      "primaryProgramCheckedAt": "2026-11-14T20:29:55+07:00",
+      "primaryProgramValidity": "Currently displayed on recruiting landing page; conditions apply; no dated end or detailed eligibility thresholds shown"
     }
   ]
 }

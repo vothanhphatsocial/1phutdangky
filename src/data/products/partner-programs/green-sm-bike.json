@@ -1,8 +1,8 @@
 {
-  "name": "Đăng ký tài xế Green SM Bike",
+  "name": "Tuyển tài xế Green SM Bike",
   "provider": "Công ty Cổ phần Di chuyển Xanh và Thông minh GSM",
   "category": "recruitment",
-  "summary": "Ứng tuyển tài xế xe máy điện Green SM Bike. Chuẩn bị hồ sơ, chọn địa điểm và tình trạng xe trên biểu mẫu tuyển dụng để được hướng dẫn chương trình phù hợp.",
+  "summary": "Đăng ký Green SM Bike theo hai nhóm: đã có xe máy điện VinFast hoặc nhận xe công ty. Chọn đúng tình trạng xe để tìm hiểu chương trình và gửi thông tin ứng tuyển.",
   "officialUrl": "https://tuyentaixe.greensm.com/dang-ky-tai-xe-green-sm-bike",
   "offers": [
     {
@@ -21,16 +21,17 @@
   "primaryOfferId": "green-sm-bike-accesstrade",
   "facts": [
     {
-      "label": "Điều kiện ứng tuyển",
-      "value": "Công dân Việt Nam: nam 18–65 tuổi, nữ 18–60 tuổi; chuẩn bị căn cước, bằng lái và hồ sơ theo yêu cầu tuyển dụng Bike."
+      "label": "Đã có xe máy điện VinFast",
+      "value": "Bảo đảm thu nhập 500.000 đồng/ngày; bù tới 35.000 đồng/cuốc nếu không phát đủ số cuốc; hưởng 100% doanh số vận chuyển trong 2 năm."
     },
     {
-      "label": "Xe và hình thức tham gia",
-      "value": "Có lựa chọn chạy xe công ty cho người chưa có xe máy điện VinFast. Chọn đúng tình trạng xe khi đăng ký để được tư vấn chương trình phù hợp."
+      "label": "Chạy xe công ty",
+      "value": "Thu nhập lên tới 16.000.000 đồng; miễn cọc đầu vào, miễn khoán doanh số 30 ngày đầu; thưởng tuần lên tới 1.800.000 đồng."
     },
     {
-      "label": "Thu nhập và chi phí",
-      "value": "Bike không có lương cứng theo FAQ của Green SM. Thu nhập phụ thuộc doanh thu chuyến đi và thưởng đủ điều kiện; kiểm tra khoản khấu trừ, tiền cọc và đồng phục trước khi nhận xe."
+      "label": "Quyền lợi bổ sung",
+      "value": "Cả hai nhóm được giới thiệu miễn phí đồng phục trị giá 510.000 đồng. Nhóm có xe riêng còn có miễn phí sạc, đổi pin và thưởng giới thiệu tài xế 500.000 đồng.",
+      "note": "Áp dụng điều khoản và điều kiện chương trình của Green SM."
     }
   ],
   "sources": [
