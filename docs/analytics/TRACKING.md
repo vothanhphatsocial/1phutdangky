@@ -78,3 +78,13 @@ Bộ sưu tập **Hiệu quả 1 Phút Đăng Ký** (`16343190616`) đã xuất 
 - GTM phiên bản **6 — Complete action tracking and product context** đã được xuất bản; bản JSON trong thư mục này được xuất lại từ phiên bản 6 thực tế.
 - [GTM phiên bản 6](https://tagmanager.google.com/#/versions/accounts/6377947924/containers/264708734/versions/6).
 - [Báo cáo hành động](https://analytics.google.com/analytics/web/#/a394704774p555032371/reports/explorer?collectionId=16343190616&r=16342980677).
+
+### Kết quả kiểm chứng phát hành
+
+- Mã website: [`d7976e297d8c9f93335ed9f38c99d78d2567dbf5`](https://github.com/vothanhphatsocial/1phutdangky/commit/d7976e297d8c9f93335ed9f38c99d78d2567dbf5), branch `main`; push thành công.
+- Cloudflare Pages cho commit này trả trạng thái `completed / success`, deployment `bd7cd772-9be0-42a2-b2d8-15520ae7e30a`.
+- `npm run check`: pass, 37 HTML và 35 sitemap URLs; `npm run test:tracking`: 7/7; `npm run test:validator`: 41/41; `git diff --check`: pass.
+- Local browser QA: 120 kiểm tra pass, không có lỗi runtime; đối chiếu baseline 16 kiểm tra pass cho H1, canonical, ngày hiển thị, href và nhãn action tại các trang đại diện.
+- Production browser QA: 58 kiểm tra pass; MB affiliate/copy, Home PayLater Zalo, hai bài FPT chỉ đường, gọi nhân viên tại đầu/cuối bài, Pagefind có kết quả/không kết quả và consent denied. Không có lỗi runtime hoặc tràn ngang ở viewport 390px trên các trang kiểm tra.
+- Kiểm tra request xác nhận custom events nhắm `G-BHKK5RF8X8`, có đúng `dp`/product/category/contact/CTA context và không gửi raw code, số liên hệ hoặc từ tìm kiếm trong custom parameters. Endpoint thu thập được chặn trong phiên QA để không làm tăng số liệu thật; đây là kiểm chứng payload/request, không phải xác nhận số liệu mới đã xử lý trong báo cáo GA4.
+- GA4 UI đã xác nhận ba key event `affiliate_click`, `contact_click`, `referral_code_copy`, sáu custom dimensions và bộ sưu tập đã xuất bản; báo cáo hành động mở được từ menu.
