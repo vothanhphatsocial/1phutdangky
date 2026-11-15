@@ -5,8 +5,9 @@
 - Website: `https://1phutdangky.com`
 - GTM: `GTM-NXX3GHJ7`; account `6377947924`, container `264708734`.
 - GA4: property `555032371`, web stream `15813188208`, measurement ID `G-BHKK5RF8X8`.
-- Giữ nguyên cơ chế đồng ý hiện hữu: GTM chỉ được tải và custom event chỉ được đẩy khi `consentChoice` là `granted`.
-- Không thêm Google Ads, Floodlight, remarketing hoặc nhà cung cấp đo lường mới.
+- GTM, Google Ads base tag và custom events chỉ khởi tạo/phát khi `consentChoice` là `granted`.
+- Google Ads base tag có sẵn từ Cloudflare: `AW-18553128342`, alias `GT-MJMDSZPQ`, gateway `/4046/`. Giữ gateway bật và tắt **Set up tag** để Cloudflare không tự chèn config trước consent. Bootstrap trong `BaseLayout.astro` chịu trách nhiệm khởi tạo thẻ sau consent.
+- Ba chuyển đổi Ads được nhập từ GA4, không cài thêm Ads conversion tag hoặc `send_to` conversion label cho cùng hành động. Không thêm nhà cung cấp mới.
 
 ## Sự kiện
 
@@ -66,7 +67,7 @@ Bộ sưu tập **Hiệu quả 1 Phút Đăng Ký** (`16343190616`) đã xuất 
 
 ## Kiểm tra khi thay tracking
 
-- `npm run test:tracking`: consent, ngữ cảnh, reset dữ liệu, search count, loại liên hệ và không phát các sự kiện kết quả chưa có bằng chứng.
+- `npm run test:tracking`: thứ tự consent trước Ads config, chặn cả hai loader khi chưa đồng ý/từ chối, tải một lần khi đồng ý lại, storage bị chặn, consent, ngữ cảnh, reset dữ liệu, search count, loại liên hệ và không phát các sự kiện kết quả chưa có bằng chứng.
 - `npm run check`: Astro build, Pagefind và build validator.
 - `npm run test:validator` khi thay quy tắc validator hoặc cần kiểm tra hồi quy.
 - Kiểm tra trình duyệt khi denied/granted/revoked; desktop và mobile; mỗi tương tác chỉ có một custom event; kiểm tra cả dataLayer và request GA4.
@@ -88,3 +89,14 @@ Bộ sưu tập **Hiệu quả 1 Phút Đăng Ký** (`16343190616`) đã xuất 
 - Production browser QA: 58 kiểm tra pass; MB affiliate/copy, Home PayLater Zalo, hai bài FPT chỉ đường, gọi nhân viên tại đầu/cuối bài, Pagefind có kết quả/không kết quả và consent denied. Không có lỗi runtime hoặc tràn ngang ở viewport 390px trên các trang kiểm tra.
 - Kiểm tra request xác nhận custom events nhắm `G-BHKK5RF8X8`, có đúng `dp`/product/category/contact/CTA context và không gửi raw code, số liên hệ hoặc từ tìm kiếm trong custom parameters. Endpoint thu thập được chặn trong phiên QA để không làm tăng số liệu thật; đây là kiểm chứng payload/request, không phải xác nhận số liệu mới đã xử lý trong báo cáo GA4.
 - GA4 UI đã xác nhận ba key event `affiliate_click`, `contact_click`, `referral_code_copy`, sáu custom dimensions và bộ sưu tập đã xuất bản; báo cáo hành động mở được từ menu.
+
+
+## Google Ads import và sửa consent ngày 15/11/2026
+
+Ảnh do chủ website cung cấp xác nhận ba hành động `affiliate_click`, `contact_click`, `referral_code_copy` được nhập từ GA4 và đặt Primary. Đây vẫn là hành động trên website, không phải xác nhận đã mở tài khoản/được duyệt. Chưa có quyền kiểm tra trực tiếp tài khoản Ads trên máy khác, nên ảnh không xác nhận cách đếm, toàn bộ mục tiêu từng chiến dịch hoặc số liệu đã được xử lý.
+
+Kiểm tra production trước sửa phát hiện Cloudflare tự chèn `config AW-18553128342` trước `consent default`; phiên mới đã từ chối vẫn tải Ads và tạo `_gcl_au`. Khắc phục bằng tắt riêng **Set up tag**, giữ nguyên ID, gateway và measurement path. Mã website đặt consent trước config và chỉ tải Ads/GTM sau khi đồng ý. Không thêm conversion trực tiếp, không thay CTA hoặc bài viết. `gtg_health=1` là health check của gateway, không tự coi request đó là một loader Ads đầy đủ thứ hai.
+
+Khi rút lại đồng ý sau khi đã tải thẻ, gửi Consent Mode update denied và chặn custom events tiếp theo; script đã chạy có thể gửi consent/cookieless pings. Không đánh đồng trạng thái này với một phiên mới đã từ chối ngay từ đầu. Thời gian xử lý báo cáo và trạng thái “Lượt chuyển đổi đang chờ” cần kiểm tra riêng trong Ads; không bấm quảng cáo thật để tạo chuyển đổi thử.
+
+Tài liệu đối chiếu: [Google yêu cầu tắt automated script setup khi dùng Consent Mode](https://support.google.com/google-ads/answer/16061406?hl=en-CA), [Consent Mode implementation](https://developers.google.com/tag-platform/security/guides/consent).

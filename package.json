@@ -11,7 +11,7 @@
     "check": "npm run build",
     "content:review": "node scripts/check-content-maintenance.mjs",
     "test:maintenance": "node --test scripts/test-content-maintenance.mjs",
-    "test:tracking": "node --test scripts/test-tracking.mjs",
+    "test:tracking": "node --test scripts/test-tracking.mjs scripts/test-consent-bootstrap.mjs",
     "test:validator": "node scripts/test-validate-build.mjs",
     "preview": "astro preview",
     "validate": "node scripts/validate-build.mjs",

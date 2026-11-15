@@ -19,6 +19,8 @@ import '../styles/global.css';
 import {
   SITE,
   GTM_ID,
+  GOOGLE_ADS_TAG_ID,
+  GOOGLE_ADS_GATEWAY_PATH,
 } from '../config/site';
 
 
@@ -309,8 +311,8 @@ const allStructuredData = [
       );
     </script>
 
-    <!-- Consent Mode v2 + consent-gated GTM -->
-    <script define:vars={{ gtmId: GTM_ID }}>
+    <!-- Consent Mode v2; Cloudflare automatic tag setup must stay off. -->
+    <script define:vars={{ gtmId: GTM_ID, adsTagId: GOOGLE_ADS_TAG_ID, adsGatewayPath: GOOGLE_ADS_GATEWAY_PATH }}>
       window.dataLayer = window.dataLayer || [];
 
       window.gtag =
@@ -321,39 +323,46 @@ const allStructuredData = [
 
       let savedConsent = null;
 
-      function loadGtm() {
+      function loadGoogleTags() {
         if (
           document.documentElement.dataset
-            .consentChoice !== 'granted' ||
-          document.querySelector(
-            'script[data-pd-gtm]'
-          )
+            .consentChoice !== 'granted'
         ) {
           return;
         }
 
-        window.dataLayer.push({
-          'gtm.start': new Date().getTime(),
-          event: 'gtm.js',
-        });
-
         const firstScript =
           document.getElementsByTagName('script')[0];
-        const tag = document.createElement('script');
 
-        tag.async = true;
-        tag.dataset.pdGtm = 'true';
-        tag.src =
-          'https://www.googletagmanager.com/gtm.js?id=' +
-          gtmId;
+        if (!document.querySelector('script[data-pd-gtm]')) {
+          window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js',
+          });
+          const tag = document.createElement('script');
+          tag.async = true;
+          tag.dataset.pdGtm = 'true';
+          tag.src =
+            'https://www.googletagmanager.com/gtm.js?id=' +
+            gtmId;
+          firstScript.parentNode.insertBefore(tag, firstScript);
+        }
 
-        firstScript.parentNode.insertBefore(
-          tag,
-          firstScript
-        );
+        if (!document.querySelector('script[data-pd-ads]')) {
+          // Preserve the existing first-party gateway, after consent only.
+          window.google_tags_first_party = window.google_tags_first_party || [];
+          window.google_tags_first_party.push(adsTagId);
+          window.gtag('js', new Date());
+          window.gtag('config', adsTagId);
+          const tag = document.createElement('script');
+          tag.async = true;
+          tag.dataset.pdAds = 'true';
+          tag.src = adsGatewayPath;
+          firstScript.parentNode.insertBefore(tag, firstScript);
+        }
       }
 
-      window.__1pdLoadGtm = loadGtm;
+      window.__1pdLoadGoogleTags = loadGoogleTags;
 
       try {
         savedConsent =
@@ -388,7 +397,7 @@ const allStructuredData = [
       );
 
       if (savedConsent === 'granted') {
-        loadGtm();
+        loadGoogleTags();
       }
     </script>
 
