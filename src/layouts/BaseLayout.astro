@@ -20,7 +20,6 @@ import {
   SITE,
   GTM_ID,
   GOOGLE_ADS_TAG_ID,
-  GOOGLE_ADS_GATEWAY_PATH,
 } from '../config/site';
 
 
@@ -311,8 +310,8 @@ const allStructuredData = [
       );
     </script>
 
-    <!-- Consent Mode v2; Cloudflare automatic tag setup must stay off. -->
-    <script define:vars={{ gtmId: GTM_ID, adsTagId: GOOGLE_ADS_TAG_ID, adsGatewayPath: GOOGLE_ADS_GATEWAY_PATH }}>
+    <!-- Consent Mode v2; Cloudflare Google tag gateway injection must stay off. -->
+    <script define:vars={{ gtmId: GTM_ID, adsTagId: GOOGLE_ADS_TAG_ID }}>
       window.dataLayer = window.dataLayer || [];
 
       window.gtag =
@@ -322,6 +321,18 @@ const allStructuredData = [
         };
 
       let savedConsent = null;
+      let adsLoaded = false;
+      let adsConfigured = false;
+
+      function configureAds() {
+        if (
+          adsLoaded && !adsConfigured &&
+          document.documentElement.dataset.consentChoice === 'granted'
+        ) {
+          adsConfigured = true;
+          window.gtag('config', adsTagId);
+        }
+      }
 
       function loadGoogleTags() {
         if (
@@ -349,17 +360,23 @@ const allStructuredData = [
         }
 
         if (!document.querySelector('script[data-pd-ads]')) {
-          // Preserve the existing first-party gateway, after consent only.
-          window.google_tags_first_party = window.google_tags_first_party || [];
-          window.google_tags_first_party.push(adsTagId);
+          // Use the existing Ads tag without Cloudflare's eager injection.
           window.gtag('js', new Date());
-          window.gtag('config', adsTagId);
           const tag = document.createElement('script');
           tag.async = true;
           tag.dataset.pdAds = 'true';
-          tag.src = adsGatewayPath;
+          // Wait for the Ads library so GTM does not fetch it again while
+          // processing an AW config queued before that library has loaded.
+          tag.onload = () => {
+            adsLoaded = true;
+            configureAds();
+          };
+          tag.src =
+            'https://www.googletagmanager.com/gtag/js?id=' +
+            adsTagId;
           firstScript.parentNode.insertBefore(tag, firstScript);
         }
+        configureAds();
       }
 
       window.__1pdLoadGoogleTags = loadGoogleTags;

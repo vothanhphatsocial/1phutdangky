@@ -13,7 +13,6 @@ export const SITE = {
 
 export const GTM_ID = 'GTM-NXX3GHJ7';
 export const GOOGLE_ADS_TAG_ID = 'AW-18553128342';
-export const GOOGLE_ADS_GATEWAY_PATH = '/4046/';
 
 export const CATEGORIES = {
   'mo-tai-khoan': {

@@ -47,8 +47,8 @@ các chuyển hướng bài MB Bank sang URL trong chuyên mục vẫn giữ ngu
 - Google Analytics 4 measurement ID: `G-BHKK5RF8X8`
 - Consent mặc định: denied
 - Chỉ gửi custom event sau khi người dùng cho phép đo lường
-- Google Ads base tag hiện hữu: `AW-18553128342` (Google tag alias `GT-MJMDSZPQ`), qua Cloudflare Google tag gateway `/4046/`.
-- Cloudflare gateway giữ bật; **Set up tag phải tắt**. `BaseLayout.astro` khởi tạo GTM và Ads sau consent granted, đặt consent trước config và tải mỗi loader một lần. Không bật lại tự chèn thẻ ở Cloudflare.
+- Google Ads base tag hiện hữu: `AW-18553128342` (Google tag alias `GT-MJMDSZPQ`), tải trực tiếp từ Google sau consent.
+- **Cloudflare Google tag gateway và Set up tag phải tắt**: gateway vẫn chèn loader vào đầu HTML ngay cả khi Set up tag tắt. `BaseLayout.astro` khởi tạo GTM và Ads sau consent granted, đặt consent trước config và tải mỗi loader một lần. Không bật lại tự chèn thẻ ở Cloudflare.
 - Chuyển đổi Ads dùng ba sự kiện nhập từ GA4: `affiliate_click`, `contact_click`, `referral_code_copy`. Không thêm Ads conversion tag trực tiếp cho cùng hành động. Không có Floodlight.
 
 ## Kiểm tra trước khi phát hành
