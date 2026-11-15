@@ -100,3 +100,14 @@ Kiểm tra production trước sửa phát hiện Cloudflare tự chèn `config 
 Khi rút lại đồng ý sau khi đã tải thẻ, gửi Consent Mode update denied và chặn custom events tiếp theo; script đã chạy có thể gửi consent/cookieless pings. Không đánh đồng trạng thái này với một phiên mới đã từ chối ngay từ đầu. Thời gian xử lý báo cáo và trạng thái “Lượt chuyển đổi đang chờ” cần kiểm tra riêng trong Ads; không bấm quảng cáo thật để tạo chuyển đổi thử.
 
 Tài liệu đối chiếu: [Google yêu cầu tắt automated script setup khi dùng Consent Mode](https://support.google.com/google-ads/answer/16061406?hl=en-CA), [Consent Mode implementation](https://developers.google.com/tag-platform/security/guides/consent).
+
+### Kiểm chứng phương án cuối trên production
+
+- Bản sửa cuối: [`50d82201d6389f654ab52a2efc53d9a8e34ed0e0`](https://github.com/vothanhphatsocial/1phutdangky/commit/50d82201d6389f654ab52a2efc53d9a8e34ed0e0), `main`, đã push. Cloudflare Pages `completed / success`, deployment `fb07cd8d-9cd2-4576-9406-2c374763134d`.
+- Cloudflare UI xác nhận gateway **Disabled**, **Set up tag off**, riêng `1phutdangky.com`. Production HTML nhận bằng trình duyệt Chrome không còn script `/4046/` tự chèn; không chỉ dựa vào curl.
+- `npm run check` pass (37 HTML, 35 sitemap URLs); tracking 14/14; validator regression 41/41 đã chạy trong lượt sửa; `git diff --check` pass.
+- Local và production: mỗi môi trường 34 kiểm tra consent + 58 kiểm tra hành động đều pass; không lỗi runtime, không tràn ngang ở 390px tại các trang đại diện.
+- Phiên mới unset/denied: không tải GTM/Ads, không có Google measurement request hoặc cookie `_ga`/`_gcl` trước khi đồng ý. Đồng ý: đúng một loader GTM, một loader Ads và một AW config; từ chối lại chặn custom copy, cập nhật cả bốn consent fields; đồng ý lại không tải trùng.
+- Request GA4 của affiliate/copy/phone/Zalo/directions/search có đúng property, page và ngữ cảnh; mỗi tương tác chỉ phát một custom event. Mỗi trang trong năm kịch bản có đúng một GA4 `page_view`. Các request thu thập được chặn/đáp ứng giả trong phiên QA để không làm tăng số liệu thật: đây là kiểm chứng cơ chế và payload, không phải xác nhận Google Ads đã xử lý chuyển đổi quảng cáo thực tế.
+- Kiểm tra HEAD: `www` → apex và HTTP → HTTPS giữ nguyên query nhận diện lượt nhấp; `gclid`, `wbraid`, `gbraid` không bị rơi trong phép thử chuyển hướng. Không sửa redirect rule.
+- Cấu hình đếm và mục tiêu từng chiến dịch trong Ads vẫn chưa được kiểm tra trực tiếp do tài khoản ở máy khác. Không kết luận các thiết lập đó đã đúng chỉ từ ảnh ba conversion actions.
