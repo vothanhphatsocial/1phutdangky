@@ -87,7 +87,8 @@ import '../styles/search.css';
 
 
 
-<script is:inline type="module">
+<script>
+  import { searchTrackingPayload } from '../utils/tracking.mjs';
   const form =
     document.querySelector(
       '[data-search-form]'
@@ -116,10 +117,8 @@ import '../styles/search.css';
 
     if (!pagefind) {
 
-      pagefind =
-        await import(
-          '/pagefind/pagefind.js'
-        );
+      const pagefindUrl = '/pagefind/pagefind.js';
+      pagefind = await import(/* @vite-ignore */ pagefindUrl);
 
     }
 
@@ -215,16 +214,9 @@ import '../styles/search.css';
       return;
     }
 
-    window.dataLayer.push({
-      event:
-        'site_search',
-
-      result_count:
-        count,
-
-      page_path:
-        window.location.pathname,
-    });
+    const payload = searchTrackingPayload(count, window.location.pathname,
+      document.documentElement.dataset.consentChoice);
+    if (payload) window.dataLayer.push(payload);
 
   }
 

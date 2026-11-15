@@ -122,6 +122,7 @@ const hasMoreInformation =
               type="button"
               data-copy-referral={referralCode}
               data-product-id={product.id}
+              data-product-name={product.data.name}
               data-offer-id={offer?.id ?? ''}
               data-offer-channel={offer?.channel ?? ''}
               data-affiliate-network={offer?.network ?? ''}
@@ -711,6 +712,7 @@ const hasMoreInformation =
 </style>
 
 <script>
+  import { referralCopyPayload } from '../../utils/tracking.mjs';
   type TrackingEvent = Record<string, unknown>;
 
   const trackingWindow = window as typeof window & {
@@ -753,15 +755,9 @@ const hasMoreInformation =
       }
 
       trackingWindow.dataLayer = trackingWindow.dataLayer || [];
-      trackingWindow.dataLayer.push({
-        event: 'referral_code_copy',
-        product_id: button.dataset.productId || '',
-        offer_id: button.dataset.offerId || '',
-        offer_channel: button.dataset.offerChannel || '',
-        affiliate_network: button.dataset.affiliateNetwork || '',
-        cta_position: button.dataset.ctaPosition || '',
-        affiliate: button.dataset.affiliate === 'true',
-      });
+      const payload = referralCopyPayload(button.dataset, window.location.pathname,
+        document.documentElement.dataset.consentChoice);
+      if (payload) trackingWindow.dataLayer.push(payload);
 
       label.textContent = 'Đã sao chép';
       status.textContent = `Đã sao chép mã ${code}.`;

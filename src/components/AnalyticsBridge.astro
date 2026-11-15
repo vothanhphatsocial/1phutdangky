@@ -1,4 +1,5 @@
 <script>
+  import { clickTrackingPayload } from '../utils/tracking.mjs';
   type TrackingEvent = Record<string, unknown>;
 
   const trackingWindow = window as typeof window & {
@@ -24,51 +25,9 @@
       return;
     }
 
-    let destinationHostname = '';
-
-    try {
-      destinationHostname =
-        new URL(link.href).hostname;
-    } catch {
-      destinationHostname = '';
-    }
-
-    if (
-      document.documentElement.dataset
-        .consentChoice !== 'granted'
-    ) {
-      return;
-    }
-
-    trackingWindow.dataLayer?.push({
-      event:
-        link.dataset.event ||
-        'link_click',
-
-      product_id:
-        link.dataset.productId || '',
-
-      offer_id:
-        link.dataset.offerId || '',
-
-      offer_channel:
-        link.dataset.offerChannel || '',
-
-      affiliate_network:
-        link.dataset.affiliateNetwork || '',
-
-      cta_position:
-        link.dataset.ctaPosition || '',
-
-      affiliate:
-        link.dataset.affiliate === 'true',
-
-      destination_hostname:
-        destinationHostname,
-
-      page_path:
-        window.location.pathname,
-    });
+    const payload = clickTrackingPayload(link, window.location.pathname,
+      document.documentElement.dataset.consentChoice);
+    if (payload) trackingWindow.dataLayer?.push(payload);
   }
 
   document.addEventListener(
