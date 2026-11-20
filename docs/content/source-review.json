@@ -3,6 +3,59 @@
   "defaultReviewDays": 90,
   "records": [
     {
+      "article": "the-tin-dung/mo-the-mb-bank-online",
+      "checkedAt": "2026-11-20",
+      "nextReviewAt": "2026-12-20",
+      "scope": "Đối chiếu các ví dụ phí phát hành, thường niên và phí giao thẻ tại nhà với ba PDF MB đang liên kết, cùng điều kiện tính chi tiêu để miễn thường niên. Sửa phạm vi Visa Priority Signature theo trang sản phẩm MB và cột khách hàng trong biểu phí tín dụng. Ba URL PDF cũ trả 403 khi truy xuất, được thay bằng các URL hiện hành. Chỉ kiểm tra phần biểu phí và phạm vi thẻ Priority, chưa xác minh lại luồng App hoặc toàn bài.",
+      "sources": [
+        {
+          "url": "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/the/thong-tin-va-huong-dan/dich-vu-the-mb-bieu-phi-hien-hanh",
+          "status": "current"
+        },
+        {
+          "url": "https://webcdn.mbbank.com.vn/public/media/0d039d14-48a7-472e-8211-9c4a52b8c792.pdf",
+          "status": "current",
+          "version": "Cập nhật 23/09/2026"
+        },
+        {
+          "url": "https://webcdn.mbbank.com.vn/public/media/bbd94b0d-8acb-4ded-9778-bf54e03dd92e.pdf",
+          "status": "current",
+          "version": "Cập nhật 23/09/2026"
+        },
+        {
+          "url": "https://webcdn.mbbank.com.vn/public/media/652de602-49b1-48ef-a591-077fbfca2ef1.pdf",
+          "status": "current",
+          "version": "Cập nhật 23/09/2026"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/ca-nhan/priority/the/the-tin-dung/the-tin-dung-quoc-te-mb-priority-visa-signature",
+          "status": "current"
+        }
+      ]
+    },
+    {
+      "article": "mo-tai-khoan/mo-tai-khoan-mb-bank-online",
+      "checkedAt": "2026-11-20",
+      "nextReviewAt": "2026-12-20",
+      "scope": "Rà phần phí của bài và dữ liệu dùng chung bank-accounts/mb-bank-account. Đối chiếu miễn phí mở và đóng tài khoản thanh toán thông thường, số dư tối thiểu VND 50.000 đồng, số đẹp có biểu phí riêng và hai gói SMS Banking theo thông báo MB (đơn vị tính, ngưỡng, VAT và miễn phí cho nhóm Private). Chưa xác minh lại phí quản lý, luồng App hoặc link giới thiệu. Không sửa bài hoặc dữ liệu sản phẩm trong lượt rà này.",
+      "sources": [
+        {
+          "url": "https://www.mbbank.com.vn/ho-tro/bieu-phi-va-bieu-mau-khcn",
+          "status": "current"
+        },
+        {
+          "url": "https://webcdn.mbbank.com.vn/public/media/7f00a4ac-4ebd-49f7-85cd-8c48ca1b03e9.pdf",
+          "status": "current",
+          "effectiveFrom": "2026-10-26"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/tin-san-pham-dich-vu/mb-thay-doi-bieu-phi-dich-vu-sms-banking-doi-voi-khach-hang-ca-nhan-va-khach-hang-doanh-nghiep-2025-4-21-18-36-10",
+          "status": "current",
+          "effectiveFrom": "2025-04-24"
+        }
+      ]
+    },
+    {
       "article": "mo-tai-khoan/mo-tai-khoan-vpbank-online",
       "checkedAt": "2026-11-11",
       "nextReviewAt": "2026-12-11",
