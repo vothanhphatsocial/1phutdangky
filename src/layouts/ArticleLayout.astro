@@ -4,6 +4,7 @@ import type {
 } from 'astro:content';
 
 import {
+  getEntry,
   getEntries,
 } from 'astro:content';
 
@@ -48,10 +49,7 @@ import {
   SITE,
 } from '../config/site';
 
-import {
-  getPrimaryProductOffer,
-  hasEnabledProductOffer,
-} from '../utils/productOffers';
+import { hasEnabledProductOffer } from '../utils/productOffers';
 
 
 interface Heading {
@@ -114,13 +112,10 @@ const isComparison =
   linkedProducts.length >= 2;
 
 
-const stickyProduct =
-  !isComparison &&
-  post.data.affiliate.enabled &&
-  primaryProduct &&
-  getPrimaryProductOffer(primaryProduct)
-    ? primaryProduct
-    : undefined;
+const stickyLink = post.data.stickyCta;
+const stickyProduct = stickyLink
+  ? await getEntry(stickyLink.product)
+  : isComparison ? undefined : primaryProduct;
 
 
 /* ========================================
@@ -494,11 +489,7 @@ const breadcrumbSchema = {
   {
     stickyProduct && (
 
-      <StickyCTA
-        product={
-          stickyProduct
-        }
-      />
+      <StickyCTA product={stickyProduct} internalLink={stickyLink} />
 
     )
   }

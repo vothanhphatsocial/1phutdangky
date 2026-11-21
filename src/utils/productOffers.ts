@@ -52,3 +52,15 @@ export function hasEnabledProductOffer(
   return getEnabledProductOffers(product)
     .length > 0;
 }
+
+export function getProductAction(product: Product, offerId?: string) {
+  const offer = getPrimaryProductOffer(product, offerId);
+  const contact = offer ? undefined : product.data.contactAction;
+
+  return {
+    offer,
+    href: offer?.url ?? contact?.url ?? product.data.officialUrl,
+    label: offer?.ctaLabel ?? contact?.label ?? product.data.ctaLabel,
+    event: offer ? 'affiliate_click' : contact ? 'contact_click' : 'official_link_click',
+  };
+}

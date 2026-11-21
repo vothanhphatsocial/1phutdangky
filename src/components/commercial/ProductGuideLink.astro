@@ -1,0 +1,40 @@
+---
+import { getEntry } from 'astro:content';
+import { getPrimaryProductOffer } from '../../utils/productOffers';
+
+interface Props {
+  product: string;
+  href: string;
+  class?: string;
+}
+
+const { product, href, class: className } = Astro.props;
+const entry = await getEntry('products', product);
+const offer = entry && getPrimaryProductOffer(entry);
+const code = offer?.referralCode;
+const label = offer?.referralCodeLabel ?? 'Mã người giới thiệu';
+const isButton = className?.split(/\s+/).includes('button');
+---
+
+<a href={href} class={className}>
+  {isButton ? (
+    <span class="guide-button-label">
+      <slot />
+      {code && <small>{label}: <strong>{code}</strong></small>}
+    </span>
+  ) : (
+    <><slot />{code && <> ({label}: <strong>{code}</strong>)</>}</>
+  )}
+</a>
+
+<style>
+  .guide-button-label {
+    text-align: center;
+  }
+
+  .guide-button-label small {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.78rem;
+  }
+</style>

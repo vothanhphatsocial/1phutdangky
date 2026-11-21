@@ -3,9 +3,7 @@ import type {
   CollectionEntry,
 } from 'astro:content';
 
-import {
-  getPrimaryProductOffer,
-} from '../../utils/productOffers';
+import { getProductAction } from '../../utils/productOffers';
 
 interface Props {
   product: CollectionEntry<'products'>;
@@ -15,6 +13,7 @@ interface Props {
   label?: string;
 
   offerId?: string;
+  showReferralCode?: boolean;
 }
 
 const {
@@ -22,32 +21,13 @@ const {
   position = 'article',
   label,
   offerId,
+  showReferralCode = true,
 } = Astro.props;
 
-const offer =
-  getPrimaryProductOffer(
-    product,
-    offerId
-  );
-
+const { offer, href, label: actionLabel, event } = getProductAction(product, offerId);
 const isAffiliate = Boolean(offer);
-const contactAction = !offer ? product.data.contactAction : undefined;
-
-const href =
-  offer?.url ??
-  contactAction?.url ??
-  product.data.officialUrl;
-
-const buttonLabel =
-  label ??
-  offer?.ctaLabel ??
-  contactAction?.label ??
-  product.data.ctaLabel ??
-  (
-    isAffiliate
-      ? 'Tiếp tục'
-      : 'Xem thông tin chính thức'
-  );
+const buttonLabel = label ?? actionLabel;
+const referralCode = showReferralCode ? offer?.referralCode : undefined;
 
 const rel =
   isAffiliate
@@ -61,11 +41,7 @@ const rel =
   target="_blank"
   rel={rel}
 
-  data-event={
-    isAffiliate
-      ? 'affiliate_click'
-      : contactAction ? 'contact_click' : 'official_link_click'
-  }
+  data-event={event}
 
   data-link-purpose="action"
 
@@ -86,7 +62,14 @@ const rel =
       : 'false'
   }
 >
-  <span>{buttonLabel}</span>
+  <span>
+    {buttonLabel}
+    {referralCode && (
+      <small class="cta-referral-code">
+        {offer?.referralCodeLabel ?? 'Mã người giới thiệu'}: {referralCode}
+      </small>
+    )}
+  </span>
 
   <svg
     viewBox="0 0 24 24"
@@ -129,7 +112,14 @@ const rel =
     color: white;
   }
 
+  .cta-referral-code {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
   .affiliate-cta svg {
+    flex-shrink: 0;
     width: 18px;
     height: 18px;
 

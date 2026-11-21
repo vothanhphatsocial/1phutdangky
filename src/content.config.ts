@@ -253,6 +253,12 @@ const articles = defineCollection({
       .array(reference('products'))
       .default([]),
 
+    stickyCta: z.object({
+      product: reference('products'),
+      href: z.string().regex(/^(?:\/(?![\/\\])|#)[^\s\\]+$/),
+      label: z.string().trim().min(1),
+    }).optional(),
+
     affiliate: z
       .object({
         enabled: z.boolean().default(false),

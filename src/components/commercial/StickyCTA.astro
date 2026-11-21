@@ -3,42 +3,26 @@ import type {
   CollectionEntry,
 } from 'astro:content';
 
-import {
-  getPrimaryProductOffer,
-} from '../../utils/productOffers';
+import { getProductAction } from '../../utils/productOffers';
 
 interface Props {
   product: CollectionEntry<'products'>;
 
   offerId?: string;
+  internalLink?: { href: string; label: string };
 }
 
 const {
   product,
   offerId,
+  internalLink,
 } = Astro.props;
 
-const offer =
-  getPrimaryProductOffer(
-    product,
-    offerId
-  );
-
-const isAffiliate = Boolean(offer);
-
-const referralCode =
-  offer?.referralCode;
-const referralCodeLabel =
-  offer?.referralCodeLabel ?? 'Mã người giới thiệu';
-
-const href =
-  offer?.url ??
-  product.data.officialUrl;
-
-const rel =
-  isAffiliate
-    ? 'sponsored nofollow noopener noreferrer'
-    : 'noopener noreferrer';
+const action = getProductAction(product, offerId);
+const trackedOffer = internalLink ? undefined : action.offer;
+const referralCode = action.offer?.referralCode;
+const referralCodeLabel = action.offer?.referralCodeLabel ?? 'Mã người giới thiệu';
+const rel = trackedOffer ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer';
 ---
 
 <div
@@ -48,7 +32,7 @@ const rel =
 
   <div class="sticky-inner">
 
-    <div class="sticky-product">
+    <div class="sticky-product" id={referralCode ? 'sticky-cta-referral' : undefined}>
 
       <strong>
         {
@@ -68,36 +52,33 @@ const rel =
     </div>
 
     <a
-      href={href}
-      target="_blank"
-      rel={rel}
+      href={internalLink?.href ?? action.href}
+      target={internalLink ? undefined : '_blank'}
+      rel={internalLink ? undefined : rel}
+      aria-describedby={referralCode ? 'sticky-cta-referral' : undefined}
 
-      data-event={
-        isAffiliate
-          ? 'affiliate_click'
-          : 'official_link_click'
-      }
+      data-event={internalLink ? 'link_click' : action.event}
+      data-link-purpose="action"
 
       data-product-id={product.id}
       data-product-name={product.data.name}
 
-      data-offer-id={offer?.id ?? ''}
+      data-offer-id={trackedOffer?.id ?? ''}
 
-      data-offer-channel={offer?.channel ?? ''}
+      data-offer-channel={trackedOffer?.channel ?? ''}
 
-      data-affiliate-network={offer?.network ?? ''}
+      data-affiliate-network={trackedOffer?.network ?? ''}
 
       data-cta-position="sticky-mobile"
 
       data-affiliate={
-        isAffiliate
+        trackedOffer
           ? 'true'
           : 'false'
       }
     >
       {
-        offer?.ctaLabel ??
-        product.data.ctaLabel
+        internalLink?.label ?? action.label
       }
     </a>
 
@@ -115,7 +96,7 @@ const rel =
     bottom: 0;
     left: 0;
 
-    display: none;
+    visibility: hidden;
 
     transform: translateY(110%);
 
@@ -132,6 +113,8 @@ const rel =
   }
 
   .sticky-cta.is-visible {
+    visibility: visible;
+
     transform: translateY(0);
 
     opacity: 1;
@@ -144,7 +127,7 @@ const rel =
 
     grid-template-columns:
       minmax(0, 1fr)
-      auto;
+      fit-content(60%);
 
     align-items: center;
 
@@ -204,6 +187,7 @@ const rel =
 
   .sticky-inner > a {
     display: inline-flex;
+    min-width: 0;
 
     align-items: center;
     justify-content: center;
@@ -223,6 +207,7 @@ const rel =
     font-weight: 800;
 
     text-decoration: none;
+    text-align: center;
   }
 
   .sticky-inner > a:hover {
@@ -232,10 +217,6 @@ const rel =
   }
 
   @media (max-width: 767px) {
-    .sticky-cta {
-      display: block;
-    }
-
     :global(
       body.has-sticky-cta
     ) {
@@ -269,6 +250,17 @@ const rel =
       document.querySelector(
         '.site-footer'
       );
+
+    const link = bar.querySelector<HTMLAnchorElement>('a[data-cta-position]');
+
+    function updateViewport() {
+      if (link) {
+        link.dataset.ctaPosition = window.innerWidth <= 767
+          ? 'sticky-mobile'
+          : 'sticky-desktop';
+      }
+      updateVisibility();
+    }
 
     function updateVisibility() {
       const maximumScroll =
@@ -309,10 +301,10 @@ const rel =
 
     window.addEventListener(
       'resize',
-      updateVisibility
+      updateViewport
     );
 
-    updateVisibility();
+    updateViewport();
   }
 
   if (
