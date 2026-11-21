@@ -1,10 +1,10 @@
 ---
 title: "Không quét được NFC căn cước khi mở MB Bank online"
-description: "Cách kiểm tra NFC trên Android và iPhone trước khi mở MB Bank, xem máy có cài được App MBBank và xử lý nếu không đọc được chip căn cước."
+description: "CCCD gắn chip không đọc được khi mở MB Bank? Xem cách xử lý khi App chưa nhận thẻ, đang đọc thì dừng hoặc báo lỗi sau khi đọc xong."
 category: "mo-tai-khoan"
 type: "knowledge"
 publishedAt: 2026-11-02T01:51:00+07:00
-updatedAt: 2026-11-21T20:46:23+07:00
+updatedAt: 2026-11-21T20:51:47+07:00
 lastVerifiedAt: 2026-11-02T01:51:00+07:00
 readingMinutes: 6
 featured: false
@@ -24,6 +24,12 @@ sources:
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "Trung tâm Dịch vụ khách hàng MB247 và các kênh liên hệ"
     url: "https://www.mbbank.com.vn/lien-he"
+    publisher: "Ngân hàng TMCP Quân đội (MB)"
+  - title: "MB: xử lý khi App MBBank không phản hồi hoặc thông tin xác thực không khớp (13/05/2026)"
+    url: "https://www.mbbank.com.vn/tin-tuc/blog/app-mb-bi-loi"
+    publisher: "Ngân hàng TMCP Quân đội (MB)"
+  - title: "MB: hướng dẫn bảo vệ giấy tờ và mã xác thực khi dùng App MBBank"
+    url: "https://www.mbbank.com.vn/nguyen-tac-giao-dich-an-toan/huong-dan-tra-soat/thong-bao-huong-dan-dam-bao-an-toan-giao-dich-app-mbbank-2026-3-25-10-50-11"
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "Samsung: NFC không hoạt động trên thiết bị Galaxy"
     url: "https://www.samsung.com/vn/support/mobile-devices/nfc-not-working-samsung-galaxy-device/"
@@ -58,9 +64,9 @@ sources:
 | Bạn đang gặp gì? | Việc nên làm |
 | --- | --- |
 | Thông số máy không có NFC | Hỏi MB về phương thức xác minh và điểm hỗ trợ phù hợp; cài thêm ứng dụng không bổ sung được phần cứng NFC cho máy. |
-| Máy có NFC nhưng App chưa nhận thẻ | Kiểm tra NFC đã bật nếu máy có cài đặt này, phụ kiện và vị trí đặt thẻ. |
-| App nhận thẻ nhưng đọc chưa hoàn tất | Giữ thẻ ổn định tại vùng đọc và thực hiện theo thông báo của App. |
-| Đọc chip xong nhưng bị từ chối ở bước khác | Ghi lại đúng bước và thông báo; chuyển sang xử lý lỗi hồ sơ hoặc xác minh tương ứng. |
+| Máy có NFC nhưng App chưa nhận thẻ | [Kiểm tra thẻ, phụ kiện và vị trí đặt thẻ](#app-chưa-nhận-thẻ). |
+| App nhận thẻ nhưng đọc chưa hoàn tất | [Giữ thẻ ổn định và xem App báo gì](#app-nhận-thẻ-rồi-dừng-giữa-chừng). |
+| Đọc chip xong nhưng bị từ chối ở bước khác | [Xử lý theo thông báo sau khi đọc chip](#app-đã-đọc-xong-nhưng-vẫn-báo-lỗi). |
 
 Đọc được chip chưa có nghĩa hồ sơ đã được MB chấp thuận. Ngược lại, một lần đọc thất bại chưa đủ để kết luận chip căn cước bị hỏng.
 
@@ -88,12 +94,17 @@ Vùng đọc không nằm ở cùng một chỗ trên mọi điện thoại. Tra
 
 ## Thử đọc lại chip theo thứ tự
 
-1. **Kiểm tra App MBBank:** mở trang ứng dụng do MB phát hành trên App Store hoặc Google Play, cập nhật nếu có bản mới và quay lại bước đọc chip.
-2. **Tháo phụ kiện cản trở:** bỏ ốp, ví thẻ hoặc phụ kiện gắn nam châm/kim loại khỏi điện thoại; lấy căn cước ra riêng để đọc. Samsung ghi nhận các phụ kiện này có thể gây gián đoạn NFC.
-3. **Đặt thẻ vào đúng vùng đọc:** dùng thẻ căn cước gắn chip bản gốc, theo vị trí minh họa trên App hoặc sơ đồ máy. Nếu chưa nhận, điều chỉnh vị trí chậm để tìm vùng đọc.
-4. **Giữ ổn định khi đã nhận thẻ:** chờ App báo hoàn tất hoặc đưa ra hướng dẫn tiếp theo. Không liên tục nhấc thẻ ra rồi đặt lại khi đang đọc.
+### App chưa nhận thẻ
 
-Nếu vẫn thất bại, ghi lại thông báo thay vì đổi nhiều cài đặt không liên quan. Khi liên hệ hỗ trợ, cho MB biết máy chưa nhận thẻ hay đã nhận nhưng dừng giữa chừng; hai trường hợp này cần kiểm tra khác nhau.
+Dùng thẻ gắn chip bản gốc còn hạn và mở lại đúng bước đọc chip trên App MBBank. Nếu có công tắc NFC, kiểm tra tính năng đã bật. Lấy thẻ ra khỏi ví, tháo ốp hoặc phụ kiện có nam châm, kim loại hay kẹp thẻ. Đưa thẻ đến vùng đọc theo hình minh họa trên App hoặc sơ đồ máy. Nếu App vẫn chưa phản hồi, dịch thẻ chậm để tìm vùng đọc.
+
+### App nhận thẻ rồi dừng giữa chừng
+
+Khi App bắt đầu đọc, giữ thẻ và điện thoại ổn định đến khi có thông báo. Nếu App báo phiên đọc đã kết thúc và cho phép thử lại, mở lại bước đọc theo hướng dẫn. Nếu cả App bị treo hoặc không phản hồi, MB hướng dẫn kiểm tra kết nối và cập nhật App. Khi lỗi lặp lại, ghi nguyên văn thông báo và [liên hệ MB247](#khi-nào-cần-mb247-hoặc-hỗ-trợ-tại-quầy).
+
+### App đã đọc xong nhưng vẫn báo lỗi
+
+Đọc thông báo để biết App đang yêu cầu xử lý giấy tờ hay thực hiện bước khác. Nếu báo thông tin không khớp, đối chiếu họ tên và ngày sinh đã nhập với giấy tờ rồi hỏi MB247 nếu vẫn không khớp. Nếu App chuyển sang xác minh khuôn mặt và lỗi xảy ra ở đó, xem [hướng dẫn xử lý lỗi khuôn mặt](/mo-tai-khoan/khong-dang-ky-duoc-mb-bank/#không-xác-minh-được-khuôn-mặt).
 
 ## Có thể dùng VNeID thay cho NFC không?
 
@@ -109,7 +120,7 @@ Liên hệ MB khi máy không đáp ứng NFC, đã kiểm tra nhưng vẫn khô
 - Bước đang dừng và nguyên văn thông báo lỗi.
 - Việc máy chưa nhận thẻ, đọc bị ngắt hay đã đọc xong.
 
-MB247 dành cho khách hàng cá nhân: [1900 545426](tel:1900545426). Từ nước ngoài: [+84 24 3767 4050](tel:+842437674050). Email: [mb247@mbbank.com.vn](mailto:mb247@mbbank.com.vn). MB có thể hướng dẫn địa chỉ chi nhánh/phòng giao dịch phù hợp. Không cung cấp OTP hoặc mật khẩu khi trao đổi hỗ trợ.
+MB247 dành cho khách hàng cá nhân: [1900 545426](tel:1900545426). Từ nước ngoài: [+84 24 3767 4050](tel:+842437674050). Email: [mb247@mbbank.com.vn](mailto:mb247@mbbank.com.vn). MB có thể hướng dẫn địa chỉ chi nhánh/phòng giao dịch phù hợp. Giữ kín OTP và mật khẩu khi trao đổi hỗ trợ. Tránh gửi ảnh căn cước qua tin nhắn.
 
 Nếu vấn đề nằm ở OTP, camera, khuôn mặt hoặc thông tin đã tồn tại, xem [bài xử lý lỗi đăng ký MB Bank](/mo-tai-khoan/khong-dang-ky-duoc-mb-bank/) để đi đúng bước.
 

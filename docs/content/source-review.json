@@ -163,7 +163,7 @@
       "article": "mo-tai-khoan/khong-quet-duoc-nfc-mb-bank",
       "checkedAt": "2026-11-21",
       "nextReviewAt": "2026-12-21",
-      "scope": "Rà mục kiểm tra NFC trước khi mở MB: cách tìm cài đặt trên Android và Galaxy, xác định đúng mẫu iPhone và đọc thông số của Apple, phân biệt khả năng NFC với tương thích App MBBank và bước đọc chip do MB hướng dẫn. Đối chiếu phạm vi của hướng dẫn cập nhật qua VNeID và kênh MB247. Chưa thử đọc chip trên thiết bị hay đăng ký thực tế, chưa xác minh danh sách tương thích theo từng máy và chưa rà toàn bài.",
+      "scope": "Hai lượt rà ngày 21/11/2026. Kiểm tra trước khi mở MB: tìm NFC trên Android/Galaxy, tra thông số đúng mẫu iPhone, đối chiếu tương thích App và phạm vi hướng dẫn cập nhật VNeID. Xử lý lỗi đọc chip: đối chiếu bước xác minh trong hướng dẫn MB, phụ kiện/vùng đọc theo tài liệu thiết bị, xử lý App không phản hồi, thông tin không khớp và bảo mật khi báo lỗi qua MB247. Ba tình huống trong bài dùng để chọn bước tiếp theo, không phải mã lỗi chính thức của App. Chưa thử đọc chip hoặc đăng ký thực tế, chưa xác minh danh sách tương thích theo từng máy và chưa rà toàn bài.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
@@ -172,6 +172,20 @@
         },
         {
           "url": "https://www.samsung.com/vn/support/mobile-devices/nfc-not-working-samsung-galaxy-device/",
+          "status": "current",
+          "version": "Cập nhật 30/09/2026"
+        },
+        {
+          "url": "https://support.google.com/pixelphone/answer/7157629?hl=vi",
+          "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/app-mb-bi-loi",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 13/05/2026"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/nguyen-tac-giao-dich-an-toan/huong-dan-tra-soat/thong-bao-huong-dan-dam-bao-an-toan-giao-dich-app-mbbank-2026-3-25-10-50-11",
           "status": "current"
         },
         {
