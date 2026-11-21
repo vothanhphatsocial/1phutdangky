@@ -160,6 +160,56 @@
       ]
     },
     {
+      "article": "mo-tai-khoan/khong-quet-duoc-nfc-mb-bank",
+      "checkedAt": "2026-11-21",
+      "nextReviewAt": "2026-12-21",
+      "scope": "Rà mục kiểm tra NFC trước khi mở MB: cách tìm cài đặt trên Android và Galaxy, xác định đúng mẫu iPhone và đọc thông số của Apple, phân biệt khả năng NFC với tương thích App MBBank và bước đọc chip do MB hướng dẫn. Đối chiếu phạm vi của hướng dẫn cập nhật qua VNeID và kênh MB247. Chưa thử đọc chip trên thiết bị hay đăng ký thực tế, chưa xác minh danh sách tương thích theo từng máy và chưa rà toàn bài.",
+      "sources": [
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 12/10/2026"
+        },
+        {
+          "url": "https://www.samsung.com/vn/support/mobile-devices/nfc-not-working-samsung-galaxy-device/",
+          "status": "current"
+        },
+        {
+          "url": "https://support.google.com/wallet/answer/14186809?hl=vi",
+          "status": "current"
+        },
+        {
+          "url": "https://support.apple.com/vi-vn/106343",
+          "status": "current"
+        },
+        {
+          "url": "https://support.apple.com/vi-vn/108044",
+          "status": "current"
+        },
+        {
+          "url": "https://www.apple.com/vn/iphone-16/specs/",
+          "status": "current"
+        },
+        {
+          "url": "https://apps.apple.com/vn/app/mb-bank/id1205807363",
+          "status": "current"
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.mbmobile&hl=vi",
+          "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/tin-san-pham-dich-vu/app-mbbank-chinh-thuc-ho-tro-nguoi-dung-cap-nhat-can-cuoc-qua-tai-khoan-dinh-danh-dien-tu-vneid-2024-11-19-11-18-19",
+          "status": "current",
+          "version": "Thông báo ngày 19/11/2024, áp dụng cho cập nhật giấy tờ"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/lien-he",
+          "status": "current"
+        }
+      ]
+    },
+    {
       "article": "mo-tai-khoan/mo-tai-khoan-vpbank-online",
       "checkedAt": "2026-11-11",
       "nextReviewAt": "2026-12-11",

@@ -1,10 +1,10 @@
 ---
 title: "Không quét được NFC căn cước khi mở MB Bank online"
-description: "Xử lý điện thoại không có NFC hoặc không đọc được chip căn cước khi mở MB Bank: kiểm tra máy, vị trí đặt thẻ và kênh MB247 hỗ trợ."
+description: "Cách kiểm tra NFC trên Android và iPhone trước khi mở MB Bank, xem máy có cài được App MBBank và xử lý nếu không đọc được chip căn cước."
 category: "mo-tai-khoan"
 type: "knowledge"
 publishedAt: 2026-11-02T01:51:00+07:00
-updatedAt: 2026-11-02T01:51:00+07:00
+updatedAt: 2026-11-21T20:46:23+07:00
 lastVerifiedAt: 2026-11-02T01:51:00+07:00
 readingMinutes: 6
 featured: false
@@ -16,6 +16,9 @@ stickyCtaFrom: "mo-tai-khoan/mo-tai-khoan-mb-bank-online"
 affiliate:
   enabled: false
 sources:
+  - title: "MB: hướng dẫn mở tài khoản thanh toán và bước xác minh bằng căn cước gắn chip (12/10/2026)"
+    url: "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi"
+    publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "MB: cập nhật căn cước qua tài khoản định danh điện tử VNeID"
     url: "https://www.mbbank.com.vn/tin-tuc/tin-san-pham-dich-vu/app-mbbank-chinh-thuc-ho-tro-nguoi-dung-cap-nhat-can-cuoc-qua-tai-khoan-dinh-danh-dien-tu-vneid-2024-11-19-11-18-19"
     publisher: "Ngân hàng TMCP Quân đội (MB)"
@@ -25,9 +28,21 @@ sources:
   - title: "Samsung: NFC không hoạt động trên thiết bị Galaxy"
     url: "https://www.samsung.com/vn/support/mobile-devices/nfc-not-working-samsung-galaxy-device/"
     publisher: "Samsung Việt Nam"
+  - title: "Google: tìm và bật NFC trong Cài đặt Android"
+    url: "https://support.google.com/wallet/answer/14186809?hl=vi"
+    publisher: "Google"
   - title: "Google Pixel: sơ đồ phần cứng và vị trí ăng-ten NFC theo mẫu máy"
     url: "https://support.google.com/pixelphone/answer/7157629?hl=vi"
     publisher: "Google"
+  - title: "Apple: cách xem số kiểu máy trong phần Giới thiệu"
+    url: "https://support.apple.com/vi-vn/106343"
+    publisher: "Apple"
+  - title: "Apple: danh sách kiểu máy iPhone và liên kết tới thông số kỹ thuật"
+    url: "https://support.apple.com/vi-vn/108044"
+    publisher: "Apple"
+  - title: "Apple: thông số iPhone 16, ví dụ về mục NFC có chế độ đọc"
+    url: "https://www.apple.com/vn/iphone-16/specs/"
+    publisher: "Apple"
   - title: "MBBank trên App Store"
     url: "https://apps.apple.com/vn/app/mb-bank/id1205807363"
     publisher: "Ngân hàng TMCP Quân đội (MB), App Store"
@@ -49,9 +64,17 @@ sources:
 
 Đọc được chip chưa có nghĩa hồ sơ đã được MB chấp thuận. Ngược lại, một lần đọc thất bại chưa đủ để kết luận chip căn cước bị hỏng.
 
+## Cách kiểm tra điện thoại có NFC trước khi mở MB
+
+**Trên Android:** mở **Cài đặt**, tìm **NFC** rồi bật nếu máy có công tắc. Với Galaxy, Samsung hướng dẫn vào **Cài đặt → Kết nối → NFC và thanh toán không tiếp xúc**. Tên mục có thể khác theo máy. Nếu tìm chưa ra, lấy đúng mã máy trong phần giới thiệu thiết bị rồi tra mục kết nối trong thông số của hãng.
+
+**Trên iPhone:** vào **Cài đặt → Cài đặt chung → Giới thiệu** để xem tên kiểu máy. Nếu cần mã cụ thể, chạm vào **Số kiểu máy**. Tra thông số đúng mẫu trên trang Apple và tìm dòng **NFC có chế độ đọc**. Ví dụ, Apple ghi dòng này trong thông số iPhone 16.
+
+**Sau khi xác nhận máy có NFC**, kiểm tra App MBBank do MB phát hành có thể cài hoặc cập nhật trên thiết bị qua App Store hoặc Google Play. Thông số của hãng xác nhận khả năng NFC của máy. Khả năng đọc chip căn cước cần kiểm tra ở bước xác minh trong App MBBank theo hướng dẫn của MB.
+
 ## Điện thoại không có NFC có mở MB Bank được không?
 
-**Máy không có phần cứng NFC không thể thực hiện việc đọc chip trực tiếp bằng chính máy đó.** Hãy tra thông số đúng mã máy trên trang của nhà sản xuất, thay vì chỉ dựa vào tên dòng máy hoặc một danh sách điện thoại truyền miệng.
+**Máy không có phần cứng NFC không thể thực hiện việc đọc chip trực tiếp bằng chính máy đó.**
 
 Nếu luồng đăng ký đang yêu cầu đọc chip mà máy không đáp ứng, liên hệ MB247 để hỏi phương thức xác minh được áp dụng cho hồ sơ của bạn và chi nhánh/phòng giao dịch có thể hỗ trợ. Xác nhận giấy tờ cần mang trước khi đến.
 
@@ -59,7 +82,7 @@ Không thay bước đọc chip bằng ảnh chụp mã QR nếu App không hư�
 
 ## Máy có NFC: kiểm tra cài đặt và vùng đọc
 
-Trên điện thoại Galaxy có NFC, Samsung hướng dẫn vào **Cài đặt → Kết nối → NFC và thanh toán không tiếp xúc** để bật tính năng. Tên mục có thể khác theo máy và phiên bản phần mềm. Nếu đã bật nhưng không nhận thẻ, có thể tắt rồi bật lại NFC trước khi thử.
+Trên Galaxy, Samsung hướng dẫn thử tắt rồi bật lại NFC nếu tính năng đã bật mà máy vẫn chưa nhận thẻ.
 
 Vùng đọc không nằm ở cùng một chỗ trên mọi điện thoại. Tra sơ đồ của đúng mẫu máy; chẳng hạn, tài liệu phần cứng Pixel của Google đánh dấu vị trí ăng-ten NFC theo từng mẫu. Với iPhone hoặc máy Android khác, làm theo hướng dẫn của App và nhà sản xuất cho thiết bị đang dùng.
 
