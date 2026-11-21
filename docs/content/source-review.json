@@ -130,7 +130,7 @@
       "article": "mo-tai-khoan/bao-nhieu-tuoi-duoc-mo-tai-khoan-mb-bank",
       "checkedAt": "2026-11-21",
       "nextReviewAt": "2026-12-21",
-      "scope": "Rà mục tự mở tài khoản thanh toán ở tuổi 15–17: điều kiện đứng tên và trường hợp cần đại diện theo Điều 11, giấy tờ theo Điều 12, phạm vi mở bằng phương tiện điện tử và thông báo kết quả theo Điều 16. Đối chiếu thông tin MB công bố về mở trên App từ đủ 15 tuổi, luồng quét chip, OTP, xác minh và hỗ trợ tại quầy hoặc qua MB247. Chưa thử đăng ký thực tế trong App, chưa xác nhận cơ chế chuyển từ MB Junior và chưa rà toàn bài.",
+      "scope": "Hai lượt rà ngày 21/11/2026. Nhóm 15–17: đối chiếu điều kiện tự mở, giấy tờ, xác minh và thông báo kết quả theo Điều 11, 12, 16 cùng hướng dẫn MB về App, quét chip, OTP và kênh hỗ trợ. Nhóm dưới 15: đối chiếu vai trò người đại diện, trường hợp dùng giấy khai sinh cho trẻ dưới 14 tuổi chưa có thẻ căn cước, phạm vi mở bằng phương tiện điện tử và sử dụng tài khoản theo Điều 11, 12, 16, 17. Đối chiếu hướng dẫn công khai về MB Junior: độ tuổi, bố/mẹ đăng ký, giấy khai sinh, số điện thoại và tên bố/mẹ hiển thị khi chuyển hoặc nhận tiền. Chưa thử hồ sơ tại quầy hoặc đăng ký trong App, chưa xác nhận cơ chế chuyển từ MB Junior và chưa rà toàn bài.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/bao-nhieu-tuoi-lam-duoc-the-ngan-hang",
@@ -143,9 +143,14 @@
           "version": "Bài hướng dẫn ngày 12/10/2026"
         },
         {
+          "url": "https://www.mbbank.com.vn/tin-tuc/tin-san-pham-dich-vu/app-mb-junior-app-ngan-hang-danh-rieng-cho-cac-ban-duoi-15-tuoi-2025-2-20-19-56-25",
+          "status": "current",
+          "version": "Hướng dẫn đăng ký và sử dụng MB Junior do MB đăng 21/02/2025, đã mở và đối chiếu phạm vi mô tả công khai"
+        },
+        {
           "url": "https://congbao.cdnchinhphu.vn/CongBaoCP/VanBan/2025/9/46281/59099-1-20251419-142021-vbhn-nhnn.pdf",
           "status": "current",
-          "version": "21/VBHN-NHNN, Điều 11, 12 và 16 sau sửa đổi theo 25/2025/TT-NHNN",
+          "version": "21/VBHN-NHNN, Điều 11, 12, 16 và khoản 2 Điều 17, sau sửa đổi theo 25/2025/TT-NHNN",
           "effectiveFrom": "2025-08-31"
         },
         {
