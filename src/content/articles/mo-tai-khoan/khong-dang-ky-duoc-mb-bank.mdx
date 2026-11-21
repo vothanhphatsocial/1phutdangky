@@ -14,10 +14,7 @@ coverAlt: "Hướng dẫn xử lý lỗi khi đăng ký MB Bank online của 1 P
 quickAnswer: "Khi không đăng ký được MB Bank, hãy xác định bước đang dừng: nhận OTP, chụp căn cước, xác minh khuôn mặt, đọc chip NFC hay hoàn tất hồ sơ. Kiểm tra số điện thoại, quyền camera và kết nối theo đúng lỗi. Với thông tin đã tồn tại hoặc hồ sơ vẫn bị từ chối sau khi kiểm tra, liên hệ MB247 để ngân hàng xác minh."
 productBeforeToc: true
 products: []
-stickyCta:
-  product: "bank-accounts/mb-bank-account"
-  href: "#bạn-đang-vướng-ở-bước-nào"
-  label: "Xem cách xử lý"
+stickyCtaFrom: "mo-tai-khoan/mo-tai-khoan-mb-bank-online"
 affiliate:
   enabled: false
 sources:
@@ -69,7 +66,7 @@ sources:
 ---
 
 import { getEntry } from 'astro:content';
-import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 import AffiliateDisclosure from '../../../components/article/AffiliateDisclosure.astro';
 
 export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-account');
@@ -184,8 +181,8 @@ Không gửi OTP, PIN, mật khẩu hoặc thông tin đăng nhập cho người
 
 ## Tiếp tục đăng ký sau khi xử lý lỗi
 
-Khi đã xử lý được bước đang vướng và App cho tiếp tục, quay lại hồ sơ theo hướng dẫn đang hiển thị. Nếu cần kiểm tra lại điều kiện, giấy tờ, phí và quy trình, xem <ProductGuideLink product="bank-accounts/mb-bank-account" href="/mo-tai-khoan/mo-tai-khoan-mb-bank-online/">hướng dẫn mở tài khoản MB Bank online</ProductGuideLink>.
+Khi đã xử lý được bước đang vướng và App cho tiếp tục, quay lại hồ sơ theo hướng dẫn đang hiển thị. Nếu cần kiểm tra lại điều kiện, giấy tờ, phí và quy trình, xem [hướng dẫn mở tài khoản MB Bank online](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/).
 
 <AffiliateDisclosure />
 
-<AffiliateCTA product={mbBankProduct} position="article-recovery" />
+<ArticleCTA product={mbBankProduct} position="article-recovery" />

@@ -9,20 +9,17 @@ interface Props {
   product: CollectionEntry<'products'>;
 
   offerId?: string;
-  internalLink?: { href: string; label: string };
 }
 
 const {
   product,
   offerId,
-  internalLink,
 } = Astro.props;
 
-const action = getProductAction(product, offerId);
-const trackedOffer = internalLink ? undefined : action.offer;
-const referralCode = action.offer?.referralCode;
-const referralCodeLabel = action.offer?.referralCodeLabel ?? 'Mã người giới thiệu';
-const rel = trackedOffer ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer';
+const { offer, href, label, event } = getProductAction(product, offerId);
+const referralCode = offer?.referralCode;
+const referralCodeLabel = offer?.referralCodeLabel ?? 'Mã người giới thiệu';
+const rel = offer ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer';
 ---
 
 <div
@@ -52,34 +49,32 @@ const rel = trackedOffer ? 'sponsored nofollow noopener noreferrer' : 'noopener 
     </div>
 
     <a
-      href={internalLink?.href ?? action.href}
-      target={internalLink ? undefined : '_blank'}
-      rel={internalLink ? undefined : rel}
+      href={href}
+      target="_blank"
+      rel={rel}
       aria-describedby={referralCode ? 'sticky-cta-referral' : undefined}
 
-      data-event={internalLink ? 'link_click' : action.event}
+      data-event={event}
       data-link-purpose="action"
 
       data-product-id={product.id}
       data-product-name={product.data.name}
 
-      data-offer-id={trackedOffer?.id ?? ''}
+      data-offer-id={offer?.id ?? ''}
 
-      data-offer-channel={trackedOffer?.channel ?? ''}
+      data-offer-channel={offer?.channel ?? ''}
 
-      data-affiliate-network={trackedOffer?.network ?? ''}
+      data-affiliate-network={offer?.network ?? ''}
 
       data-cta-position="sticky-mobile"
 
       data-affiliate={
-        trackedOffer
+        offer
           ? 'true'
           : 'false'
       }
     >
-      {
-        internalLink?.label ?? action.label
-      }
+      {label}
     </a>
 
   </div>

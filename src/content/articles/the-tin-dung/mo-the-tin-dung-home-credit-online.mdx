@@ -43,7 +43,7 @@ sources:
 ---
 
 import { getEntry } from 'astro:content';
-import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
 export const homeCreditCard = await getEntry('products', 'credit-cards/home-credit-credit-card');
 
@@ -59,7 +59,7 @@ Nếu muốn được hỗ trợ trực tiếp, xem [hướng dẫn mở thẻ t
 - **Thẻ tín dụng Home Credit:** có thể dùng thẻ vật lý theo tính năng được cấp; rút tiền mặt có phí và phát sinh lãi riêng.
 - **Thẻ tín dụng Linh hoạt, Tiền mặt Linh hoạt:** có cấu trúc phí và thời gian miễn phí khác. Chỉ áp dụng ưu đãi của loại thẻ ghi đúng trong hồ sơ của bạn.
 
-Nếu nhu cầu là nhận một khoản tiền về tài khoản và trả góp theo lịch hợp đồng, xem <ProductGuideLink product="loans/home-credit-cash-loan" href="/vay-tien-mat/vay-tien-mat-home-credit-online/">vay tiền mặt Home Credit</ProductGuideLink> để phân biệt với việc dùng hạn mức thẻ.
+Nếu nhu cầu là nhận một khoản tiền về tài khoản và trả góp theo lịch hợp đồng, xem [vay tiền mặt Home Credit](/vay-tien-mat/vay-tien-mat-home-credit-online/) để phân biệt với việc dùng hạn mức thẻ.
 
 ## Điều kiện và giấy tờ cần chuẩn bị
 
@@ -122,7 +122,7 @@ Theo điều khoản thẻ, giao dịch rút tiền mặt tính lãi từ ngày 
 
 1 Phút Đăng Ký là website độc lập, có thể nhận hoa hồng từ lượt đăng ký đủ điều kiện. Home Credit tiếp nhận hồ sơ và quyết định cấp thẻ, hạn mức.
 
-<AffiliateCTA product={homeCreditCard} position="article-process" />
+<ArticleCTA product={homeCreditCard} position="article-process" />
 
 ## Sau khi được cấp thẻ: kích hoạt, sao kê và thanh toán
 

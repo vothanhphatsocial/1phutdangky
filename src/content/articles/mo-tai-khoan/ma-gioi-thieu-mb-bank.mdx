@@ -36,11 +36,11 @@ sources:
 ---
 
 import { getEntry } from 'astro:content';
-import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
 export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-account');
 
-Nếu đang đăng ký App MBBank và cần mã người giới thiệu, bạn có thể dùng **MBAT113**. Bài này tập trung vào cách dùng mã, liên kết mở ứng dụng và các tình huống liên quan đến giới thiệu. Phần điều kiện, giấy tờ và phí nằm trong <ProductGuideLink product="bank-accounts/mb-bank-account" href="/mo-tai-khoan/mo-tai-khoan-mb-bank-online/">hướng dẫn mở tài khoản MB Bank online</ProductGuideLink>.
+Nếu đang đăng ký App MBBank và cần mã người giới thiệu, bạn có thể dùng **MBAT113**. Bài này tập trung vào cách dùng mã, liên kết mở ứng dụng và các tình huống liên quan đến giới thiệu. Phần điều kiện, giấy tờ và phí nằm trong [hướng dẫn mở tài khoản MB Bank online](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/).
 
 ## Nhập mã giới thiệu MB Bank ở đâu?
 
@@ -58,7 +58,7 @@ Nhập **MBAT113** vào trường **Mã người giới thiệu** trong phần t
   </Step>
 </Steps>
 
-<AffiliateCTA product={mbBankProduct} position="article-referral" />
+<ArticleCTA product={mbBankProduct} position="article-referral" />
 
 ### Dùng link giới thiệu có cần kiểm tra lại mã không?
 
@@ -126,4 +126,4 @@ Chính sách bảo vệ dữ liệu của MB xếp tên đăng nhập, mật kh�
 
 ## Tiếp tục đăng ký trên App MBBank
 
-Bạn có thể dùng mã ở phần thông tin sản phẩm phía trên và kiểm tra lại trong App trước khi hoàn tất. Nếu cần xem toàn bộ điều kiện, giấy tờ và phí, quay lại <ProductGuideLink product="bank-accounts/mb-bank-account" href="/mo-tai-khoan/mo-tai-khoan-mb-bank-online/">hướng dẫn mở tài khoản MB Bank online</ProductGuideLink>.
+Bạn có thể dùng mã ở phần thông tin sản phẩm phía trên và kiểm tra lại trong App trước khi hoàn tất. Nếu cần xem toàn bộ điều kiện, giấy tờ và phí, quay lại [hướng dẫn mở tài khoản MB Bank online](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/).

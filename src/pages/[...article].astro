@@ -31,8 +31,6 @@ import Checklist
 import KeyFacts
   from '../components/article/KeyFacts.astro';
 
-import ProductGuideLink from '../components/commercial/ProductGuideLink.astro';
-
 export async function getStaticPaths() {
 
   const posts = await getCollection(
@@ -106,7 +104,6 @@ const articleComponents = {
   FAQItem,
   Checklist,
   KeyFacts,
-  ProductGuideLink,
 };
 ---
 

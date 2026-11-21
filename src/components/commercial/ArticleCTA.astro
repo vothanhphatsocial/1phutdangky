@@ -1,0 +1,43 @@
+---
+import type { ComponentProps } from 'astro/types';
+import AffiliateCTA from './AffiliateCTA.astro';
+import { getPrimaryProductOffer } from '../../utils/productOffers';
+
+type Props = ComponentProps<typeof AffiliateCTA>;
+
+const props = Astro.props;
+const offer = getPrimaryProductOffer(props.product, props.offerId);
+const referralCode = offer?.referralCode;
+---
+
+{referralCode ? (
+  <div class="article-cta">
+    <div class="article-cta-code">
+      <span>{offer?.referralCodeLabel ?? 'Mã người giới thiệu'}</span>
+      <strong>{referralCode}</strong>
+    </div>
+    <AffiliateCTA {...props} />
+  </div>
+) : (
+  <AffiliateCTA {...props} />
+)}
+
+<style>
+  .article-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem 1rem;
+  }
+
+  .article-cta-code {
+    display: grid;
+    gap: 0.15rem;
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .article-cta-code strong {
+    font-size: 1rem;
+  }
+</style>

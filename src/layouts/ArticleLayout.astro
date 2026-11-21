@@ -112,10 +112,20 @@ const isComparison =
   linkedProducts.length >= 2;
 
 
-const stickyLink = post.data.stickyCta;
-const stickyProduct = stickyLink
-  ? await getEntry(stickyLink.product)
-  : isComparison ? undefined : primaryProduct;
+let stickyProduct = isComparison ? undefined : primaryProduct;
+const stickyCtaFrom = post.data.stickyCtaFrom;
+
+if (stickyCtaFrom) {
+  const pillar = await getEntry(stickyCtaFrom);
+  const pillarProduct = pillar?.data.products[0];
+  const isPillarComparison = pillar?.data.type === 'comparison' && pillar.data.products.length >= 2;
+
+  if (!pillar || pillar.data.draft || pillar.data.stickyCtaFrom || !pillarProduct || isPillarComparison) {
+    throw new Error(`Bài ${post.id} cần trỏ CTA nổi đến bài trụ đã xuất bản có CTA: ${stickyCtaFrom.id}`);
+  }
+
+  stickyProduct = await getEntry(pillarProduct);
+}
 
 
 /* ========================================
@@ -489,7 +499,7 @@ const breadcrumbSchema = {
   {
     stickyProduct && (
 
-      <StickyCTA product={stickyProduct} internalLink={stickyLink} />
+      <StickyCTA product={stickyProduct} />
 
     )
   }

@@ -66,7 +66,7 @@ sources:
 ---
 
 import { getEntry } from 'astro:content';
-import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
 export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-account');
 
@@ -132,11 +132,11 @@ Quy trình dưới đây tóm tắt các công việc cần hoàn tất. Thứ t
 
 Nhập **MBAT113** vào trường **Mã người giới thiệu** trong luồng đăng ký App MBBank, rồi kiểm tra lại trước khi xác nhận thông tin. Bạn có thể dùng nút Sao chép mã trong khối thông tin sản phẩm để tránh gõ sai. Xem [vị trí nhập mã và cách kiểm tra MBAT113](/mo-tai-khoan/ma-gioi-thieu-mb-bank/#nhập-mã-giới-thiệu-mb-bank-ở-đâu) để đối chiếu trước khi hoàn tất đăng ký.
 
-Nếu không tìm thấy trường này, xem <ProductGuideLink product="bank-accounts/mb-bank-account" href="/mo-tai-khoan/ma-gioi-thieu-mb-bank/#không-thấy-ô-mã-giới-thiệu-mb-bank">cách xử lý khi không thấy ô mã giới thiệu</ProductGuideLink> trước khi hoàn tất đăng ký.
+Nếu không tìm thấy trường này, xem [cách xử lý khi không thấy ô mã giới thiệu](/mo-tai-khoan/ma-gioi-thieu-mb-bank/#không-thấy-ô-mã-giới-thiệu-mb-bank) trước khi hoàn tất đăng ký.
 
 1 Phút Đăng Ký là website độc lập, có thể nhận hoa hồng khi lượt đăng ký qua giới thiệu đáp ứng điều kiện chương trình.
 
-<AffiliateCTA product={mbBankProduct} position="article-process" />
+<ArticleCTA product={mbBankProduct} position="article-process" />
 
 <Notice type="warning" title="Tự thực hiện toàn bộ bước xác thực">
 Không gửi OTP, mật khẩu, ảnh giấy tờ, dữ liệu khuôn mặt hoặc thông tin đăng nhập cho người giới thiệu. 1 Phút Đăng Ký không thu thập và không xử lý hồ sơ mở tài khoản.

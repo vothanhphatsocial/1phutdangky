@@ -46,7 +46,7 @@ sources:
 ---
 
 import { getEntry } from 'astro:content';
-import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
 export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-account');
 
@@ -56,7 +56,7 @@ export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-a
 
 **Lần đầu mở tài khoản MB:** sao chép mã ở khung sản phẩm phía trên rồi bấm **Mở App MBBank**. Tùy thiết bị, liên kết mở ứng dụng hoặc chuyển đến kho ứng dụng. Đăng ký bằng thông tin chính chủ; trong phần thông tin người giới thiệu, nhập **MBAT113** vào trường **Mã người giới thiệu** và kiểm tra trước khi xác nhận.
 
-Xem <ProductGuideLink product="bank-accounts/mb-bank-account" href="/mo-tai-khoan/mo-tai-khoan-mb-bank-online/">hướng dẫn mở tài khoản MB Bank online</ProductGuideLink>, [checklist cần chuẩn bị](/mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi/) và [cách dùng mã MBAT113](/mo-tai-khoan/ma-gioi-thieu-mb-bank/) khi cần hướng dẫn chi tiết. Sau khi mở tài khoản và đăng nhập thành công, tiếp tục các bước phát hành thẻ bên dưới.
+Xem [hướng dẫn mở tài khoản MB Bank online](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/), [checklist cần chuẩn bị](/mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi/) và [cách dùng mã giới thiệu](/mo-tai-khoan/ma-gioi-thieu-mb-bank/) khi cần hướng dẫn chi tiết. Sau khi mở tài khoản và đăng nhập thành công, tiếp tục các bước phát hành thẻ bên dưới.
 
 **Đã có tài khoản và đăng nhập được App MBBank:** vào mục Thẻ hoặc Dịch vụ thẻ để đăng ký phát hành. Mã giới thiệu dùng ở bước mở tài khoản; việc phát hành thẻ và xét duyệt hạn mức tín dụng là các bước riêng.
 
@@ -102,7 +102,7 @@ Hướng dẫn MB công bố dùng các tên mục **Thẻ**, **Dịch vụ th�
 
 Nếu App chưa cho đăng ký loại thẻ bạn muốn, hỏi MB về điều kiện còn thiếu hoặc kênh hỗ trợ phù hợp. Không chọn một thẻ tín dụng khác chỉ để đi tiếp khi chưa hiểu phí và nghĩa vụ trả nợ.
 
-<AffiliateCTA product={mbBankProduct} position="article-card-steps" />
+<ArticleCTA product={mbBankProduct} position="article-card-steps" />
 
 ## Chọn thẻ phi vật lý hay thẻ vật lý?
 
