@@ -88,6 +88,45 @@
       ]
     },
     {
+      "article": "mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi",
+      "checkedAt": "2026-11-21",
+      "nextReviewAt": "2026-12-21",
+      "scope": "Rà mục giấy tờ: đối chiếu hướng dẫn mở tài khoản qua luồng quét chip của MB, Điều 12 và 16 về hồ sơ và xác thực, Điều 46 về hạn của CCCD/CMND cũ, phạm vi hướng dẫn cập nhật giấy tờ qua VNeID và kênh MB247. Chưa thử đăng ký trong App, chưa xác nhận VNeID cho hồ sơ mở mới cụ thể và chưa rà toàn bài. Thay cùng URL nguồn cũ trả 404 trong bài trụ mở tài khoản và dữ liệu dùng chung bank-accounts/mb-bank-account. Kiểm tra URL nguồn trên hai mục đó chỉ giới hạn ở giấy tờ.",
+      "sources": [
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 12/10/2026"
+        },
+        {
+          "url": "https://congbao.cdnchinhphu.vn/CongBaoCP/VanBan/2025/9/46281/59099-1-20251419-142021-vbhn-nhnn.pdf",
+          "status": "current",
+          "version": "21/VBHN-NHNN, đối chiếu Điều 12 và 16 sau sửa đổi theo 25/2025/TT-NHNN",
+          "effectiveFrom": "2025-08-31"
+        },
+        {
+          "url": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-26-2023-qh15-40850-47828?format=pdf",
+          "status": "current",
+          "version": "Luật Căn cước 26/2023/QH15, Điều 46 khoản 1 và 2",
+          "effectiveFrom": "2024-07-01"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/tin-san-pham-dich-vu/app-mbbank-chinh-thuc-ho-tro-nguoi-dung-cap-nhat-can-cuoc-qua-tai-khoan-dinh-danh-dien-tu-vneid-2024-11-19-11-18-19",
+          "status": "current",
+          "version": "Thông báo ngày 19/11/2024, áp dụng cho cập nhật giấy tờ"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/lien-he",
+          "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/chi-tiet/tin-mb/tai-khoan-thanh-toan-la-gi/7895",
+          "status": "historical",
+          "version": "URL cũ trả 404 khi rà ngày 21/11/2026"
+        }
+      ]
+    },
+    {
       "article": "mo-tai-khoan/mo-tai-khoan-vpbank-online",
       "checkedAt": "2026-11-11",
       "nextReviewAt": "2026-12-11",
