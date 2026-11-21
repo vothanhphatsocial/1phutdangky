@@ -4,9 +4,9 @@
   "records": [
     {
       "article": "mo-tai-khoan/khong-dang-ky-duoc-mb-bank",
-      "checkedAt": "2026-11-20",
+      "checkedAt": "2026-11-21",
       "nextReviewAt": "2026-12-20",
-      "scope": "Phần xác minh khuôn mặt khi mở tài khoản. Đối chiếu hướng dẫn công khai của MB về ghi hình theo yêu cầu trên App MBBank, ánh sáng, khung hình, camera, cập nhật App và kênh hỗ trợ MB247. Đối chiếu số tổng đài trong nước, số gọi từ nước ngoài và email khách hàng cá nhân. Chưa kiểm thử đăng ký thực tế hoặc xác nhận nguyên nhân, mã lỗi hay giới hạn thử lại của App. Không rà lại toàn bộ các mục OTP, NFC hoặc thông tin đã tồn tại.",
+      "scope": "20/11/2026: đối chiếu phần xác minh khuôn mặt khi mở tài khoản, gồm yêu cầu ghi hình trên App MBBank, ánh sáng, khung hình, camera, cập nhật App và kênh MB247. 21/11/2026: đối chiếu hướng xử lý khi MB báo số điện thoại hoặc giấy tờ đã tồn tại, tính năng Quên mật khẩu và các kênh hỗ trợ chính thức. Kiểm tra hotline trong nước, số gọi từ nước ngoài và email MB247. Chưa kiểm thử đăng ký hoặc khôi phục thực tế, chưa xác nhận nguyên nhân riêng, mã lỗi, giới hạn thử lại hoặc thủ tục đổi số cho từng hồ sơ. Hai lượt kiểm tra không bao quát toàn bài.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
@@ -21,6 +21,16 @@
         {
           "url": "https://www.mbbank.com.vn/lien-he",
           "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/app-mb-bi-loi",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 13/05/2026"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/cach-su-dung-app-mbbank",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 30/06/2026"
         }
       ]
     },
