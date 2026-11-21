@@ -224,6 +224,35 @@
       ]
     },
     {
+      "article": "mo-tai-khoan/ma-gioi-thieu-mb-bank",
+      "checkedAt": "2026-11-21",
+      "nextReviewAt": "2026-12-21",
+      "scope": "Rà mục bảo mật khi dùng link và mã MBAT113: đối chiếu tên ứng dụng/nhà phát hành trên hai kho, cảnh báo MB về trang hoặc phần mềm giả, bảo vệ giấy tờ và mã xác thực, và kênh MB247 khi nghi lộ thông tin. Kiểm tra CTA hiển thị đúng OneLink và mã đã cấu hình trên trang. Chưa thử chuyển tiếp OneLink trên thiết bị thực tế, chưa thử đăng ký hay xác nhận ghi nhận mã, quyền lợi hoặc toàn bài.",
+      "sources": [
+        {
+          "url": "https://www.mbbank.com.vn/nguyen-tac-giao-dich-an-toan/huong-dan-tra-soat/thong-bao-huong-dan-dam-bao-an-toan-giao-dich-app-mbbank-2026-3-25-10-50-11",
+          "status": "current",
+          "version": "Trang MB hiển thị ngày đăng 01/01/2025"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/lien-he",
+          "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/chinh-sach-bao-ve-du-lieu-ca-nhan",
+          "status": "current"
+        },
+        {
+          "url": "https://apps.apple.com/vn/app/mb-bank/id1205807363",
+          "status": "current"
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.mbmobile&hl=vi",
+          "status": "current"
+        }
+      ]
+    },
+    {
       "article": "mo-tai-khoan/mo-tai-khoan-vpbank-online",
       "checkedAt": "2026-11-11",
       "nextReviewAt": "2026-12-11",
