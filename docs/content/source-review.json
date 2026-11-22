@@ -424,6 +424,81 @@
       ],
       "primaryProgramCheckedAt": "2026-11-14T20:29:55+07:00",
       "primaryProgramValidity": "Currently displayed on recruiting landing page; conditions apply; no dated end or detailed eligibility thresholds shown"
+    },
+    {
+      "article": "mo-tai-khoan/khong-dang-ky-duoc-tpbank",
+      "checkedAt": "2026-11-22",
+      "nextReviewAt": "2026-12-22",
+      "scope": "Đối chiếu OTP, quét QR, đọc NFC, xác thực khuôn mặt, thông báo hoàn tất và kênh LiveBank theo mục IV của hướng dẫn mở tài khoản. Đối chiếu cách giảm lỗi hình ảnh, lấy lại mật khẩu, kênh hỗ trợ và bảo mật trên nguồn công khai của TPBank. Các bước tự kiểm tra thiết bị là gợi ý chẩn đoán; chưa thực hiện đăng ký, đặt lại mật khẩu hoặc kiểm tra hồ sơ trong App.",
+      "sources": [
+        {
+          "url": "https://tpb.vn/wps/wcm/connect/e6861a17-64de-4659-8711-42eac28d11e8/H%C6%AF%E1%BB%9ANG%2BD%E1%BA%AAN%2BM%E1%BB%9E%2BV%C3%80%2BS%E1%BB%AC%2BD%E1%BB%A4NG%2BT%C3%80I%2BKHO%E1%BA%A2N%2BTHANH%2BTO%C3%81N%2BT%E1%BA%A0I%2BTPBANK.pdf?CVID=pHD5qSX&MOD=AJPERES&useDefaultDesc=0&useDefaultText=0",
+          "status": "current",
+          "version": "Hướng dẫn mở và sử dụng tài khoản thanh toán, mục IV.4.1.1"
+        },
+        {
+          "url": "https://tpb.vn/tin-tuc/cam-nang/dinh-danh-eykc-tren-ngan-hang-truc-tuyen",
+          "status": "current"
+        },
+        {
+          "url": "https://tpb.vn/tin-tuc/cam-nang/mo-tai-khoan-online-mat-bao-lau",
+          "status": "current",
+          "version": "Nội dung cập nhật đến tháng 08/2026 theo TPBank, mục 7.5"
+        },
+        {
+          "url": "https://tpb.vn/ngan-hang-dien-tu-ebank",
+          "status": "current"
+        },
+        {
+          "url": "https://tpb.vn/wps/portal/vni/faqs/ngan-hang-ca-nhan",
+          "status": "current"
+        },
+        {
+          "url": "https://tpb.vn/lien-he-thong-tin",
+          "status": "current"
+        }
+      ]
+    },
+    {
+      "article": "mo-tai-khoan/mo-tai-khoan-tpbank-online",
+      "checkedAt": "2026-11-22",
+      "nextReviewAt": "2026-12-22",
+      "scope": "Rà phần phí của bài và sản phẩm bank-accounts/tpbank-account: miễn phí mở tài khoản thứ nhất, mức quản lý tài khoản VND, SMS Banking, đăng ký và sử dụng eBank và phí phương thức OTP SMS. Đối chiếu các bước mở tài khoản theo hướng dẫn chính thức để đặt liên kết xử lý lỗi. Không kiểm chứng lại toàn bài hoặc sửa dữ liệu sản phẩm.",
+      "sources": [
+        {
+          "url": "https://tpb.vn/wps/wcm/connect/e6861a17-64de-4659-8711-42eac28d11e8/H%C6%AF%E1%BB%9ANG%2BD%E1%BA%AAN%2BM%E1%BB%9E%2BV%C3%80%2BS%E1%BB%AC%2BD%E1%BB%A4NG%2BT%C3%80I%2BKHO%E1%BA%A2N%2BTHANH%2BTO%C3%81N%2BT%E1%BA%A0I%2BTPBANK.pdf?CVID=pHD5qSX&MOD=AJPERES&useDefaultDesc=0&useDefaultText=0",
+          "status": "current",
+          "version": "Hướng dẫn mở và sử dụng tài khoản thanh toán, mục IV.4.1.1"
+        },
+        {
+          "url": "https://tpb.vn/wps/wcm/connect/d65f61c2-7b49-4b95-b64f-2b07e437616f/Phu_luc_06_Bieu_phi_Ebank.pdf?MOD=AJPERES",
+          "status": "current",
+          "effectiveFrom": "2026-06-28"
+        },
+        {
+          "url": "https://tpb.vn/wps/wcm/connect/1037eae5-b320-4b90-94a0-a203982e9a9d/260326_Phu_luc_01_Bieu_phi_TKTT_va_TKiem_.pdf?CVID=pXTTtTt&MOD=AJPERES",
+          "status": "current",
+          "effectiveFrom": "2026-06-28"
+        }
+      ]
+    },
+    {
+      "article": "the-tin-dung/mo-the-tin-dung-tpbank-online",
+      "checkedAt": "2026-11-22",
+      "nextReviewAt": "2026-12-22",
+      "scope": "Rà trước lượt nội dung: danh mục thẻ vẫn trỏ đến biểu phí quốc tế đang dẫn trong bài và dữ liệu credit-cards/tpbank-credit-card. Đối chiếu ngày hiệu lực và các mức lãi đang nêu cho Visa Classic/Gold và JCB CashBack. Không rà toàn bài hoặc thay đổi sản phẩm, ưu đãi hay ngày kiểm chứng toàn bài.",
+      "sources": [
+        {
+          "url": "https://tpb.vn/khach-hang-ca-nhan/the-tin-dung",
+          "status": "current"
+        },
+        {
+          "url": "https://tpb.vn/wps/wcm/connect/01d9edaf-2b89-43cf-90c6-f04de788e40f/BIEU-PHI-THE-TIN-DUNG-QUOC-TE-TPBANK_20261022.pdf?MOD=AJPERES",
+          "status": "current",
+          "effectiveFrom": "2026-04-24",
+          "version": "Tệp 20261022 được danh mục thẻ tín dụng liên kết"
+        }
+      ]
     }
   ]
 }
