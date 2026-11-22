@@ -45,6 +45,7 @@ sources:
     publisher: "Ngân hàng TMCP Quân đội (MB)"
 ---
 
+import appCtaLabels from '../../../data/app-cta-labels.json';
 import { getEntry } from 'astro:content';
 import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
@@ -54,7 +55,7 @@ export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-a
 
 ## Chưa có tài khoản MB thì bắt đầu ở đâu?
 
-**Lần đầu mở tài khoản MB:** sao chép mã ở khung sản phẩm phía trên rồi bấm **Mở App MBBank**. Tùy thiết bị, liên kết mở ứng dụng hoặc chuyển đến kho ứng dụng. Đăng ký bằng thông tin chính chủ; trong phần thông tin người giới thiệu, nhập **MBAT113** vào trường **Mã người giới thiệu** và kiểm tra trước khi xác nhận.
+**Lần đầu mở tài khoản MB:** sao chép mã ở khung sản phẩm phía trên rồi bấm **{appCtaLabels['mb-bank']}**. Tùy thiết bị, liên kết mở ứng dụng hoặc chuyển đến kho ứng dụng. Đăng ký bằng thông tin chính chủ; trong phần thông tin người giới thiệu, nhập **MBAT113** vào trường **Mã người giới thiệu** và kiểm tra trước khi xác nhận.
 
 Trước khi đăng ký, xem [giấy tờ cần chuẩn bị để mở tài khoản MB](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/#điều-kiện-và-giấy-tờ-cần-chuẩn-bị) hoặc dùng [checklist mở tài khoản MB](/mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi/) để rà từng mục. Khi đến phần thông tin giới thiệu, đối chiếu [vị trí nhập mã MBAT113](/mo-tai-khoan/ma-gioi-thieu-mb-bank/#nhập-mã-giới-thiệu-mb-bank-ở-đâu).
 

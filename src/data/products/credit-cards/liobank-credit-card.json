@@ -11,7 +11,7 @@
       "channel": "direct-referral",
       "enabled": true,
       "url": "https://liobank.vn/rr/laqv",
-      "ctaLabel": "Mở ứng dụng Liobank",
+      "appAction": "liobank",
       "lastVerifiedAt": "2026-08-16"
     }
   ],

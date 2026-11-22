@@ -5,6 +5,7 @@ import {
 
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import appCtaLabels from './data/app-cta-labels.json';
 
 
 /* ========================================
@@ -52,6 +53,7 @@ const productOfferSchema = z.object({
   ctaNote: z.string().optional(),
   verificationNote: z.string().optional(),
   ctaLabel: z.string().optional(),
+  appAction: z.enum(Object.keys(appCtaLabels) as (keyof typeof appCtaLabels)[]).optional(),
   validThrough: z.coerce.date().optional(),
   lastVerifiedAt: z.coerce.date(),
 });
@@ -129,6 +131,21 @@ const products = defineCollection({
       }
 
       offerIds.add(offer.id);
+
+      if (offer.appAction && offer.ctaLabel !== undefined) {
+        context.addIssue({
+          code: 'custom',
+          message: 'Offer mở hoặc tải App dùng nhãn chung theo appAction.',
+          path: ['offers', index, 'ctaLabel'],
+        });
+      }
+      if (offer.enabled && !offer.appAction && !offer.ctaLabel?.trim()) {
+        context.addIssue({
+          code: 'custom',
+          message: 'Offer đang bật phải khai báo appAction hoặc nhãn CTA của hành động.',
+          path: ['offers', index, 'ctaLabel'],
+        });
+      }
 
       if (
         offer.channel === 'affiliate-network' &&
@@ -253,7 +270,7 @@ const articles = defineCollection({
       .array(reference('products'))
       .default([]),
 
-    stickyCtaFrom: reference('articles').optional(),
+    stickyCtaFrom: z.union([reference('articles'), z.literal(false)]).optional(),
 
     affiliate: z
       .object({
@@ -285,6 +302,14 @@ const articles = defineCollection({
       path: ['sources'],
     }
   ).superRefine((article, context) => {
+    if (!article.draft && article.products.length === 0 && article.stickyCtaFrom === undefined) {
+      context.addIssue({
+        code: 'custom',
+        message: 'Bài xuất bản không có sản phẩm phải trỏ stickyCtaFrom đến bài trụ hoặc ghi rõ false khi không dùng CTA nổi.',
+        path: ['stickyCtaFrom'],
+      });
+    }
+
     if (article.updatedAt < article.publishedAt) {
       context.addIssue({ code: 'custom', message: 'Ngày cập nhật không thể trước ngày xuất bản.', path: ['updatedAt'] });
     }

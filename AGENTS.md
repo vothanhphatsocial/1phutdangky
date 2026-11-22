@@ -18,6 +18,12 @@
 - Article OG/Twitter/schema images are generated automatically at build time by `src/pages/article-images/[...image].png.ts`. Existing legacy `cover` assets are not used for these surfaces; do not create or edit a separate cover to update an article title.
 - Use `src/utils/categoryVisual.mjs` as the single category palette for category panels, article cards/heroes, product cards and generated social images. Product cards inside an article inherit that article's category palette, even when their product data belongs to a different product type. Do not add provider-specific or article-specific palette overrides.
 
+## Article CTA checks
+
+- For App destinations, set `appAction` on the product offer and use the shared label in `src/data/app-cta-labels.json` for the product card, article buttons, sticky CTA, and any prose that names the button. Keep the existing approved URL. Use separate action labels for web registration, contact, directions and internal navigation.
+- For a support article without its own product, set `stickyCtaFrom` to the published article that owns its relevant action. Use `stickyCtaFrom: false` and document the editorial reason when an article intentionally has no sticky CTA. Keep troubleshooting guidance before any in-body commercial CTA.
+- `npm run check` verifies the rendered sticky CTA, configured App links and labels, and existing SEO requirements. On production, check that the sticky CTA appears while scrolling on mobile and desktop, and report which canonical, sitemap, metadata and structured-data checks were verified.
+
 ## Maintenance gate and evidence dates (all content engines)
 
 - Before selecting work for an MB Bank, Home Credit, TPBank, Home PayLater or Green SM Bike content run, read `Next Action` first, then review that provider's published articles and shared product data for expired campaigns, replaced tariffs and unsupported freshness dates. This gate takes precedence over selecting the next `Ready` item or entering Discovery Mode.

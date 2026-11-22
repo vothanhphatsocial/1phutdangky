@@ -1,6 +1,7 @@
 import type {
   CollectionEntry,
 } from 'astro:content';
+import appCtaLabels from '../data/app-cta-labels.json';
 
 type Product =
   CollectionEntry<'products'>;
@@ -60,7 +61,9 @@ export function getProductAction(product: Product, offerId?: string) {
   return {
     offer,
     href: offer?.url ?? contact?.url ?? product.data.officialUrl,
-    label: offer?.ctaLabel ?? contact?.label ?? product.data.ctaLabel,
+    label: offer?.appAction
+      ? appCtaLabels[offer.appAction]
+      : offer?.ctaLabel ?? contact?.label ?? product.data.ctaLabel,
     event: offer ? 'affiliate_click' : contact ? 'contact_click' : 'official_link_click',
   };
 }

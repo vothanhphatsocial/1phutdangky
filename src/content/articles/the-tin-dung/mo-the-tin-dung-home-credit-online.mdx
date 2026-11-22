@@ -42,6 +42,7 @@ sources:
     publisher: "Home Credit Việt Nam"
 ---
 
+import appCtaLabels from '../../../data/app-cta-labels.json';
 import { getEntry } from 'astro:content';
 import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
@@ -107,7 +108,7 @@ Theo điều khoản thẻ, giao dịch rút tiền mặt tính lãi từ ngày 
 
 <Steps title="Bắt đầu hồ sơ thẻ tín dụng">
   <Step number="1" title="Tải hoặc mở ứng dụng Home Credit">
-    Bấm nút Tải ứng dụng Home Credit. Trên điện thoại, liên kết mở ứng dụng hoặc kho ứng dụng phù hợp. Kiểm tra đúng ứng dụng do Home Credit phát hành.
+    Bấm nút **{appCtaLabels['home-credit']}**. Trên điện thoại, liên kết mở ứng dụng hoặc kho ứng dụng phù hợp. Kiểm tra đúng ứng dụng do Home Credit phát hành.
   </Step>
   <Step number="2" title="Chọn thẻ tín dụng và hoàn thiện thông tin">
     Theo hướng dẫn trên trang sản phẩm, tại màn hình chính của ứng dụng chọn “Ưu đãi thẻ tín dụng”. Bổ sung thông tin cá nhân và nhập <strong>00064470</strong> vào ô <strong>Mã nhân viên hỗ trợ</strong> trong ứng dụng. Hoàn tất xác minh theo yêu cầu của Home Credit.

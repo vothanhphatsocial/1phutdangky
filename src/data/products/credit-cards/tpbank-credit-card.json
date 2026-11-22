@@ -11,13 +11,13 @@
       "channel": "direct-referral",
       "enabled": true,
       "url": "https://nganhangso.tpb.vn/7s6k/1yg2b1ta",
-      "ctaLabel": "Tải App TPBank",
+      "appAction": "tpbank",
       "ctaNote": "Tùy thiết bị, liên kết mở TPBank Mobile hoặc chuyển đến kho ứng dụng. Đăng nhập App để bắt đầu đăng ký thẻ tín dụng; nếu chưa có tài khoản, hoàn tất mở tài khoản trước.",
       "lastVerifiedAt": "2026-11-10"
     }
   ],
   "primaryOfferId": "tpbank-card-app-affiliate",
-  "ctaLabel": "Tải App TPBank",
+  "ctaLabel": "Xem thẻ tín dụng TPBank",
   "facts": [
     {
       "label": "Xét duyệt và hạn mức",

@@ -24,7 +24,7 @@ const {
 
 const { offer, href, label: actionLabel, event } = getProductAction(product, offerId);
 const isAffiliate = Boolean(offer);
-const buttonLabel = label ?? actionLabel;
+const buttonLabel = offer?.appAction ? actionLabel : label ?? actionLabel;
 
 const rel =
   isAffiliate

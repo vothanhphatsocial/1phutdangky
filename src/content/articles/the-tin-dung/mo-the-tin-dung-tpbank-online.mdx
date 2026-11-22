@@ -51,6 +51,7 @@ sources:
     publisher: "Ngân hàng TMCP Tiên Phong (TPBank)"
 ---
 
+import appCtaLabels from '../../../data/app-cta-labels.json';
 import { getEntry } from 'astro:content';
 import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
 
@@ -96,7 +97,7 @@ Khi kiểm tra đề nghị trên App, đọc điều kiện áp dụng cho bạ
 
 ### Nếu chưa sử dụng App TPBank
 
-Bấm **Tải App TPBank** trên điện thoại và cài đúng TPBank Mobile. Khách hàng chưa có tài khoản có thể làm theo [hướng dẫn mở tài khoản TPBank online](/mo-tai-khoan/mo-tai-khoan-tpbank-online/) để hoàn tất định danh và thiết lập đăng nhập, sau đó quay lại phần đăng ký thẻ dưới đây.
+Bấm **{appCtaLabels.tpbank}** trên điện thoại. Nếu cần cài App, chọn đúng TPBank Mobile trong kho ứng dụng. Khách hàng chưa có tài khoản có thể làm theo [hướng dẫn mở tài khoản TPBank online](/mo-tai-khoan/mo-tai-khoan-tpbank-online/) để hoàn tất định danh và thiết lập đăng nhập, sau đó quay lại phần đăng ký thẻ dưới đây.
 
 <AffiliateCTA product={tpbankCard} position="article-start" />
 

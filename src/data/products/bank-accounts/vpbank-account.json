@@ -14,8 +14,8 @@
       "channel": "direct-referral",
       "enabled": true,
       "url": "https://go.vpbank.com.vn/7juJk19",
-      "ctaLabel": "Mở tài khoản VPBank",
-      "ctaNote": "Liên kết mở kênh đăng ký của VPBank; tải App VPBank NEO để tiếp tục theo hướng dẫn.",
+      "appAction": "vpbank",
+      "ctaNote": "Tùy thiết bị, liên kết mở VPBank NEO hoặc chuyển đến kho ứng dụng. Tiếp tục đăng ký theo hướng dẫn trong App.",
       "lastVerifiedAt": "2026-08-16"
     }
   ],

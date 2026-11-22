@@ -44,6 +44,7 @@ sources:
     publisher: "Ngân hàng TMCP Quân đội (MB), Google Play"
 ---
 
+import appCtaLabels from '../../../data/app-cta-labels.json';
 import { getEntry } from 'astro:content';
 import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
@@ -57,7 +58,7 @@ Nhập **MBAT113** vào trường **Mã người giới thiệu** trong phần t
 
 <Steps title="Cách dùng mã khi đăng ký">
   <Step number="1" title="Sao chép MBAT113 và bắt đầu đăng ký">
-    Bấm Sao chép mã ở khối thông tin sản phẩm, sau đó dùng nút Mở App MBBank. Tùy thiết bị, liên kết mở ứng dụng hoặc chuyển đến kho ứng dụng để cài đặt. [Kiểm tra nhà phát hành ứng dụng](#dùng-link-và-mã-mbat113-an-toàn) trước khi bắt đầu đăng ký.
+    Bấm Sao chép mã ở khối thông tin sản phẩm, sau đó dùng nút **{appCtaLabels['mb-bank']}**. Tùy thiết bị, liên kết mở ứng dụng hoặc chuyển đến kho ứng dụng để cài đặt. [Kiểm tra nhà phát hành ứng dụng](#dùng-link-và-mã-mbat113-an-toàn) trước khi bắt đầu đăng ký.
   </Step>
   <Step number="2" title="Tìm trường Mã người giới thiệu và dán mã">
     Trong phần thông tin giới thiệu của luồng đăng ký, dán MBAT113 vào đúng trường mã. Nếu màn hình yêu cầu số điện thoại người giới thiệu hoặc không chấp nhận mã, hỏi MB247 cách áp dụng cho hồ sơ của bạn trước khi xác nhận.

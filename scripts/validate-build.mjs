@@ -1,6 +1,8 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { parseFrontmatter } from 'astro/markdown';
 import { parse } from 'parse5';
+import appCtaLabels from '../src/data/app-cta-labels.json' with { type: 'json' };
 import { getArticleVisual } from '../src/utils/articleVisual.mjs';
 import { getSitemapLastmod } from '../src/utils/sitemapLastmod.mjs';
 
@@ -194,32 +196,91 @@ const builtHtml = new Map();
 const documents = new Map();
 const titles = new Map();
 const descriptions = new Map();
-const publishedArticles = new Set();
+const publishedArticles = new Map();
+const appOffers = new Map();
+const appLabelsByUrl = new Map();
+
+const productRoot = path.join(projectRoot, 'src/data/products');
+for (const file of (await walk(productRoot)).filter((file) => file.endsWith('.json'))) {
+  const product = path.relative(productRoot, file).split(path.sep).join('/').slice(0, -5);
+  const data = JSON.parse(await readFile(file, 'utf8'));
+  for (const offer of data.offers ?? []) {
+    if (!offer.enabled || !offer.appAction) continue;
+    const label = appCtaLabels[offer.appAction];
+    const previousLabel = appLabelsByUrl.get(offer.url);
+    if (previousLabel && previousLabel !== label) {
+      errors.push(`Cùng liên kết App nhưng có nhiều nhãn: ${product}/${offer.id}.`);
+    }
+    appOffers.set(`${product}/${offer.id}`, { url: offer.url, label });
+    appLabelsByUrl.set(offer.url, label);
+  }
+}
 
 // Derive article expectations from source, never from the schema being tested.
 const articleRoot = path.join(projectRoot, 'src/content/articles');
 const articleFiles = (await walk(articleRoot)).filter((filePath) => /\.mdx?$/.test(filePath));
 for (const articleFile of articleFiles) {
   const source = await readFile(articleFile, 'utf8');
-  const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)?.[1] ?? '';
+  const { frontmatter } = parseFrontmatter(source);
   const relativeArticle = path.relative(articleRoot, articleFile)
     .split(path.sep).join('/').replace(/\.mdx?$/, '');
-  const category = frontmatter.match(
-    /^category:\s*["']?(mo-tai-khoan|the-tin-dung|vay-tien-mat|vi-dien-tu|dang-ky-doi-tac)["']?\s*(?:#.*)?$/m,
-  )?.[1];
+  const { category } = frontmatter;
   const segments = relativeArticle.split('/');
-  if (!category || segments.length !== 2 || segments[0] !== category) {
+  if (!['mo-tai-khoan', 'the-tin-dung', 'vay-tien-mat', 'vi-dien-tu', 'dang-ky-doi-tac'].includes(category)
+      || segments.length !== 2 || segments[0] !== category) {
     errors.push(`Article phải nằm trong thư mục chuyên mục tương ứng: ${relativeArticle} (category: ${category ?? 'missing'}).`);
   }
   const output = `${relativeArticle}/index.html`;
-  if (/^draft:\s*true\s*(?:#.*)?$/m.test(frontmatter)) {
+  if (frontmatter.draft === true) {
     if (builtFileSet.has(path.join(distRoot, output))) {
       errors.push(`Draft article xuất hiện trong build: /${relativeArticle}/`);
     }
   } else {
-    publishedArticles.add(output);
+    publishedArticles.set(output, frontmatter);
     if (!builtFileSet.has(path.join(distRoot, output))) {
       errors.push(`Published article thiếu build output: ${output}`);
+    }
+  }
+}
+
+function validateStickyCta(article, nodes, relativePath) {
+  const { stickyCtaFrom, products = [] } = article;
+  const comparison = article.type === 'comparison' && products.length >= 2;
+  let product = stickyCtaFrom === false || comparison ? undefined : products[0];
+
+  if (stickyCtaFrom) {
+    const pillar = publishedArticles.get(`${stickyCtaFrom}/index.html`);
+    const pillarProducts = pillar?.products ?? [];
+    if (pillar?.stickyCtaFrom !== undefined || !pillarProducts[0] || (pillar.type === 'comparison' && pillarProducts.length >= 2)) {
+      errors.push(`${relativePath} có stickyCtaFrom không trỏ tới bài trụ có CTA nổi.`);
+      return;
+    }
+    product = pillarProducts[0];
+  } else if (stickyCtaFrom === undefined && products.length === 0) {
+    errors.push(`${relativePath} thiếu stickyCtaFrom: chọn bài trụ hoặc ghi rõ false nếu không dùng CTA nổi.`);
+  }
+
+  const bubbles = nodes.filter((node) => attribute(node, 'data-sticky-cta') !== undefined);
+  if (bubbles.length !== (product ? 1 : 0)) {
+    errors.push(`${relativePath} cần ${product ? 'đúng một' : 'không có'} CTA nổi.`);
+  } else if (product) {
+    const links = elements(bubbles[0]).filter((node) => node.tagName === 'a');
+    if (links.length !== 1 || attribute(links[0], 'data-product-id') !== product || !attribute(links[0], 'href')) {
+      errors.push(`${relativePath} có CTA nổi thiếu liên kết hoặc sai sản phẩm (${product}).`);
+    }
+  }
+}
+
+function validateAppCtas(nodes, relativePath) {
+  for (const link of nodes.filter((node) => node.tagName === 'a')) {
+    const href = attribute(link, 'href');
+    const offer = appOffers.get(`${attribute(link, 'data-product-id')}/${attribute(link, 'data-offer-id')}`);
+    const label = offer?.label ?? appLabelsByUrl.get(href);
+    if (label && normalizedText(link) !== label) {
+      errors.push(`${relativePath} có nhãn CTA App "${normalizedText(link)}", cần "${label}".`);
+    }
+    if (offer && href !== offer.url) {
+      errors.push(`${relativePath} có CTA App "${label}" dùng sai liên kết đã cấu hình.`);
     }
   }
 }
@@ -392,8 +453,12 @@ for (const htmlFile of htmlFiles) {
     }
   }
 
-  if (publishedArticles.has(relativePath)) {
+  const article = publishedArticles.get(relativePath);
+  validateAppCtas(nodes, relativePath);
+  if (article) {
     validateArticleCitations(nodes, relativePath, baseUrl);
+    validateStickyCta(article, nodes, relativePath);
+    if (robots !== 'index, follow') errors.push(`${relativePath} phải cho phép lập chỉ mục.`);
     const articles = schemas.filter((schema) => hasSchemaType(schema, 'Article'));
     const breadcrumbs = schemas.filter((schema) => hasSchemaType(schema, 'BreadcrumbList'));
     if (articles.length !== 1) errors.push(`${relativePath} phải có đúng một schema Article (tìm thấy ${articles.length}).`);
@@ -401,12 +466,22 @@ for (const htmlFile of htmlFiles) {
     const schema = articles[0];
     if (schema && (typeof schema.headline !== 'string' || !schema.headline.trim())) {
       errors.push(`${relativePath} thiếu Article headline không rỗng.`);
-    } else if (schema && route) {
+    } else if (schema && route && typeof article.title === 'string') {
         const id = route.slice(1, -1);
-        const visual = getArticleVisual({ id, data: { title: schema.headline, category: id.split('/')[0] } });
+        const visual = getArticleVisual({ id, data: { title: article.title, category: id.split('/')[0] } });
         articleVisuals.set(route, visual);
-        if (headings.length !== 1 || normalizedText(headings[0]) !== visual.title) {
-          errors.push(`${relativePath} có H1 không đồng bộ với tiêu đề bài viết.`);
+        if (headings.length !== 1 || normalizedText(headings[0]) !== visual.title || schema.headline !== visual.title) {
+          errors.push(`${relativePath} có H1 hoặc schema Article không đồng bộ với tiêu đề bài viết.`);
+        }
+        for (const [property, value, date] of [
+          ['article:published_time', schema.datePublished, article.publishedAt],
+          ['article:modified_time', schema.dateModified, article.updatedAt],
+        ]) {
+          const meta = nodes.find((node) => node.tagName === 'meta' && attribute(node, 'property') === property);
+          const expected = new Date(date).getTime();
+          if (Date.parse(value) !== expected || Date.parse(attribute(meta, 'content')) !== expected) {
+            errors.push(`${relativePath} có ngày ${property} trong meta hoặc schema không khớp với nội dung.`);
+          }
         }
         const expectedImage = `${productionOrigin}${visual.image}`;
         const ogImage = html.match(/<meta property="og:image" content="([^"]+)"/i)?.[1];

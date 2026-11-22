@@ -112,15 +112,15 @@ const isComparison =
   linkedProducts.length >= 2;
 
 
-let stickyProduct = isComparison ? undefined : primaryProduct;
 const stickyCtaFrom = post.data.stickyCtaFrom;
+let stickyProduct = isComparison || stickyCtaFrom === false ? undefined : primaryProduct;
 
 if (stickyCtaFrom) {
   const pillar = await getEntry(stickyCtaFrom);
   const pillarProduct = pillar?.data.products[0];
   const isPillarComparison = pillar?.data.type === 'comparison' && pillar.data.products.length >= 2;
 
-  if (!pillar || pillar.data.draft || pillar.data.stickyCtaFrom || !pillarProduct || isPillarComparison) {
+  if (!pillar || pillar.data.draft || pillar.data.stickyCtaFrom !== undefined || !pillarProduct || isPillarComparison) {
     throw new Error(`Bài ${post.id} cần trỏ CTA nổi đến bài trụ đã xuất bản có CTA: ${stickyCtaFrom.id}`);
   }
 

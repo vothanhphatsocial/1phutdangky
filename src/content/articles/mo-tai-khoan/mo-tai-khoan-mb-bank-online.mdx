@@ -65,6 +65,7 @@ sources:
     publisher: "Ngân hàng TMCP Quân đội (MB)"
 ---
 
+import appCtaLabels from '../../../data/app-cta-labels.json';
 import { getEntry } from 'astro:content';
 import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
@@ -108,7 +109,7 @@ Quy trình dưới đây tóm tắt các công việc cần hoàn tất. Thứ t
 
 <Steps title="Quy trình đăng ký tham khảo">
   <Step number="1" title="Mở App MBBank từ liên kết">
-    Trên điện thoại, bấm nút Mở App MBBank trong khối thông tin sản phẩm và làm theo hướng dẫn đang hiển thị. Hãy [kiểm tra đúng ứng dụng do Ngân hàng TMCP Quân đội phát hành](/mo-tai-khoan/ma-gioi-thieu-mb-bank/#dùng-link-và-mã-mbat113-an-toàn).
+    Trên điện thoại, bấm nút **{appCtaLabels['mb-bank']}** trong khối thông tin sản phẩm và làm theo hướng dẫn đang hiển thị. Hãy [kiểm tra đúng ứng dụng do Ngân hàng TMCP Quân đội phát hành](/mo-tai-khoan/ma-gioi-thieu-mb-bank/#dùng-link-và-mã-mbat113-an-toàn).
   </Step>
 
   <Step number="2" title="Nhập số điện thoại và OTP">

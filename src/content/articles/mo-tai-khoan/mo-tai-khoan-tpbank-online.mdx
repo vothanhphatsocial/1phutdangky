@@ -45,6 +45,7 @@ sources:
     publisher: "Ngân hàng TMCP Tiên Phong (TPBank)"
 ---
 
+import appCtaLabels from '../../../data/app-cta-labels.json';
 import { getEntry } from 'astro:content';
 import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
 
@@ -90,7 +91,7 @@ Thực hiện theo luồng App hiển thị cho hồ sơ của bạn. Các bư�
 
 <Steps title="Đăng ký trên TPBank Mobile">
   <Step number="1" title="Tải đúng App TPBank">
-    Bấm nút Tải App TPBank trên điện thoại, cài TPBank Mobile từ kho ứng dụng rồi mở App. Trên App Store, nhà phát triển được ghi là TienPhongBank.
+    Bấm nút **{appCtaLabels.tpbank}** trên điện thoại. Nếu được chuyển tới kho ứng dụng, cài TPBank Mobile rồi mở App. Trên App Store, nhà phát triển được ghi là TienPhongBank.
   </Step>
   <Step number="2" title="Đăng ký và xác nhận số điện thoại">
     Chọn chức năng mở tài khoản ở màn hình đăng nhập. Điền số điện thoại, email, đọc điều khoản và tự nhập OTP nhận được.

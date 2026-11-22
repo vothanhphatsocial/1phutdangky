@@ -14,6 +14,14 @@ const projectRoot = fileURLToPath(new URL('../', import.meta.url));
 const validator = path.join(projectRoot, 'scripts/validate-build.mjs');
 const article = 'mo-tai-khoan/mo-tai-khoan-tpbank-online/index.html';
 const articleSource = article.replace('/index.html', '.mdx');
+const productId = 'bank-accounts/tpbank-account';
+const appOffer = {
+  id: 'tpbank-app-affiliate',
+  enabled: true,
+  appAction: 'tpbank',
+  url: 'https://example.org/approved-tpbank-app',
+};
+const stickyCta = `<div data-sticky-cta><a href="${appOffer.url}" data-product-id="${productId}" data-offer-id="${appOffer.id}">Mở App TPBank</a></div>`;
 let baseline;
 
 before(async () => {
@@ -43,13 +51,14 @@ before(async () => {
     { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: `${origin}/` },
     { '@type': 'ListItem', position: 2, name: title, item: `${origin}${route}` },
   ] };
-  await put(`src/content/articles/${articleSource}`, `---\ntitle: "${title}"\ncategory: mo-tai-khoan\ndraft: false\n---\nArticle body\n`);
+  await put(`src/content/articles/${articleSource}`, `---\ntitle: "${title}"\ncategory: mo-tai-khoan\ndraft: false\npublishedAt: 2020-01-01\nupdatedAt: 2020-01-02\nproducts: ["${productId}"]\n---\nArticle body\n`);
+  await put(`src/data/products/${productId}.json`, JSON.stringify({ offers: [appOffer] }));
   await put('dist/index.html', page('Trang chủ', '/', `<a href="${route}">TPBank</a>`));
   await put('dist/404.html', page('Không tìm thấy trang', null, '', '', 'noindex, follow'));
   await put('dist/tim-kiem/index.html', page('Tìm kiếm', '/tim-kiem/', '', '', 'noindex, nofollow'));
   await put('dist/chinh-sach-bao-mat/index.html', page('Chính sách bảo mật', '/chinh-sach-bao-mat/', 'Privacy'));
   await put(`dist/${article}`, page(title, route,
-    `<div data-visual-image="${visual.image}"></div><div class="article-prose"><p id="requirements">Giấy tờ cần chuẩn bị</p></div><section><a href="https://tpb.vn/">Nguồn và kiểm chứng</a></section>`,
+    `<div data-visual-image="${visual.image}"></div><div class="article-prose"><p id="requirements">Giấy tờ cần chuẩn bị</p></div><section><a href="https://tpb.vn/">Nguồn và kiểm chứng</a></section>${stickyCta}`,
     `<meta property="article:published_time" content="2020-01-01T00:00:00.000Z">
      <meta property="article:modified_time" content="2020-01-02T00:00:00.000Z">
      <meta property="og:image" content="${origin}${visual.image}"><meta name="twitter:image" content="${origin}${visual.image}">
@@ -116,6 +125,48 @@ test('unmodified build fixture passes', async (t) => {
   assert.equal(result.status, 0, result.output);
   assert.match(result.output, /Build validation pass/);
 });
+
+test('support article cannot silently omit its sticky CTA configuration', async (t) => {
+  const root = await fixture(t);
+  await edit(root, `src/content/articles/${articleSource}`, (source) =>
+    source.replace(`products: ["${productId}"]`, 'products: []'));
+  await edit(root, `dist/${article}`, (html) => html.replace(stickyCta, ''));
+  const result = run(root);
+  assert.equal(result.status, 1, result.output);
+  assert.match(result.output, /thiếu stickyCtaFrom/);
+});
+
+test('support article can explicitly opt out of a sticky CTA', async (t) => {
+  const root = await fixture(t);
+  await edit(root, `src/content/articles/${articleSource}`, (source) =>
+    source.replace(`products: ["${productId}"]`, 'products: []\nstickyCtaFrom: false'));
+  await edit(root, `dist/${article}`, (html) => html.replace(stickyCta, ''));
+  assert.equal(run(root).status, 0);
+});
+
+test('article cannot omit a required sticky CTA in rendered HTML', (t) =>
+  rejectsMutation(t, (html) => html.replace(stickyCta, ''), /cần đúng một CTA nổi/));
+
+test('article cannot render a sticky CTA for the wrong product', (t) =>
+  rejectsMutation(t, (html) => html.replace(`data-product-id="${productId}"`, 'data-product-id="wrong-product"'),
+    /CTA nổi thiếu liên kết hoặc sai sản phẩm/));
+
+test('App CTA does not allow a different visible label for the same destination', (t) =>
+  rejectsMutation(t, (html) => appendProse(html,
+    `<a class="button" data-link-purpose="action" href="${appOffer.url}">Tải App TPBank</a>`),
+  /nhãn CTA App "Tải App TPBank", cần "Mở App TPBank"/));
+
+test('tagged App CTA cannot use another destination', (t) =>
+  rejectsMutation(t, (html) => html.replace(appOffer.url, 'https://example.org/wrong-app'),
+    /CTA App "Mở App TPBank" dùng sai liên kết/));
+
+test('Article schema headline must match the source title', (t) =>
+  rejectsMutation(t, (html) => html.replace('"headline":"Hướng dẫn mở tài khoản TPBank online"', '"headline":"Another headline"'),
+    /H1 hoặc schema Article không đồng bộ/));
+
+test('Article schema dates must match the source dates', (t) =>
+  rejectsMutation(t, (html) => html.replace('"dateModified":"2020-01-02T00:00:00.000Z"', '"dateModified":"2020-01-01T00:00:00.000Z"'),
+    /ngày article:modified_time trong meta hoặc schema không khớp/));
 
 function productCardNoteFixture(before = '', after = '') {
   return `<section class="product-card"><div class="product-intro">${before}<div class="product-action"><a href="https://tpb.vn/" data-link-purpose="action">Tiếp tục</a></div>${after}</div><dl><div class="fact">Điều kiện</div><div class="fact">Phí</div><div class="fact">Dịch vụ</div></dl></section>`;

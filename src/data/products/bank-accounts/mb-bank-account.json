@@ -11,7 +11,7 @@
       "channel": "direct-referral",
       "enabled": true,
       "url": "https://mbbank.onelink.me/QPF5?pid=SF%20Email%20Warmup&c=SF_Email_WarmUP_AppInstall&af_force_deeplink=true&af_dp=mbbank%3A%2F%2F&referral_code=PARTNER4V2X7M6M2G1J4_1374535",
-      "ctaLabel": "Mở App MBBank",
+      "appAction": "mb-bank",
       "lastVerifiedAt": "2026-10-28",
       "referralCode": "MBAT113"
     }

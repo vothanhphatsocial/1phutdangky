@@ -12,7 +12,7 @@
       "destinationLabel": "ứng dụng hoặc kho ứng dụng Home Credit",
       "enabled": true,
       "url": "https://hcv.onelink.me/ausQ/n7wk7jg0",
-      "ctaLabel": "Tải ứng dụng Home Credit",
+      "appAction": "home-credit",
       "lastVerifiedAt": "2026-10-28",
       "referralCode": "00064470",
       "referralCodeLabel": "Mã nhân viên hỗ trợ",
@@ -21,7 +21,7 @@
     }
   ],
   "primaryOfferId": "home-credit-app-support-code",
-  "ctaLabel": "Tải ứng dụng Home Credit",
+  "ctaLabel": "Xem khoản vay Home Credit",
   "facts": [
     {
       "label": "Số tiền và thời hạn",
