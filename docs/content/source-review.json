@@ -45,10 +45,15 @@
     },
     {
       "article": "the-tin-dung/mo-the-mb-bank-online",
-      "checkedAt": "2026-11-20",
+      "checkedAt": "2026-11-22",
       "nextReviewAt": "2026-12-20",
-      "scope": "Đối chiếu các ví dụ phí phát hành, thường niên và phí giao thẻ tại nhà với ba PDF MB đang liên kết, cùng điều kiện tính chi tiêu để miễn thường niên. Sửa phạm vi Visa Priority Signature theo trang sản phẩm MB và cột khách hàng trong biểu phí tín dụng. Ba URL PDF cũ trả 403 khi truy xuất, được thay bằng các URL hiện hành. Chỉ kiểm tra phần biểu phí và phạm vi thẻ Priority, chưa xác minh lại luồng App hoặc toàn bài.",
+      "scope": "20/11/2026: đối chiếu các ví dụ phí phát hành, thường niên và phí giao thẻ tại nhà với ba PDF MB đang liên kết, cùng điều kiện tính chi tiêu để miễn thường niên. Sửa phạm vi Visa Priority Signature theo trang sản phẩm MB và cột khách hàng trong biểu phí tín dụng. Ba URL PDF cũ trả 403 khi truy xuất, được thay bằng các URL hiện hành. 22/11/2026: trang biểu phí MB vẫn liên kết đúng ba PDF ngày 23/09/2026. Đối chiếu hướng dẫn công khai của MB về đăng nhập và vào chức năng phát hành thẻ để đặt liên kết đến đúng bước. Chưa thao tác trong App hoặc kiểm chứng lại toàn bài.",
       "sources": [
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/cach-lam-the-ngan-hang",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 03/06/2026"
+        },
         {
           "url": "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/the/thong-tin-va-huong-dan/dich-vu-the-mb-bieu-phi-hien-hanh",
           "status": "current"
@@ -76,10 +81,15 @@
     },
     {
       "article": "mo-tai-khoan/mo-tai-khoan-mb-bank-online",
-      "checkedAt": "2026-11-20",
+      "checkedAt": "2026-11-22",
       "nextReviewAt": "2026-12-20",
-      "scope": "Rà phần phí của bài và dữ liệu dùng chung bank-accounts/mb-bank-account. Đối chiếu miễn phí mở và đóng tài khoản thanh toán thông thường, số dư tối thiểu VND 50.000 đồng, số đẹp có biểu phí riêng và hai gói SMS Banking theo thông báo MB (đơn vị tính, ngưỡng, VAT và miễn phí cho nhóm Private). Chưa xác minh lại phí quản lý, luồng App hoặc link giới thiệu. Không sửa bài hoặc dữ liệu sản phẩm trong lượt rà này.",
+      "scope": "20/11/2026: rà phần phí của bài và dữ liệu dùng chung bank-accounts/mb-bank-account. Đối chiếu miễn phí mở và đóng tài khoản thanh toán thông thường, số dư tối thiểu VND 50.000 đồng, số đẹp có biểu phí riêng và hai gói SMS Banking theo thông báo MB (đơn vị tính, ngưỡng, VAT và miễn phí cho nhóm Private). 22/11/2026: mở lại biểu phí tài khoản và thông báo SMS, đối chiếu mục hồ sơ mở tài khoản và dịch vụ thẻ đăng ký thêm trong hướng dẫn công khai để đặt liên kết giữa hai bài. Chưa kiểm chứng lại phí quản lý, luồng App hoặc liên kết giới thiệu trên thiết bị. Không đổi dữ liệu sản phẩm.",
       "sources": [
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 12/10/2026"
+        },
         {
           "url": "https://www.mbbank.com.vn/ho-tro/bieu-phi-va-bieu-mau-khcn",
           "status": "current"
@@ -234,10 +244,20 @@
     },
     {
       "article": "mo-tai-khoan/ma-gioi-thieu-mb-bank",
-      "checkedAt": "2026-11-21",
+      "checkedAt": "2026-11-22",
       "nextReviewAt": "2026-12-21",
-      "scope": "Rà mục bảo mật khi dùng link và mã MBAT113: đối chiếu tên ứng dụng/nhà phát hành trên hai kho, cảnh báo MB về trang hoặc phần mềm giả, bảo vệ giấy tờ và mã xác thực, và kênh MB247 khi nghi lộ thông tin. Kiểm tra CTA hiển thị đúng OneLink và mã đã cấu hình trên trang. Chưa thử chuyển tiếp OneLink trên thiết bị thực tế, chưa thử đăng ký hay xác nhận ghi nhận mã, quyền lợi hoặc toàn bài.",
+      "scope": "21/11/2026: rà mục bảo mật khi dùng link và mã MBAT113: đối chiếu tên ứng dụng/nhà phát hành trên hai kho, cảnh báo MB về trang hoặc phần mềm giả, bảo vệ giấy tờ và mã xác thực, và kênh MB247 khi nghi lộ thông tin. Kiểm tra CTA hiển thị đúng OneLink và mã đã cấu hình trên trang. 22/11/2026: mở PDF MB để đối chiếu nhãn trường giới thiệu và kiểm tra hướng dẫn phát hành thẻ công khai cho liên kết tới bước tiếp theo sau mở tài khoản. Chưa thử chuyển tiếp OneLink trên thiết bị thực tế, đăng ký hay xác nhận ghi nhận mã, quyền lợi hoặc toàn bài.",
       "sources": [
+        {
+          "url": "https://webcdn.mbbank.com.vn/public/media/0cae3104-4e74-45aa-8dc0-7f7dec5a1b90.pdf",
+          "status": "current",
+          "version": "PDF hướng dẫn của MB, chỉ dùng để đối chiếu nhãn trường Mã RM"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/cach-lam-the-ngan-hang",
+          "status": "current",
+          "version": "Bài hướng dẫn ngày 03/06/2026"
+        },
         {
           "url": "https://www.mbbank.com.vn/nguyen-tac-giao-dich-an-toan/huong-dan-tra-soat/thong-bao-huong-dan-dam-bao-an-toan-giao-dich-app-mbbank-2026-3-25-10-50-11",
           "status": "current",
