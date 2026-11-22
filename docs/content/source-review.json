@@ -4,9 +4,9 @@
   "records": [
     {
       "article": "mo-tai-khoan/khong-dang-ky-duoc-mb-bank",
-      "checkedAt": "2026-11-21",
+      "checkedAt": "2026-11-22",
       "nextReviewAt": "2026-12-20",
-      "scope": "20/11/2026: đối chiếu phần xác minh khuôn mặt khi mở tài khoản, gồm yêu cầu ghi hình trên App MBBank, ánh sáng, khung hình, camera, cập nhật App và kênh MB247. 21/11/2026: đối chiếu hướng xử lý khi MB báo số điện thoại hoặc giấy tờ đã tồn tại, tính năng Quên mật khẩu và các kênh hỗ trợ chính thức. Kiểm tra hotline trong nước, số gọi từ nước ngoài và email MB247. Chưa kiểm thử đăng ký hoặc khôi phục thực tế, chưa xác nhận nguyên nhân riêng, mã lỗi, giới hạn thử lại hoặc thủ tục đổi số cho từng hồ sơ. Hai lượt kiểm tra không bao quát toàn bài.",
+      "scope": "20/11/2026: đối chiếu phần xác minh khuôn mặt khi mở tài khoản, gồm ghi hình trên App MBBank, ánh sáng, khung hình, camera, cập nhật App và kênh MB247. 21/11/2026: đối chiếu hướng xử lý khi MB báo số điện thoại hoặc giấy tờ đã tồn tại, tính năng Quên mật khẩu và kênh hỗ trợ. 22/11/2026: đối chiếu trường hợp cần gọi khẩn cấp khi nghi lộ thông tin hoặc cần khóa dịch vụ, hỗ trợ về hồ sơ/ưu đãi, App to Call sau đăng nhập, hotline trong nước/quốc tế và email. Liên kết từ bài mã giới thiệu dẫn tới mục này. Chưa gọi thử, chưa thử App to Call, đăng ký hoặc khôi phục thực tế. Ngày kiểm chứng toàn bài không thay đổi.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
@@ -21,6 +21,15 @@
         {
           "url": "https://www.mbbank.com.vn/lien-he",
           "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/lien-he/trung-tam-khach-hang-24-7",
+          "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/nguyen-tac-giao-dich-an-toan/huong-dan-tra-soat/thong-bao-huong-dan-dam-bao-an-toan-giao-dich-app-mbbank-2026-3-25-10-50-11",
+          "status": "current",
+          "version": "Trang MB hiển thị ngày đăng 01/01/2025"
         },
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/app-mb-bi-loi",
