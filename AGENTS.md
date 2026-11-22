@@ -213,3 +213,31 @@ Additional repository integration requirements:
 - Current quality gate is `npm run check`; focused regression commands are `npm run test:validator` and `npm run test:maintenance` when their rules change. No separate lint/typecheck scripts exist. Map workbook event names to existing consent-aware analytics rather than adding tags/vendors.
 - Preserve the exact Plan Settings CTA string through product data and rendered href; compare the DOM attribute string byte-for-byte after HTML decoding. Do not normalize parameters or decode/re-encode `url_enc` for storage. Link-target decoding during a read-only check does not authorize rewriting the CTA.
 - Record actual source scope/dates, files, checks, content commit, push, deployment and production verification. Persist post-deployment state in a subsequent commit without embedding its own hash; use actual `+07:00` timestamps with readable workbook date formatting.
+
+## Liobank Evergreen Content Engine
+
+**Trigger:** `Bắt đầu tạo bài mới Liobank` = exactly **one** Liobank content run, not a batch.
+
+**Source of truth**
+- `docs/content/LIOBANK_CONTENT_ENGINE.md` — detailed operating policy.
+- `docs/content/1phutdangky_Liobank_Evergreen_Content_Engine.xlsx` — Plan Settings, Execution Briefs, CTA Matrix, Evergreen Queue, Next Action, source registry and Run Log.
+
+**Canonical owner:** `https://1phutdangky.com/the-tin-dung/mo-the-tin-dung-liobank/` (already published). Preserve the exact URL and current design/component patterns. The first Ready item is `C-PILLAR` and means **audit/update existing**, NOT create a duplicate route.
+
+**Critical affiliate rule:** The website owner confirmed the **existing primary CTA in this published Liobank pillar is the affiliate CTA**. Before implementing any Liobank CTA, inspect the actual existing pillar source file/component/config in this repository and extract its exact `href`. Copy it **byte-for-byte**, including redirect path, sub IDs, tracking parameters, encoding and attributes. Do not invent a link, replace it with a generic Liobank/app link, or infer an affiliate code from Liobank's official friend-referral program. Store the verified value and source-file path in Plan Settings / Run Log as applicable. If multiple competing CTAs or no accessible href, stop link-dependent work and report the specific blocker instead of guessing.
+
+**Product and accuracy:** Liobank is a digital banking brand of OCB. The multifunctional card/payment account and a granted credit limit are **not identical**. OCB decides credit approval and terms. Fees/interest must come from the currently effective documents at `https://liobank.vn/vn/tariffs` and applicable Liobank/OCB terms, with date/version logged. Product marketing and FAQ sometimes disagree; never fabricate a reconciled figure.
+
+**Workflow per trigger:** read `AGENTS.md`, playbook and workbook `Next Action` first → perform the shared maintenance gate → validate all queue rows and choose the first eligible Ready (else qualified Planned; else Discovery) → check intent, dependencies, source and cannibalization → mark In progress → create/update/section per gate → preserve UI → integrate the exact existing affiliate CTA only where intent appropriate with disclosure → SEO/GEO + internal links → lint/test/build → diff → Git commit/push if authorized → Cloudflare deploy using existing workflow if authorized → verify production → record actual status/URL/SHA/deploy in Run Log → stop. Never claim success without verification.
+
+**Scope:** Liobank credit-card funnel only. Do not turn official Liobank 'Mời bạn bè' program into the website's referral code; do not auto-start a separate personal loan cluster or cash-out offers. No OTP/PIN/password collection or bypass instructions. Never force new URLs for synonyms or FAQ. Avoid redesign, DNS, env or unrelated code changes.
+
+**Setup requests:** Install instructions, playbook and workbook. Record the verified CTA configuration as a setup-provenance entry in `Run Log`; preserve the template row and do not select a content item, change queue statuses or deploy manually during setup.
+
+Additional repository integration requirements:
+
+- Apply the shared maintenance, evidence-date, citation placement, title visual, category palette and CTA checks above. Include Liobank's published articles and shared card data when running the maintenance gate. A verified substantive correction takes priority and counts as the one run.
+- Read `README.md` and `DEPLOYMENT.md` before content changes. Use `npm run check` (Astro, Pagefind and build validator); focused regression commands are `npm run test:validator` and `npm run test:maintenance` when applicable. No separate lint or typecheck scripts are configured.
+- The shared product is `credit-cards/liobank-credit-card` with offer `liobank-credit-card-direct-referral`. Recheck `Plan Settings!B10` against the configured offer and the rendered CTA without rewriting the URL. Use the shared `appAction` label and map workbook tracking labels to existing consent-aware behavior; a click on the app link is not a submitted application or approval.
+- Validate `Next Action` against all actual queue rows in column M, in order of eligible Ready then qualified Planned. Resolve unfinished work and dependencies before progressing. Formulas in `Next Action` and `Dashboard` cover queue rows 5–5000, while status validation covers the 60 seeded items (rows 5–64). Extend status validation to cover appended items and extend affected formula ranges if capacity is exceeded. Preserve all sheets, formulas, formatting, existing validations, the Run Log template and history.
+- After production QA, persist actual status and log evidence in a subsequent state commit when possible. Use explicit `+07:00` timestamps. Log the content commit SHA without embedding a commit's own hash in itself.
