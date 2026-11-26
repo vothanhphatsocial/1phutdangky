@@ -3,7 +3,7 @@
   "provider": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank) — thương hiệu Cake",
   "category": "credit-card",
 
-  "summary": "Thẻ tín dụng Cake 2in1 gồm gói Standard và Premium, được VPBank xét duyệt và quản lý qua nền tảng Cake.",
+  "summary": "Cake 2in1 kết hợp chức năng ghi nợ từ tài khoản thanh toán và chức năng tín dụng khi được VPBank cấp hạn mức. Standard và Premium có biểu phí riêng.",
 
   "officialUrl": "https://cake.vn/the/the-cake-2in1/goi-standard",
 
@@ -28,7 +28,7 @@
   "facts": [
     {
       "label": "Xét duyệt và hạn mức",
-      "value": "VPBank thẩm định hồ sơ và hạn mức. Gói Premium chỉ khả dụng khi hạn mức được phê duyệt từ 30.000.000 đồng."
+      "value": "VPBank xét duyệt hạn mức tín dụng. Cake công bố mốc 30 triệu đồng cho Premium. Kiểm tra gói khả dụng theo hồ sơ trên Cake."
     },
     {
       "label": "Phí và lãi",
@@ -36,7 +36,7 @@
     },
     {
       "label": "Thanh toán và miễn lãi",
-      "value": "Miễn lãi tối đa 45 ngày với Standard hoặc 55 ngày với Premium. Kiểm tra ngày sao kê, ngày đến hạn và số tiền cần thanh toán."
+      "value": "Mua sắm đủ điều kiện được miễn lãi tối đa 45 ngày với Standard hoặc 55 ngày với Premium khi trả đủ dư nợ đúng hạn. Rút tiền từ nguồn tín dụng tính lãi từ ngày giao dịch."
     }
   ],
 
@@ -67,9 +67,9 @@
       "publisher": "Cake by VPBank"
     },
     {
-      "title": "Điều kiện giao dịch chung thẻ tín dụng",
-      "url": "https://cake.vn/dieu-kien-dieu-khoan/dieu-kien-giao-dich-chung-the-tin-dung",
-      "publisher": "Cake by VPBank"
+      "title": "Điều kiện giao dịch chung thẻ tín dụng VPBank — bản công bố 26/09/2026",
+      "url": "https://static.cake.vn/homepage/Dieu_kien_Dieu_khoan_Cap_Tin_dung_VPB_26_09_2026_92b36c4c25/Dieu_kien_Dieu_khoan_Cap_Tin_dung_VPB_26_09_2026_92b36c4c25.pdf",
+      "publisher": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
     },
     {
       "title": "Liên hệ Cake",
@@ -77,6 +77,6 @@
       "publisher": "Cake by VPBank"
     }
   ],
-  "lastVerifiedAt": "2026-11-11T01:37:18+07:00",
+  "lastVerifiedAt": "2026-11-26T21:44:25+07:00",
   "draft": false
 }

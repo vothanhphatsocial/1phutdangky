@@ -1,12 +1,12 @@
 ---
 title: "Hướng dẫn mở thẻ tín dụng Cake 2in1 online"
-description: "Hướng dẫn mở thẻ tín dụng Cake 2in1 qua link giới thiệu: điều kiện được xét hoàn tối đa 200.000 đồng, cách chọn gói Standard hoặc Premium, phí, lãi và đăng ký."
+description: "Cách mở thẻ Cake 2in1, phân biệt nguồn tiền ghi nợ và hạn mức tín dụng, so sánh phí Standard/Premium và xem điều kiện ưu đãi Săn thưởng."
 category: "the-tin-dung"
 type: "guide"
 
 publishedAt: 2026-08-16
-updatedAt: 2026-11-11T01:37:18+07:00
-lastVerifiedAt: 2026-08-16
+updatedAt: 2026-11-26T21:44:25+07:00
+lastVerifiedAt: 2026-11-26T21:44:25+07:00
 
 readingMinutes: 10
 
@@ -17,7 +17,7 @@ productBeforeToc: true
 cover: "./cake-2in1-credit-card-cover.png"
 coverAlt: "Ảnh đại diện bài hướng dẫn mở thẻ tín dụng Cake 2in1 của 1 Phút Đăng Ký."
 
-quickAnswer: "Cake 2in1 có hai gói Standard và Premium với cấu trúc phí, lãi suất và thời gian miễn lãi khác nhau. VPBank thẩm định hồ sơ, quyết định cấp thẻ, hạn mức và gói thực tế."
+quickAnswer: "Cake 2in1 cho phép dùng số dư tài khoản thanh toán qua chức năng ghi nợ. Bạn chỉ chi bằng nguồn tín dụng khi VPBank đã duyệt và cấp hạn mức. Standard và Premium có phí, lãi và thời gian miễn lãi khác nhau."
 
 products:
   - "credit-cards/cake-2in1-credit-card"
@@ -41,38 +41,62 @@ sources:
   - title: "Biểu phí thẻ Cake 2in1"
     url: "https://cake.vn/tin-tuc/hoat-dong/bieu-phi-the-cake2in1"
     publisher: "Cake by VPBank"
-  - title: "Điều kiện giao dịch chung thẻ tín dụng"
-    url: "https://cake.vn/dieu-kien-dieu-khoan/dieu-kien-giao-dich-chung-the-tin-dung"
+  - title: "Danh mục điều khoản và biểu phí Cake"
+    url: "https://cake.vn/cong-cu-tien-ich/tai-lieu-bieu-mau-bieu-phi"
     publisher: "Cake by VPBank"
-  - title: "Hướng dẫn sử dụng tài khoản và thẻ mở bằng phương thức điện tử an toàn"
-    url: "https://cake.vn/dieu-kien-dieu-khoan/huong-dan-khach-hang-su-dung-tai-khoan-thanh-toan-the-mo-bang-phuong-thuc-dien-tu-an-toan"
+  - title: "Biểu phí Cake 2in1 Standard"
+    url: "https://cake.vn/the/the-cake-2in1/goi-standard/bieu-phi"
+    publisher: "Cake by VPBank"
+  - title: "Biểu phí Cake 2in1 Premium"
+    url: "https://cake.vn/the/the-cake-2in1/goi-premium/bieu-phi"
+    publisher: "Cake by VPBank"
+  - title: "Điều kiện giao dịch chung thẻ tín dụng VPBank — bản công bố 26/09/2026"
+    url: "https://static.cake.vn/homepage/Dieu_kien_Dieu_khoan_Cap_Tin_dung_VPB_26_09_2026_92b36c4c25/Dieu_kien_Dieu_khoan_Cap_Tin_dung_VPB_26_09_2026_92b36c4c25.pdf"
+    publisher: "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)"
+  - title: "Hướng dẫn sử dụng thẻ tín dụng Cake"
+    url: "https://cake.vn/huong-dan-su-dung/thong-tin-chung-the-tin-dung"
     publisher: "Cake by VPBank"
   - title: "Liên hệ Cake"
     url: "https://cake.vn/lien-he"
     publisher: "Cake by VPBank"
 ---
 
-Bài này tập trung so sánh chi phí của Standard và Premium, điều kiện quyền lợi hoàn tiền và các bước bắt đầu hồ sơ Cake 2in1.
+import { getEntry } from 'astro:content';
+import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+import AffiliateDisclosure from '../../../components/article/AffiliateDisclosure.astro';
+
+export const cakeCard = await getEntry('products', 'credit-cards/cake-2in1-credit-card');
+
+Trước khi mở Cake 2in1, hãy xác định bạn muốn chi bằng tiền của mình hay cần thêm hạn mức tín dụng. Nếu mục tiêu là nhận ưu đãi Săn thưởng, hãy xem điều kiện giao dịch trước khi quyết định chi tiêu.
 
 ## Thẻ này phù hợp khi nào?
 
-Standard phù hợp nếu bạn ưu tiên mức phí phát hành thẻ vật lý thấp hơn. Gói này áp dụng phí thường niên theo năm, lãi suất cao hơn và thời gian miễn lãi tối đa ngắn hơn Premium.
+### Tài khoản thanh toán, ghi nợ và tín dụng
 
-Premium chỉ khả dụng khi VPBank phê duyệt hạn mức tín dụng tối thiểu 30.000.000 đồng. Gói này có thời gian miễn lãi tối đa dài hơn, lãi suất thấp hơn và phí quản lý giao dịch ngoại tệ bằng 0, nhưng phí phát hành thẻ vật lý cùng phí quản lý gói có cấu trúc riêng. Phí thường niên của Standard và phí quản lý gói của Premium khác loại và khác chu kỳ nên cần đối chiếu riêng.
+| Nguồn tiền | Cách sử dụng |
+| --- | --- |
+| Số dư tài khoản thanh toán | Khi chọn nguồn ghi nợ, giao dịch dùng tiền có sẵn trong tài khoản Cake. |
+| Hạn mức tín dụng | Khi chọn nguồn tín dụng, giao dịch dùng hạn mức VPBank đã cấp và phát sinh dư nợ phải trả. |
 
-Liên kết giới thiệu không quyết định gói thẻ hoặc hạn mức. Hãy chọn theo cách bạn dự định chi tiêu, gói và hạn mức được VPBank phê duyệt, cùng biểu phí áp dụng cho gói đó.
+Cake cho biết bạn vẫn có thể sử dụng chức năng ghi nợ nếu hồ sơ tín dụng chưa được duyệt. Trước khi thanh toán, hãy kiểm tra nguồn tiền đã chọn.
 
-## Điều kiện để được xét hoàn tối đa 200.000 đồng
+### Nên cân nhắc Standard hay Premium?
 
-Chương trình áp dụng từ ngày 10/07/2026 đến hết ngày 31/12/2026, dành cho người chưa từng sử dụng gói dịch vụ Cake, hoặc đang sử dụng Cake nhưng chưa từng mở thành công thẻ tín dụng Cake.
+**Standard** có phí phát hành thẻ vật lý thấp hơn. Nếu muốn được hoàn phí thường niên, hãy so ngưỡng chi tiêu hợp lệ cả năm với mức bạn thực sự chi.
 
-Để được xét, khách hàng phải mở thẻ thành công qua link giới thiệu và phát sinh giao dịch mua sắm trực tuyến đầu tiên bằng nguồn tiền tín dụng trong vòng 7 ngày kể từ ngày mở thẻ. Giao dịch cần có giá trị từ 500.000 đồng.
+**Premium** có lãi suất mua sắm thấp hơn và thời gian miễn lãi tối đa dài hơn. Hãy tính phí quản lý theo chu kỳ ba kỳ sao kê và kiểm tra gói VPBank đề nghị cho hồ sơ của bạn. Trang sản phẩm Cake nêu mốc hạn mức 30 triệu đồng cho Premium. Nếu hạn mức được cấp đúng mốc này, hãy xem gói hiển thị trên Cake trước khi quyết định.
 
-Mức hoàn bằng 50% giá trị giao dịch hợp lệ, tối đa 200.000 đồng và chỉ áp dụng một lần. Những nhóm không được tính gồm giao dịch qua POS, QR hoặc ví điện tử; thanh toán tiện ích; thanh toán hộ hoặc qua đại lý thanh toán; nạp tiền, rút hoặc ứng tiền; chuyển tiền, chứng khoán, trang sức, thuế, phí, lãi, thanh toán dư nợ; cùng giao dịch thất bại, bị hủy, hoàn lại hoặc có dấu hiệu gian lận.
+Xem [bảng phí theo từng gói](#phí-lãi-hạn-mức-và-thanh-toán) để đối chiếu các chi phí bạn có thể gặp.
 
-Ngân sách chương trình có giới hạn; VPBank có thể dừng ghi nhận ưu đãi khi hết ngân sách. Khoản hoàn không áp dụng đồng thời với chương trình khác. Khách hàng có thể không được trả thưởng nếu thẻ bị hủy, có dư nợ quá hạn, thuộc danh sách cảnh báo hoặc vi phạm điều khoản chương trình.
+## Ưu đãi Săn thưởng cho người được giới thiệu
 
-Tiền được chuyển vào tài khoản thanh toán Cake trong vòng 30 ngày kể từ ngày VPBank công bố danh sách đủ điều kiện của từng kỳ. Tài khoản phải còn hoạt động tại thời điểm trả thưởng.
+Liên kết giới thiệu trên bài này thuộc chương trình Săn thưởng. Theo thể lệ Cake, chương trình diễn ra từ 10/07/2026 đến hết 31/12/2026 và có thể kết thúc sớm nếu hết ngân sách. Khoản hoàn dành cho người chưa từng dùng gói dịch vụ Cake hoặc đang dùng Cake nhưng chưa từng mở thành công thẻ tín dụng Cake.
+
+1. Hoàn tất mở thẻ Cake 2in1 Standard hoặc Premium qua liên kết hợp lệ và được hệ thống Cake ghi nhận trong thời gian chương trình.
+2. Trong vòng 7 ngày từ ngày mở thẻ, thực hiện giao dịch mua sắm trực tuyến hợp lệ đầu tiên từ **500.000 đồng**, bằng **nguồn tín dụng** của thẻ. Thể lệ loại trừ giao dịch POS, QR, ví điện tử, thanh toán tiện ích, rút tiền, thanh toán dư nợ và các giao dịch bị hủy hoặc hoàn lại. Xem thể lệ trong phần Nguồn và kiểm chứng để biết đầy đủ ngoại lệ.
+3. Nếu đủ điều kiện và ngân sách còn, mức hoàn bằng 50% giá trị giao dịch hợp lệ, **tối đa 200.000 đồng**, một lần. Cake công bố danh sách từng đợt. Tiền được chuyển vào tài khoản thanh toán Cake còn hoạt động trong vòng 30 ngày kể từ ngày công bố danh sách.
+
+Ưu đãi không áp dụng đồng thời với chương trình khác. Thẻ bị hủy, có dư nợ quá hạn hoặc vi phạm thể lệ có thể mất quyền nhận hoàn tiền. Nếu chưa chắc giao dịch thuộc nhóm hợp lệ, hãy hỏi Cake trước khi chi.
 
 ## Điều kiện và giấy tờ cần chuẩn bị
 
@@ -87,7 +111,7 @@ Tiền được chuyển vào tài khoản thanh toán Cake trong vòng 30 ngày
   ]}
 />
 
-Trang sản phẩm Cake công bố đối tượng đăng ký là khách hàng cá nhân Việt Nam từ 18 đến 60 tuổi, dùng CCCD và không cần nộp giấy tờ chứng minh thu nhập. Đây không phải cam kết phê duyệt; VPBank vẫn thẩm định hồ sơ và có thể yêu cầu thông tin cần thiết.
+Các trang sản phẩm Cake nêu đối tượng là khách hàng cá nhân Việt Nam từ 18 đến 60 tuổi. Với Standard, Cake giới thiệu quy trình dùng CCCD và không yêu cầu giấy tờ chứng minh thu nhập. VPBank vẫn thẩm định và có thể yêu cầu thông tin phù hợp với hồ sơ.
 
 ## Đăng ký thẻ bằng liên kết giới thiệu
 
@@ -97,7 +121,7 @@ Trang sản phẩm Cake công bố đối tượng đăng ký là khách hàng c
   </Step>
 
   <Step number="2" title="Điền thông tin của chính bạn">
-    Nhập đúng dữ liệu trang yêu cầu, đọc nội dung đồng ý và kiểm tra lại trước khi gửi.
+    Tiếp tục theo hướng dẫn Cake hiển thị. Chỉ nhập dữ liệu trên kênh chính thức của Cake và đọc nội dung đồng ý trước khi gửi.
   </Step>
 
   <Step number="3" title="Kiểm tra gói thẻ và hợp đồng">
@@ -105,7 +129,7 @@ Trang sản phẩm Cake công bố đối tượng đăng ký là khách hàng c
   </Step>
 
   <Step number="4" title="Nhận kết quả thẩm định">
-    VPBank thông báo kết quả, hạn mức và gói thẻ khả dụng sau khi xử lý hồ sơ.
+    Theo dõi kết quả qua kênh Cake hướng dẫn. Nếu hồ sơ được duyệt, hãy kiểm tra hạn mức và gói được cấp.
   </Step>
 </Steps>
 
@@ -113,9 +137,13 @@ Trang sản phẩm Cake công bố đối tượng đăng ký là khách hàng c
 Không gửi OTP, PIN, mật khẩu, ảnh giấy tờ hoặc dữ liệu khuôn mặt cho người giới thiệu. Không tin người tự nhận có thể duyệt hồ sơ hoặc tăng hạn mức.
 </Notice>
 
+<AffiliateDisclosure />
+
+<AffiliateCTA product={cakeCard} position="article-process" />
+
 ## Phí, lãi, hạn mức và thanh toán
 
-Bảng dưới đây theo biểu phí Cake 2in1 có hiệu lực từ ngày 10/11/2026:
+Bảng dưới đây dùng số liệu trên biểu phí tổng hợp Cake 2in1, ghi hiệu lực từ 10/11/2026. Kiểm tra biểu phí theo gói và điều khoản áp dụng cho hồ sơ trước khi ký.
 
 | Nội dung | Standard | Premium |
 | --- | --- | --- |
@@ -130,11 +158,11 @@ Bảng dưới đây theo biểu phí Cake 2in1 có hiệu lực từ ngày 10/1
 
 Các mức phí chưa bao gồm VAT 10%. Chi tiêu xét hoàn phí thường niên Standard hoặc miễn phí quản lý gói Premium không tính các giao dịch có mã MCC 4900 (dịch vụ tiện ích), 4111 (vận tải hành khách) và 5541 (xăng dầu). Các yêu cầu dịch vụ và loại giao dịch khác áp dụng theo biểu phí.
 
-### Hạn mức và thời gian miễn lãi
+### Miễn lãi và số tiền cần trả
 
-VPBank quyết định hạn mức sau khi thẩm định. Cake công bố thời gian miễn lãi tối đa 45 ngày với Standard và 55 ngày với Premium; số ngày thực tế phụ thuộc ngày giao dịch, ngày sao kê và ngày đến hạn.
+Cake công bố thời gian miễn lãi tối đa **45 ngày với Standard** và **55 ngày với Premium** cho giao dịch mua hàng và dịch vụ đủ điều kiện. Để được miễn lãi cho các giao dịch này, hãy thanh toán toàn bộ dư nợ cuối kỳ trên sao kê chậm nhất vào ngày đến hạn. Với rút hoặc ứng tiền qua nguồn tín dụng, VPBank tính lãi từ ngày giao dịch và có thể thu thêm phí theo biểu phí.
 
-Để tránh dư nợ quá hạn, bạn cần thanh toán ít nhất số tiền tối thiểu ghi trên sao kê. Nếu chỉ trả số tối thiểu, phần dư nợ còn lại có thể phát sinh lãi; nếu trả trễ, phí chậm thanh toán và lãi theo hợp đồng có thể áp dụng.
+Sao kê cho biết số tiền tối thiểu và ngày đến hạn. Nếu chỉ trả số tối thiểu, các giao dịch mua sắm trong kỳ vẫn có thể bị tính lãi. Trả thiếu số tối thiểu hoặc trả sau hạn có thể phát sinh nợ quá hạn và phí chậm thanh toán.
 
 ## Khi đăng ký hoặc quyền lợi không được ghi nhận
 
@@ -153,7 +181,7 @@ Thẻ Cake 2in1 do Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank) phát h
 Kênh hỗ trợ chính thức:
 
 - Hotline: [1900 636 686](tel:1900636686).
-- Email: chat@cake.vn.
+- Email: [chat@cake.vn](mailto:chat@cake.vn).
 - Trang liên hệ: cake.vn/lien-he.
 
 Không cung cấp PIN, OTP, mật khẩu hoặc dữ liệu đăng nhập cho bất kỳ ai. Khi cần tra soát hồ sơ, giao dịch hoặc tiền hoàn, hãy liên hệ Cake qua kênh chính thức.

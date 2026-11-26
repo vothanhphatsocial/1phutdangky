@@ -357,14 +357,15 @@
     },
     {
       "article": "the-tin-dung/mo-the-tin-dung-cake-2in1",
-      "checkedAt": "2026-11-11",
-      "nextReviewAt": "2026-12-11",
-      "scope": "Đối chiếu ba nhóm thông tin trong khối sản phẩm: điều kiện Premium từ 30 triệu đồng, phí/lãi và miễn lãi tối đa Standard 45/Premium 55 ngày. Cập nhật phí theo mẫu thẻ, ngoại lệ chi tiêu và thời hạn/ngân sách chương trình người được giới thiệu. Giữ CTA và luồng hồ sơ hiện có; không xác nhận lại toàn bộ các màn hình đăng ký.",
+      "checkedAt": "2026-11-26",
+      "nextReviewAt": "2026-12-26",
+      "scope": "Bài trụ và dữ liệu sản phẩm Cake 2in1: rà nguồn tiền ghi nợ/tín dụng, điều kiện hai gói, phí, lãi, sao kê, miễn lãi mua sắm và lãi rút tiền theo Phần D, Điều 6, 7 và 8 của điều khoản thẻ. Danh mục ghi 09/11/2026 nhưng hai trang chi tiết đúng gói đều ghi hiệu lực 10/11/2026 và không hiển thị bảng. Bảng tổng hợp cũng ghi hiệu lực 10/11/2026 và cung cấp các khoản đã kiểm tra. Trang Premium nêu mức tối thiểu 30 triệu đồng ở phần điều kiện và trên 30 triệu đồng ở phần luồng đăng ký; bài giữ mốc được công bố và hướng dẫn kiểm tra gói được đề nghị khi đúng mốc. Rà thể lệ Săn thưởng tháng 7–12/2026 gồm đối tượng, thời hạn, giao dịch, ngân sách và cách chi thưởng; chủ site xác nhận CTA hiện tại thuộc chương trình. Kiểm tra kênh đăng ký theo mô tả công khai và liên hệ. Href giữ nguyên; không thử nộp hồ sơ, xác nhận ghi nhận affiliate hoặc số ngân sách còn lại.",
       "sources": [
         {
           "url": "https://cake.vn/tin-tuc/hoat-dong/bieu-phi-the-cake2in1",
           "status": "current",
-          "effectiveFrom": "2026-11-10"
+          "effectiveFrom": "2026-11-10",
+          "version": "Bảng tổng hợp có hiệu lực 10/11/2026"
         },
         {
           "url": "https://cake.vn/uu-dai/cake-uu-dai/moi-ban-moi-san-thuong-khung-den-4-trieu-q3",
@@ -384,6 +385,37 @@
         },
         {
           "url": "https://cake.vn/the/the-cake-2in1/goi-premium",
+          "status": "current"
+        },
+        {
+          "url": "https://cake.vn/cong-cu-tien-ich/tai-lieu-bieu-mau-bieu-phi",
+          "status": "current",
+          "version": "Ngày 09/11/2026 trên danh mục khác 10/11/2026 tại các trang chi tiết"
+        },
+        {
+          "url": "https://cake.vn/the/the-cake-2in1/goi-standard/bieu-phi",
+          "status": "current",
+          "effectiveFrom": "2026-11-10",
+          "version": "Trang chi tiết ghi ngày hiệu lực; bảng không hiển thị"
+        },
+        {
+          "url": "https://cake.vn/the/the-cake-2in1/goi-premium/bieu-phi",
+          "status": "current",
+          "effectiveFrom": "2026-11-10",
+          "version": "Trang chi tiết ghi ngày hiệu lực; bảng không hiển thị"
+        },
+        {
+          "url": "https://static.cake.vn/homepage/Dieu_kien_Dieu_khoan_Cap_Tin_dung_VPB_26_09_2026_92b36c4c25/Dieu_kien_Dieu_khoan_Cap_Tin_dung_VPB_26_09_2026_92b36c4c25.pdf",
+          "status": "current",
+          "effectiveFrom": "2026-09-26",
+          "version": "Bản Cake niêm yết 26/09/2026; Phần D, Điều 6–8"
+        },
+        {
+          "url": "https://cake.vn/huong-dan-su-dung/thong-tin-chung-the-tin-dung",
+          "status": "current"
+        },
+        {
+          "url": "https://cake.vn/lien-he",
           "status": "current"
         }
       ]
