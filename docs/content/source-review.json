@@ -364,7 +364,7 @@
       "article": "the-tin-dung/mo-the-tin-dung-cake-2in1",
       "checkedAt": "2026-11-26",
       "nextReviewAt": "2026-12-26",
-      "scope": "Bài trụ và dữ liệu sản phẩm Cake 2in1: rà nguồn tiền ghi nợ/tín dụng, điều kiện hai gói, phí, lãi, sao kê, miễn lãi mua sắm và lãi rút tiền theo Phần D, Điều 6, 7 và 8 của điều khoản thẻ. Danh mục ghi 09/11/2026 nhưng hai trang chi tiết đúng gói đều ghi hiệu lực 10/11/2026 và không hiển thị bảng. Bảng tổng hợp cũng ghi hiệu lực 10/11/2026 và cung cấp các khoản đã kiểm tra. Trang Premium nêu mức tối thiểu 30 triệu đồng ở phần điều kiện và trên 30 triệu đồng ở phần luồng đăng ký; bài giữ mốc được công bố và hướng dẫn kiểm tra gói được đề nghị khi đúng mốc. Rà thể lệ Săn thưởng tháng 7–12/2026 gồm đối tượng, thời hạn, giao dịch, ngân sách và cách chi thưởng; chủ site xác nhận CTA hiện tại thuộc chương trình. Kiểm tra kênh đăng ký theo mô tả công khai và liên hệ. Href giữ nguyên; không thử nộp hồ sơ, xác nhận ghi nhận affiliate hoặc số ngân sách còn lại.",
+      "scope": "Bài trụ và dữ liệu sản phẩm Cake 2in1: rà nguồn tiền ghi nợ/tín dụng, điều kiện hai gói, phí, lãi, sao kê, miễn lãi mua sắm và lãi rút tiền theo Phần D, Điều 6, 7 và 8 của điều khoản thẻ. Danh mục ghi 09/11/2026 nhưng hai trang chi tiết đúng gói đều ghi hiệu lực 10/11/2026 và không hiển thị bảng. Bảng tổng hợp cũng ghi hiệu lực 10/11/2026 và cung cấp các khoản đã kiểm tra. Trang Premium nêu mức tối thiểu 30 triệu đồng ở phần điều kiện và trên 30 triệu đồng ở phần luồng đăng ký; bài giữ mốc được công bố và hướng dẫn kiểm tra gói được đề nghị khi đúng mốc. Rà thể lệ Săn thưởng tháng 7–12/2026 gồm đối tượng, thời hạn, giao dịch, ngân sách và cách chi thưởng; chủ site xác nhận CTA hiện tại thuộc chương trình. Kiểm tra kênh đăng ký theo mô tả công khai và liên hệ. Href giữ nguyên; không thử nộp hồ sơ, xác nhận ghi nhận affiliate hoặc số ngân sách còn lại. Rà bổ sung 27/11/2026 (C-STANDARD-PREMIUM): cùng phiên bản biểu phí 10/11/2026, so phí kỳ/năm, ngưỡng chi từng tháng và hai loại phí quốc tế. Đối chiếu hai thể lệ hoàn tiền liên kết từ trang sản phẩm: dùng phần chung cho cơ chế Freedom và bản Premium có chú thích áp dụng từ kỳ 21/09–20/10/2026 cho cơ chế Premium. Hướng dẫn LoungeKey xác nhận quyền lợi theo điều kiện và phí người đi cùng; không dùng số lượt marketing làm quyền lợi cố định. Mốc xét Premium và trạng thái ưu đãi Săn thưởng không đổi trong phạm vi đối chiếu. Không cập nhật ngày xác minh toàn bài hoặc ngày dự kiến rà tiếp.",
       "sources": [
         {
           "url": "https://cake.vn/tin-tuc/hoat-dong/bieu-phi-the-cake2in1",
@@ -422,6 +422,21 @@
         {
           "url": "https://cake.vn/lien-he",
           "status": "current"
+        },
+        {
+          "url": "https://static.cake.vn/homepage/LDP_DKDK_87e48a2374/LDP_DKDK_87e48a2374.png",
+          "status": "current",
+          "version": "Thể lệ dẫn từ trang Standard; cơ chế Freedom, ngưỡng chi và trần theo kỳ"
+        },
+        {
+          "url": "https://static.cake.vn/homepage/DKDK_the_2in1_f1448f1959/DKDK_the_2in1_f1448f1959.jpg",
+          "status": "current",
+          "version": "Thể lệ dẫn từ trang Premium; quy tắc theo hạng từ kỳ 21/09/2026–20/10/2026 theo chú thích"
+        },
+        {
+          "url": "https://static.cake.vn/homepage/LDP_Phong_cho_Louge_Key_31e9a511f7/LDP_Phong_cho_Louge_Key_31e9a511f7.png",
+          "status": "current",
+          "version": "Hướng dẫn cho chủ thẻ Premium: quyền truy cập, tra số lượt, phí khách đi cùng"
         }
       ]
     },
