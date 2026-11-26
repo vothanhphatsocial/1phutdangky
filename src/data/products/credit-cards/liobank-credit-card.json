@@ -2,7 +2,7 @@
   "name": "Thẻ tín dụng Liobank",
   "provider": "Ngân hàng TMCP Phương Đông (OCB) — thương hiệu Liobank",
   "category": "credit-card",
-  "summary": "Thẻ đa năng quốc tế Liobank Visa có thể được OCB cấp hạn mức tín dụng sau khi khách hàng hoàn tất đăng ký và được xét duyệt trên ứng dụng Liobank.",
+  "summary": "Thẻ đa năng quốc tế Liobank Visa do OCB phát hành. Bạn có thể chi từ số dư tài khoản thanh toán hoặc sử dụng hạn mức tín dụng nếu được OCB xét duyệt và cấp hạn mức.",
   "officialUrl": "https://liobank.vn/vn/credit-card",
   "offers": [
     {
@@ -24,16 +24,6 @@
       "publisher": "Liobank by OCB"
     },
     {
-      "title": "Liobank cùng Apple Pay",
-      "url": "https://liobank.vn/vn/apple-pay",
-      "publisher": "Liobank by OCB"
-    },
-    {
-      "title": "Mời bạn mở thẻ Liobank",
-      "url": "https://liobank.vn/vn/invite",
-      "publisher": "Liobank by OCB"
-    },
-    {
       "title": "Danh mục biểu phí Liobank — hiệu lực từ 15/10/2026",
       "url": "https://liobank.vn/vn/tariffs",
       "publisher": "Liobank by OCB"
@@ -44,8 +34,8 @@
       "publisher": "Ngân hàng TMCP Phương Đông (OCB)"
     },
     {
-      "title": "Điều khoản và điều kiện Liobank",
-      "url": "https://liobank.vn/doc/TnC.pdf",
+      "title": "Điều khoản thẻ đa năng Liobank — Quyết định 570.01/2026/QĐ-TGĐ ngày 15/07/2026",
+      "url": "https://liobank.vn/doc/DKDK%20phat%20hanh%20va%20su%20dung%20the%20Liobank%2020July2026.pdf",
       "publisher": "Ngân hàng TMCP Phương Đông (OCB)"
     },
     {
@@ -54,12 +44,12 @@
       "publisher": "Liobank by OCB"
     }
   ],
-  "lastVerifiedAt": "2026-11-11T01:37:18+07:00",
+  "lastVerifiedAt": "2026-11-26T21:03:57+07:00",
   "draft": false,
   "facts": [
     {
       "label": "Xét duyệt và hạn mức",
-      "value": "Liobank công bố hạn mức tối đa 200.000.000 đồng; OCB thẩm định hồ sơ, quyết định cấp thẻ và hạn mức thực tế."
+      "value": "Liobank công bố hạn mức tối đa 200.000.000 đồng. OCB thẩm định hồ sơ và quyết định có cấp hạn mức tín dụng hay không, cũng như số tiền thực tế có thể sử dụng."
     },
     {
       "label": "Phí và lãi",
@@ -67,7 +57,7 @@
     },
     {
       "label": "Thanh toán và miễn lãi",
-      "value": "Miễn lãi tối đa 62 ngày khi đáp ứng điều kiện thanh toán. Kiểm tra ngày đến hạn và số tiền cần trả trên thông báo thanh toán của bạn."
+      "value": "Miễn lãi tối đa 62 ngày cho giao dịch mua sắm đủ điều kiện. Rút tiền từ hạn mức tín dụng tính lãi từ ngày rút. Xem số tiền cần trả và ngày đến hạn trên thông báo thanh toán."
     }
   ],
   "highlights": [],

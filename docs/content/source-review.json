@@ -305,9 +305,9 @@
     },
     {
       "article": "the-tin-dung/mo-the-tin-dung-liobank",
-      "checkedAt": "2026-11-11",
-      "nextReviewAt": "2026-12-11",
-      "scope": "Đối chiếu toàn bộ ba nhóm thông tin trong khối sản phẩm: hạn mức tối đa 200 triệu đồng, phí cố định, lãi trong hạn 45–59%/năm và miễn lãi tối đa 62 ngày. Cập nhật biểu phí 15/10/2026 trong bài và dữ liệu sản phẩm; đối chiếu thanh toán tối thiểu. Chưa kiểm thử lại các màn hình App hoặc xác nhận lại link giới thiệu.",
+      "checkedAt": "2026-11-26",
+      "nextReviewAt": "2026-12-26",
+      "scope": "Bài trụ Liobank và dữ liệu thẻ: đối chiếu các mức phí trong bài, lãi trong hạn 45–59%/năm, hạn mức công bố tối đa 200 triệu đồng và miễn lãi tối đa 62 ngày cho mua sắm đủ điều kiện. Điều 1, 4, 8, 12 và 13 của điều khoản hiện hành xác định số dư thanh toán và hạn mức tín dụng, hình thức phát hành thẻ, nghĩa vụ theo thông báo thanh toán và mốc áp dụng 150% lãi suất trong hạn. Dùng biểu phí và thông báo thanh toán thay cho mức lãi/công thức tối thiểu giản lược trên FAQ. Đối chiếu hướng dẫn đăng ký và kênh hỗ trợ công khai. Tổng đài quốc tế khác nhau giữa tài liệu hỗ trợ và chân trang chính thức; chỉ dẫn đến kênh hỗ trợ trong App. Không gửi hồ sơ hoặc kiểm thử ghi nhận giới thiệu.",
       "sources": [
         {
           "url": "https://liobank.vn/vn/tariffs",
@@ -316,11 +316,42 @@
         {
           "url": "https://liobank.vn/doc/151026_Bi%E1%BB%83u%20ph%C3%AD%20Liobank%20d%C3%A0nh%20cho%20KHCN.pdf",
           "status": "current",
-          "effectiveFrom": "2026-10-15"
+          "effectiveFrom": "2026-10-15",
+          "version": "151026"
         },
         {
           "url": "https://liobank.vn/vn/credit-card",
           "status": "current"
+        },
+        {
+          "url": "https://liobank.vn/vn/legal",
+          "status": "current"
+        },
+        {
+          "url": "https://liobank.vn/doc/DKDK%20phat%20hanh%20va%20su%20dung%20the%20Liobank%2020July2026.pdf",
+          "status": "current",
+          "version": "Quyết định 570.01/2026/QĐ-TGĐ ngày 15/07/2026"
+        },
+        {
+          "url": "https://liobank.vn/vn/faq/credit",
+          "status": "current"
+        },
+        {
+          "url": "https://liobank.vn/vn/faq/overview",
+          "status": "current"
+        },
+        {
+          "url": "https://liobank.vn/doc/Instructions_for_Liobank_App_Installation_and_Registration.pdf",
+          "status": "current"
+        },
+        {
+          "url": "https://liobank.vn/doc/contact-guide.pdf",
+          "status": "current"
+        },
+        {
+          "url": "https://liobank.vn/doc/TnC.pdf",
+          "status": "historical",
+          "version": "Quyết định 131.01/2026/QĐ-TGĐ ngày 09/02/2026"
         }
       ]
     },

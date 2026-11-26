@@ -1,12 +1,12 @@
 ---
 title: "Hướng dẫn mở thẻ tín dụng Liobank online"
-description: "Hướng dẫn mở thẻ tín dụng Liobank qua link giới thiệu: điều kiện, hạn mức, phí, lãi suất, lịch thanh toán, cách đăng ký trên ứng dụng và điều cần kiểm tra."
+description: "Cách mở thẻ Liobank trên App, phân biệt số dư ghi nợ với hạn mức OCB xét duyệt, và kiểm tra phí, lãi, điều kiện miễn lãi trước khi ký."
 category: "the-tin-dung"
 type: "guide"
 
 publishedAt: 2026-08-15
-updatedAt: 2026-11-11T01:37:18+07:00
-lastVerifiedAt: 2026-08-16
+updatedAt: 2026-11-26T21:03:57+07:00
+lastVerifiedAt: 2026-11-26T21:03:57+07:00
 
 readingMinutes: 8
 
@@ -17,7 +17,7 @@ productBeforeToc: true
 cover: "./liobank-credit-card-cover.png"
 coverAlt: "Ảnh đại diện bài hướng dẫn mở thẻ tín dụng Liobank của 1 Phút Đăng Ký."
 
-quickAnswer: "Liobank phù hợp để cân nhắc khi bạn muốn quản lý thẻ trên ứng dụng và có kế hoạch thanh toán đầy đủ dư nợ đúng hạn. Hãy đối chiếu phí, lãi và lịch thanh toán với cách bạn dự định sử dụng thẻ."
+quickAnswer: "Bạn đăng ký tài khoản và thẻ đa năng Liobank trên ứng dụng. Thẻ có thể sử dụng tiền của bạn trong tài khoản thanh toán. Phần tín dụng chỉ dùng được khi OCB đã xét duyệt và cấp hạn mức cho bạn."
 
 products:
   - "credit-cards/liobank-credit-card"
@@ -29,37 +29,49 @@ sources:
   - title: "Thẻ tín dụng Liobank"
     url: "https://liobank.vn/vn/credit-card"
     publisher: "Liobank by OCB"
-  - title: "Liobank cùng Apple Pay"
-    url: "https://liobank.vn/vn/apple-pay"
-    publisher: "Liobank by OCB"
-  - title: "Mời bạn mở thẻ Liobank"
-    url: "https://liobank.vn/vn/invite"
-    publisher: "Liobank by OCB"
   - title: "Danh mục biểu phí Liobank — hiệu lực từ 15/10/2026"
     url: "https://liobank.vn/vn/tariffs"
     publisher: "Liobank by OCB"
   - title: "Biểu phí Liobank dành cho khách hàng cá nhân — bản chi tiết"
     url: "https://liobank.vn/doc/151026_Bi%E1%BB%83u%20ph%C3%AD%20Liobank%20d%C3%A0nh%20cho%20KHCN.pdf"
     publisher: "Ngân hàng TMCP Phương Đông (OCB)"
-  - title: "Điều khoản và điều kiện Liobank"
-    url: "https://liobank.vn/doc/TnC.pdf"
+  - title: "Điều khoản thẻ đa năng Liobank — Quyết định 570.01/2026/QĐ-TGĐ ngày 15/07/2026"
+    url: "https://liobank.vn/doc/DKDK%20phat%20hanh%20va%20su%20dung%20the%20Liobank%2020July2026.pdf"
     publisher: "Ngân hàng TMCP Phương Đông (OCB)"
+  - title: "Danh mục điều khoản và tài liệu hỗ trợ Liobank"
+    url: "https://liobank.vn/vn/legal"
+    publisher: "Liobank by OCB"
   - title: "Hướng dẫn cài đặt ứng dụng và đăng ký Liobank"
     url: "https://liobank.vn/doc/Instructions_for_Liobank_App_Installation_and_Registration.pdf"
+    publisher: "Liobank by OCB"
+  - title: "Hướng dẫn liên hệ Liobank"
+    url: "https://liobank.vn/doc/contact-guide.pdf"
     publisher: "Liobank by OCB"
 ---
 
 import appCtaLabels from '../../../data/app-cta-labels.json';
+import { getEntry } from 'astro:content';
+import AffiliateCTA from '../../../components/commercial/AffiliateCTA.astro';
+import AffiliateDisclosure from '../../../components/article/AffiliateDisclosure.astro';
+
+export const liobankCard = await getEntry('products', 'credit-cards/liobank-credit-card');
 
 Bài này giúp bạn đọc phần phí, lãi và điều kiện thanh toán trước khi bắt đầu hồ sơ Liobank.
 
 ## Thẻ này phù hợp khi nào?
 
-Liobank phù hợp để cân nhắc khi bạn muốn quản lý thẻ trên ứng dụng, ưu tiên chi phí cố định thấp và có thể thanh toán đầy đủ dư nợ theo lịch sao kê.
+Nếu chủ yếu chi bằng tiền đã nạp, hãy kiểm tra số dư khả dụng và phí của giao dịch bạn định thực hiện. Nếu cần chi trước, trả sau, hãy xem hạn mức OCB đã cấp cho hồ sơ của mình và cân nhắc khả năng trả đủ dư nợ theo sao kê.
 
-Liobank công bố hạn mức tín dụng tối đa 200.000.000 đồng. OCB thẩm định hồ sơ, quyết định cấp thẻ và hạn mức thực tế.
+### Cách phân biệt số dư tài khoản và hạn mức tín dụng
 
-Nếu thường xuyên rút tiền từ hạn mức tín dụng, giao dịch ngoại tệ, trả góp hoặc duy trì dư nợ qua nhiều kỳ, hãy xem kỹ bảng phí và lãi bên dưới. Đây là những cách sử dụng có thể làm chi phí của thẻ tăng đáng kể.
+| Nguồn tiền | Cách sử dụng |
+| --- | --- |
+| Số dư có khả dụng | Tiền của bạn trong tài khoản thanh toán. Đây là nguồn tiền dùng cho chức năng ghi nợ của thẻ. |
+| Hạn mức tín dụng khả dụng | Khoản tín dụng còn có thể sử dụng nếu OCB đã cấp hạn mức. Số tiền đã dùng thuộc dư nợ phải trả. |
+
+Điều 8 của điều khoản thẻ đa năng quy định OCB ưu tiên dùng **số dư có khả dụng** trước, sau đó mới đến **hạn mức tín dụng khả dụng** nếu có. Nếu App chưa hiển thị hạn mức đã cấp, hãy dựa vào số dư khả dụng khi lên kế hoạch chi tiêu.
+
+Xem [phí và quy tắc trả nợ](#phí-lãi-hạn-mức-và-thanh-toán) trước khi chọn rút tiền, giao dịch ngoại tệ hoặc chuyển đổi trả góp.
 
 ## Điều kiện và giấy tờ cần chuẩn bị
 
@@ -75,7 +87,7 @@ Nếu thường xuyên rút tiền từ hạn mức tín dụng, giao dịch ngo
   ]}
 />
 
-OCB có thể yêu cầu thêm thông tin để thẩm định. Việc chuẩn bị đủ giấy tờ không bảo đảm thẻ được cấp.
+Việc gửi đủ thông tin giúp OCB tiếp nhận và thẩm định hồ sơ. Hạn mức được cấp, nếu có, do OCB quyết định.
 
 ## Đăng ký thẻ bằng liên kết giới thiệu
 
@@ -85,7 +97,7 @@ OCB có thể yêu cầu thêm thông tin để thẩm định. Việc chuẩn b
   </Step>
 
   <Step number="2" title="Nhập thông tin liên hệ">
-    Dùng số điện thoại và email của chính bạn, rồi tự nhập OTP trên thiết bị.
+    Dùng số điện thoại và email của chính bạn. Nếu ứng dụng yêu cầu mã OTP, tự nhập mã trên thiết bị đang đăng ký.
   </Step>
 
   <Step number="3" title="Chọn sản phẩm và khai hồ sơ">
@@ -96,14 +108,18 @@ OCB có thể yêu cầu thêm thông tin để thẩm định. Việc chuẩn b
     Kiểm tra hạn mức được đề nghị, biểu phí, lãi suất, ngày thanh toán và các lựa chọn dịch vụ. Dừng lại nếu thông tin nhận diện hoặc điều khoản không đúng với hồ sơ của bạn.
   </Step>
 
-  <Step number="5" title="Nhận kết quả từ OCB">
-    OCB thông báo kết quả sau khi thẩm định.
+  <Step number="5" title="Kiểm tra kết quả trong App">
+    Sau khi hoàn tất các bước theo hướng dẫn, xem trạng thái tài khoản, thẻ và hạn mức tín dụng trong App. Khi tài khoản và thẻ đa năng mở thành công, điều khoản của OCB quy định thẻ được phát hành dưới dạng phi vật lý trước.
   </Step>
 </Steps>
 
 <Notice type="warning" title="Tự thực hiện toàn bộ bước xác thực">
 Không gửi OTP, mật khẩu, ảnh giấy tờ hoặc dữ liệu khuôn mặt cho người giới thiệu. 1 Phút Đăng Ký không thu thập và không xử lý hồ sơ mở thẻ.
 </Notice>
+
+<AffiliateDisclosure />
+
+<AffiliateCTA product={liobankCard} position="article-process" />
 
 ## Phí, lãi, hạn mức và thanh toán
 
@@ -122,15 +138,15 @@ Danh mục biểu phí chính thức của Liobank xác nhận biểu phí dành
 | Chuyển đổi trả góp giao dịch mua sắm | 1,99%/tháng trên số tiền gốc đăng ký trả góp |
 | Lãi suất dư nợ thẻ trong hạn | Từ 45% đến 59%/năm |
 
-Lãi suất áp dụng cho hồ sơ của bạn được ghi trong hợp đồng. Phí phát hành và thường niên bằng 0 không làm các giao dịch khác trở thành miễn phí. Rút tiền từ hạn mức tín dụng, giao dịch ngoại tệ, trả góp và chậm thanh toán vẫn có thể phát sinh chi phí.
+Với phí tài khoản không duy trì hoạt động, biểu phí nêu việc thu phí dừng khi số dư về 0 hoặc khi tài khoản hoạt động lại tối thiểu một ngày trước ngày thu phí. Mức lãi cụ thể cho hạn mức tín dụng của bạn được ghi trong hợp đồng.
 
 ### Miễn lãi và khoản thanh toán tối thiểu
 
-Liobank công bố thời gian miễn lãi có thể lên đến 62 ngày. Điều kiện được nêu là thanh toán đầy đủ dư nợ của tháng trước trước 18:00 ngày cuối cùng của tháng hiện tại và tiếp tục duy trì việc thanh toán đầy đủ qua các kỳ.
+Liobank công bố thời gian miễn lãi **tối đa 62 ngày** cho giao dịch mua sắm đủ điều kiện. Khi đang được miễn lãi, hãy trả đủ dư nợ ghi trên sao kê trước hạn để duy trì quyền lợi. Điều 12 quy định giao dịch rút tiền từ hạn mức tín dụng phát sinh lãi từ ngày rút, kể cả trong kỳ miễn lãi.
 
-Khoản thanh toán tối thiểu được công bố là 5% dư nợ cuối kỳ, cộng với gốc và phí của khoản trả góp hằng tháng nếu có. Nếu chỉ trả số tối thiểu, phần dư nợ còn lại có thể tiếp tục phát sinh lãi.
+Mở thông báo thanh toán thẻ để xem **dư nợ cuối kỳ, số tiền thanh toán tối thiểu và ngày đến hạn**. Dùng số tiền ghi trên thông báo của bạn, nhất là khi có khoản trả góp hoặc phí. Nếu chỉ trả số tối thiểu, dư nợ có thể phát sinh lãi tính từ ngày giao dịch.
 
-Khi thanh toán tối thiểu trễ hạn, phí chậm thanh toán có thể áp dụng; phần quá hạn còn có thể chịu lãi suất quá hạn bằng 150% lãi suất thông thường theo thông tin Liobank công bố.
+Nếu đến hạn mà chưa trả đủ số tối thiểu, OCB có thể chuyển phần còn thiếu sang nợ quá hạn và thu phí chậm thanh toán. Điều 13 quy định mức **150% lãi suất trong hạn** áp dụng trên dư nợ gốc còn lại từ ngày sau hạn thanh toán của kỳ thứ tư liên tiếp vẫn chưa trả đủ các khoản tối thiểu của những kỳ trước.
 
 ## Khi liên kết hoặc hồ sơ không tiếp tục được
 
@@ -154,8 +170,8 @@ Thông tin Liobank công bố:
 
 - Địa chỉ: Tòa nhà The Hallmark, 15 Trần Bạch Đằng, phường An Khánh, TP. Hồ Chí Minh.
 - Tổng đài trong nước: [1800 2029](tel:18002029).
-- Tổng đài quốc tế: [+84 28 8997 8899](tel:+842889978899).
-- Email: info@liobank.vn.
+- Email: [info@liobank.vn](mailto:info@liobank.vn).
+- Khi ở nước ngoài, mở mục Thêm trong App Liobank để tìm kênh hỗ trợ.
 
 Không cung cấp OTP, PIN, mật khẩu hoặc ảnh giấy tờ qua một kênh tự xưng là hỗ trợ. Khi hồ sơ không tiếp tục được, giao dịch cần tra soát hoặc một khoản phí chưa rõ, hãy liên hệ Liobank qua các kênh trên.
 
