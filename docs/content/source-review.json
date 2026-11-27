@@ -81,9 +81,9 @@
     },
     {
       "article": "mo-tai-khoan/mo-tai-khoan-mb-bank-online",
-      "checkedAt": "2026-11-22",
+      "checkedAt": "2026-11-27",
       "nextReviewAt": "2026-12-20",
-      "scope": "20/11/2026: rà phần phí của bài và dữ liệu dùng chung bank-accounts/mb-bank-account. Đối chiếu miễn phí mở và đóng tài khoản thanh toán thông thường, số dư tối thiểu VND 50.000 đồng, số đẹp có biểu phí riêng và hai gói SMS Banking theo thông báo MB (đơn vị tính, ngưỡng, VAT và miễn phí cho nhóm Private). 22/11/2026: mở lại biểu phí tài khoản và thông báo SMS, đối chiếu mục hồ sơ mở tài khoản và dịch vụ thẻ đăng ký thêm trong hướng dẫn công khai để đặt liên kết giữa hai bài. Chưa kiểm chứng lại phí quản lý, luồng App hoặc liên kết giới thiệu trên thiết bị. Không đổi dữ liệu sản phẩm.",
+      "scope": "20/11/2026: rà phần phí của bài và dữ liệu dùng chung bank-accounts/mb-bank-account. Đối chiếu miễn phí mở và đóng tài khoản thanh toán thông thường, số dư tối thiểu VND 50.000 đồng, số đẹp có biểu phí riêng và hai gói SMS Banking theo thông báo MB (đơn vị tính, ngưỡng, VAT và miễn phí cho nhóm Private). 22/11/2026: mở lại biểu phí tài khoản và thông báo SMS, đối chiếu mục hồ sơ mở tài khoản và dịch vụ thẻ đăng ký thêm trong hướng dẫn công khai để đặt liên kết giữa hai bài. Chưa kiểm chứng lại phí quản lý, luồng App hoặc liên kết giới thiệu trên thiết bị. Không đổi dữ liệu sản phẩm. 27/11/2026: đối chiếu và sửa địa chỉ hội sở trong bài trụ theo trang Liên hệ. Kiểm tra số chăm sóc khách hàng cá nhân, email MB247, danh mục Mạng lưới và kênh mở tài khoản tại chi nhánh/phòng giao dịch. Rà lại mục phí mở tài khoản VND và số dư tối thiểu trong biểu phí hiện đang liên kết. Kiểm chứng bổ sung chỉ giới hạn ở các mục đã nêu.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
@@ -103,6 +103,16 @@
           "url": "https://www.mbbank.com.vn/tin-tuc/tin-san-pham-dich-vu/mb-thay-doi-bieu-phi-dich-vu-sms-banking-doi-voi-khach-hang-ca-nhan-va-khach-hang-doanh-nghiep-2025-4-21-18-36-10",
           "status": "current",
           "effectiveFrom": "2025-04-24"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/lien-he",
+          "status": "current",
+          "version": "Địa chỉ hội sở, số tổng đài và email MB247 dành cho khách hàng cá nhân"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/lien-he/mang-luoi",
+          "status": "current",
+          "version": "Danh mục tìm chi nhánh/phòng giao dịch MB"
         }
       ]
     },
