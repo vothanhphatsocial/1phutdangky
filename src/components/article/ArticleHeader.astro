@@ -31,6 +31,9 @@ const {
   readingMinutes,
 } = Astro.props;
 
+const hasUpdate = publishedAt.valueOf() !== updatedAt.valueOf();
+const headerDate = hasUpdate ? updatedAt : publishedAt;
+
 const formatDate = (
   date: Date
 ) =>
@@ -83,15 +86,11 @@ const formatDate = (
     </span>
 
 
-    <span>
-      Cập nhật:
+    <span data-article-date={hasUpdate ? 'updated' : 'published'}>
+      {hasUpdate ? 'Cập nhật:' : 'Xuất bản:'}
       {' '}
-      <time
-        datetime={
-          updatedAt.toISOString()
-        }
-      >
-        {formatDate(updatedAt)}
+      <time datetime={headerDate.toISOString()}>
+        {formatDate(headerDate)}
       </time>
     </span>
 
@@ -110,13 +109,14 @@ const formatDate = (
 
 
   {
-    publishedAt.valueOf() !==
-      updatedAt.valueOf() && (
+    hasUpdate && (
 
-      <div class="published-date">
+      <div class="published-date" data-article-date="published">
         Xuất bản:
         {' '}
-        {formatDate(publishedAt)}
+        <time datetime={publishedAt.toISOString()}>
+          {formatDate(publishedAt)}
+        </time>
       </div>
 
     )

@@ -22,6 +22,8 @@ const appOffer = {
   url: 'https://example.org/approved-tpbank-app',
 };
 const stickyCta = `<div data-sticky-cta><a href="${appOffer.url}" data-product-id="${productId}" data-offer-id="${appOffer.id}">Mở App TPBank</a></div>`;
+const publishedLabel = '<div data-article-date="published">Xuất bản: <time datetime="2020-01-01T00:00:00.000Z">01/01/2020</time></div>';
+const updatedLabel = '<span data-article-date="updated">Cập nhật: <time datetime="2020-01-02T00:00:00.000Z">02/01/2020</time></span>';
 let baseline;
 
 before(async () => {
@@ -58,7 +60,7 @@ before(async () => {
   await put('dist/tim-kiem/index.html', page('Tìm kiếm', '/tim-kiem/', '', '', 'noindex, nofollow'));
   await put('dist/chinh-sach-bao-mat/index.html', page('Chính sách bảo mật', '/chinh-sach-bao-mat/', 'Privacy'));
   await put(`dist/${article}`, page(title, route,
-    `<div data-visual-image="${visual.image}"></div><div class="article-prose"><p id="requirements">Giấy tờ cần chuẩn bị</p></div><section><a href="https://tpb.vn/">Nguồn và kiểm chứng</a></section>${stickyCta}`,
+    `<header class="article-header">${updatedLabel}${publishedLabel}</header><div data-visual-image="${visual.image}"></div><div class="article-prose"><p id="requirements">Giấy tờ cần chuẩn bị</p></div><section><a href="https://tpb.vn/">Nguồn và kiểm chứng</a></section>${stickyCta}`,
     `<meta property="article:published_time" content="2020-01-01T00:00:00.000Z">
      <meta property="article:modified_time" content="2020-01-02T00:00:00.000Z">
      <meta property="og:image" content="${origin}${visual.image}"><meta name="twitter:image" content="${origin}${visual.image}">
@@ -167,6 +169,37 @@ test('Article schema headline must match the source title', (t) =>
 test('Article schema dates must match the source dates', (t) =>
   rejectsMutation(t, (html) => html.replace('"dateModified":"2020-01-02T00:00:00.000Z"', '"dateModified":"2020-01-01T00:00:00.000Z"'),
     /ngày article:modified_time trong meta hoặc schema không khớp/));
+
+test('first publication shows the publication date in Vietnam time', async (t) => {
+  const root = await fixture(t);
+  const instant = '2020-01-01T18:30:00.000Z';
+  await edit(root, `src/content/articles/${articleSource}`, (source) => source
+    .replace('publishedAt: 2020-01-01', `publishedAt: ${instant}`)
+    .replace('updatedAt: 2020-01-02', `updatedAt: ${instant}`));
+  await edit(root, 'dist/sitemap-0.xml', (xml) => xml.replace('2020-01-02T00:00:00.000Z', instant));
+  await edit(root, `dist/${article}`, (html) => html
+    .replace(updatedLabel, '')
+    .replaceAll('2020-01-01T00:00:00.000Z', instant)
+    .replaceAll('2020-01-02T00:00:00.000Z', instant)
+    .replace('01/01/2020', '02/01/2020'));
+  const firstPublication = run(root);
+  assert.equal(firstPublication.status, 0, firstPublication.output);
+
+  await edit(root, `dist/${article}`, (html) => html
+    .replace('data-article-date="published">Xuất bản:', 'data-article-date="updated">Cập nhật:'));
+  const updateOnly = run(root);
+  assert.equal(updateOnly.status, 1, updateOnly.output);
+  assert.match(updateOnly.output, /cần hiển thị đúng một ngày Xuất bản/);
+});
+
+test('an updated article still shows both dates in its header', async (t) => {
+  await rejectsMutation(t, (html) => html.replace(publishedLabel, ''), /cần hiển thị đúng một ngày Xuất bản/);
+  await rejectsMutation(t, (html) => html.replace(updatedLabel, ''), /cần hiển thị đúng một ngày Cập nhật/);
+});
+
+test('the displayed publication date must match the source', (t) =>
+  rejectsMutation(t, (html) => html.replace('01/01/2020</time>', '31/12/2019</time>'),
+    /ngày Xuất bản hiển thị ở đầu bài không khớp/));
 
 function productCardNoteFixture(before = '', after = '') {
   return `<section class="product-card"><div class="product-intro">${before}<div class="product-action"><a href="https://tpb.vn/" data-link-purpose="action">Tiếp tục</a></div>${after}</div><dl><div class="fact">Điều kiện</div><div class="fact">Phí</div><div class="fact">Dịch vụ</div></dl></section>`;

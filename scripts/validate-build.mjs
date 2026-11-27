@@ -271,6 +271,45 @@ function validateStickyCta(article, nodes, relativePath) {
   }
 }
 
+const articleDateFormatter = new Intl.DateTimeFormat('vi-VN', {
+  timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric',
+});
+
+function validateArticleHeaderDates(article, nodes, relativePath) {
+  const header = nodes.find((node) => node.tagName === 'header' &&
+    attribute(node, 'class')?.split(/\s+/).includes('article-header'));
+  if (!header) {
+    errors.push(`${relativePath} thiếu phần đầu bài để hiển thị ngày Xuất bản.`);
+    return;
+  }
+
+  const published = new Date(article.publishedAt);
+  const updated = new Date(article.updatedAt);
+  const hasUpdate = published.valueOf() !== updated.valueOf();
+  const headerElements = elements(header);
+
+  for (const [kind, label, date, required] of [
+    ['published', 'Xuất bản', published, true],
+    ['updated', 'Cập nhật', updated, hasUpdate],
+  ]) {
+    const labels = headerElements.filter((node) => attribute(node, 'data-article-date') === kind);
+    if (labels.length !== Number(required)) {
+      errors.push(`${relativePath} cần ${required ? 'hiển thị đúng một ngày' : 'ẩn ngày'} ${label} ở đầu bài.`);
+      continue;
+    }
+    if (!required) continue;
+
+    const labelNode = labels[0];
+    const times = elements(labelNode).filter((node) => node.tagName === 'time');
+    const expected = date.valueOf();
+    if (!Number.isFinite(expected) || times.length !== 1 ||
+      Date.parse(attribute(times[0], 'datetime')) !== expected ||
+      normalizedText(labelNode) !== `${label}: ${articleDateFormatter.format(date)}`) {
+      errors.push(`${relativePath} có ngày ${label} hiển thị ở đầu bài không khớp với nội dung hoặc múi giờ Việt Nam.`);
+    }
+  }
+}
+
 function validateAppCtas(nodes, relativePath) {
   for (const link of nodes.filter((node) => node.tagName === 'a')) {
     const href = attribute(link, 'href');
@@ -458,6 +497,7 @@ for (const htmlFile of htmlFiles) {
   if (article) {
     validateArticleCitations(nodes, relativePath, baseUrl);
     validateStickyCta(article, nodes, relativePath);
+    validateArticleHeaderDates(article, nodes, relativePath);
     if (robots !== 'index, follow') errors.push(`${relativePath} phải cho phép lập chỉ mục.`);
     const articles = schemas.filter((schema) => hasSchemaType(schema, 'Article'));
     const breadcrumbs = schemas.filter((schema) => hasSchemaType(schema, 'BreadcrumbList'));
