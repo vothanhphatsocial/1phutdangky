@@ -45,9 +45,9 @@
     },
     {
       "article": "the-tin-dung/mo-the-mb-bank-online",
-      "checkedAt": "2026-11-22",
+      "checkedAt": "2026-11-27",
       "nextReviewAt": "2026-12-20",
-      "scope": "20/11/2026: đối chiếu các ví dụ phí phát hành, thường niên và phí giao thẻ tại nhà với ba PDF MB đang liên kết, cùng điều kiện tính chi tiêu để miễn thường niên. Sửa phạm vi Visa Priority Signature theo trang sản phẩm MB và cột khách hàng trong biểu phí tín dụng. Ba URL PDF cũ trả 403 khi truy xuất, được thay bằng các URL hiện hành. 22/11/2026: trang biểu phí MB vẫn liên kết đúng ba PDF ngày 23/09/2026. Đối chiếu hướng dẫn công khai của MB về đăng nhập và vào chức năng phát hành thẻ để đặt liên kết đến đúng bước. Chưa thao tác trong App hoặc kiểm chứng lại toàn bài.",
+      "scope": "20/11/2026: đối chiếu các ví dụ phí phát hành, thường niên và phí giao thẻ tại nhà với ba PDF MB đang liên kết, cùng điều kiện tính chi tiêu để miễn thường niên. Sửa phạm vi Visa Priority Signature theo trang sản phẩm MB và cột khách hàng trong biểu phí tín dụng. Ba URL PDF cũ trả 403 khi truy xuất, được thay bằng các URL hiện hành. 22/11/2026: trang biểu phí MB vẫn liên kết đúng ba PDF ngày 23/09/2026. Đối chiếu hướng dẫn công khai của MB về đăng nhập và vào chức năng phát hành thẻ để đặt liên kết đến đúng bước. Chưa thao tác trong App hoặc kiểm chứng lại toàn bài. 27/11/2026: rà nhóm Card, đối chiếu hướng dẫn MB về chức năng phát hành thẻ và cách gọi ba loại thẻ. Mở thông báo biểu phí ngày 23/09/2026 và theo cả ba liên kết PDF; URL tài liệu khớp với tài liệu đang dẫn. Đối chiếu phí trả thẻ tại nhà, ví dụ Visa Priority Signature và điều kiện xét miễn thường niên. Đổi đường dẫn thông báo nguồn, làm rõ mục đích bài mở thẻ và liên kết về hướng dẫn đăng ký App hoặc mã. Giữ mốc cập nhật và kiểm chứng toàn bài; chưa thử App và chưa tái kiểm chứng toàn bộ các mức phí hoặc ưu đãi.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/cach-lam-the-ngan-hang",
@@ -56,7 +56,8 @@
         },
         {
           "url": "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/the/thong-tin-va-huong-dan/dich-vu-the-mb-bieu-phi-hien-hanh",
-          "status": "current"
+          "status": "historical",
+          "version": "Đường dẫn danh mục từng dùng khi kiểm chứng ngày 22/11/2026; lần rà ngày 27/11 dùng thông báo biểu phí MB có thể mở và kiểm tra các liên kết PDF."
         },
         {
           "url": "https://webcdn.mbbank.com.vn/public/media/0d039d14-48a7-472e-8211-9c4a52b8c792.pdf",
@@ -76,6 +77,16 @@
         {
           "url": "https://www.mbbank.com.vn/ca-nhan/priority/the/the-tin-dung/the-tin-dung-quoc-te-mb-priority-visa-signature",
           "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/uu-dai/the/dich-vu-the-mbbank-bieu-phi-hien-hanh",
+          "status": "current",
+          "version": "Thông báo ngày 23/09/2026, liên kết ba biểu phí thẻ tín dụng, đa năng, ghi nợ và nêu cách tính giao dịch hợp lệ để xét miễn phí thường niên."
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/cac-loai-the-mb",
+          "status": "current",
+          "version": "Dùng để đối chiếu cách gọi thẻ ghi nợ, tín dụng và Hi Collection."
         }
       ]
     },

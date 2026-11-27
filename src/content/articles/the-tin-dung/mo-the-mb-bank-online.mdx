@@ -1,6 +1,6 @@
 ---
 title: "Hướng dẫn mở thẻ MB Bank online"
-description: "Hướng dẫn mở thẻ MB Bank online: đăng ký App MBBank với mã MBAT113, chọn loại thẻ, phát hành và tra phí thẻ ghi nợ, tín dụng, Hi Collection."
+description: "Cách phát hành thẻ MB Bank trên App MBBank. Xem cách chọn thẻ ghi nợ, tín dụng hoặc Hi Collection, kiểm tra phí và chọn hình thức nhận thẻ."
 category: "the-tin-dung"
 type: "guide"
 publishedAt: 2026-11-02T10:24:00+07:00
@@ -9,7 +9,7 @@ lastVerifiedAt: 2026-11-02T21:00:00+07:00
 readingMinutes: 8
 featured: true
 draft: false
-quickAnswer: "Lần đầu mở tài khoản MB, bạn dùng liên kết mở App, hoàn tất đăng ký rồi vào mục Thẻ hoặc Dịch vụ thẻ để phát hành. Nếu đã đăng nhập được App, vào thẳng mục thẻ. Đã từng có tài khoản nhưng chưa truy cập được App, hãy liên hệ MB247 để kiểm tra trước khi tạo hồ sơ mới."
+quickAnswer: "Đăng nhập App MBBank, vào mục Thẻ hoặc Dịch vụ thẻ rồi chọn Phát hành thẻ. Kiểm tra loại thẻ, phí và cách nhận trước khi gửi yêu cầu. Nếu chưa có tài khoản để đăng nhập, hãy đăng ký App trước. MB xét duyệt riêng nếu bạn đăng ký hạn mức tín dụng."
 productBeforeToc: true
 products:
   - "bank-accounts/mb-bank-account"
@@ -26,7 +26,7 @@ sources:
     url: "https://www.mbbank.com.vn/tin-tuc/blog/cach-mo-the-visa"
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "Dịch vụ thẻ MB: biểu phí hiện hành theo từng loại thẻ"
-    url: "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/the/thong-tin-va-huong-dan/dich-vu-the-mb-bieu-phi-hien-hanh"
+    url: "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/uu-dai/the/dich-vu-the-mbbank-bieu-phi-hien-hanh"
     publisher: "Ngân hàng TMCP Quân đội (MB)"
   - title: "Biểu phí và lãi suất thẻ tín dụng MB"
     url: "https://webcdn.mbbank.com.vn/public/media/0d039d14-48a7-472e-8211-9c4a52b8c792.pdf"
@@ -51,17 +51,13 @@ import ArticleCTA from '../../../components/commercial/ArticleCTA.astro';
 
 export const mbBankProduct = await getEntry('products', 'bank-accounts/mb-bank-account');
 
-Để mở thẻ trên App MBBank, bạn cần có tài khoản đăng nhập. Phần dưới hướng dẫn cả người chưa đăng ký App lẫn người đã có tài khoản, từ bước bắt đầu đến chọn và phát hành thẻ.
+Nếu đã đăng nhập được App, đến thẳng [các bước đăng ký phát hành thẻ](#đăng-ký-phát-hành-thẻ-trên-app-mbbank). Nếu chưa chọn được loại thẻ, xem [cách phân biệt thẻ theo nguồn tiền](#chọn-thẻ-ghi-nợ-tín-dụng-hay-thẻ-đa-năng).
 
 ## Chưa có tài khoản MB thì bắt đầu ở đâu?
 
-**Lần đầu mở tài khoản MB:** sao chép mã ở khung sản phẩm phía trên rồi bấm **{appCtaLabels['mb-bank']}**. Tùy thiết bị, liên kết mở ứng dụng hoặc chuyển đến kho ứng dụng. Đăng ký bằng thông tin chính chủ; trong phần thông tin người giới thiệu, nhập **MBAT113** vào trường **Mã người giới thiệu** và kiểm tra trước khi xác nhận.
+Nếu lần đầu dùng MB, xem [quy trình đăng ký trên App MBBank](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/#đăng-ký-bằng-liên-kết-và-mã-giới-thiệu). Nếu mở tài khoản qua giới thiệu của 1 Phút Đăng Ký, dùng [hướng dẫn nhập mã MBAT113 khi đăng ký](/mo-tai-khoan/ma-gioi-thieu-mb-bank/#nhập-mã-giới-thiệu-mb-bank-ở-đâu). Sau khi đăng nhập được App, gửi yêu cầu phát hành trong mục **Thẻ**.
 
-Trước khi đăng ký, xem [giấy tờ cần chuẩn bị để mở tài khoản MB](/mo-tai-khoan/mo-tai-khoan-mb-bank-online/#điều-kiện-và-giấy-tờ-cần-chuẩn-bị) hoặc dùng [checklist mở tài khoản MB](/mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi/) để rà từng mục. Khi đến phần thông tin giới thiệu, đối chiếu [vị trí nhập mã MBAT113](/mo-tai-khoan/ma-gioi-thieu-mb-bank/#nhập-mã-giới-thiệu-mb-bank-ở-đâu).
-
-**Đã có tài khoản và đăng nhập được App MBBank:** xem ngay [các bước đăng ký phát hành thẻ](#đăng-ký-phát-hành-thẻ-trên-app-mbbank). Mã giới thiệu dùng ở bước mở tài khoản. Việc phát hành thẻ và xét duyệt hạn mức tín dụng là các bước riêng.
-
-**Đã từng có tài khoản nhưng chưa đăng ký hoặc không đăng nhập được App:** liên hệ MB247 để kiểm tra cách đăng ký hoặc khôi phục quyền truy cập trước khi tạo hồ sơ mới. Thông tin hỗ trợ nằm ở cuối bài.
+Nếu từng có tài khoản MB mà chưa truy cập được App, [liên hệ MB247](#đơn-vị-phát-hành-và-hỗ-trợ-về-thẻ) để hỏi cách đăng ký hoặc khôi phục quyền truy cập trước khi tạo hồ sơ mới.
 
 ## Chọn thẻ ghi nợ, tín dụng hay thẻ đa năng?
 
@@ -102,6 +98,8 @@ Hướng dẫn MB công bố dùng các tên mục **Thẻ**, **Dịch vụ th�
 </Steps>
 
 Nếu App chưa cho đăng ký loại thẻ bạn muốn, hỏi MB về điều kiện còn thiếu hoặc kênh hỗ trợ phù hợp. Không chọn một thẻ tín dụng khác chỉ để đi tiếp khi chưa hiểu phí và nghĩa vụ trả nợ.
+
+Nút **{appCtaLabels['mb-bank']}** bên dưới mở ứng dụng hoặc kho ứng dụng tùy thiết bị. Sau khi đăng nhập, bạn thực hiện yêu cầu phát hành trong mục **Thẻ**.
 
 <ArticleCTA product={mbBankProduct} position="article-card-steps" />
 
