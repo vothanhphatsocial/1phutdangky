@@ -254,9 +254,9 @@
     },
     {
       "article": "mo-tai-khoan/ma-gioi-thieu-mb-bank",
-      "checkedAt": "2026-11-22",
+      "checkedAt": "2026-11-27",
       "nextReviewAt": "2026-12-21",
-      "scope": "21/11/2026: rà mục bảo mật khi dùng link và mã MBAT113: đối chiếu tên ứng dụng/nhà phát hành trên hai kho, cảnh báo MB về trang hoặc phần mềm giả, bảo vệ giấy tờ và mã xác thực, và kênh MB247 khi nghi lộ thông tin. Kiểm tra CTA hiển thị đúng OneLink và mã đã cấu hình trên trang. 22/11/2026: mở PDF MB để đối chiếu nhãn trường giới thiệu và kiểm tra hướng dẫn phát hành thẻ công khai cho liên kết tới bước tiếp theo sau mở tài khoản. Chưa thử chuyển tiếp OneLink trên thiết bị thực tế, đăng ký hay xác nhận ghi nhận mã, quyền lợi hoặc toàn bài.",
+      "scope": "21/11/2026: rà mục bảo mật khi dùng link và mã MBAT113: đối chiếu tên ứng dụng/nhà phát hành trên hai kho, cảnh báo MB về trang hoặc phần mềm giả, bảo vệ giấy tờ và mã xác thực, và kênh MB247 khi nghi lộ thông tin. Kiểm tra CTA hiển thị đúng OneLink và mã đã cấu hình trên trang. 22/11/2026: mở PDF MB để đối chiếu nhãn trường giới thiệu và kiểm tra hướng dẫn phát hành thẻ công khai cho liên kết tới bước tiếp theo sau mở tài khoản. Chưa thử chuyển tiếp OneLink trên thiết bị thực tế, đăng ký hay xác nhận ghi nhận mã, quyền lợi hoặc toàn bài. 27/11/2026: đối chiếu hình thức giới thiệu qua link hoặc số điện thoại trong hướng dẫn công bố của MB và phân biệt với trường nhập mã trong hồ sơ. Kiểm tra phản hồi HTTP của OneLink đã cấu hình theo hai loại thiết bị mô phỏng: đích mở App và mã ứng dụng trên hai kho. Rà lại luồng hỏi MB247 nếu trường mã chỉ nhận số điện thoại hoặc không chỉnh được. Không thử tạo hồ sơ, không xác nhận tự điền, ghi nhận mã hoặc ưu đãi, không đổi mốc kiểm chứng toàn bài.",
       "sources": [
         {
           "url": "https://webcdn.mbbank.com.vn/public/media/0cae3104-4e74-45aa-8dc0-7f7dec5a1b90.pdf",
@@ -288,6 +288,11 @@
         {
           "url": "https://play.google.com/store/apps/details?id=com.mbmobile&hl=vi",
           "status": "current"
+        },
+        {
+          "url": "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/uu-dai/tien-gui/chuong-trinh-1-phut-gioi-thieu-tien-trieu-ve-tay",
+          "status": "current",
+          "version": "Công bố ngày 27/08/2026, chỉ dùng phần hình thức giới thiệu qua link hoặc số điện thoại; không suy rộng thể lệ hoặc mức thưởng sang MBAT113."
         }
       ]
     },
