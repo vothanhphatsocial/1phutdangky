@@ -617,6 +617,55 @@
           "version": "Phụ lục 06, phạm vi chi tiêu hợp lệ và trạng thái thẻ khi hoàn phí các năm tiếp theo"
         }
       ]
+    },
+    {
+      "article": "the-tin-dung/dieu-kien-mo-the-tin-dung-tpbank",
+      "checkedAt": "2026-11-27",
+      "nextReviewAt": "2026-12-27",
+      "scope": "Đối chiếu yêu cầu độ tuổi, nơi cư trú, thời gian làm việc và thu nhập của Visa Classic, Gold, Platinum trong hướng dẫn theo từng thẻ. Kiểm tra luồng Mastercard Fest trên App, phạm vi không yêu cầu chứng từ thu nhập theo công bố TPBank và bước khai công việc. Đối chiếu khung cấp tín dụng, độ tuổi, hồ sơ và thời hạn cư trú theo Điều 9, 14, 15 và nghĩa vụ của chủ thẻ chính theo điều khoản TPBank. Không suy rộng tiêu chí từng thẻ sang hồ sơ khác; không thử đăng ký thật.",
+      "sources": [
+        {
+          "url": "https://tpb.vn/website-huong-dan-su-dung-the",
+          "status": "current",
+          "version": "Mục điều kiện Visa Classic, Visa Gold và Visa Platinum; trang không nêu ngày hiệu lực"
+        },
+        {
+          "url": "https://tpb.vn/khach-hang-ca-nhan/the-tin-dung",
+          "status": "current",
+          "version": "Danh mục và kênh đăng ký thẻ của TPBank"
+        },
+        {
+          "url": "https://tpb.vn/cn-the-tin-dung-the-tpbank-mastercard-fest",
+          "status": "current",
+          "version": "Trang sản phẩm Mastercard Fest và nút đăng ký trên App"
+        },
+        {
+          "url": "https://tpb.vn/wps/portal/vni/news/tin-tuc/detail/!ut/p/z0/fY7LCsJADEW_pssw0-Jj7UZBsAiC6GwkncY2PtLaptXPN-reVe4J54a44A4uCI5coXIjeDM-htlpvkonWerT3GfTiV_ky_V-u9qky13m1i78F-wCXx6PsHAhNqL0UnfQtkC5nkpUTHyP8KSiZ6VvVhYdYuJtws9L_CjG3wx37JW6iF0JZ-oVtKZPBcpBKihxMCArIsPIpCB4t63UEOvm5zVgb0TqFEaEik3Ujl17Dcc3XUeQTg!!/",
+          "status": "current",
+          "version": "Công bố ra mắt, chỉ dùng cho mô tả luồng Mastercard Fest trên App; không dùng mốc duyệt, hạn mức hay ưu đãi"
+        },
+        {
+          "url": "https://tpb.vn/wps/wcm/connect/ff1fb875-d615-4cef-b343-5fd9c76d79a6/HDSD%2BInstant%2Bcard_compressed.pdf?CVID=o98VPHh&MOD=AJPERES",
+          "status": "current",
+          "version": "Hướng dẫn Instant Card, mục khai thông tin tùy thân và công việc"
+        },
+        {
+          "url": "https://tpb.vn/wps/wcm/connect/cf302884-f3fd-4887-bc25-e563a1f73c9b/BM02_Dieu_kien_dieu_khoan_phat_hanh_su_dung_the_TD.pdf?CVID=pPhpDTj&MOD=AJPERES",
+          "status": "current",
+          "effectiveFrom": "2026-07-20",
+          "version": "BM02.SP31/CN/TD v9.1, Điều 2 và Điều 4"
+        },
+        {
+          "url": "https://congbao.cdnchinhphu.vn/CongBaoCP/CongBao/2025/12/46881/60447-1-1753-1754.pdf",
+          "status": "current",
+          "version": "30/VBHN-NHNN ngày 19/12/2025; gồm sửa đổi 45/2025/TT-NHNN áp dụng từ 05/01/2026; Điều 9, 14 và 15"
+        },
+        {
+          "url": "https://tpb.vn/lien-he-thong-tin",
+          "status": "current",
+          "version": "Thông tin liên hệ hỗ trợ TPBank"
+        }
+      ]
     }
   ]
 }
