@@ -83,7 +83,7 @@
       "article": "mo-tai-khoan/mo-tai-khoan-mb-bank-online",
       "checkedAt": "2026-11-27",
       "nextReviewAt": "2026-12-20",
-      "scope": "20/11/2026: rà phần phí của bài và dữ liệu dùng chung bank-accounts/mb-bank-account. Đối chiếu miễn phí mở và đóng tài khoản thanh toán thông thường, số dư tối thiểu VND 50.000 đồng, số đẹp có biểu phí riêng và hai gói SMS Banking theo thông báo MB (đơn vị tính, ngưỡng, VAT và miễn phí cho nhóm Private). 22/11/2026: mở lại biểu phí tài khoản và thông báo SMS, đối chiếu mục hồ sơ mở tài khoản và dịch vụ thẻ đăng ký thêm trong hướng dẫn công khai để đặt liên kết giữa hai bài. Chưa kiểm chứng lại phí quản lý, luồng App hoặc liên kết giới thiệu trên thiết bị. Không đổi dữ liệu sản phẩm. 27/11/2026: đối chiếu và sửa địa chỉ hội sở trong bài trụ theo trang Liên hệ. Kiểm tra số chăm sóc khách hàng cá nhân, email MB247, danh mục Mạng lưới và kênh mở tài khoản tại chi nhánh/phòng giao dịch. Rà lại mục phí mở tài khoản VND và số dư tối thiểu trong biểu phí hiện đang liên kết. Kiểm chứng bổ sung chỉ giới hạn ở các mục đã nêu.",
+      "scope": "20/11/2026: rà phần phí của bài và dữ liệu dùng chung bank-accounts/mb-bank-account. Đối chiếu miễn phí mở và đóng tài khoản thanh toán thông thường, số dư tối thiểu VND 50.000 đồng, số đẹp có biểu phí riêng và hai gói SMS Banking theo thông báo MB (đơn vị tính, ngưỡng, VAT và miễn phí cho nhóm Private). 22/11/2026: mở lại biểu phí tài khoản và thông báo SMS, đối chiếu mục hồ sơ mở tài khoản và dịch vụ thẻ đăng ký thêm trong hướng dẫn công khai để đặt liên kết giữa hai bài. Chưa kiểm chứng lại phí quản lý, luồng App hoặc liên kết giới thiệu trên thiết bị. Không đổi dữ liệu sản phẩm. 27/11/2026: đối chiếu và sửa địa chỉ hội sở trong bài trụ theo trang Liên hệ. Kiểm tra số chăm sóc khách hàng cá nhân, email MB247, danh mục Mạng lưới và kênh mở tài khoản tại chi nhánh/phòng giao dịch. Rà lại mục phí mở tài khoản VND và số dư tối thiểu trong biểu phí hiện đang liên kết. Kiểm chứng bổ sung chỉ giới hạn ở các mục đã nêu. 27/11/2026 (rà nhóm Account): đọc hướng dẫn MB ngày 12/10/2026 về các bước tự mở trên App và biểu phí ngày 26/10/2026, mục 1.1 về mở tài khoản, số đẹp và số dư VND. Mở lại thông báo SMS ngày 21/04/2025 và trang Liên hệ khi phân tuyến người cần hỏi MB. Chỉ điều chỉnh phần chỉ dẫn và liên kết; chưa kiểm chứng các màn hình trên thiết bị hay các phần khác của bài.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
@@ -118,9 +118,9 @@
     },
     {
       "article": "mo-tai-khoan/mo-tai-khoan-mb-bank-can-gi",
-      "checkedAt": "2026-11-21",
+      "checkedAt": "2026-11-27",
       "nextReviewAt": "2026-12-21",
-      "scope": "Rà mục giấy tờ: đối chiếu hướng dẫn mở tài khoản qua luồng quét chip của MB, Điều 12 và 16 về hồ sơ và xác thực, Điều 46 về hạn của CCCD/CMND cũ, phạm vi hướng dẫn cập nhật giấy tờ qua VNeID và kênh MB247. Chưa thử đăng ký trong App, chưa xác nhận VNeID cho hồ sơ mở mới cụ thể và chưa rà toàn bài. Thay cùng URL nguồn cũ trả 404 trong bài trụ mở tài khoản và dữ liệu dùng chung bank-accounts/mb-bank-account. Kiểm tra URL nguồn trên hai mục đó chỉ giới hạn ở giấy tờ.",
+      "scope": "Rà mục giấy tờ: đối chiếu hướng dẫn mở tài khoản qua luồng quét chip của MB, Điều 12 và 16 về hồ sơ và xác thực, Điều 46 về hạn của CCCD/CMND cũ, phạm vi hướng dẫn cập nhật giấy tờ qua VNeID và kênh MB247. Chưa thử đăng ký trong App, chưa xác nhận VNeID cho hồ sơ mở mới cụ thể và chưa rà toàn bài. Thay cùng URL nguồn cũ trả 404 trong bài trụ mở tài khoản và dữ liệu dùng chung bank-accounts/mb-bank-account. Kiểm tra URL nguồn trên hai mục đó chỉ giới hạn ở giấy tờ. 27/11/2026: đối chiếu hướng dẫn MB ngày 12/10/2026 về xác minh bằng căn cước gắn chip và Điều 11, 16 của 21/VBHN-NHNN để tách phần tra độ tuổi sang bài chuyên sâu. Chưa thử luồng App hoặc kiểm chứng lại phần nhận diện và cài đặt trên từng máy.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/tai-khoan-thanh-toan-la-gi",
