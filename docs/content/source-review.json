@@ -592,7 +592,7 @@
       "article": "the-tin-dung/phi-va-lai-suat-the-tin-dung-tpbank",
       "checkedAt": "2026-11-27",
       "nextReviewAt": "2026-12-27",
-      "scope": "Đối chiếu danh mục đang liên kết, biểu phí quốc tế mục 1–3, 6–8, 16, 18, 21, 24–26, và điều khoản mục tính lãi, sao kê, trả góp. Kiểm tra phí phát hành, phí quản lý hạn mức và lãi từng dòng trong bảng; điều kiện giao dịch và trạng thái thẻ được xét hoàn phí từ năm tiếp theo. Khoản 110.000 đồng trong ví dụ là riêng phí ATM, chưa tính lãi. Rà phí và lãi tóm tắt trên bài trụ cùng dữ liệu thẻ trong phạm vi khoản đang được dẫn.",
+      "scope": "Đối chiếu danh mục đang liên kết, biểu phí quốc tế mục 1–3, 6–8, 16, 18, 21, 24–26, và điều khoản mục tính lãi, sao kê, trả góp. Kiểm tra phí phát hành, phí quản lý hạn mức và lãi từng dòng trong bảng; điều kiện giao dịch và trạng thái thẻ được xét hoàn phí từ năm tiếp theo. Khoản 110.000 đồng trong ví dụ là riêng phí ATM, chưa tính lãi. Rà phí và lãi tóm tắt trên bài trụ cùng dữ liệu thẻ trong phạm vi khoản đang được dẫn. Bổ sung kiểm chứng riêng Mastercard Fest: phí phát hành niêm yết so với miễn phí đến 31/12/2026; phí quản lý hạn mức năm đầu theo kênh. Khoanh phạm vi kiểm chứng bổ sung, giữ ngày kiểm chứng toàn bài. Không đăng ngưỡng chi tiêu hoàn phí tại quầy hoặc các năm sau do tài liệu công khai nêu các ngưỡng khác nhau.",
       "sources": [
         {
           "url": "https://tpb.vn/wps/wcm/connect/01d9edaf-2b89-43cf-90c6-f04de788e40f/BIEU-PHI-THE-TIN-DUNG-QUOC-TE-TPBANK_20261022.pdf?MOD=AJPERES",
@@ -615,6 +615,17 @@
           "url": "https://tpb.vn/wps/wcm/connect/8ef6c97a-7e2e-4e31-9337-1345ba26df29/6_Phu_luc_06_The_le_hoan_phi_quan_ly_han_muc_the_tin_dung_%C4%91%C4%83ng%2Bweb.pdf?CVID=pzAMbjK&MOD=AJPERES",
           "status": "current",
           "version": "Phụ lục 06, phạm vi chi tiêu hợp lệ và trạng thái thẻ khi hoàn phí các năm tiếp theo"
+        },
+        {
+          "url": "https://tpb.vn/cn-the-tin-dung-the-tpbank-mastercard-fest",
+          "status": "current",
+          "validThrough": "2026-12-31",
+          "version": "Hỏi đáp Mastercard Fest, thời hạn miễn phí phát hành qua các kênh; trang không ghi mốc bắt đầu. Mốc hết hạn này chỉ áp dụng với phí phát hành."
+        },
+        {
+          "url": "https://tpb.vn/wps/portal/vni/faqs/ngan-hang-ca-nhan",
+          "status": "current",
+          "version": "Hỏi đáp TPBank Mastercard Fest: đối chiếu miễn phí phát hành, miễn phí quản lý năm đầu trên App và cơ chế hoàn phí tại quầy."
         }
       ]
     },
