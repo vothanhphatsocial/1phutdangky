@@ -256,12 +256,12 @@
       "article": "mo-tai-khoan/ma-gioi-thieu-mb-bank",
       "checkedAt": "2026-11-27",
       "nextReviewAt": "2026-12-21",
-      "scope": "21/11/2026: rà mục bảo mật khi dùng link và mã MBAT113: đối chiếu tên ứng dụng/nhà phát hành trên hai kho, cảnh báo MB về trang hoặc phần mềm giả, bảo vệ giấy tờ và mã xác thực, và kênh MB247 khi nghi lộ thông tin. Kiểm tra CTA hiển thị đúng OneLink và mã đã cấu hình trên trang. 22/11/2026: mở PDF MB để đối chiếu nhãn trường giới thiệu và kiểm tra hướng dẫn phát hành thẻ công khai cho liên kết tới bước tiếp theo sau mở tài khoản. Chưa thử chuyển tiếp OneLink trên thiết bị thực tế, đăng ký hay xác nhận ghi nhận mã, quyền lợi hoặc toàn bài. 27/11/2026: đối chiếu hình thức giới thiệu qua link hoặc số điện thoại trong hướng dẫn công bố của MB và phân biệt với trường nhập mã trong hồ sơ. Kiểm tra phản hồi HTTP của OneLink đã cấu hình theo hai loại thiết bị mô phỏng: đích mở App và mã ứng dụng trên hai kho. Rà lại luồng hỏi MB247 nếu trường mã chỉ nhận số điện thoại hoặc không chỉnh được. Không thử tạo hồ sơ, không xác nhận tự điền, ghi nhận mã hoặc ưu đãi, không đổi mốc kiểm chứng toàn bài.",
+      "scope": "21/11/2026: rà mục bảo mật khi dùng link và mã MBAT113: đối chiếu tên ứng dụng/nhà phát hành trên hai kho, cảnh báo MB về trang hoặc phần mềm giả, bảo vệ giấy tờ và mã xác thực, và kênh MB247 khi nghi lộ thông tin. Kiểm tra CTA hiển thị đúng OneLink và mã đã cấu hình trên trang. 22/11/2026: mở PDF MB để đối chiếu nhãn trường giới thiệu và kiểm tra hướng dẫn phát hành thẻ công khai cho liên kết tới bước tiếp theo sau mở tài khoản. Chưa thử chuyển tiếp OneLink trên thiết bị thực tế, đăng ký hay xác nhận ghi nhận mã, quyền lợi hoặc toàn bài. 27/11/2026: đối chiếu hình thức giới thiệu qua link hoặc số điện thoại trong hướng dẫn công bố của MB và phân biệt với trường nhập mã trong hồ sơ. Kiểm tra phản hồi HTTP của OneLink đã cấu hình theo hai loại thiết bị mô phỏng: đích mở App và mã ứng dụng trên hai kho. Rà lại luồng hỏi MB247 nếu trường mã chỉ nhận số điện thoại hoặc không chỉnh được. Không thử tạo hồ sơ, không xác nhận tự điền, ghi nhận mã hoặc ưu đãi, không đổi mốc kiểm chứng toàn bài. 27/11/2026 (rà nhóm Referral): mở hướng dẫn giới thiệu qua số điện thoại để đối chiếu nhãn Mã RM và mục thông tin giới thiệu tùy trường hợp. Hai tệp minh họa cũ không mở được trong lần rà này nên thay bằng PDF hướng dẫn đã đọc. Mở thông báo MB ngày 27/08/2026 và thể lệ đính kèm có kỳ đăng ký đến 31/12/2025; chưa xác nhận được quyền lợi áp dụng cho MBAT113. Đối chiếu MB247 để điều hướng người cần kiểm tra hồ sơ. Giữ ngày kiểm chứng toàn bài và ngày cập nhật vì lần này tinh gọn nội dung lặp, đổi liên kết và nguồn dẫn; không thử đăng ký thực tế.",
       "sources": [
         {
           "url": "https://webcdn.mbbank.com.vn/public/media/0cae3104-4e74-45aa-8dc0-7f7dec5a1b90.pdf",
-          "status": "current",
-          "version": "PDF hướng dẫn của MB, chỉ dùng để đối chiếu nhãn trường Mã RM"
+          "status": "historical",
+          "version": "Nguồn cũ từng dùng để đối chiếu nhãn Mã RM; lần rà 27/11/2026 không mở được và đã thay bằng PDF hướng dẫn khác do MB công bố."
         },
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/cach-lam-the-ngan-hang",
@@ -293,6 +293,18 @@
           "url": "https://www.mbbank.com.vn/ca-nhan/khach-hang-ca-nhan/uu-dai/tien-gui/chuong-trinh-1-phut-gioi-thieu-tien-trieu-ve-tay",
           "status": "current",
           "version": "Công bố ngày 27/08/2026, chỉ dùng phần hình thức giới thiệu qua link hoặc số điện thoại; không suy rộng thể lệ hoặc mức thưởng sang MBAT113."
+        },
+        {
+          "url": "https://webcdn.mbbank.com.vn/public/media/c3f7cf73-fad8-4715-9a80-da06789e53aa.pdf",
+          "status": "current",
+          "version": "Hướng dẫn MB cho luồng giới thiệu qua số điện thoại, phần II bước 02; dùng để đối chiếu nhãn trường Mã RM và dòng Thông tin giới thiệu (nếu có), không xác nhận điều kiện, mức thưởng hay luồng hiện tại của MBAT113."
+        },
+        {
+          "url": "https://webcdn.mbbank.com.vn/public/media/fb3b05b5-71c1-46de-9832-fb7de3f60fc4.pdf",
+          "status": "historical",
+          "effectiveFrom": "2025-01-01",
+          "validThrough": "2025-12-31",
+          "version": "PDF thể lệ đính kèm thông báo giới thiệu trên website MB. Kỳ đăng ký năm 2025 đã kết thúc; không làm căn cứ về quyền lợi hiện hành của mã MBAT113."
         }
       ]
     },
