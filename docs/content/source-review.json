@@ -45,9 +45,9 @@
     },
     {
       "article": "the-tin-dung/mo-the-mb-bank-online",
-      "checkedAt": "2026-11-27",
+      "checkedAt": "2026-11-28",
       "nextReviewAt": "2026-12-20",
-      "scope": "20/11/2026: đối chiếu các ví dụ phí phát hành, thường niên và phí giao thẻ tại nhà với ba PDF MB đang liên kết, cùng điều kiện tính chi tiêu để miễn thường niên. Sửa phạm vi Visa Priority Signature theo trang sản phẩm MB và cột khách hàng trong biểu phí tín dụng. Ba URL PDF cũ trả 403 khi truy xuất, được thay bằng các URL hiện hành. 22/11/2026: trang biểu phí MB vẫn liên kết đúng ba PDF ngày 23/09/2026. Đối chiếu hướng dẫn công khai của MB về đăng nhập và vào chức năng phát hành thẻ để đặt liên kết đến đúng bước. Chưa thao tác trong App hoặc kiểm chứng lại toàn bài. 27/11/2026: rà nhóm Card, đối chiếu hướng dẫn MB về chức năng phát hành thẻ và cách gọi ba loại thẻ. Mở thông báo biểu phí ngày 23/09/2026 và theo cả ba liên kết PDF; URL tài liệu khớp với tài liệu đang dẫn. Đối chiếu phí trả thẻ tại nhà, ví dụ Visa Priority Signature và điều kiện xét miễn thường niên. Đổi đường dẫn thông báo nguồn, làm rõ mục đích bài mở thẻ và liên kết về hướng dẫn đăng ký App hoặc mã. Giữ mốc cập nhật và kiểm chứng toàn bài; chưa thử App và chưa tái kiểm chứng toàn bộ các mức phí hoặc ưu đãi.",
+      "scope": "20/11/2026: đối chiếu các ví dụ phí phát hành, thường niên và phí giao thẻ tại nhà với ba PDF MB đang liên kết, cùng điều kiện tính chi tiêu để miễn thường niên. Sửa phạm vi Visa Priority Signature theo trang sản phẩm MB và cột khách hàng trong biểu phí tín dụng. Ba URL PDF cũ trả 403 khi truy xuất, được thay bằng các URL hiện hành. 22/11/2026: trang biểu phí MB vẫn liên kết đúng ba PDF ngày 23/09/2026. Đối chiếu hướng dẫn công khai của MB về đăng nhập và vào chức năng phát hành thẻ để đặt liên kết đến đúng bước. Chưa thao tác trong App hoặc kiểm chứng lại toàn bài. 27/11/2026: rà nhóm Card, đối chiếu hướng dẫn MB về chức năng phát hành thẻ và cách gọi ba loại thẻ. Mở thông báo biểu phí ngày 23/09/2026 và theo cả ba liên kết PDF; URL tài liệu khớp với tài liệu đang dẫn. Đối chiếu phí trả thẻ tại nhà, ví dụ Visa Priority Signature và điều kiện xét miễn thường niên. Đổi đường dẫn thông báo nguồn, làm rõ mục đích bài mở thẻ và liên kết về hướng dẫn đăng ký App hoặc mã. Giữ mốc cập nhật và kiểm chứng toàn bài; chưa thử App và chưa tái kiểm chứng toàn bộ các mức phí hoặc ưu đãi. 28/11/2026 (rà câu trả lời nhanh): đối chiếu các bước phát hành trên App MBBank. Kiểm tra riêng hướng dẫn Visa Debit ngày 04/03/2026 về tài khoản thanh toán liên kết, hỗ trợ mở cùng lúc và các lựa chọn nhận thẻ vật lý. Đối chiếu thông báo biểu phí ngày 23/09/2026 và mở lại cả ba PDF để kiểm tra khoản trả thẻ tại nhà 30.000 đồng/lần, chưa VAT. Giữ bảng phí, giới hạn phương thức nhận theo sản phẩm, không đưa mốc giao chung. Chưa kiểm tra màn hình trong App, đặt giao thẻ thật hoặc xác minh lại toàn bài.",
       "sources": [
         {
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/cach-lam-the-ngan-hang",
@@ -87,6 +87,11 @@
           "url": "https://www.mbbank.com.vn/tin-tuc/blog/cac-loai-the-mb",
           "status": "current",
           "version": "Dùng để đối chiếu cách gọi thẻ ghi nợ, tín dụng và Hi Collection."
+        },
+        {
+          "url": "https://www.mbbank.com.vn/tin-tuc/blog/the-visa-debit-la-gi",
+          "status": "current",
+          "version": "Bài MB ngày 04/03/2026, phần điều kiện và quy trình Visa Debit; dùng riêng tài khoản thanh toán liên kết, khả năng hỗ trợ mở cùng lúc và cách nhận thẻ vật lý. Phí dẫn theo biểu phí, không theo ưu đãi trong bài giới thiệu."
         }
       ]
     },
