@@ -745,19 +745,15 @@ const hasMoreInformation =
         if (!copied) throw new Error('Copy failed');
       }
 
-      if (
-        document.documentElement.dataset
-          .consentChoice !== 'granted'
-      ) {
-        label.textContent = 'Đã sao chép';
-        status.textContent = `Đã sao chép mã ${code}.`;
-        return;
+      const payload = referralCopyPayload(
+        button.dataset,
+        window.location.pathname,
+        document.documentElement.dataset.consentChoice
+      );
+      if (payload) {
+        trackingWindow.dataLayer ??= [];
+        trackingWindow.dataLayer.push(payload);
       }
-
-      trackingWindow.dataLayer = trackingWindow.dataLayer || [];
-      const payload = referralCopyPayload(button.dataset, window.location.pathname,
-        document.documentElement.dataset.consentChoice);
-      if (payload) trackingWindow.dataLayer.push(payload);
 
       label.textContent = 'Đã sao chép';
       status.textContent = `Đã sao chép mã ${code}.`;
